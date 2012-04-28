@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../bar/bar.h
+
+../foo/foo.h
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/bar/bar.cpp
+bar.h
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/bar/bar.h
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/bar/bar.h
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/foo/foo.cpp
+foo.h
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/foo/foo.h
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/foo/foo.h
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/main.cpp
+iostream
+-
+foo.h
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/foo.h
+bar.h
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/bar.h
+

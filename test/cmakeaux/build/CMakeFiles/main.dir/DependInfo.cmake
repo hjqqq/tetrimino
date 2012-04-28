@@ -1,0 +1,15 @@
+# The set of languages for which implicit dependencies are needed:
+SET(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/bar/bar.cpp" "/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/build/CMakeFiles/main.dir/bar/bar.cpp.o"
+  "/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/foo/foo.cpp" "/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/build/CMakeFiles/main.dir/foo/foo.cpp.o"
+  "/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/main.cpp" "/home/tom/study/SDL/TetriminoProject/tetrimino/test/cmakeaux/build/CMakeFiles/main.dir/main.cpp.o"
+  )
+SET(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Targets to which this target links.
+SET(CMAKE_TARGET_LINKED_INFO_FILES
+  )
