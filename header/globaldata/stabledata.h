@@ -20,6 +20,7 @@ struct StableData{
     static const Vector2 mapSize;
     static const int blockPackageSize;
     enum Direction{NORTH, WEST, SOUTH, EAST};
+    enum BlockShape{ISHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
 };
 
 #endif

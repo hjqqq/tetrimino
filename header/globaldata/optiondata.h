@@ -18,7 +18,6 @@ struct OptionData{
     static SDL_Surface *background;
     static TTF_Font *font;
     
-    // main status
     enum TetriminoStatus{MENULOOP, GAMELOOP, QUIT};
     static TetriminoStatus tetriminoStatus;
     
