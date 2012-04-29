@@ -6,7 +6,7 @@
 
 SDL_Surface *image_load(const char *file);
 inline const SDL_Rect get_rect(const SDL_Surface *surface);
-inline void cleanMap(int *map[10]);
+inline void cleanMap(int mapData[StableData::mapSizeX][StableData::mapSizeY]);
 
 const SDL_Rect get_rect(const SDL_Surface *surface)
 {
@@ -14,7 +14,7 @@ const SDL_Rect get_rect(const SDL_Surface *surface)
     return rect;
 }
 
-void cleanMap(int *mapData[10])
+void cleanMap(int mapData[StableData::mapSizeX][StableData::mapSizeY])
 {
     for (int i = 0; i != StableData::mapSize.x; ++i)
 	for (int j = 0; j != StableData::mapSize.y; ++j)

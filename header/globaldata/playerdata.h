@@ -3,16 +3,16 @@
 
 #include <vector>
 
-#include "stabledata.h";
+#include "stabledata.h"
 
 struct PlayerData{
     Vector2 informationPos;
     Vector2 mapPos;
-    int mapData[StableData::mapSize.x][StableData::mapSize.y];
-    std::vector<BlockData> blockPackage;
-    
+    int mapData[StableData::mapSizeX][StableData::mapSizeY];
 };
 
-extern PlayerData playData1, playData2;
+extern PlayerData playerData1, playerData2;
+void initPlayerData1();
+void initPlayerData2();
 
 #endif

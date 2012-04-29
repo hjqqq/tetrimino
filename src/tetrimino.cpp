@@ -79,6 +79,7 @@ void Tetrimino::menuloop()
 
 void Tetrimino::gameloop()
 {
+    //GameHolder gameHolder;
     SDL_Event event;
     while (OptionData::gameHolderStatus != OptionData::QUITGAME){
 	while (SDL_PollEvent(&event)){
@@ -86,12 +87,13 @@ void Tetrimino::gameloop()
 		OptionData::tetriminoStatus = OptionData::QUIT;
 		return ;
 	    }
+	    //gameHolder.handleEvent(event);
 	}
 	SDL_BlitSurface(OptionData::background, 0,
 			OptionData::display, 0);
+	//gameHolder.update();
 	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
     }
-    std::cout << "here is game loop" << std::endl;
 }
 
 

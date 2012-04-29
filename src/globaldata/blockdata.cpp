@@ -1,7 +1,7 @@
 #include "blockdata.h"
 
-\\----------------------------------------------------------------
-const BlockData::AllBlockNum &I = {
+//----------------------------------------------------------------
+BlockData::AllBlockNum I = {
     {{0, 0, 0, 0},
      {0, 0, 0, 0},
      {1, 1, 1, 1},
@@ -23,17 +23,17 @@ const BlockData::AllBlockNum &I = {
      {0, 1, 0, 0}}
 };
 
-const BlockData::AllBlockRect &IRect = {
+BlockData::AllBlockRect IRect = {
     Rect(0, 3, 4, 1),
     Rect(2, 0, 1, 4),
     Rect(0, 2, 4, 1),
     Rect(1, 0, 1, 4)
 };
 
-const BlockData &blockDataI(4, I, IRect);
+BlockData blockDataI(4, I, IRect);
 
-\\----------------------------------------------------------------
-const BlockData::AllBlockNum &L = {
+//----------------------------------------------------------------
+BlockData::AllBlockNum L = {
     {{1, 0, 0, 0},
      {1, 1, 1, 0},
      {0, 0, 0, 0},
@@ -55,7 +55,7 @@ const BlockData::AllBlockNum &L = {
      {0, 0, 0, 0}}
 };
 
-const BlockData::AllBlockNum &J = {
+BlockData::AllBlockNum J = {
     {{0, 0, 1, 0},
      {1, 1, 1, 0},
      {0, 0, 0, 0},
@@ -77,14 +77,14 @@ const BlockData::AllBlockNum &J = {
      {0, 0, 0, 0}},    
 };
 
-const BlockData::AllBlockRect &LJSTZRect = {
+BlockData::AllBlockRect LJSTZRect = {
     Rect(0, 0, 3, 2),
     Rect(0, 0, 2, 3),
     Rect(0, 1, 3, 2),
     Rect(1, 0, 2, 3)
 };
 
-const BlockData::AllBlockNum &S = {
+BlockData::AllBlockNum S = {
     {{0, 1, 1, 0},
      {1, 1, 0, 0},
      {0, 0, 0, 0},
@@ -106,7 +106,7 @@ const BlockData::AllBlockNum &S = {
      {0, 0, 0, 0}}
 };
 
-const BlockData::AllBlockNum &T = {
+BlockData::AllBlockNum T = {
     {{0, 1, 0, 0},
      {1, 1, 1, 0},
      {0, 0, 0, 0},
@@ -128,7 +128,7 @@ const BlockData::AllBlockNum &T = {
      {0, 0, 0, 0}}
 };
 
-const BlockData::AllBlockNum &Z = {
+BlockData::AllBlockNum Z = {
     {{1, 1, 0, 0},
      {0, 1, 1, 0},
      {0, 0, 0, 0},
@@ -150,15 +150,15 @@ const BlockData::AllBlockNum &Z = {
      {0, 0, 0, 0}}
 };
 
-const BlockData &blockDataL(3, L, LJSTZRect);
-const BlockData &blockDataJ(3, J, LJSTZRect);
-const BlockData &blockDataS(3, S, LJSTZRect);
-const BlockData &blockDataT(3, T, LJSTZRect);
-const BlockData &blockDataZ(3, Z, LJSTZRect);
+BlockData blockDataL(3, L, LJSTZRect);
+BlockData blockDataJ(3, J, LJSTZRect);
+BlockData blockDataS(3, S, LJSTZRect);
+BlockData blockDataT(3, T, LJSTZRect);
+BlockData blockDataZ(3, Z, LJSTZRect);
 
-\\----------------------------------------------------------------
+//----------------------------------------------------------------
 
-const BlockData::AllBlockNum &O = {
+BlockData::AllBlockNum O = {
     {{1, 1, 0, 0},
      {1, 1, 0, 0},
      {0, 0, 0, 0},
@@ -180,16 +180,16 @@ const BlockData::AllBlockNum &O = {
      {0, 0, 0, 0}}
 };
 
-const BlockData::AllBlockRect &ORect = {
+BlockData::AllBlockRect ORect = {
     Rect(0, 0, 2, 2),
     Rect(0, 0, 2, 2),
     Rect(0, 0, 2, 2),
     Rect(0, 0, 2, 2)
 };
 
-const BlockData &blockDataI(2, O, ORect);
+BlockData blockDataO(2, O, ORect);
 
-const BlockData &blockDataArray[7] = {
+BlockData blockDataArray[7] = {
     blockDataI,
     blockDataL,
     blockDataJ,
@@ -198,3 +198,4 @@ const BlockData &blockDataArray[7] = {
     blockDataZ,
     blockDataO
 };
+
