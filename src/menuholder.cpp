@@ -44,9 +44,9 @@ void MenuHolder::constructMainMenu()
 {
     Label *startLabel = new Label(
 	Rect(0, 0, 200, 50),
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::STARTMENU),
+	new ValueSetter<OptionData::TetriminoStatus>(
+	    OptionData::tetriminoStatus,
+	    OptionData::GAMELOOP),
 	"start");
     Label *optionsLabel = new Label(
 	Rect(0, 0, 200, 50),

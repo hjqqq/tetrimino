@@ -62,7 +62,7 @@ void Tetrimino::menuloop()
 {
     MenuHolder menuHolder;
     SDL_Event event;
-    while (OptionData::menuHolderStatus != QUITMENU){
+    while (OptionData::menuHolderStatus != OptionData::QUITMENU){
 	while (SDL_PollEvent(&event)){
 	    if (event.type == SDL_QUIT){
 		OptionData::tetriminoStatus = OptionData::QUIT;
@@ -79,7 +79,19 @@ void Tetrimino::menuloop()
 
 void Tetrimino::gameloop()
 {
-
+    SDL_Event event;
+    while (OptionData::gameHolderStatus != OptionData::QUITGAME){
+	while (SDL_PollEvent(&event)){
+	    if (event.type == SDL_QUIT){
+		OptionData::tetriminoStatus = OptionData::QUIT;
+		return ;
+	    }
+	}
+	SDL_BlitSurface(OptionData::background, 0,
+			OptionData::display, 0);
+	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
+    }
+    std::cout << "here is game look" << std::endl;
 }
 
 
