@@ -91,7 +91,7 @@ void Tetrimino::gameloop()
 			OptionData::display, 0);
 	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
     }
-    std::cout << "here is game look" << std::endl;
+    std::cout << "here is game loop" << std::endl;
 }
 
 
