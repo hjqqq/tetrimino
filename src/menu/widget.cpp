@@ -1,7 +1,7 @@
 #include <iostream>
 #include "widget.h"
 
-Widget::Widget(const Rect &_rect, Action *_action):
+Widget::Widget(const Rect<int> &_rect, Action *_action):
     rect(_rect), action(_action)
 {}
 
@@ -16,12 +16,12 @@ void Widget::handleEvent(const SDL_Event &event)
 void Widget::update()
 {}
 
-const Rect Widget::getRect() const
+const Rect<int> Widget::getRect() const
 {
     return rect;
 }
 
-void Widget::setRect(const Rect &newRect)
+void Widget::setRect(const Rect<int> &newRect)
 {
     rect = newRect;
 }

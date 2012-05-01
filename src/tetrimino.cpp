@@ -4,6 +4,7 @@
 #include "stabledata.h"
 #include "optiondata.h"
 #include "menuholder.h"
+#include "gameholder.h"
 #include "color.h"
 
 Tetrimino::Tetrimino()
@@ -26,8 +27,8 @@ Tetrimino::~Tetrimino(){
 void Tetrimino::loadResource()
 {
     OptionData::display = SDL_SetVideoMode(
-	StableData::screenSize.x,
-	StableData::screenSize.y,
+	StableData::screenSizeX,
+	StableData::screenSizeY,
 	0,
 	SDL_SWSURFACE);
     OptionData::background = image_load(
@@ -79,7 +80,7 @@ void Tetrimino::menuloop()
 
 void Tetrimino::gameloop()
 {
-    //GameHolder gameHolder;
+    GameHolder gameHolder;
     SDL_Event event;
     while (OptionData::gameHolderStatus != OptionData::QUITGAME){
 	while (SDL_PollEvent(&event)){
@@ -87,11 +88,11 @@ void Tetrimino::gameloop()
 		OptionData::tetriminoStatus = OptionData::QUIT;
 		return ;
 	    }
-	    //gameHolder.handleEvent(event);
+	    gameHolder.handleEvent(event);
 	}
 	SDL_BlitSurface(OptionData::background, 0,
 			OptionData::display, 0);
-	//gameHolder.update();
+	gameHolder.update();
 	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
     }
 }

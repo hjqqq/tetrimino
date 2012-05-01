@@ -3,10 +3,11 @@
 
 #include "SDL_image.h"
 #include "stabledata.h"
+#include "optiondata.h"
 
 SDL_Surface *image_load(const char *file);
 inline const SDL_Rect get_rect(const SDL_Surface *surface);
-inline void cleanMap(int mapData[StableData::mapSizeX][StableData::mapSizeY]);
+inline Uint32 SDL_Color2Uint32(const SDL_Color &color);
 
 const SDL_Rect get_rect(const SDL_Surface *surface)
 {
@@ -14,11 +15,12 @@ const SDL_Rect get_rect(const SDL_Surface *surface)
     return rect;
 }
 
-void cleanMap(int mapData[StableData::mapSizeX][StableData::mapSizeY])
+Uint32 SDL_Color2Uint32(const SDL_Color &color)
 {
-    for (int i = 0; i != StableData::mapSize.x; ++i)
-	for (int j = 0; j != StableData::mapSize.y; ++j)
-	    mapData[i][j] = 0;
+    return SDL_MapRGB(OptionData::display->format,
+		      color.r,
+		      color.g,
+		      color.b);
 }
 
 #endif 

@@ -7,6 +7,7 @@
 class MenuHolder{
 public:
     MenuHolder();
+    ~MenuHolder();
     void handleEvent(const SDL_Event &event);
     void update();
     

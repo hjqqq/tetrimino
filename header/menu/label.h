@@ -9,7 +9,7 @@
 
 class Label : public Widget{
 public:
-    Label(const Rect &_rect,
+    Label(const Rect<int> &_rect,
 	  Action *_action,
 	  const std::string &_text,
 	  const SDL_Color &_color = black);
@@ -21,7 +21,7 @@ public:
     void setColor(const SDL_Color &newColor);
     void setText(const std::string &newText);
 
-    virtual void setRect(const Rect &newRect);
+    virtual void setRect(const Rect<int> &newRect);
     
 private:
     void constructLabelSurface();

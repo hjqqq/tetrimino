@@ -6,16 +6,16 @@
 
 class Widget{
 public:
-    Widget(const Rect &_rect, Action *_action);
+    Widget(const Rect<int> &_rect, Action *_action);
     virtual ~Widget();
     
     virtual void handleEvent(const SDL_Event &event);
     virtual void update();
     
-    virtual const Rect getRect() const;
-    virtual void setRect(const Rect &newRect);
+    virtual const Rect<int> getRect() const;
+    virtual void setRect(const Rect<int> &newRect);
 protected:
-    Rect rect;
+    Rect<int> rect;
     Action *action;
 };
 

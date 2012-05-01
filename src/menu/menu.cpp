@@ -4,7 +4,7 @@
 #include "optiondata.h"
 #include "color.h"
 
-Menu::Menu(const Rect &_rect, Action *_action):
+Menu::Menu(const Rect<int> &_rect, Action *_action):
     Widget(_rect, _action), select(0)
 {
     verticalLayout();
@@ -25,12 +25,12 @@ void Menu::addLabel(Label *label)
 
 void Menu::verticalLayout()
 {
-    Vector2 topLeftPos(rect.pos);
-    const Vector2 topLeftStep =
-	Vector2(0, rect.diagonal.y) / labelVector.size();
+    Vector2<int> topLeftPos(rect.pos);
+    const Vector2<int> topLeftStep =
+	Vector2<int>(0, rect.diagonal.y) / (int)labelVector.size();
     
     for (int i = 0; i != labelVector.size(); ++i){
-	Rect labelRect = labelVector[i]->getRect();
+	Rect<int> labelRect = labelVector[i]->getRect();
 	labelRect.setTopLeft(topLeftPos);
 	labelVector[i]->setRect(labelRect);
 	topLeftPos += topLeftStep;
@@ -74,7 +74,7 @@ void Menu::updateSelect()
     Draw_Round(OptionData::display, dstrect.x, dstrect.y, dstrect.w, dstrect.h, 50, color);
 }
 
-void Menu::setRect(const Rect &newRect)
+void Menu::setRect(const Rect<int> &newRect)
 {
     rect = newRect;
     verticalLayout();

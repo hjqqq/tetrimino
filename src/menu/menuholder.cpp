@@ -10,6 +10,13 @@ MenuHolder::MenuHolder()
     constructOptionMenu();
 }
 
+MenuHolder::~MenuHolder()
+{
+    delete mainMenu;
+    delete startMenu;
+    delete optionMenu;
+}
+
 void MenuHolder::handleEvent(const SDL_Event &event)
 {
     switch (OptionData::menuHolderStatus){
@@ -43,17 +50,17 @@ void MenuHolder::update()
 void MenuHolder::constructMainMenu()
 {
     Label *startLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new ValueSetter<OptionData::TetriminoStatus>(
 	    OptionData::tetriminoStatus,
 	    OptionData::GAMELOOP),
 	"start");
     Label *optionsLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"options");
     Label *quitLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new ValueSetter<OptionData::TetriminoStatus>(
 	    OptionData::tetriminoStatus,
 	    OptionData::QUIT),
@@ -68,15 +75,15 @@ void MenuHolder::constructMainMenu()
 void MenuHolder::constructStartMenu()
 {
     Label *playerOneLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"player one : ");
     Label *playerTwoLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"player two : ");
     Label *startGameLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"start game!!",
 	black);
@@ -90,15 +97,15 @@ void MenuHolder::constructStartMenu()
 void MenuHolder::constructOptionMenu()
 {
     Label *controlLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"control");
     Label *soundLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"sound");
     Label *creditsLabel = new Label(
-	Rect(0, 0, 200, 50),
+	Rect<int>(0, 0, 200, 50),
 	new Action(),
 	"credits");
     optionMenu = new Menu(StableData::menuRect);

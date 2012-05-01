@@ -8,7 +8,7 @@
 
 class Menu : public Widget{
 public:
-    Menu(const Rect &_rect,
+    Menu(const Rect<int> &_rect,
 	 Action *_action = NULL);
     ~Menu();
     void addLabel(Label *label);
@@ -17,7 +17,7 @@ public:
     virtual void handleEvent(const SDL_Event &event);
     virtual void update();
 
-    virtual void setRect(const Rect &newRect);
+    virtual void setRect(const Rect<int> &newRect);
     
     void selectPrevious();
     void selectNext();

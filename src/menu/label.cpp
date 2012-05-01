@@ -6,7 +6,7 @@
 #include "label.h"
 #include "utility.h"
 
-Label::Label(const Rect &_rect,
+Label::Label(const Rect<int> &_rect,
 	     Action *_action,
 	     const std::string &_text,
 	     const SDL_Color &_color):
@@ -50,12 +50,12 @@ void Label::constructLabelSurface()
 {
     labelSurface = TTF_RenderText_Solid(
 	OptionData::font, text.c_str(), color);
-    Rect blitRect(get_rect(labelSurface));
+    Rect<int> blitRect(get_rect(labelSurface));
     blitRect.setCenter(rect.getCenter());
     blitRect.clipRect(rect);
     
-    srcrect = Rect(Vector2(), blitRect.diagonal).getSDL_Rect();
-    dstrect = Rect(blitRect.pos, Vector2()).getSDL_Rect();
+    srcrect = Rect<int>(Vector2<int>(), blitRect.diagonal).getSDL_Rect();
+    dstrect = Rect<int>(blitRect.pos, Vector2<int>()).getSDL_Rect();
 }
 
 void Label::destroyLabelSurface()
@@ -63,7 +63,7 @@ void Label::destroyLabelSurface()
     SDL_FreeSurface(labelSurface);
 }
 
-void Label::setRect(const Rect &newRect)
+void Label::setRect(const Rect<int> &newRect)
 {
     rect = newRect;
     destroyLabelSurface();

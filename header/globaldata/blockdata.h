@@ -11,7 +11,7 @@ public:
     typedef int BlockNum[4][4];
     typedef BlockNum AllBlockNum[4];
 
-    typedef Rect BlockRect;
+    typedef Rect<int> BlockRect;
     typedef BlockRect AllBlockRect[4];
     
     inline BlockData(int _size,

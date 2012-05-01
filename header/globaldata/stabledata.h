@@ -2,7 +2,8 @@
 #define STABLEDATA_H
 
 #include <string>
-#include <vector2.h>
+
+#include "vector2.h"
 #include "rect.h"
 
 /**
@@ -15,13 +16,22 @@
 struct StableData{
     static const std::string fontFile;
     static const std::string backgroundFile;
-    static const Vector2 screenSize;
-    static const Rect menuRect;
+    static const int screenSizeX = 800;
+    static const int screenSizeY = 600;
+    static const Vector2<int> screenSize;
+
+    static const Rect<int> menuRect;
     
     static const int mapSizeX = 10;
     static const int mapSizeY = 20;
-    static const Vector2 mapSize;
-    static const int blockPackageSize;
+    static const Vector2<int> mapSize;
+
+    static const int blockPixSizeX = 20;
+    static const int blockPixSizeY = 20;
+    static const Vector2<int> blockPixSize;
+    
+    static const int blockPackageSize = 7;
+    
     enum Direction{NORTH, WEST, SOUTH, EAST};
     enum BlockShape{ISHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
 };

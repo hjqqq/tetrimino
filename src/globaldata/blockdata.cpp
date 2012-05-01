@@ -24,10 +24,10 @@ BlockData::AllBlockNum I = {
 };
 
 BlockData::AllBlockRect IRect = {
-    Rect(0, 3, 4, 1),
-    Rect(2, 0, 1, 4),
-    Rect(0, 2, 4, 1),
-    Rect(1, 0, 1, 4)
+    Rect<int>(0, 3, 4, 1),
+    Rect<int>(2, 0, 1, 4),
+    Rect<int>(0, 2, 4, 1),
+    Rect<int>(1, 0, 1, 4)
 };
 
 BlockData blockDataI(4, I, IRect);
@@ -78,10 +78,10 @@ BlockData::AllBlockNum J = {
 };
 
 BlockData::AllBlockRect LJSTZRect = {
-    Rect(0, 0, 3, 2),
-    Rect(0, 0, 2, 3),
-    Rect(0, 1, 3, 2),
-    Rect(1, 0, 2, 3)
+    Rect<int>(0, 0, 3, 2),
+    Rect<int>(0, 0, 2, 3),
+    Rect<int>(0, 1, 3, 2),
+    Rect<int>(1, 0, 2, 3)
 };
 
 BlockData::AllBlockNum S = {
@@ -181,15 +181,15 @@ BlockData::AllBlockNum O = {
 };
 
 BlockData::AllBlockRect ORect = {
-    Rect(0, 0, 2, 2),
-    Rect(0, 0, 2, 2),
-    Rect(0, 0, 2, 2),
-    Rect(0, 0, 2, 2)
+    Rect<int>(0, 0, 2, 2),
+    Rect<int>(0, 0, 2, 2),
+    Rect<int>(0, 0, 2, 2),
+    Rect<int>(0, 0, 2, 2)
 };
 
 BlockData blockDataO(2, O, ORect);
 
-BlockData blockDataArray[7] = {
+BlockData blockDataArray[StableData::blockPackageSize] = {
     blockDataI,
     blockDataL,
     blockDataJ,
