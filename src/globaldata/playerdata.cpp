@@ -11,10 +11,15 @@ void initPlayerData1()
     playerData1.mapRect = Rect<int>(300, 100,
 				    StableData::mapSizeX * StableData::blockPixSizeX,
 				    StableData::mapSizeY * StableData::blockPixSizeY);
-    cleanMap(playerData1.mapData);
+    cleanMapData(playerData1.mapData);
     playerData1.mapData[0][19] = 1;
     playerData1.mapData[1][19] = 1;
     playerData1.mapData[3][19] = 1;
+    
+    BlockData::Direction currentDirection = BlockData::NORTH;
+    BlockData::BlockShape currentBlockShape = BlockData::LSHAPE;
+
+    blockPixPos = mapRect.getCenter();
 }
 
 void initPlayerData2()

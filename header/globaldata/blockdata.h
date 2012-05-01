@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "stabledata.h"
 #include "rect.h"
 
 class BlockData{
@@ -13,6 +12,9 @@ public:
 
     typedef Rect<int> BlockRect;
     typedef BlockRect AllBlockRect[4];
+
+    enum Direction{NORTH, WEST, SOUTH, EAST};
+    enum BlockShape{ISHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
     
     inline BlockData(int _size,
 	      const AllBlockNum &_allBlockNum,
@@ -21,16 +23,26 @@ public:
     inline int getSize() const;
     
     inline const BlockNum& getNum(
-	StableData::Direction direction) const;
+	Direction direction) const;
     
     inline const BlockRect& getRect(
-	StableData::Direction direction) const;
+	Direction direction) const;
     
 private:
     int size;
     const AllBlockNum &allBlockNum;
     const AllBlockRect &allBlockRect;
 };
+
+const int blockPackageSize = 7;
+extern const BlockData blockDataI;
+extern const BlockData blockDataL;
+extern const BlockData blockDataJ;
+extern const BlockData blockDataS;
+extern const BlockData blockDataT;
+extern const BlockData blockDataZ;
+extern const BlockData blockDataO;
+extern const BlockData blockDataArray[blockPackageSize];
 
 BlockData::BlockData(int _size,
 		     const AllBlockNum &_allBlockNum,
@@ -46,25 +58,15 @@ int BlockData::getSize() const
 }
 
 const BlockData::BlockNum& BlockData::getNum(
-    StableData::Direction direction) const
+    Direction direction) const
 {
     return allBlockNum[direction];
 }
 
 const BlockData::BlockRect& BlockData::getRect(
-    StableData::Direction direction) const
+    Direction direction) const
 {
     return allBlockRect[direction];
 }
-
-extern BlockData blockDataI;
-extern BlockData blockDataL;
-extern BlockData blockDataJ;
-extern BlockData blockDataS;
-extern BlockData blockDataT;
-extern BlockData blockDataZ;
-extern BlockData blockDataO;
-
-extern BlockData blockDataArray[7];
 
 #endif

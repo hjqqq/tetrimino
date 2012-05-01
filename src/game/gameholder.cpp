@@ -4,12 +4,14 @@
 GameHolder::GameHolder()
 {
     initPlayerData1();
-    map = new Map();
+    mapshow = new MapShow();
+    blockshow = new BlockShow();
 }
 
 GameHolder::~GameHolder()
 {
-    delete map;
+    delete blockshow;
+    delete mapshow;
 }
 
 void GameHolder::handleEvent(const SDL_Event &event)
@@ -19,5 +21,5 @@ void GameHolder::handleEvent(const SDL_Event &event)
 
 void GameHolder::update()
 {
-    map->update();
+    mapshow->update();
 }

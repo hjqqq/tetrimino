@@ -5,6 +5,7 @@
 
 #include "vector2.h"
 #include "rect.h"
+#include "blockdata.h"
 
 /**
    @file stabledata.h
@@ -13,27 +14,33 @@
 /**
    游戏中无法改变的常量
  */
-struct StableData{
-    static const std::string fontFile;
-    static const std::string backgroundFile;
-    static const int screenSizeX = 800;
-    static const int screenSizeY = 600;
-    static const Vector2<int> screenSize;
+namespace StableData{
+    const std::string fontFile("res/MINYN___.ttf");
+    const std::string backgroundFile("res/back.jpg");
+    
+    const int screenSizeX = 800;
+    const int screenSizeY = 600;
+    const Vector2<int> screenSize(800, 600);
 
-    static const Rect<int> menuRect;
+    const Rect<int> menuRect(200, 300, 400, 200);
     
-    static const int mapSizeX = 10;
-    static const int mapSizeY = 20;
-    static const Vector2<int> mapSize;
+    const int mapSizeX = 10;
+    const int mapSizeY = 20;
+    const Vector2<int> mapSize(10, 20);
 
-    static const int blockPixSizeX = 20;
-    static const int blockPixSizeY = 20;
-    static const Vector2<int> blockPixSize;
+    const int blockPixSizeX = 20;
+    const int blockPixSizeY = 20;
+    const Vector2<int> blockPixSize(20, 20);
     
-    static const int blockPackageSize = 7;
-    
-    enum Direction{NORTH, WEST, SOUTH, EAST};
-    enum BlockShape{ISHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
+    const int blockPackageSize = ::blockPackageSize;
+    using ::blockDataI;        
+    using ::blockDataL;        
+    using ::blockDataJ;        
+    using ::blockDataS;        
+    using ::blockDataT;        
+    using ::blockDataZ;        
+    using ::blockDataO;
+    using ::blockDataArray;
 };
 
 #endif

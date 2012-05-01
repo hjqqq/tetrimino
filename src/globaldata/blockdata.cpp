@@ -30,7 +30,7 @@ BlockData::AllBlockRect IRect = {
     Rect<int>(1, 0, 1, 4)
 };
 
-BlockData blockDataI(4, I, IRect);
+const BlockData blockDataI(4, I, IRect);
 
 //----------------------------------------------------------------
 BlockData::AllBlockNum L = {
@@ -150,11 +150,11 @@ BlockData::AllBlockNum Z = {
      {0, 0, 0, 0}}
 };
 
-BlockData blockDataL(3, L, LJSTZRect);
-BlockData blockDataJ(3, J, LJSTZRect);
-BlockData blockDataS(3, S, LJSTZRect);
-BlockData blockDataT(3, T, LJSTZRect);
-BlockData blockDataZ(3, Z, LJSTZRect);
+const BlockData blockDataL(3, L, LJSTZRect);
+const BlockData blockDataJ(3, J, LJSTZRect);
+const BlockData blockDataS(3, S, LJSTZRect);
+const BlockData blockDataT(3, T, LJSTZRect);
+const BlockData blockDataZ(3, Z, LJSTZRect);
 
 //----------------------------------------------------------------
 
@@ -187,9 +187,9 @@ BlockData::AllBlockRect ORect = {
     Rect<int>(0, 0, 2, 2)
 };
 
-BlockData blockDataO(2, O, ORect);
+const BlockData blockDataO(2, O, ORect);
 
-BlockData blockDataArray[StableData::blockPackageSize] = {
+const BlockData blockDataArray[blockPackageSize] = {
     blockDataI,
     blockDataL,
     blockDataJ,
@@ -198,4 +198,3 @@ BlockData blockDataArray[StableData::blockPackageSize] = {
     blockDataZ,
     blockDataO
 };
-

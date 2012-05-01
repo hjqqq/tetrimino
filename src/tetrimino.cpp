@@ -27,8 +27,8 @@ Tetrimino::~Tetrimino(){
 void Tetrimino::loadResource()
 {
     OptionData::display = SDL_SetVideoMode(
-	StableData::screenSizeX,
-	StableData::screenSizeY,
+	StableData::screenSize.x,
+	StableData::screenSize.y,
 	0,
 	SDL_SWSURFACE);
     OptionData::background = image_load(

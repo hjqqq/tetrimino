@@ -3,7 +3,8 @@
 
 #include <SDL.h>
 
-#include "map.h"
+#include "mapshow.h"
+#include "blockshow.h"
 
 class GameHolder{
 public:
@@ -13,7 +14,8 @@ public:
     void update();
     
 private:
-    Map *map;
+    MapShow *mapshow;
+    BlockShow *blockshow;
 };
 
 #endif
