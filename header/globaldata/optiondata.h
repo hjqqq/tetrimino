@@ -14,18 +14,18 @@
  */
 
 namespace OptionData{
-    static SDL_Surface *display = NULL;
-    static SDL_Surface *background = NULL;
-    static TTF_Font *font = NULL;
+    extern SDL_Surface *display;
+    extern SDL_Surface *background;
+    extern TTF_Font *font;
     
     enum TetriminoStatus{MENULOOP, GAMELOOP, QUIT};
-    static TetriminoStatus tetriminoStatus = GAMELOOP;
+    extern TetriminoStatus tetriminoStatus;
     
     enum MenuHolderStatus{MAINMENU, STARTMENU, OPTIONMENU, QUITMENU};
-    static MenuHolderStatus menuHolderStatus = MAINMENU;
+    extern MenuHolderStatus menuHolderStatus;
 
     enum GameHolderStatus{STARTGAME, QUITGAME};
-    static GameHolderStatus gameHolderStatus = STARTGAME;
+    extern GameHolderStatus gameHolderStatus;
 };
 
 #endif

@@ -25,7 +25,6 @@ void Label::handleEvent(const SDL_Event &event)
 {
     if (event.type == SDL_KEYDOWN &&
 	event.key.keysym.sym == SDLK_RETURN){
-	std::cerr << "haha\n";
 	(*action)();
     }
 }

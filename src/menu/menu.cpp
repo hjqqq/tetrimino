@@ -6,9 +6,7 @@
 
 Menu::Menu(const Rect<int> &_rect, Action *_action):
     Widget(_rect, _action), select(0)
-{
-    verticalLayout();
-}
+{}
 
 Menu::~Menu()
 {

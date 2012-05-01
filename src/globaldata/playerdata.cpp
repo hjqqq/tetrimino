@@ -19,7 +19,7 @@ void initPlayerData1()
     BlockData::Direction currentDirection = BlockData::NORTH;
     BlockData::BlockShape currentBlockShape = BlockData::LSHAPE;
 
-    blockPixPos = mapRect.getCenter();
+    playerData1.blockPixPos = playerData1.mapRect.getCenter();
 }
 
 void initPlayerData2()

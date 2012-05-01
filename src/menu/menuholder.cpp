@@ -19,6 +19,9 @@ MenuHolder::~MenuHolder()
 
 void MenuHolder::handleEvent(const SDL_Event &event)
 {
+    if (event.key.keysym.sym == SDLK_ESCAPE)
+	OptionData::menuHolderStatus = OptionData::MAINMENU;
+	    
     switch (OptionData::menuHolderStatus){
     case OptionData::MAINMENU:
 	mainMenu->handleEvent(event);
@@ -51,19 +54,21 @@ void MenuHolder::constructMainMenu()
 {
     Label *startLabel = new Label(
 	Rect<int>(0, 0, 200, 50),
-	new ValueSetter<OptionData::TetriminoStatus>(
-	    OptionData::tetriminoStatus,
-	    OptionData::GAMELOOP),
+	new ValueSetter<OptionData::MenuHolderStatus>(
+	    OptionData::menuHolderStatus,
+	    OptionData::STARTMENU),
 	"start");
     Label *optionsLabel = new Label(
 	Rect<int>(0, 0, 200, 50),
-	new Action(),
+	new ValueSetter<OptionData::MenuHolderStatus>(
+	    OptionData::menuHolderStatus,
+	    OptionData::OPTIONMENU),
 	"options");
     Label *quitLabel = new Label(
 	Rect<int>(0, 0, 200, 50),
-	new ValueSetter<OptionData::TetriminoStatus>(
-	    OptionData::tetriminoStatus,
-	    OptionData::QUIT),
+	new ValueSetter<OptionData::MenuHolderStatus>(
+	    OptionData::menuHolderStatus,
+	    OptionData::QUITMENU),
 	"quit");
 
     mainMenu = new Menu(StableData::menuRect);
