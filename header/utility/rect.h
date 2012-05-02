@@ -48,7 +48,8 @@ struct Rect{
 
     inline const Vector2<T> getCenter() const;
     inline void setCenter(const Vector2<T> &value);
-    
+
+    inline void move(T x, T y);
     inline void move(const Vector2<T> &direction);
     void clipRect(const Rect<T> &rect);
     void unionRect(const Rect<T> &rect);
@@ -220,6 +221,11 @@ void Rect<T>::setCenter(const Vector2<T> &value)
     const Vector2<T> currentCenter = getCenter();
     const Vector2<T> direction = value - currentCenter;
     move(direction);
+}
+
+template <typename T>
+void Rect<T>::move(T x, T y){
+    move(Vector2<T>(x, y));
 }
 
 template <typename T>

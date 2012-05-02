@@ -90,7 +90,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">/home/tom/study/SDL/TetriminoProject/tetrimino/header/globaldata/optiondata.h File Reference</div>  </div>
 </div><!--header-->
@@ -98,19 +100,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;string&gt;</code><br/>
 <code>#include &quot;SDL.h&quot;</code><br/>
 <code>#include &quot;SDL_ttf.h&quot;</code><br/>
+<code>#include &quot;clock.h&quot;</code><br/>
 </div>
 <p><a href="optiondata_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOptionData.html">OptionData</a></td></tr>
+<tr><td colspan="2"><h2><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceOptionData"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceOptionData.html">OptionData</a></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:add61f4ddfffbf728aad5a9861d1953bc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>TetriminoStatus</b> { <b>MENULOOP</b>, 
+<b>GAMELOOP</b>, 
+<b>QUIT</b>
+ }</td></tr>
+<tr class="memitem:a28c9f103d8b69aed1b31c85273423adc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>MenuHolderStatus</b> { <b>MAINMENU</b>, 
+<b>STARTMENU</b>, 
+<b>OPTIONMENU</b>, 
+<b>QUITMENU</b>
+ }</td></tr>
+<tr class="memitem:a3f7df1f131c8ff5cce230d35aaa4f4dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GameHolderStatus</b> { <br/>
+&#160;&#160;<b>AREDELAY</b>, 
+<b>DROP</b>, 
+<b>LOCKDELAY</b>, 
+<b>LOCK</b>, 
+<br/>
+&#160;&#160;<b>QUITGAME</b>
+<br/>
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ac15be6e9185f917c42ddb00e36108611"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac15be6e9185f917c42ddb00e36108611"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::display</b> = NULL</td></tr>
+<tr class="memitem:aa044d4fa38df1451a58d670ee8b980fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa044d4fa38df1451a58d670ee8b980fc"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::background</b> = NULL</td></tr>
+<tr class="memitem:a0a9fc6cee9203476e8643ecfbed99535"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a9fc6cee9203476e8643ecfbed99535"></a>
+TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::font</b> = NULL</td></tr>
+<tr class="memitem:a8a992689c250c19ee9ba45016bed8e5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a992689c250c19ee9ba45016bed8e5f"></a>
+<a class="el" href="classClock.html">Clock</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::clock</b> = NULL</td></tr>
+<tr class="memitem:a5ca024602c9f82dc0a55949f92dbb54a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ca024602c9f82dc0a55949f92dbb54a"></a>
+TetriminoStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::tetriminoStatus</b> = GAMELOOP</td></tr>
+<tr class="memitem:a35806d35a1dddb13431f839262d301c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35806d35a1dddb13431f839262d301c9"></a>
+MenuHolderStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::menuHolderStatus</b> = MAINMENU</td></tr>
+<tr class="memitem:a3496c56a167ceb4051c387411c5c8a41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3496c56a167ceb4051c387411c5c8a41"></a>
+GameHolderStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::gameHolderStatus</b> = LOCK</td></tr>
+<tr class="memitem:a7a1aa9a24180e049811b59fad25b1e4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a1aa9a24180e049811b59fad25b1e4e"></a>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::areDelayTime</b> = 200</td></tr>
+<tr class="memitem:af121dffe9d3dd7b2597f115071ee6049"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af121dffe9d3dd7b2597f115071ee6049"></a>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::lockDelayTime</b> = 500</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 1 2012 12:21:42 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 2 2012 12:14:54 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

@@ -105,37 +105,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a><a class="code" href="namespaceStableData.html">00017</a> <span class="keyword">namespace </span>StableData{
 <a name="l00018"></a>00018     <span class="keyword">const</span> std::string fontFile(<span class="stringliteral">&quot;res/MINYN___.ttf&quot;</span>);
 <a name="l00019"></a>00019     <span class="keyword">const</span> std::string backgroundFile(<span class="stringliteral">&quot;res/back.jpg&quot;</span>);
-<a name="l00020"></a>00020     <span class="keyword">const</span> <span class="keywordtype">int</span> screenSizeX = 800;
-<a name="l00021"></a>00021     <span class="keyword">const</span> <span class="keywordtype">int</span> screenSizeY = 600;
-<a name="l00022"></a>00022     <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2&lt;int&gt;</a> screenSize(800, 600);
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024     <span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> menuRect(200, 300, 400, 200);
-<a name="l00025"></a>00025     
-<a name="l00026"></a>00026     <span class="keyword">const</span> <span class="keywordtype">int</span> mapSizeX = 10;
-<a name="l00027"></a>00027     <span class="keyword">const</span> <span class="keywordtype">int</span> mapSizeY = 20;
-<a name="l00028"></a>00028     <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2&lt;int&gt;</a> mapSize(10, 20);
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030     <span class="keyword">const</span> <span class="keywordtype">int</span> blockPixSizeX = 20;
-<a name="l00031"></a>00031     <span class="keyword">const</span> <span class="keywordtype">int</span> blockPixSizeY = 20;
-<a name="l00032"></a>00032     <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2&lt;int&gt;</a> blockPixSize(20, 20);
-<a name="l00033"></a>00033     
-<a name="l00034"></a>00034     <span class="keyword">const</span> <span class="keywordtype">int</span> blockPackageSize = ::blockPackageSize;
-<a name="l00035"></a>00035     using ::blockDataI;        
-<a name="l00036"></a>00036     using ::blockDataL;        
-<a name="l00037"></a>00037     using ::blockDataJ;        
-<a name="l00038"></a>00038     using ::blockDataS;        
-<a name="l00039"></a>00039     using ::blockDataT;        
-<a name="l00040"></a>00040     using ::blockDataZ;        
-<a name="l00041"></a>00041     using ::blockDataO;
-<a name="l00042"></a>00042     using ::blockDataArray;
-<a name="l00043"></a>00043 };
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="preprocessor">#endif</span>
+<a name="l00020"></a>00020     <span class="keyword">const</span> <span class="keywordtype">int</span> fps = 60;
+<a name="l00021"></a>00021     
+<a name="l00022"></a>00022     <span class="keyword">const</span> <span class="keywordtype">int</span> screenSizeX = 800;
+<a name="l00023"></a>00023     <span class="keyword">const</span> <span class="keywordtype">int</span> screenSizeY = 600;
+<a name="l00024"></a>00024     <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2&lt;int&gt;</a> screenSize(800, 600);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026     <span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> menuRect(200, 300, 400, 200);
+<a name="l00027"></a>00027     
+<a name="l00028"></a>00028     <span class="keyword">const</span> <span class="keywordtype">int</span> mapSizeX = 10;
+<a name="l00029"></a>00029     <span class="keyword">const</span> <span class="keywordtype">int</span> mapSizeY = 20;
+<a name="l00030"></a>00030     <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2&lt;int&gt;</a> mapSize(10, 20);
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032     <span class="keyword">const</span> <span class="keywordtype">int</span> minoPixSizeX = 20;
+<a name="l00033"></a>00033     <span class="keyword">const</span> <span class="keywordtype">int</span> minoPixSizeY = 20;
+<a name="l00034"></a>00034     <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2&lt;int&gt;</a> minoPixSize(20, 20);
+<a name="l00035"></a>00035     
+<a name="l00036"></a>00036     <span class="keyword">const</span> <span class="keywordtype">int</span> blockPackageSize = ::blockPackageSize;
+<a name="l00037"></a>00037     using ::blockDataI;        
+<a name="l00038"></a>00038     using ::blockDataL;        
+<a name="l00039"></a>00039     using ::blockDataJ;        
+<a name="l00040"></a>00040     using ::blockDataS;        
+<a name="l00041"></a>00041     using ::blockDataT;        
+<a name="l00042"></a>00042     using ::blockDataZ;        
+<a name="l00043"></a>00043     using ::blockDataO;
+<a name="l00044"></a>00044     using ::blockDataArray;
+<a name="l00045"></a>00045 };
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 1 2012 12:21:41 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 2 2012 12:14:53 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

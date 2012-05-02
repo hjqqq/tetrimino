@@ -3,6 +3,7 @@
 #include "tetrimino.h"
 #include "stabledata.h"
 #include "optiondata.h"
+#include "clock.h"
 #include "menuholder.h"
 #include "gameholder.h"
 #include "color.h"
@@ -31,11 +32,11 @@ void Tetrimino::loadResource()
 	StableData::screenSize.y,
 	0,
 	SDL_SWSURFACE);
-    
     OptionData::background = image_load(
 	StableData::backgroundFile.c_str());
     OptionData::font = TTF_OpenFont(
 	StableData::fontFile.c_str(), 30);
+    OptionData::clock = new Clock(StableData::fps);
 }
 
 void Tetrimino::releaseResource()
@@ -76,6 +77,7 @@ void Tetrimino::menuloop()
 			OptionData::display, 0);
 	menuHolder.update();
 	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
+	OptionData::clock->tick();
     }
     
     OptionData::tetriminoStatus = OptionData::QUIT;    
@@ -97,6 +99,7 @@ void Tetrimino::gameloop()
 			OptionData::display, 0);
 	gameHolder.update();
 	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
+	OptionData::clock->tick();
     }
 }
 

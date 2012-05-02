@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${clock_SOURCE_DIR})
 find_package(SDL)
 find_package(SDL_draw)
 
-add_executable(main main.cpp clock.cpp)
+add_executable(main main.cpp clock.cpp timer.cpp)
 
 include_directories(
   ${clock_SOURCE_DIR}

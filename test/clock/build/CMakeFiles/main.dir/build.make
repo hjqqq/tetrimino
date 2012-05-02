@@ -95,16 +95,41 @@ CMakeFiles/main.dir/clock.cpp.o.provides: CMakeFiles/main.dir/clock.cpp.o.requir
 
 CMakeFiles/main.dir/clock.cpp.o.provides.build: CMakeFiles/main.dir/clock.cpp.o
 
+CMakeFiles/main.dir/timer.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/timer.cpp.o: ../timer.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/timer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/timer.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/timer.cpp
+
+CMakeFiles/main.dir/timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/timer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/timer.cpp > CMakeFiles/main.dir/timer.cpp.i
+
+CMakeFiles/main.dir/timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/timer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/timer.cpp -o CMakeFiles/main.dir/timer.cpp.s
+
+CMakeFiles/main.dir/timer.cpp.o.requires:
+.PHONY : CMakeFiles/main.dir/timer.cpp.o.requires
+
+CMakeFiles/main.dir/timer.cpp.o.provides: CMakeFiles/main.dir/timer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/timer.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/timer.cpp.o.provides
+
+CMakeFiles/main.dir/timer.cpp.o.provides.build: CMakeFiles/main.dir/timer.cpp.o
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.o" \
-"CMakeFiles/main.dir/clock.cpp.o"
+"CMakeFiles/main.dir/clock.cpp.o" \
+"CMakeFiles/main.dir/timer.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/clock.cpp.o
+main: CMakeFiles/main.dir/timer.cpp.o
 main: /usr/lib/libSDLmain.a
 main: /usr/lib/libSDL.so
 main: /usr/local/lib/libSDL_draw.so
@@ -119,6 +144,7 @@ CMakeFiles/main.dir/build: main
 
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/main.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/clock.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/timer.cpp.o.requires
 .PHONY : CMakeFiles/main.dir/requires
 
 CMakeFiles/main.dir/clean:

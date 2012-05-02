@@ -7,17 +7,21 @@
 
 #include "color.h"
 #include "clock.h"
+#include "timer.h"
 
 int main()
 {
     std::srand(std::time(NULL));
-    Clock clock(60);
-    Counter *backCounter = clock.addCounter(300);
-    Counter *changeColorCounter = clock.addCounter(50);
-    Counter *drawCounter = clock.addCounter(2);
+
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Surface *display = SDL_SetVideoMode(800, 600, 0, SDL_SWSURFACE);
+
+    Clock clock(60);
+    Timer backTimer = Timer(3000);
+    Counter *backCounter = clock.addCounter(300);
+    Counter *changeColorCounter = clock.addCounter(50);
+    Counter *drawCounter = clock.addCounter(2);
 
     SDL_Event event;
     Sint16 x, y;
@@ -34,9 +38,10 @@ int main()
 		return 0;
 	    }
 	}
-	if (!backCounter->getRemain()){
+	if (backTimer.checkTimeOut()){
 	    SDL_FillRect(display, NULL, colorInt);
 	    backCounter->reset();
+	    backTimer.reset();
 	}
 	if (!changeColorCounter->getRemain()){
 	    color = {rand() % 255, rand() % 255, rand() % 255};

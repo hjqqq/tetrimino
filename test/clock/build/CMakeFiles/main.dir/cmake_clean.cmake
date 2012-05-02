@@ -1,6 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o"
   "CMakeFiles/main.dir/clock.cpp.o"
+  "CMakeFiles/main.dir/timer.cpp.o"
   "main.pdb"
   "main"
 )

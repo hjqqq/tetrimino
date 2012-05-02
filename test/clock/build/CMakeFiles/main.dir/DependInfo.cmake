@@ -6,6 +6,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/clock.cpp" "/home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/build/CMakeFiles/main.dir/clock.cpp.o"
   "/home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/main.cpp" "/home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/build/CMakeFiles/main.dir/main.cpp.o"
+  "/home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/timer.cpp" "/home/tom/study/SDL/TetriminoProject/tetrimino/test/clock/build/CMakeFiles/main.dir/timer.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

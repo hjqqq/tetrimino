@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "SDL.h"
+
 #include "stabledata.h"
 #include "blockdata.h"
 #include "vector2.h"
@@ -11,13 +13,20 @@
 struct PlayerData{
     Vector2<int> informationPos;
     
-    Rect<int> mapRect;
+    Rect<int> mapPixRect;
     int mapData[StableData::mapSizeX][StableData::mapSizeY];
 
     BlockData::Direction currentDirection;
     BlockData::BlockShape currentBlockShape;
+    Vector2<int> blockPos;
 
-    Vector2<int> blockPixPos;
+    SDLKey moveLeft;
+    SDLKey moveRight;
+    SDLKey rotateLeft;
+    SDLKey rotateRight;
+    SDLKey softDrop;
+    SDLKey hardDrop;
+    SDLKey hold;
 };
 
 extern PlayerData playerData1, playerData2;

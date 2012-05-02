@@ -9,6 +9,8 @@
 #include "playerdata.h"
 #include "utility.h"
 
+using namespace StableData;
+
 void MapShow::update()
 {
     updateBackGround();
@@ -17,20 +19,18 @@ void MapShow::update()
 
 void MapShow::updateMap()
 {
-    Rect<int> blockRect = Rect<int>(0, 0,
-				    StableData::blockPixSizeX,
-				    StableData::blockPixSizeY);
-    SDL_Rect tempRect;
-    for (int i = 0; i != StableData::mapSizeX; ++i){
-	for (int j = 0; j != StableData::mapSizeY; ++j){
+    Rect<int> minoRect = Rect<int>(playerData1.mapPixRect.getTopLeft(),
+				   minoPixSize);
+    SDL_Rect drawRectTemp;
+
+    for (int j = 0; j != mapSize.y; ++j){
+	for (int i = 0; i != mapSize.x; ++i){
 	    if (playerData1.mapData[i][j] == 1){
-		blockRect.setTopLeft(
-		    playerData1.mapRect.getTopLeft() +
-		    Vector2<int>(i * StableData::blockPixSizeX,
-				 j * StableData::blockPixSizeY));
-		tempRect = blockRect.getSDL_Rect();
+		Rect<int> drawRect(minoRect);
+		drawRect.move(i * minoPixSize.x, j * minoPixSize.y);
+		drawRectTemp = drawRect.getSDL_Rect();
 		SDL_FillRect(OptionData::display,
-			     &tempRect,
+			     &drawRectTemp,
 			     SDL_Color2Uint32(yellow));
 	    }
 	}
@@ -39,8 +39,8 @@ void MapShow::updateMap()
 
 void MapShow::updateBackGround()
 {
-    SDL_Rect mapRect = playerData1.mapRect.getSDL_Rect();
+    SDL_Rect mapRectTemp = playerData1.mapPixRect.getSDL_Rect();
     SDL_FillRect(OptionData::display,
-		 &mapRect,
+		 &mapRectTemp,
 		 SDL_Color2Uint32(black));
 }

@@ -14,7 +14,7 @@ public:
     typedef BlockRect AllBlockRect[4];
 
     enum Direction{NORTH, WEST, SOUTH, EAST};
-    enum BlockShape{ISHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
+    enum BlockShape{ISHAPE, LSHAPE, JSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
     
     inline BlockData(int _size,
 	      const AllBlockNum &_allBlockNum,
@@ -43,6 +43,12 @@ extern const BlockData blockDataT;
 extern const BlockData blockDataZ;
 extern const BlockData blockDataO;
 extern const BlockData blockDataArray[blockPackageSize];
+
+extern const Vector2<int> blockStartPosI;
+extern const Vector2<int> blockStartPosLJSTZ;
+extern const Vector2<int> blockStartPosO;
+extern const Vector2<int> blockStartPosArray[blockPackageSize];
+
 
 BlockData::BlockData(int _size,
 		     const AllBlockNum &_allBlockNum,

@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 
+#include "timer.h"
 #include "mapshow.h"
 #include "blockshow.h"
 
@@ -12,10 +13,17 @@ public:
     ~GameHolder();
     void handleEvent(const SDL_Event &event);
     void update();
-    
+
+    void areDelay();
+    void drop();
+    void lockDelay();
+    void lock();
 private:
-    MapShow *mapshow;
-    BlockShow *blockshow;
+    Timer *dasDelayTimer;
+    Timer *areDelayTimer;
+    Timer *lockDelayTimer;
+    MapShow *mapShow;
+    BlockShow *blockShow;
 };
 
 #endif

@@ -35,6 +35,7 @@ CMakeFiles/main.dir/main.cpp.o: ../clock.h
 CMakeFiles/main.dir/main.cpp.o: ../color.h
 CMakeFiles/main.dir/main.cpp.o: ../counter.h
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
+CMakeFiles/main.dir/main.cpp.o: ../timer.h
 CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/SDL.h
 CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/SDL_active.h
 CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/SDL_audio.h
@@ -62,4 +63,33 @@ CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/SDL_version.h
 CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/SDL_video.h
 CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/begin_code.h
 CMakeFiles/main.dir/main.cpp.o: /usr/include/SDL/close_code.h
+
+CMakeFiles/main.dir/timer.cpp.o: ../timer.cpp
+CMakeFiles/main.dir/timer.cpp.o: ../timer.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_active.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_audio.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_cdrom.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_config.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_cpuinfo.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_endian.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_error.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_events.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_joystick.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_keyboard.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_keysym.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_loadso.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_main.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_mouse.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_mutex.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_platform.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_quit.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_rwops.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_stdinc.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_thread.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_timer.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_version.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/SDL_video.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/begin_code.h
+CMakeFiles/main.dir/timer.cpp.o: /usr/include/SDL/close_code.h
 
