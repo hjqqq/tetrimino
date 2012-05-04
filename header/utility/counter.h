@@ -13,8 +13,6 @@ private:
     Uint32 remain;
 };
 
-#endif
-
 Counter::Counter(Uint32 num):
     orig(num), remain(num)
 {}
@@ -40,8 +38,5 @@ void Counter::count()
 	--remain;
 }
 
-
-
-
-
+#endif
 

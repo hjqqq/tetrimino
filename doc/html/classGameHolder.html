@@ -106,14 +106,22 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)</td></tr>
 <tr class="memitem:ad0a3e03a78be01cef70ffa34bc4d26f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0a3e03a78be01cef70ffa34bc4d26f4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
-<tr class="memitem:a726220b7c4cd78657bd711965f7aa4e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a726220b7c4cd78657bd711965f7aa4e0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>areDelay</b> ()</td></tr>
-<tr class="memitem:a8b54c0ea8ef864ad671c09b21e375f62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b54c0ea8ef864ad671c09b21e375f62"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drop</b> ()</td></tr>
-<tr class="memitem:ac955417b58f961c68687ad886bd700ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac955417b58f961c68687ad886bd700ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lockDelay</b> ()</td></tr>
-<tr class="memitem:aa6f2793993487acb2d2a9b74e62fad8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6f2793993487acb2d2a9b74e62fad8a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> ()</td></tr>
+<tr class="memitem:aee633df1228d47c2b0b9530b59792438"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee633df1228d47c2b0b9530b59792438"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>areDelayUpdate</b> ()</td></tr>
+<tr class="memitem:aeb770c1cf08523c54fd74f3ccbaf390d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb770c1cf08523c54fd74f3ccbaf390d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dropHandleEvent</b> (const SDL_Event &amp;event)</td></tr>
+<tr class="memitem:aa61e33dc920aa750bcb305e6071d7557"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa61e33dc920aa750bcb305e6071d7557"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dropUpdate</b> ()</td></tr>
+<tr class="memitem:a095246beb35b24da3d90285266fbe19f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a095246beb35b24da3d90285266fbe19f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>lockDelayUpdate</b> ()</td></tr>
+<tr class="memitem:ab235e449620251f575ab824d98ce981b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab235e449620251f575ab824d98ce981b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>lockUpdate</b> ()</td></tr>
+<tr class="memitem:a22ed6c971ceecd8735a9dacb108059ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22ed6c971ceecd8735a9dacb108059ee"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SRSRotate</b> (BlockData::Direction startDirection, BlockData::Direction finishDirection)</td></tr>
+<tr class="memitem:a1f81b3ae2818b942545193d06a3dbc9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f81b3ae2818b942545193d06a3dbc9a"></a>
+const <a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findPos</b> (const <a class="el" href="structVector2.html">Vector2</a>&lt; int &gt; &amp;startPos, const <a class="el" href="structVector2.html">Vector2</a>&lt; int &gt; &amp;finishPos)</td></tr>
+<tr class="memitem:ac7a54fbd64df36b2c5da556325241b2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7a54fbd64df36b2c5da556325241b2b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkBlock</b> (const <a class="el" href="structVector2.html">Vector2</a>&lt; int &gt; &amp;pos, BlockData::BlockShape shape, BlockData::Direction direction)</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/game/<a class="el" href="gameholder_8h_source.html">gameholder.h</a></li>
@@ -123,7 +131,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> ()</td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 2 2012 12:14:54 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 4 2012 21:49:28 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

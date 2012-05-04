@@ -15,10 +15,10 @@ struct PlayerData{
     
     Rect<int> mapPixRect;
     int mapData[StableData::mapSizeX][StableData::mapSizeY];
-
-    BlockData::Direction currentDirection;
-    BlockData::BlockShape currentBlockShape;
+    
     Vector2<int> blockPos;
+    BlockData::BlockShape currentBlockShape;
+    BlockData::Direction currentDirection;
 
     SDLKey moveLeft;
     SDLKey moveRight;

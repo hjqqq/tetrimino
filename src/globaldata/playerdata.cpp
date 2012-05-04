@@ -16,10 +16,10 @@ void initPlayerData1()
     playerData1.mapData[0][19] = 1;
     playerData1.mapData[1][19] = 1;
     playerData1.mapData[3][19] = 1;
+    playerData1.mapData[4][10] = 1;
     
     playerData1.currentDirection = BlockData::NORTH;
-    playerData1.currentBlockShape = BlockData::TSHAPE;
-    playerData1.blockPos = Vector2<int>(3, 0);
+    playerData1.currentBlockShape = BlockData::JSHAPE;
 
     playerData1.moveLeft = SDLK_LEFT;
     playerData1.moveRight = SDLK_RIGHT;

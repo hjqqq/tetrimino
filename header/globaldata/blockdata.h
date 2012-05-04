@@ -49,7 +49,6 @@ extern const Vector2<int> blockStartPosLJSTZ;
 extern const Vector2<int> blockStartPosO;
 extern const Vector2<int> blockStartPosArray[blockPackageSize];
 
-
 BlockData::BlockData(int _size,
 		     const AllBlockNum &_allBlockNum,
 		     const AllBlockRect &_allBlockRect):

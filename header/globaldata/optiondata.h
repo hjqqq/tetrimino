@@ -28,8 +28,15 @@ namespace OptionData{
 
     enum GameHolderStatus{AREDELAY, DROP, LOCKDELAY, LOCK, QUITGAME};
     extern GameHolderStatus gameHolderStatus;
+
+    extern Uint32 arrDelayTime;
+    extern Uint32 dasDelayTime;
+    
     extern Uint32 areDelayTime;
     extern Uint32 lockDelayTime;
+
+    extern double normalDropSpeed;
+    extern double softDropSpeed;
 };
 
 #endif

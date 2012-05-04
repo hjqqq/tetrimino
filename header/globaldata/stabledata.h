@@ -33,20 +33,6 @@ namespace StableData{
     const int minoPixSizeY = 20;
     const Vector2<int> minoPixSize(20, 20);
 
-    const int blockPackageSize = ::blockPackageSize;
-    using ::blockDataI;        
-    using ::blockDataL;        
-    using ::blockDataJ;        
-    using ::blockDataS;        
-    using ::blockDataT;        
-    using ::blockDataZ;        
-    using ::blockDataO;
-    using ::blockDataArray;
-    
-    using ::blockStartPosI;
-    using ::blockStartPosLJSTZ;
-    using ::blockStartPosO;
-    using ::blockStartPosArray;
 };
 
 #endif

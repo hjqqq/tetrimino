@@ -1,10 +1,13 @@
 #include <iostream>
 
-#include "rect.h"
+#include "vector2.h"
 
 int main()
 {
-    Rect<double> rect(10, 10, 10, 10);
-    std::cout << rect << "\n";
+    Vector2<int> vec1(10, 10);
+    Vector2<int> vec2(10, 11);
+    std::cout << std::boolalpha
+	      << (vec1 == vec2)
+	      << "\n";
     return 0;
 }

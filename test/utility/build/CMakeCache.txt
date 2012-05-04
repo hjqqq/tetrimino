@@ -294,5 +294,5 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-SDL_LIBRARY_TEMP:INTERNAL=/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDL.so
+SDL_LIBRARY_TEMP:INTERNAL=/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDLmain.a;/usr/lib/libSDL.so
 

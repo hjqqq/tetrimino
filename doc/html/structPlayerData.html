@@ -104,16 +104,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Attributes</h2></td></tr>
 <tr class="memitem:a168185db9891156f02ea44914f450977"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a168185db9891156f02ea44914f450977"></a>
 <a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>informationPos</b></td></tr>
-<tr class="memitem:a0830b86c2273ce14ca1515c833808dc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0830b86c2273ce14ca1515c833808dc8"></a>
-<a class="el" href="structRect.html">Rect</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapRect</b></td></tr>
+<tr class="memitem:a096e2c90aaf3f8db8466c5308a3de087"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a096e2c90aaf3f8db8466c5308a3de087"></a>
+<a class="el" href="structRect.html">Rect</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapPixRect</b></td></tr>
 <tr class="memitem:ab030a50e89ca47fb764753b35551c2b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab030a50e89ca47fb764753b35551c2b0"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>mapData</b> [StableData::mapSizeX][StableData::mapSizeY]</td></tr>
-<tr class="memitem:a1139e2499bfb0d5e926b43f26859f081"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1139e2499bfb0d5e926b43f26859f081"></a>
-BlockData::Direction&#160;</td><td class="memItemRight" valign="bottom"><b>currentDirection</b></td></tr>
+<tr class="memitem:a38735663ceac5df31af5a66279ca0eee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38735663ceac5df31af5a66279ca0eee"></a>
+<a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>blockPos</b></td></tr>
 <tr class="memitem:a99d96bd35018f578faf6e6fcb673093a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99d96bd35018f578faf6e6fcb673093a"></a>
 BlockData::BlockShape&#160;</td><td class="memItemRight" valign="bottom"><b>currentBlockShape</b></td></tr>
-<tr class="memitem:a8bc8245cfbd227985b44798b094253d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bc8245cfbd227985b44798b094253d0"></a>
-<a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>blockPixPos</b></td></tr>
+<tr class="memitem:a1139e2499bfb0d5e926b43f26859f081"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1139e2499bfb0d5e926b43f26859f081"></a>
+BlockData::Direction&#160;</td><td class="memItemRight" valign="bottom"><b>currentDirection</b></td></tr>
+<tr class="memitem:a1b8901f7e4e1d459560319ed1ae4bf95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b8901f7e4e1d459560319ed1ae4bf95"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>moveLeft</b></td></tr>
+<tr class="memitem:ac4705e631bd6744d50a3ce496438a5fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4705e631bd6744d50a3ce496438a5fe"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>moveRight</b></td></tr>
+<tr class="memitem:a4ffd94392c21a249416280c84ba74e05"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ffd94392c21a249416280c84ba74e05"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>rotateLeft</b></td></tr>
+<tr class="memitem:a3ad6ff3bc7d349bd4f8ac8f4fb06fe5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ad6ff3bc7d349bd4f8ac8f4fb06fe5f"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>rotateRight</b></td></tr>
+<tr class="memitem:a1b29e3509bb7ec67b8d041833b682dab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b29e3509bb7ec67b8d041833b682dab"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>softDrop</b></td></tr>
+<tr class="memitem:a72b01fc08b94ae00e6ab8c042a6331b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72b01fc08b94ae00e6ab8c042a6331b4"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>hardDrop</b></td></tr>
+<tr class="memitem:af8730ce0decc4453a48a259b8958b23a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8730ce0decc4453a48a259b8958b23a"></a>
+SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>hold</b></td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/globaldata/<a class="el" href="playerdata_8h_source.html">playerdata.h</a></li>
@@ -122,7 +136,7 @@ BlockData::BlockShape&#160;</td><td class="memItemRight" valign="bottom"><b>curr
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 2 2012 12:14:54 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 4 2012 21:49:28 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>
