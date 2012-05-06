@@ -33,6 +33,8 @@ namespace StableData{
     const int minoPixSizeY = 20;
     const Vector2<int> minoPixSize(20, 20);
 
+
+    
 };
 
 #endif

@@ -1,3 +1,4 @@
+#include "blockdata.h"
 #include "optiondata.h"
 
 using namespace OptionData;
@@ -11,14 +12,24 @@ TetriminoStatus OptionData::tetriminoStatus = GAMELOOP;
     
 MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
 
-GameHolderStatus OptionData::gameHolderStatus = LOCK;
+GameHolderStatus OptionData::gameHolderStatus = START;
 
-Uint32 OptionData::arrDelayTime = 20;
 Uint32 OptionData::dasDelayTime = 200;
 
 Uint32 OptionData::areDelayTime = 200;
 Uint32 OptionData::lockDelayTime = 500;
 
 // 单位为 G, 即每帧下降多少格
+double OptionData::horizontalSpeed = 0.5;
 double OptionData::normalDropSpeed = 0.05;
-double OptionData::softDropSpeed = 0.2;
+double OptionData::softDropSpeed = 0.5;
+
+OptionData::RandomizerType OptionData::randomizerType = BAG;
+
+int OptionData::history4Roll[4] = {
+    BlockData::ZSHAPE,
+    BlockData::SSHAPE,
+    BlockData::ZSHAPE,
+    BlockData::SSHAPE
+};
+

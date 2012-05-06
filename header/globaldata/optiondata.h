@@ -26,17 +26,21 @@ namespace OptionData{
     enum MenuHolderStatus{MAINMENU, STARTMENU, OPTIONMENU, QUITMENU};
     extern MenuHolderStatus menuHolderStatus;
 
-    enum GameHolderStatus{AREDELAY, DROP, LOCKDELAY, LOCK, QUITGAME};
+    enum GameHolderStatus{START, AREDELAY, DROP, GAMEOVER, QUITGAME};
     extern GameHolderStatus gameHolderStatus;
 
-    extern Uint32 arrDelayTime;
     extern Uint32 dasDelayTime;
     
     extern Uint32 areDelayTime;
     extern Uint32 lockDelayTime;
 
+    extern double horizontalSpeed;
     extern double normalDropSpeed;
     extern double softDropSpeed;
+
+    enum RandomizerType{BAG, HISTORY4ROLL};
+    extern RandomizerType randomizerType;
+    extern int history4Roll[4];
 };
 
 #endif

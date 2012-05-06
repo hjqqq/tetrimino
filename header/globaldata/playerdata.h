@@ -27,6 +27,7 @@ struct PlayerData{
     SDLKey softDrop;
     SDLKey hardDrop;
     SDLKey hold;
+
 };
 
 extern PlayerData playerData1, playerData2;

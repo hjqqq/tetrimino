@@ -31,7 +31,7 @@ BlockData::AllBlockRect IRect = {
 };
 
 const BlockData blockDataI(4, I, IRect);
-const Vector2<int> blockStartPosI(3, -3);
+const Vector2<int> blockStartPosI(3, -2);
 
 //----------------------------------------------------------------
 BlockData::AllBlockNum L = {
@@ -157,7 +157,7 @@ const BlockData blockDataS(3, S, LJSTZRect);
 const BlockData blockDataT(3, T, LJSTZRect);
 const BlockData blockDataZ(3, Z, LJSTZRect);
 
-const Vector2<int> blockStartPosLJSTZ(3, -3);
+const Vector2<int> blockStartPosLJSTZ(3, -1);
 
 //----------------------------------------------------------------
 
@@ -191,7 +191,7 @@ BlockData::AllBlockRect ORect = {
 };
 
 const BlockData blockDataO(2, O, ORect);
-const Vector2<int> blockStartPosO(4, -2);
+const Vector2<int> blockStartPosO(4, -1);
 
 const BlockData blockDataArray[blockPackageSize] = {
     blockDataI,

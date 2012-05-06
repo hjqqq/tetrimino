@@ -5,45 +5,66 @@
 #include "gameholder.h"
 #include "optiondata.h"
 #include "wallkickdata.h"
+#include "randomqueue.h"
 
 GameHolder::GameHolder()
 {
     initPlayerData1();
     dasDelayTimer = new Timer(OptionData::dasDelayTime);
-    arrDelayTimer = new Timer(OptionData::arrDelayTime);
+
+    if (OptionData::horizontalSpeed < 1){
+	horizontalLeftCounter = OptionData::clock->addCounter(
+	    1 / OptionData::horizontalSpeed);
+	horizontalRightCounter = OptionData::clock->addCounter(
+	    1 / OptionData::horizontalSpeed);
+    } else horizontalLeftCounter = horizontalRightCounter = NULL;
     
     if (OptionData::normalDropSpeed < 1){
 	normalDropCounter = OptionData::clock->addCounter(
 	    1 / OptionData::normalDropSpeed);
-    }
-    else normalDropCounter = NULL;
+    } else normalDropCounter = NULL;
 
-    if (OptionData::softDropSpeed < 1)
+    if (OptionData::softDropSpeed < 1){
 	softDropCounter = OptionData::clock->addCounter(
 	    1 / OptionData::softDropSpeed);
-    else softDropCounter = NULL;    
+    } else softDropCounter = NULL;    
     
     areDelayTimer = new Timer(OptionData::areDelayTime);
     lockDelayTimer = new Timer(OptionData::lockDelayTime);
+    lockStatus = false;
     
     mapShow = new MapShow();
     blockShow = new BlockShow();
 
     dropStatus = NORMAL;
     dropDistancePerFrame = Vector2<int>(0, 0);
+
+    switch (OptionData::randomizerType){
+    case OptionData::BAG:
+	randomQueue = new RandomQueue(new BagRandomizer());
+	break;
+    case OptionData::HISTORY4ROLL:
+	randomQueue = new RandomQueue(
+	    new HistoryRollRandomizer<4>(OptionData::history4Roll));
+	break;
+    }
 }
 
 GameHolder::~GameHolder()
 {
-    delete areDelayTimer;
+    delete randomQueue;
+    delete blockShow;    
+    delete mapShow;    
     delete lockDelayTimer;
-    delete blockShow;
-    delete mapShow;
+    delete areDelayTimer;
 }
 
 void GameHolder::handleEvent(const SDL_Event &event)
 {
     switch (OptionData::gameHolderStatus){
+    case OptionData::START: case OptionData::AREDELAY:
+	areDelayHandleEvent(event);
+	break;
     case OptionData::DROP:
 	dropHandleEvent(event);
 	break;
@@ -52,20 +73,72 @@ void GameHolder::handleEvent(const SDL_Event &event)
 
 void GameHolder::update()
 {
+    static int count = 0;
     mapShow->update();
     switch (OptionData::gameHolderStatus){
+    case OptionData::START:
+	startUpdate();
     case OptionData::AREDELAY:
 	areDelayUpdate();
 	break;
     case OptionData::DROP:
 	dropUpdate();
 	break;
-    case OptionData::LOCKDELAY:
-	lockDelayUpdate();
+    case OptionData::GAMEOVER:
+	gameoverUpdate();
 	break;
-    case OptionData::LOCK:
-	lockUpdate();
-	break;
+    }
+}
+
+void GameHolder::startUpdate()
+{
+    areDelayTimer->reset();
+    
+    clearMap();
+    
+    playerData1.currentBlockShape = BlockData::BlockShape(*randomQueue->begin());
+    randomQueue->pop();
+    
+    playerData1.blockPos = blockStartPosArray[playerData1.currentBlockShape];
+    calGhostPosY();
+    
+    OptionData::gameHolderStatus = OptionData::AREDELAY;
+}
+
+void GameHolder::areDelayHandleEvent(const SDL_Event &event)
+{
+    if (event.type == SDL_KEYUP){
+	SDLKey sym = event.key.keysym.sym;
+	if (sym == playerData1.moveLeft){
+	    dropStatus = NORMAL;
+	}
+	else if (sym == playerData1.moveRight){
+	    dropStatus = NORMAL;
+	}
+    }
+    
+    if (event.type == SDL_KEYDOWN){
+	SDLKey sym = event.key.keysym.sym;
+	if (sym == playerData1.moveLeft){
+	    dropStatus = ARRLEFT;
+	}
+	else if (sym == playerData1.moveRight){
+	    dropStatus = ARRRIGHT;
+	}
+	else if (sym == playerData1.rotateLeft){
+	    int direction = playerData1.currentDirection + 1;
+	    if (3 < direction)
+		direction = 0;
+	    playerData1.currentDirection =
+		BlockData::Direction(direction);
+	}
+	else if (sym == playerData1.rotateRight){
+	    int direction = playerData1.currentDirection - 1;
+	    if (direction < 0)
+		direction = 3;
+	    playerData1.currentDirection =
+		BlockData::Direction(direction);
+	}
     }
 }
 
@@ -73,7 +146,11 @@ void GameHolder::areDelayUpdate()
 {
     if (areDelayTimer->checkTimeOut()){
 	normalDropCounter->reset();
-	OptionData::gameHolderStatus = OptionData::DROP;
+	if (!checkBlock(playerData1.blockPos,
+			playerData1.currentDirection)){
+	    OptionData::gameHolderStatus = OptionData::GAMEOVER;
+	} else
+	    OptionData::gameHolderStatus = OptionData::DROP;
     }
 }
 
@@ -134,10 +211,19 @@ void GameHolder::dropHandleEvent(const SDL_Event &event)
 		      (BlockData::Direction)direction);	    
 	}
 
-	else if (sym == SDLK_SPACE){
-	    playerData1.currentBlockShape = BlockData::BlockShape((playerData1.currentBlockShape + 1) % 7);
-	    playerData1.blockPos = blockStartPosArray[playerData1.currentBlockShape];	
+	else if (sym == playerData1.hardDrop){
+	    playerData1.blockPos = getLockPos();
+	    fillMap();
+	    OptionData::gameHolderStatus = OptionData::START;
 	}
+
+	else if (sym == SDLK_SPACE){
+	    cleanMapData(playerData1.mapData);
+	    OptionData::gameHolderStatus = OptionData::START;
+	}
+
+	if (lockStatus)
+	    lockDelayTimer->reset();
     }    
 }
 
@@ -148,36 +234,31 @@ void GameHolder::dropUpdate()
 	break;
     case DASLEFT:
 	if (dasDelayTimer->checkTimeOut()){
-	    arrDelayTimer->reset();
 	    dropStatus = ARRLEFT;
 	}	
 	break;
     case ARRLEFT:
-	if (arrDelayTimer->checkTimeOut()){
-	    dropStatus = MOVELEFT;
+	if (horizontalLeftCounter == NULL){
+	    dropDistancePerFrame += Vector2<int>(-OptionData::horizontalSpeed, 0);
+	}
+	else if (!horizontalLeftCounter->getRemain()){
+	    dropDistancePerFrame += Vector2<int>(-1, 0);
+	    horizontalLeftCounter->reset();
 	}
 	break;
-    case MOVELEFT:
-	arrDelayTimer->reset();
-	dropDistancePerFrame += Vector2<int>(-1, 0);
-	dropStatus = ARRLEFT;
-	break;
-	
+
     case DASRIGHT:
 	if (dasDelayTimer->checkTimeOut()){
-	    arrDelayTimer->reset();
 	    dropStatus = ARRRIGHT;
 	}	
 	break;
     case ARRRIGHT:
-	if (arrDelayTimer->checkTimeOut()){
-	    dropStatus = MOVERIGHT;
-	}	
-	break;
-    case MOVERIGHT:
-	arrDelayTimer->reset();
-	dropDistancePerFrame += Vector2<int>(1, 0);
-	dropStatus = ARRRIGHT;	
+	if (horizontalRightCounter == NULL)
+	    dropDistancePerFrame += Vector2<int>(OptionData::horizontalSpeed, 0);
+	else if (!horizontalRightCounter->getRemain()){
+	    dropDistancePerFrame += Vector2<int>(1, 0);
+	    horizontalRightCounter->reset();
+	}
 	break;
     }
 
@@ -206,26 +287,28 @@ void GameHolder::dropUpdate()
     }
 
     playerData1.blockPos = findPos(
-	playerData1.blockPos, playerData1.blockPos + dropDistancePerFrame);
+	playerData1.blockPos,
+	playerData1.blockPos + dropDistancePerFrame,
+	playerData1.currentDirection);
+
     dropDistancePerFrame = Vector2<int>(0, 0);
 
+    if (playerData1.blockPos == getLockPos()){
+	if (!lockStatus){
+	    lockStatus = true;
+	    lockDelayTimer->reset();
+	}
+    }else {
+	lockStatus = false;	
+    }
+
+    if (lockStatus && lockDelayTimer->checkTimeOut()){
+	lockStatus = false;
+	fillMap();
+	OptionData::gameHolderStatus = OptionData::START;
+    }
+
     blockShow->update();
-    
-    lockDelayTimer->reset();
-    //OptionData::gameHolderStatus = OptionData::LOCKDELAY;
-}
-
-void GameHolder::lockDelayUpdate()
-{
-    if (lockDelayTimer->checkTimeOut())
-	OptionData::gameHolderStatus = OptionData::LOCK;
-}
-
-void GameHolder::lockUpdate()
-{
-    areDelayTimer->reset();
-    playerData1.blockPos = blockStartPosArray[playerData1.currentBlockShape];
-    OptionData::gameHolderStatus = OptionData::AREDELAY;
 }
 
 bool GameHolder::SRSRotate(
@@ -241,9 +324,7 @@ bool GameHolder::SRSRotate(
     
     for (int i = 0; i != 5; ++i){
 	testPos = playerData1.blockPos + wallKickNum[i];
-	if (checkBlock(testPos,
-		       playerData1.currentBlockShape,
-		       finishDirection)){
+	if (checkBlock(testPos, finishDirection)){
 	    playerData1.blockPos = testPos;
 	    playerData1.currentDirection = finishDirection;
 	    return true;
@@ -254,7 +335,8 @@ bool GameHolder::SRSRotate(
 
 const Vector2<int> GameHolder::findPos(
     const Vector2<int> &startPos,
-    const Vector2<int> &finishPos)
+    const Vector2<int> &finishPos,
+    BlockData::Direction direction)
 {
     Vector2<int> result = startPos;
     Vector2<int> testPos = startPos;
@@ -271,9 +353,7 @@ const Vector2<int> GameHolder::findPos(
 	    else
 		testPos.x += 1;
 	}
-	if (checkBlock(testPos,
-		       playerData1.currentBlockShape,
-		       playerData1.currentDirection)){
+	if (checkBlock(testPos, direction)){
 	    result = testPos;
 	} else {
 	    break;
@@ -285,10 +365,9 @@ const Vector2<int> GameHolder::findPos(
 
 bool GameHolder::checkBlock(
     const Vector2<int> &pos,
-    BlockData::BlockShape shape,
     BlockData::Direction direction)
 {
-    const BlockData &blockData = blockDataArray[shape];
+    const BlockData &blockData = blockDataArray[playerData1.currentBlockShape];
 
     const BlockData::BlockNum &blockNum = blockData.getNum(direction);
 
@@ -314,8 +393,111 @@ bool GameHolder::checkBlock(
 		(blockNum[origI][origJ] == 1 &&
 		 playerData1.mapData[i][j] == 1))
 		return false;
-	    
 	}
     }
     return true;
+}
+
+void GameHolder::gameoverUpdate()
+{
+    static int counter = 0;
+    std::cerr << "gameover !!!\n";
+}
+
+const Vector2<int> GameHolder::getLockPos()
+{
+    const BlockData &blockData =
+	blockDataArray[playerData1.currentBlockShape];
+    const Rect<int> &blockRect =
+	blockData.getRect(playerData1.currentDirection);
+    
+    int ghostIndex = playerData1.blockPos.x + blockRect.getTopLeft().x;
+    
+    int &currentGhostPosY = ghostPosY[playerData1.currentDirection][ghostIndex];
+
+    if (currentGhostPosY < playerData1.blockPos.y){
+	currentGhostPosY =
+	    findPos(playerData1.blockPos,
+		    Vector2<int>(playerData1.blockPos.x, StableData::mapSize.y),
+		    playerData1.currentDirection).y;
+    }
+    return Vector2<int>(playerData1.blockPos.x, currentGhostPosY);
+}
+
+void GameHolder::fillMap()
+{
+    const BlockData &blockData = blockDataArray[playerData1.currentBlockShape];
+
+    const BlockData::BlockNum &blockNum = blockData.getNum(playerData1.currentDirection);
+
+    const Rect<int> &origBlockRect = blockData.getRect(playerData1.currentDirection);
+    const Vector2<int> origBlockRectTopLeft = origBlockRect.getTopLeft();
+    const Vector2<int> origBlockRectBottomRight = origBlockRect.getBottomRight();
+    
+    Rect<int> blockRect = origBlockRect;
+    blockRect.move(playerData1.blockPos);
+    const Vector2<int> blockRectTopLeft = blockRect.getTopLeft();
+    const Vector2<int> blockRectBottomRight = blockRect.getBottomRight();
+	
+    for (int j = blockRectBottomRight.y - 1, origJ = origBlockRectBottomRight.y - 1;
+	 j >= blockRectTopLeft.y && j >= 0;
+	 --j, --origJ){
+	
+	for (int i = blockRectTopLeft.x, origI = origBlockRectTopLeft.x;
+	     i != blockRectBottomRight.x;
+	     ++i, ++origI){
+	    if (blockNum[origI][origJ] == 1)
+		playerData1.mapData[i][j] = blockNum[origI][origJ];
+	}
+    }    
+}
+
+void GameHolder::clearMap()
+{
+    int origY = StableData::mapSize.y - 1,
+	destY = origY;
+    while (origY >= 0){
+	if (!checkMapLineFull(origY)){
+	    for (int i = 0; i != StableData::mapSize.x; ++i){
+		playerData1.mapData[i][destY] =
+		    playerData1.mapData[i][origY];
+	    }
+	    --destY;
+	} 
+	--origY;
+    }
+}
+
+bool GameHolder::checkMapLineFull(int y)
+{
+    for (int i = 0; i != StableData::mapSize.x; ++i)
+	if (playerData1.mapData[i][y] != 1)
+	    return false;
+    return true;
+}
+
+void GameHolder::calGhostPosY()
+{
+    const BlockData &blockData =
+	blockDataArray[playerData1.currentBlockShape];
+
+    for (int direction = 0; direction != 4; ++direction){
+	const BlockData::BlockNum &blockNum =
+	    blockData.getNum(BlockData::Direction(direction));
+
+	const Rect<int> &blockRect =
+	    blockData.getRect(BlockData::Direction(direction));
+
+	const Vector2<int> blockRectTopLeft = blockRect.getTopLeft();
+	const Vector2<int> blockRectBottomRight = blockRect.getBottomRight();
+
+	for (int i = -blockRectTopLeft.x;
+	     i <= StableData::mapSize.x - blockRectBottomRight.x;
+	     ++i){
+	    ghostPosY[direction][i + blockRectTopLeft.x] =
+		findPos(Vector2<int>(i, -4),
+			Vector2<int>(i, StableData::mapSize.y),
+		        BlockData::Direction(direction)).y;
+	}
+    }
 }

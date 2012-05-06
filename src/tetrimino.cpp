@@ -14,7 +14,6 @@ Tetrimino::Tetrimino()
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     TTF_Init();
     loadResource();
-    
     mainloop();
 }
 

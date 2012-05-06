@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/random/main.cpp
+iostream
+-
+iterator
+-
+algorithm
+-
+cstdlib
+-
+ctime
+-
+randomqueue.h
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/random/randomqueue.h
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/random/randomizer.h
+cstdlib
+-
+
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/random/randomqueue.h
+deque
+-
+randomizer.h
+/home/tom/study/SDL/TetriminoProject/tetrimino/test/random/randomizer.h
+

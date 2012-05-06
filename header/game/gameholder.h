@@ -7,6 +7,7 @@
 #include "timer.h"
 #include "mapshow.h"
 #include "blockshow.h"
+#include "randomqueue.h"
 
 class GameHolder{
 public:
@@ -15,40 +16,52 @@ public:
     void handleEvent(const SDL_Event &event);
     void update();
 
+    void startUpdate();
+
+    void areDelayHandleEvent(const SDL_Event &event);
     void areDelayUpdate();
+    
     void dropHandleEvent(const SDL_Event &event);
     void dropUpdate();
-    void lockDelayUpdate();
-    void lockUpdate();
-
     bool SRSRotate(
 	BlockData::Direction startDirection,
 	BlockData::Direction finishDirection);
     const Vector2<int> findPos(const Vector2<int> &startPos,
-			       const Vector2<int> &finishPos);
+			       const Vector2<int> &finishPos,
+			       BlockData::Direction direction);
     bool checkBlock(const Vector2<int> &pos,
-		    BlockData::BlockShape shape,
 		    BlockData::Direction direction);
+    
+    void gameoverUpdate();
+    const Vector2<int> getLockPos();
+    void fillMap();
+    bool checkMapLineFull(int y);
+    void clearMap();
+
+    void calGhostPosY();
 
 private:
     Timer *dasDelayTimer;
-    Timer *arrDelayTimer;
+
+    Counter *horizontalLeftCounter;
+    Counter *horizontalRightCounter;
     Counter *normalDropCounter;
     Counter *softDropCounter;
-    
+
     Timer *areDelayTimer;
     Timer *lockDelayTimer;
+    bool lockStatus;
     
     MapShow *mapShow;
     BlockShow *blockShow;
 
     enum DropStatus{NORMAL,
-		    DASLEFT, ARRLEFT, MOVELEFT,
-		    DASRIGHT, ARRRIGHT, MOVERIGHT};
+		    DASLEFT, ARRLEFT, DASRIGHT, ARRRIGHT};
     DropStatus dropStatus;
     Vector2<int> dropDistancePerFrame;
     
-    Vector2<int> ghostPos[StableData::mapSizeX];
+    RandomQueue *randomQueue;
+    int ghostPosY[4][StableData::mapSizeX];
 };
 
 #endif
