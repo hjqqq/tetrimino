@@ -72,12 +72,19 @@ void MenuHolder::constructMainMenu(){
 void MenuHolder::constructOptionMenu(){
 
   ToggleSetter *toggleGhostSetter = new ToggleSetter(OptionData::haveghost);
+  ToggleSetter *toggleHolderSetter = new ToggleSetter(OptionData::haveholder);
   
   ToggleLabel *toggleGhostLabel = 
     new ToggleLabel(Rect<int>(0,0,200,50),
-		    "ghost");
+		    "Ghost");
   toggleGhostLabel->setAction(toggleGhostSetter);
+  
+  ToggleLabel *toggleHolderLabel =
+    new ToggleLabel(Rect<int>(0,0,200,50),
+		    "Holder");
+  toggleHolderLabel->setAction(toggleHolderSetter);
 
   optionMenu = new Menu(StableData::menuRect);
   optionMenu->addLabel(toggleGhostLabel);
+  optionMenu->addLabel(toggleHolderLabel);
 }
