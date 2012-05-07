@@ -17,6 +17,7 @@ public:
     void update();
 
     void startUpdate();
+    void createBlock();
 
     void areDelayHandleEvent(const SDL_Event &event);
     void areDelayUpdate();
@@ -59,6 +60,14 @@ private:
 		    DASLEFT, ARRLEFT, DASRIGHT, ARRRIGHT};
     DropStatus dropStatus;
     Vector2<int> dropDistancePerFrame;
+
+    enum HoldStatus{PREPAREHOLD, HOLD, HOLDED};
+    HoldStatus holdStatus;
+    bool holdEmpty;
+
+    int mapGrow;
+    
+    BlockData::BlockShape holdShape;
     
     RandomQueue *randomQueue;
     int ghostPosY[4][StableData::mapSizeX];

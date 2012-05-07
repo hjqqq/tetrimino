@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "utility.h"
 #include "playerdata.h"
 #include "gameholder.h"
 #include "optiondata.h"
@@ -39,6 +40,11 @@ GameHolder::GameHolder()
     dropStatus = NORMAL;
     dropDistancePerFrame = Vector2<int>(0, 0);
 
+    holdStatus = PREPAREHOLD;
+    holdEmpty = true;
+
+    mapGrow = 0;
+    
     switch (OptionData::randomizerType){
     case OptionData::BAG:
 	randomQueue = new RandomQueue(new BagRandomizer());
@@ -93,16 +99,39 @@ void GameHolder::update()
 void GameHolder::startUpdate()
 {
     areDelayTimer->reset();
-    
     clearMap();
-    
-    playerData1.currentBlockShape = BlockData::BlockShape(*randomQueue->begin());
-    randomQueue->pop();
-    
-    playerData1.blockPos = blockStartPosArray[playerData1.currentBlockShape];
+    createBlock();
     calGhostPosY();
-    
     OptionData::gameHolderStatus = OptionData::AREDELAY;
+}
+
+void GameHolder::createBlock()
+{
+    switch (holdStatus){
+        case PREPAREHOLD:
+	    playerData1.currentBlockShape = BlockData::BlockShape(*randomQueue->begin());
+	    randomQueue->pop();
+	    break;
+	case HOLD:
+	    if (holdEmpty){
+		holdShape = playerData1.currentBlockShape;
+		playerData1.currentBlockShape = BlockData::BlockShape(*randomQueue->begin());
+		randomQueue->pop();
+		holdStatus = HOLDED;
+		holdEmpty = false;
+	    } else{
+		std::swap(playerData1.currentBlockShape, holdShape);
+		holdStatus = HOLDED;
+	    }
+	    break;
+	case HOLDED:
+	    playerData1.currentBlockShape = BlockData::BlockShape(*randomQueue->begin());
+	    randomQueue->pop();	    
+	    holdStatus = PREPAREHOLD;
+	    break;
+    }
+    playerData1.blockPos = blockStartPosArray[playerData1.currentBlockShape];
+    playerData1.currentDirection = BlockData::NORTH;    
 }
 
 void GameHolder::areDelayHandleEvent(const SDL_Event &event)
@@ -138,6 +167,12 @@ void GameHolder::areDelayHandleEvent(const SDL_Event &event)
 		direction = 3;
 	    playerData1.currentDirection =
 		BlockData::Direction(direction);
+	}
+	else if (sym == playerData1.hold){
+	    if (holdStatus == PREPAREHOLD){
+		holdStatus = HOLD;
+		OptionData::gameHolderStatus = OptionData::START;
+	    }
 	}
     }
 }
@@ -217,11 +252,20 @@ void GameHolder::dropHandleEvent(const SDL_Event &event)
 	    OptionData::gameHolderStatus = OptionData::START;
 	}
 
+	else if (sym == playerData1.hold){
+	    if (holdStatus == PREPAREHOLD){
+		holdStatus = HOLD;
+		OptionData::gameHolderStatus = OptionData::START;
+	    }
+	}
+	else if (sym == SDLK_k){
+	    mapGrow = 4;
+	}	
 	else if (sym == SDLK_SPACE){
 	    cleanMapData(playerData1.mapData);
 	    OptionData::gameHolderStatus = OptionData::START;
-	}
-
+	}	
+	
 	if (lockStatus)
 	    lockDelayTimer->reset();
     }    
@@ -466,6 +510,24 @@ void GameHolder::clearMap()
 	} 
 	--origY;
     }
+    while (destY >= 0){
+	for (int i = 0; i != StableData::mapSize.x; ++i)
+	    playerData1.mapData[i][destY] = 0;
+	--destY;
+    }
+    for (int j = 0; j != StableData::mapSize.y - mapGrow; ++j){
+	for (int i = 0; i != StableData::mapSize.x; ++i)
+	    playerData1.mapData[i][j] = playerData1.mapData[i][j + mapGrow];
+    }
+    int hole = randInt(0, StableData::mapSize.x);
+    for (int j = StableData::mapSize.y - mapGrow; j != StableData::mapSize.y; ++j){
+	for (int i = 0; i != StableData::mapSize.x; ++i)
+	    if (i == hole)
+		playerData1.mapData[i][j] = 0;
+	    else
+		playerData1.mapData[i][j] = 1;
+    }
+    mapGrow = 0;
 }
 
 bool GameHolder::checkMapLineFull(int y)
