@@ -2,3 +2,6 @@
 
 void Action::operator()()
 {}
+
+void Action::operator()(const bool)
+{}

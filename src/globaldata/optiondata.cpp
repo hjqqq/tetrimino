@@ -8,7 +8,7 @@ SDL_Surface *OptionData::background = NULL;
 TTF_Font *OptionData::font = NULL;
 Clock *OptionData::clock = NULL;
     
-TetriminoStatus OptionData::tetriminoStatus = GAMELOOP;
+TetriminoStatus OptionData::tetriminoStatus = MENULOOP;
     
 MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
 
@@ -33,3 +33,5 @@ int OptionData::history4Roll[4] = {
     BlockData::SSHAPE
 };
 
+bool OptionData::haveghost = true;
+bool OptionData::haveholder = true;

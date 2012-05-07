@@ -2,120 +2,82 @@
 #include "menuholder.h"
 #include "stabledata.h"
 #include "optiondata.h"
+#include "togglelabel.h"
+#include "togglesetter.h"
 
 MenuHolder::MenuHolder()
 {
-    constructMainMenu();
-    constructStartMenu();
-    constructOptionMenu();
+  constructMainMenu();
+  constructOptionMenu();
 }
 
 MenuHolder::~MenuHolder()
 {
-    delete mainMenu;
-    delete startMenu;
-    delete optionMenu;
+  delete mainMenu;
+  delete optionMenu;
 }
 
 void MenuHolder::handleEvent(const SDL_Event &event)
 {
-    if (event.key.keysym.sym == SDLK_ESCAPE)
-	OptionData::menuHolderStatus = OptionData::MAINMENU;
+  if (event.key.keysym.sym == SDLK_ESCAPE)
+    OptionData::menuHolderStatus = OptionData::MAINMENU;
 	    
-    switch (OptionData::menuHolderStatus){
-    case OptionData::MAINMENU:
-	mainMenu->handleEvent(event);
-	break;
-    case OptionData::STARTMENU:
-	startMenu->handleEvent(event);
-	break;
-    case OptionData::OPTIONMENU:
-	optionMenu->handleEvent(event);
-	break;
-    }
+  switch (OptionData::menuHolderStatus){
+  case OptionData::MAINMENU:
+    mainMenu->handleEvent(event);
+    break;
+  case OptionData::OPTIONMENU:
+    optionMenu->handleEvent(event);
+    break;
+  }
 }
 
 void MenuHolder::update()
 {
-    switch (OptionData::menuHolderStatus){
-    case OptionData::MAINMENU:
-	mainMenu->update();
-	break;
-    case OptionData::STARTMENU:
-	startMenu->update();
-	break;
-    case OptionData::OPTIONMENU:
-	optionMenu->update();
-	break;
-    }
+  switch (OptionData::menuHolderStatus){
+  case OptionData::MAINMENU:
+    mainMenu->update();
+    break;
+  case OptionData::OPTIONMENU:
+    optionMenu->update();
+    break;
+  }
 }
 
-void MenuHolder::constructMainMenu()
-{
-    Label *startLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::STARTMENU),
-	"start");
-    Label *optionsLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::OPTIONMENU),
-	"options");
-    Label *quitLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::QUITMENU),
-	"quit");
+void MenuHolder::constructMainMenu(){
+  ValueSetter <OptionData::MenuHolderStatus> *v1= 
+    new ValueSetter<OptionData::MenuHolderStatus>(
+						  OptionData::menuHolderStatus,
+						  OptionData::OPTIONMENU);
+  ValueSetter<OptionData::MenuHolderStatus> *v2 = 
+    new ValueSetter<OptionData::MenuHolderStatus>(
+						  OptionData::menuHolderStatus,
+						  OptionData::QUITMENU);
 
-    mainMenu = new Menu(StableData::menuRect);
-    mainMenu->addLabel(startLabel);
-    mainMenu->addLabel(optionsLabel);
-    mainMenu->addLabel(quitLabel);
+  Label *optionLabel = new Label(
+				 Rect<int>(0, 0, 200, 50),
+				 "option");
+  optionLabel->setAction(v1);
+  
+  Label *quitLabel = new Label(
+			       Rect<int>(0, 0, 200, 50),
+			       "quit");
+  quitLabel->setAction(v2);
+
+  mainMenu = new Menu(StableData::menuRect);
+  mainMenu->addLabel(optionLabel);
+  mainMenu->addLabel(quitLabel);
 }
 
-void MenuHolder::constructStartMenu()
-{
-    Label *playerOneLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new Action(),
-	"player one : ");
-    Label *playerTwoLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new Action(),
-	"player two : ");
-    Label *startGameLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new Action(),
-	"start game!!",
-	black);
+void MenuHolder::constructOptionMenu(){
 
-    startMenu = new Menu(StableData::menuRect);
-    startMenu->addLabel(playerOneLabel);
-    startMenu->addLabel(playerTwoLabel);
-    startMenu->addLabel(startGameLabel);    
+  ToggleSetter *toggleGhostSetter = new ToggleSetter(OptionData::haveghost);
+  
+  ToggleLabel *toggleGhostLabel = 
+    new ToggleLabel(Rect<int>(0,0,200,50),
+		    "ghost");
+  toggleGhostLabel->setAction(toggleGhostSetter);
+
+  optionMenu = new Menu(StableData::menuRect);
+  optionMenu->addLabel(toggleGhostLabel);
 }
-
-void MenuHolder::constructOptionMenu()
-{
-    Label *controlLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new Action(),
-	"control");
-    Label *soundLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new Action(),
-	"sound");
-    Label *creditsLabel = new Label(
-	Rect<int>(0, 0, 200, 50),
-	new Action(),
-	"credits");
-    optionMenu = new Menu(StableData::menuRect);
-    optionMenu->addLabel(controlLabel);
-    optionMenu->addLabel(soundLabel);
-    optionMenu->addLabel(creditsLabel);    
-}
-

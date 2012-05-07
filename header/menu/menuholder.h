@@ -5,20 +5,18 @@
 #include "menu.h"
 
 class MenuHolder{
-public:
-    MenuHolder();
-    ~MenuHolder();
-    void handleEvent(const SDL_Event &event);
-    void update();
+ public:
+  MenuHolder();
+  ~MenuHolder();
+  void handleEvent(const SDL_Event &event);
+  void update();
     
-private:
-    void constructMainMenu();
-    void constructStartMenu();
-    void constructOptionMenu();
+ private:
+  void constructMainMenu();
+  void constructOptionMenu();
 
-    Menu *mainMenu;
-    Menu *startMenu;
-    Menu *optionMenu;
+  Menu * mainMenu;
+  Menu * optionMenu;
 };
 
 #endif

@@ -4,6 +4,7 @@
 class Action{
 public:
     virtual void operator()();
+    virtual void operator()(const bool);
 };
 
 #endif

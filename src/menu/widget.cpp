@@ -1,12 +1,15 @@
 #include <iostream>
 #include "widget.h"
 
-Widget::Widget(const Rect<int> &_rect, Action *_action):
-    rect(_rect), action(_action)
-{}
+Widget::Widget(const Rect<int> &_rect):
+    rect(_rect)
+{
+  action = NULL;
+}
 
 Widget::~Widget()
 {
+  if(action != NULL)
     delete action;
 }
 

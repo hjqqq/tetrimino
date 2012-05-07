@@ -5,18 +5,33 @@
 #include "rect.h"
 
 class Widget{
-public:
-    Widget(const Rect<int> &_rect, Action *_action);
-    virtual ~Widget();
+ public:
+  Widget(const Rect<int> &_rect);
+  virtual ~Widget();
     
-    virtual void handleEvent(const SDL_Event &event);
-    virtual void update();
+  virtual void handleEvent(const SDL_Event &event);
+  virtual void update();
     
-    virtual const Rect<int> getRect() const;
-    virtual void setRect(const Rect<int> &newRect);
-protected:
-    Rect<int> rect;
-    Action *action;
+  virtual const Rect<int> getRect() const;
+  virtual void setRect(const Rect<int> &newRect);
+  inline void setAction(Action *);
+
+ protected:
+  Rect<int> rect;
+  Action *action;
+    
+  inline virtual void act();
 };
 
+void Widget::setAction(Action *_action)
+{ 
+  delete action;
+  action = _action;
+}
+
+void Widget::act()
+{
+  if(action != NULL) 
+    (*action)();
+}
 #endif

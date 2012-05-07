@@ -4,8 +4,8 @@
 #include "optiondata.h"
 #include "color.h"
 
-Menu::Menu(const Rect<int> &_rect, Action *_action):
-    Widget(_rect, _action), select(0)
+Menu::Menu(const Rect<int> &_rect):
+    Widget(_rect), select(0)
 {}
 
 Menu::~Menu()

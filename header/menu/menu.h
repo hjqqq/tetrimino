@@ -8,8 +8,7 @@
 
 class Menu : public Widget{
 public:
-    Menu(const Rect<int> &_rect,
-	 Action *_action = NULL);
+    Menu(const Rect<int> &_rect);
     ~Menu();
     void addLabel(Label *label);
     void verticalLayout();

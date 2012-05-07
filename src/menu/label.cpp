@@ -7,10 +7,9 @@
 #include "utility.h"
 
 Label::Label(const Rect<int> &_rect,
-	     Action *_action,
 	     const std::string &_text,
 	     const SDL_Color &_color):
-    Widget(_rect, _action),
+    Widget(_rect),
     text(_text), color(_color), labelSurface(NULL)
 {
     constructLabelSurface();
@@ -25,7 +24,7 @@ void Label::handleEvent(const SDL_Event &event)
 {
     if (event.type == SDL_KEYDOWN &&
 	event.key.keysym.sym == SDLK_RETURN){
-	(*action)();
+      act();
     }
 }
 

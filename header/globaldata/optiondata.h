@@ -23,7 +23,7 @@ namespace OptionData{
     enum TetriminoStatus{MENULOOP, GAMELOOP, QUIT};
     extern TetriminoStatus tetriminoStatus;
     
-    enum MenuHolderStatus{MAINMENU, STARTMENU, OPTIONMENU, QUITMENU};
+    enum MenuHolderStatus{MAINMENU, CONTROL1P, CONTROL2P, OPTIONMENU, QUITMENU};
     extern MenuHolderStatus menuHolderStatus;
 
     enum GameHolderStatus{START, AREDELAY, DROP, GAMEOVER, QUITGAME};
@@ -41,6 +41,9 @@ namespace OptionData{
     enum RandomizerType{BAG, HISTORY4ROLL};
     extern RandomizerType randomizerType;
     extern int history4Roll[4];
+    
+    extern bool haveghost;
+    extern bool haveholder;
 };
 
 #endif
