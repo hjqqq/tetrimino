@@ -7,7 +7,8 @@ SDL_Surface *OptionData::display = NULL;
 SDL_Surface *OptionData::background = NULL;
 TTF_Font *OptionData::font = NULL;
 Clock *OptionData::clock = NULL;
-    
+
+//hahaha
 TetriminoStatus OptionData::tetriminoStatus = GAMELOOP;
     
 MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
