@@ -1,8 +1,9 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+#include <cstdlib>
+
 #include "SDL_image.h"
-#include "stabledata.h"
 #include "optiondata.h"
 
 SDL_Surface *image_load(const char *file);
@@ -22,5 +23,12 @@ Uint32 SDL_Color2Uint32(const SDL_Color &color)
 		      color.g,
 		      color.b);
 }
+
+inline int randInt(int begin, int end)
+{
+    int length = end - begin;
+    return std::rand() % length + begin;
+}
+
 
 #endif 

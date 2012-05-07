@@ -4,13 +4,8 @@
 #include <algorithm>
 #include <cstdlib>
 
+#include "utility.h"
 #include "blockdata.h"
-
-inline int randInt(int begin, int end)
-{
-    int length = end - begin;
-    return std::rand() % length + begin;
-}
 
 //----------------------------------------------------------------------------------------------------
 class Randomizer{
