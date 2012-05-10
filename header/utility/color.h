@@ -1,6 +1,8 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include "SDL.h"
+
 const SDL_Color lightpink               =   {0xFF, 0xB6, 0xC1};     
 const SDL_Color pink			=   {0xFF, 0xC0, 0xCB};     
 const SDL_Color crimson			=   {0xDC, 0x14, 0x3C};     

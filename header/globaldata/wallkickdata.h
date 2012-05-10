@@ -11,8 +11,8 @@ public:
 
     inline WallKickData(const AllWallKickNum &_allWallKickNum);
     inline const WallKickNum& getNum(
-	BlockData::Direction startDirection,
-	BlockData::Direction finishDirection) const;
+	Direction startDirection,
+	Direction finishDirection) const;
 private:
     const AllWallKickNum &allWallKickNum;
 };
@@ -22,8 +22,8 @@ WallKickData::WallKickData(const AllWallKickNum &_allWallKickNum):
 {}
 
 const WallKickData::WallKickNum& WallKickData::getNum(
-    BlockData::Direction startDirection,
-    BlockData::Direction finishDirection) const
+    Direction startDirection,
+    Direction finishDirection) const
 {
     return allWallKickNum[startDirection][finishDirection];
 }

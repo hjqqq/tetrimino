@@ -11,14 +11,23 @@
 #include "rect.h"
 
 struct PlayerData{
-    Vector2<int> informationPos;
+    Uint32 dasDelayTime;
+        
+    Uint32 areDelayTime;
+    Uint32 lockDelayTime;
+
+    double horizontalSpeed;
+    double normalDropSpeed;
+    double softDropSpeed;
+
+    int randomQueueDataIndex;
+    enum RandomizerType{BAG, HISTORY4ROLL};
+    RandomizerType randomizerType;
+
+    bool ghost;
+    bool holder;
     
-    Rect<int> mapPixRect;
-    int mapData[StableData::mapSizeX][StableData::mapSizeY];
-    
-    Vector2<int> blockPos;
-    BlockData::BlockShape currentBlockShape;
-    BlockData::Direction currentDirection;
+    Vector2<int> showPixPos;
 
     SDLKey moveLeft;
     SDLKey moveRight;
@@ -30,19 +39,7 @@ struct PlayerData{
 
 };
 
-extern PlayerData playerData1, playerData2;
-
 void initPlayerData1();
 void initPlayerData2();
-
-inline void cleanMapData(int mapData[StableData::mapSizeX][StableData::mapSizeY]);
-
-
-void cleanMapData(int mapData[StableData::mapSizeX][StableData::mapSizeY])
-{
-    for (int i = 0; i != StableData::mapSizeX; ++i)
-	for (int j = 0; j != StableData::mapSizeY; ++j)
-	    mapData[i][j] = 0;
-}
 
 #endif

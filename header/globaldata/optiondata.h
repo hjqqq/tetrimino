@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "clock.h"
+#include "playerdata.h"
 
 /**
    @file optiondata.h
@@ -15,35 +16,26 @@
  */
 
 namespace OptionData{
-    extern SDL_Surface *display;
-    extern SDL_Surface *background;
-    extern TTF_Font *font;
-    extern Clock *clock;
-    
     enum TetriminoStatus{MENULOOP, GAMELOOP, QUIT};
     extern TetriminoStatus tetriminoStatus;
     
     enum MenuHolderStatus{MAINMENU, CONTROL1P, CONTROL2P, OPTIONMENU, QUITMENU};
     extern MenuHolderStatus menuHolderStatus;
 
-    enum GameHolderStatus{START, AREDELAY, DROP, GAMEOVER, QUITGAME};
-    extern GameHolderStatus gameHolderStatus;
+    enum GameStatus{RUN, QUITGAME};
+    extern GameStatus gameStatus;
 
-    extern Uint32 dasDelayTime;
+    extern int areDelayTime;
+    extern int lockDelayTime;
     
-    extern Uint32 areDelayTime;
-    extern Uint32 lockDelayTime;
+    extern int playerSize;
+    extern PlayerData playerData1;
+    extern PlayerData playerData2;    
+    extern PlayerData playerData3;
+    extern PlayerData playerData4;
+    extern PlayerData* allPlayerData[StableData::playerSizeMax];
 
-    extern double horizontalSpeed;
-    extern double normalDropSpeed;
-    extern double softDropSpeed;
-
-    enum RandomizerType{BAG, HISTORY4ROLL};
-    extern RandomizerType randomizerType;
-    extern int history4Roll[4];
-    
-    extern bool haveghost;
-    extern bool haveholder;
+    extern int ghostAlpha;
 };
 
 #endif

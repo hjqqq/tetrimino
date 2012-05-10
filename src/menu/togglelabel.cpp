@@ -35,7 +35,7 @@ void ToggleLabel::update()
   destroyLabelSurface();
   constructLabelSurface();
   SDL_BlitSurface(labelSurface, &srcrect,
-		  OptionData::display, &dstrect);
+		  ResourceData::display, &dstrect);
 }
 
 void ToggleLabel::letsToggle()
@@ -49,7 +49,7 @@ void ToggleLabel::letsToggle()
 void ToggleLabel::constructLabelSurface()
 {
   labelSurface = TTF_RenderText_Solid(
-				      OptionData::font, toggle_text.c_str(), color);
+				      ResourceData::font, toggle_text.c_str(), color);
   Rect<int> blitRect(get_rect(labelSurface));
   blitRect.setCenter(rect.getCenter());
   blitRect.clipRect(rect);

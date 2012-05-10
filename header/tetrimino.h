@@ -24,6 +24,7 @@ private:
     void gameloop();
     void loadResource();
     void releaseResource();
+
 };
 
 #endif

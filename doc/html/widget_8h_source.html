@@ -100,26 +100,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="rect_8h.html">rect.h</a>&quot;</span>
 <a name="l00006"></a>00006 
 <a name="l00007"></a><a class="code" href="classWidget.html">00007</a> <span class="keyword">class </span><a class="code" href="classWidget.html">Widget</a>{
-<a name="l00008"></a>00008 <span class="keyword">public</span>:
-<a name="l00009"></a>00009     <a class="code" href="classWidget.html">Widget</a>(<span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> &amp;_rect, <a class="code" href="classAction.html">Action</a> *_action);
-<a name="l00010"></a>00010     <span class="keyword">virtual</span> ~<a class="code" href="classWidget.html">Widget</a>();
+<a name="l00008"></a>00008  <span class="keyword">public</span>:
+<a name="l00009"></a>00009   <a class="code" href="classWidget.html">Widget</a>(<span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> &amp;_rect);
+<a name="l00010"></a>00010   <span class="keyword">virtual</span> ~<a class="code" href="classWidget.html">Widget</a>();
 <a name="l00011"></a>00011     
-<a name="l00012"></a>00012     <span class="keyword">virtual</span> <span class="keywordtype">void</span> handleEvent(<span class="keyword">const</span> SDL_Event &amp;event);
-<a name="l00013"></a>00013     <span class="keyword">virtual</span> <span class="keywordtype">void</span> update();
+<a name="l00012"></a>00012   <span class="keyword">virtual</span> <span class="keywordtype">void</span> handleEvent(<span class="keyword">const</span> SDL_Event &amp;event);
+<a name="l00013"></a>00013   <span class="keyword">virtual</span> <span class="keywordtype">void</span> update();
 <a name="l00014"></a>00014     
-<a name="l00015"></a>00015     <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> getRect() <span class="keyword">const</span>;
-<a name="l00016"></a>00016     <span class="keyword">virtual</span> <span class="keywordtype">void</span> setRect(<span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> &amp;newRect);
-<a name="l00017"></a>00017 <span class="keyword">protected</span>:
-<a name="l00018"></a>00018     <a class="code" href="structRect.html">Rect&lt;int&gt;</a> rect;
-<a name="l00019"></a>00019     <a class="code" href="classAction.html">Action</a> *action;
-<a name="l00020"></a>00020 };
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="preprocessor">#endif</span>
+<a name="l00015"></a>00015   <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> getRect() <span class="keyword">const</span>;
+<a name="l00016"></a>00016   <span class="keyword">virtual</span> <span class="keywordtype">void</span> setRect(<span class="keyword">const</span> <a class="code" href="structRect.html">Rect&lt;int&gt;</a> &amp;newRect);
+<a name="l00017"></a>00017   <span class="keyword">inline</span> <span class="keywordtype">void</span> setAction(<a class="code" href="classAction.html">Action</a> *);
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019  <span class="keyword">protected</span>:
+<a name="l00020"></a>00020   <a class="code" href="structRect.html">Rect&lt;int&gt;</a> rect;
+<a name="l00021"></a>00021   <a class="code" href="classAction.html">Action</a> *action;
+<a name="l00022"></a>00022     
+<a name="l00023"></a>00023   <span class="keyword">inline</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> act();
+<a name="l00024"></a>00024 };
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="keywordtype">void</span> Widget::setAction(<a class="code" href="classAction.html">Action</a> *_action)
+<a name="l00027"></a>00027 { 
+<a name="l00028"></a>00028   <span class="keyword">delete</span> action;
+<a name="l00029"></a>00029   action = _action;
+<a name="l00030"></a>00030 }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="keywordtype">void</span> Widget::act()
+<a name="l00033"></a>00033 {
+<a name="l00034"></a>00034   <span class="keywordflow">if</span>(action != NULL) 
+<a name="l00035"></a>00035     (*action)();
+<a name="l00036"></a>00036 }
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 6 2012 20:53:03 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

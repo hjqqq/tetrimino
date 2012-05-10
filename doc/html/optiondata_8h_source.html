@@ -110,12 +110,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00023"></a>00023     <span class="keyword">enum</span> TetriminoStatus{MENULOOP, GAMELOOP, QUIT};
 <a name="l00024"></a>00024     <span class="keyword">extern</span> TetriminoStatus tetriminoStatus;
 <a name="l00025"></a>00025     
-<a name="l00026"></a>00026     <span class="keyword">enum</span> MenuHolderStatus{MAINMENU, STARTMENU, OPTIONMENU, QUITMENU};
+<a name="l00026"></a>00026     <span class="keyword">enum</span> MenuHolderStatus{MAINMENU, CONTROL1P, CONTROL2P, OPTIONMENU, QUITMENU};
 <a name="l00027"></a>00027     <span class="keyword">extern</span> MenuHolderStatus menuHolderStatus;
 <a name="l00028"></a>00028 
-<a name="l00029"></a>00029     <span class="keyword">enum</span> GameHolderStatus{START, AREDELAY, DROP, GAMEOVER, QUITGAME};
-<a name="l00030"></a>00030     <span class="keyword">extern</span> GameHolderStatus gameHolderStatus;
-<a name="l00031"></a>00031 
+<a name="l00029"></a>00029     <span class="keyword">enum</span> GameStatus{RUNNING, QUITGAME};
+<a name="l00030"></a>00030     <span class="keyword">extern</span> GameStatus gameStatus;
+<a name="l00031"></a>00031     
 <a name="l00032"></a>00032     <span class="keyword">extern</span> Uint32 dasDelayTime;
 <a name="l00033"></a>00033     
 <a name="l00034"></a>00034     <span class="keyword">extern</span> Uint32 areDelayTime;
@@ -128,14 +128,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00041"></a>00041     <span class="keyword">enum</span> RandomizerType{BAG, HISTORY4ROLL};
 <a name="l00042"></a>00042     <span class="keyword">extern</span> RandomizerType randomizerType;
 <a name="l00043"></a>00043     <span class="keyword">extern</span> <span class="keywordtype">int</span> history4Roll[4];
-<a name="l00044"></a>00044 };
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+<a name="l00044"></a>00044     
+<a name="l00045"></a>00045     <span class="keyword">extern</span> <span class="keywordtype">bool</span> haveghost;
+<a name="l00046"></a>00046     <span class="keyword">extern</span> <span class="keywordtype">bool</span> haveholder;
+<a name="l00047"></a>00047 };
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 6 2012 20:53:03 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

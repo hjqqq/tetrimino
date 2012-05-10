@@ -13,6 +13,7 @@ public:
     ~Clock();
     void tick();
     Counter* addCounter(Uint32 num);
+    void clearCounter();
     
     inline static Uint32 frame2Millisecond(Uint32 framerate);
     inline static Uint32 millisecond2Frame(Uint32 millisecond);

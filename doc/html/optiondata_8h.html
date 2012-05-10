@@ -113,19 +113,17 @@ Enumerations</h2></td></tr>
 <b>GAMELOOP</b>, 
 <b>QUIT</b>
  }</td></tr>
-<tr class="memitem:a28c9f103d8b69aed1b31c85273423adc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>MenuHolderStatus</b> { <b>MAINMENU</b>, 
-<b>STARTMENU</b>, 
+<tr class="memitem:a28c9f103d8b69aed1b31c85273423adc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>MenuHolderStatus</b> { <br/>
+&#160;&#160;<b>MAINMENU</b>, 
+<b>CONTROL1P</b>, 
+<b>CONTROL2P</b>, 
 <b>OPTIONMENU</b>, 
-<b>QUITMENU</b>
+<br/>
+&#160;&#160;<b>QUITMENU</b>
+<br/>
  }</td></tr>
-<tr class="memitem:a3f7df1f131c8ff5cce230d35aaa4f4dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GameHolderStatus</b> { <br/>
-&#160;&#160;<b>START</b>, 
-<b>AREDELAY</b>, 
-<b>DROP</b>, 
-<b>GAMEOVER</b>, 
-<br/>
-&#160;&#160;<b>QUITGAME</b>
-<br/>
+<tr class="memitem:a3357b79875f31effd20d0687c137e0d0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GameStatus</b> { <b>RUNNING</b>, 
+<b>QUITGAME</b>
  }</td></tr>
 <tr class="memitem:a5fa60f47da6322200d2d6fbec20dcf67"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>RandomizerType</b> { <b>BAG</b>, 
 <b>HISTORY4ROLL</b>
@@ -144,10 +142,10 @@ TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::fon
 TetriminoStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::tetriminoStatus</b> = GAMELOOP</td></tr>
 <tr class="memitem:a35806d35a1dddb13431f839262d301c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35806d35a1dddb13431f839262d301c9"></a>
 MenuHolderStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::menuHolderStatus</b> = MAINMENU</td></tr>
-<tr class="memitem:a3496c56a167ceb4051c387411c5c8a41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3496c56a167ceb4051c387411c5c8a41"></a>
-GameHolderStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::gameHolderStatus</b> = START</td></tr>
+<tr class="memitem:a22e92a4c8dd5a3248bdb852cac11aaaa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22e92a4c8dd5a3248bdb852cac11aaaa"></a>
+GameStatus&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::gameStatus</b> = RUNNING</td></tr>
 <tr class="memitem:a5b3aa85a0fa53e20ca9525146f0a783f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b3aa85a0fa53e20ca9525146f0a783f"></a>
-Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::dasDelayTime</b> = 200</td></tr>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::dasDelayTime</b> = 100</td></tr>
 <tr class="memitem:a7a1aa9a24180e049811b59fad25b1e4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a1aa9a24180e049811b59fad25b1e4e"></a>
 Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::areDelayTime</b> = 200</td></tr>
 <tr class="memitem:af121dffe9d3dd7b2597f115071ee6049"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af121dffe9d3dd7b2597f115071ee6049"></a>
@@ -161,13 +159,17 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::softDro
 <tr class="memitem:a9e58e843235b9cf058c3eb50a23d0d87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e58e843235b9cf058c3eb50a23d0d87"></a>
 RandomizerType&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::randomizerType</b> = BAG</td></tr>
 <tr class="memitem:a997d0b15148dfb8c4f34cbebb60d0e59"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::history4Roll</b> [4]</td></tr>
+<tr class="memitem:a62f06568f161c1a297368bfef0120223"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62f06568f161c1a297368bfef0120223"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::haveghost</b> = true</td></tr>
+<tr class="memitem:ab5b28ad1ba5dfcbb687971d385d9455f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5b28ad1ba5dfcbb687971d385d9455f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>OptionData::haveholder</b> = true</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 6 2012 20:53:04 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

@@ -3,7 +3,11 @@
 
 #include <vector>
 
+#include "color.h"
 #include "rect.h"
+
+enum Direction{NORTH, WEST, SOUTH, EAST};
+enum BlockShape{ISHAPE, JSHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
 
 class BlockData{
 public:
@@ -13,9 +17,6 @@ public:
     typedef Rect<int> BlockRect;
     typedef BlockRect AllBlockRect[4];
 
-    enum Direction{NORTH, WEST, SOUTH, EAST};
-    enum BlockShape{ISHAPE, LSHAPE, JSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
-    
     inline BlockData(int _size,
 	      const AllBlockNum &_allBlockNum,
 	      const AllBlockRect &_allBlockRect);
@@ -36,8 +37,8 @@ private:
 
 const int blockPackageSize = 7;
 extern const BlockData blockDataI;
-extern const BlockData blockDataL;
 extern const BlockData blockDataJ;
+extern const BlockData blockDataL;
 extern const BlockData blockDataS;
 extern const BlockData blockDataT;
 extern const BlockData blockDataZ;
@@ -45,9 +46,15 @@ extern const BlockData blockDataO;
 extern const BlockData blockDataArray[blockPackageSize];
 
 extern const Vector2<int> blockStartPosI;
-extern const Vector2<int> blockStartPosLJSTZ;
+extern const Vector2<int> blockStartPosJLSTZ;
 extern const Vector2<int> blockStartPosO;
 extern const Vector2<int> blockStartPosArray[blockPackageSize];
+
+enum MinoColor{ICOLOR, JCOLOR, LCOLOR,
+	       SCOLOR, TCOLOR, ZCOLOR,
+	       OCOLOR, GARBAGECOLOR, BACKCOLOR, EMPTY};
+extern const SDL_Color minoColor[9];
+extern SDL_Color minoGhostColor[9];
 
 BlockData::BlockData(int _size,
 		     const AllBlockNum &_allBlockNum,

@@ -4,6 +4,7 @@
 #include <cstdlib>
 
 #include "SDL_image.h"
+#include "resourcedata.h"
 #include "optiondata.h"
 
 SDL_Surface *image_load(const char *file);
@@ -18,7 +19,7 @@ const SDL_Rect get_rect(const SDL_Surface *surface)
 
 Uint32 SDL_Color2Uint32(const SDL_Color &color)
 {
-    return SDL_MapRGB(OptionData::display->format,
+    return SDL_MapRGB(ResourceData::display->format,
 		      color.r,
 		      color.g,
 		      color.b);
