@@ -19,7 +19,7 @@ Show::Show(PlayerData *_playerData):
 	Vector2<int>(halfMinoPixSize.x * 4,
 		     halfMinoPixSize.y * 4));
     
-    nextPixPos = toPixPos(Vector2<int>(7, 1));
+    nextPixPos = toPixPos(Vector2<int>(StableData::mapSize.x / 2 + 1, 1));
     nextPixRect = blockPixRect;
     nextPixRect.move(nextPixPos);
     nextPixRectTemp = nextPixRect.getSDL_Rect();
@@ -28,12 +28,12 @@ Show::Show(PlayerData *_playerData):
     
     mapPixPos = toPixPos(Vector2<int>(4, 6));
     
-    holdPixPos = toPixPos(Vector2<int>(12, 3));
+    holdPixPos = toPixPos(Vector2<int>(StableData::mapSize.x + 2, 3));
     holdPixRect = halfBlockPixRect;
     holdPixRect.move(holdPixPos);
     holdPixRectTemp = holdPixRect.getSDL_Rect();
 
-    growBarPixPos = toPixPos(Vector2<int>(15, 6));
+    growBarPixPos = toPixPos(Vector2<int>(StableData::mapSize.x + 5, 6));
     growBarPixRect = Rect<int>(
 	growBarPixPos,
 	Vector2<int>(halfMinoPixSize.x,
