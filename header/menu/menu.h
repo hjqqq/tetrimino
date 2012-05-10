@@ -22,6 +22,7 @@ public:
     void selectNext();
     int getSelect() const;
     void setSelect(int index);
+    inline void resetSelect();
     
 private:
     void handleKey(const SDLKey &sym);
@@ -31,4 +32,8 @@ private:
     int select;
 };
 
+void Menu::resetSelect()
+{
+  select = 0;
+}
 #endif

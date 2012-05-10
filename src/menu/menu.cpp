@@ -100,5 +100,3 @@ void Menu::setSelect(int index)
     select = index;
 }
 
-
-

@@ -2,6 +2,7 @@
 #define UTILITY_H
 
 #include <cstdlib>
+#include <string>
 
 #include "SDL_image.h"
 #include "optiondata.h"
@@ -30,5 +31,5 @@ inline int randInt(int begin, int end)
     return std::rand() % length + begin;
 }
 
-
+void doubleToString(double, std::string &);
 #endif 

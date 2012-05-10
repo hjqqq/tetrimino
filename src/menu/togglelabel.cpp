@@ -68,5 +68,6 @@ void ToggleLabel::freshToggleText()
 
 void ToggleLabel::act()
 {
-  (*action)(toggle);
+  if(action != NULL)
+    (*action)(toggle);
 }

@@ -23,7 +23,7 @@ namespace StableData{
     const int screenSizeY = 600;
     const Vector2<int> screenSize(800, 600);
 
-    const Rect<int> menuRect(200, 300, 400, 200);
+    const Rect<int> menuRect(200, 100, 600, 400);
     
     const int mapSizeX = 10;
     const int mapSizeY = 20;

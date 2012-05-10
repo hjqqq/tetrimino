@@ -1,3 +1,5 @@
+#include <string>
+#include <sstream>
 #include "utility.h"
 
 SDL_Surface *image_load(const char *file)
@@ -8,4 +10,9 @@ SDL_Surface *image_load(const char *file)
     return image;
 }
 
-
+void doubleToString(double number, std::string &str)
+{
+  std::ostringstream ss;
+  ss << number;
+  str = ss.str();
+}
