@@ -82,6 +82,9 @@ void Game::initStatus()
 	    mapData[i][j] = BACKCOLOR;
 
     mapGrow = 0;
+    series = 0;
+    backToBack = false;
+    tSpin = false;
     
     dropStatus = NORMAL;
     dropDistancePerFrame = Vector2<int>(0, 0);
@@ -521,13 +524,36 @@ void Game::fillMap()
 	    if (blockNum[origI][origJ] != EMPTY)
 		mapData[i][j] = blockNum[origI][origJ];
 	}
+    }
+
+    if (shape == TSHAPE &&
+	((direction == NORTH && pos.y < StableData::mapSize.y - 3) ||
+	 (direction == WEST && pos.x < StableData::mapSize.x - 3) ||
+	 (direction == SOUTH && 2 <= pos.y) ||
+	 (direction == EAST && 2 <= pos.x)) &&
+	-1 <= pos.y && 
+	(bool)(mapData[pos.x + 1][pos.y + 1] - BACKCOLOR) +
+	(bool)(mapData[pos.x + 3][pos.y + 1] - BACKCOLOR) +
+	(bool)(mapData[pos.x + 1][pos.y + 3] - BACKCOLOR) +
+	(bool)(mapData[pos.x + 3][pos.y + 3] - BACKCOLOR)== 3){
+	std::cerr << "haha" << std::endl;
+	tSpin = true;
+    } else{
+	backToBack = false;
+	tSpin = false;
     }    
+}
+
+void Game::checkTSpin()
+{
+
 }
 
 void Game::clearMap()
 {
     int origY = StableData::mapSize.y - 1,
 	destY = origY;
+
     while (origY >= 0){
 	if (!checkMapLineFull(origY)){
 	    for (int i = 0; i != StableData::mapSize.x; ++i){
@@ -539,7 +565,7 @@ void Game::clearMap()
     }
 
     if (this != attack)
-	attack->addMapGrow(destY + 1);
+	addMapGrow(destY + 1);
 
     while (destY >= 0){
 	for (int i = 0; i != StableData::mapSize.x; ++i)
@@ -556,28 +582,68 @@ void Game::clearMap()
 	int hole = randInt(0, StableData::mapSize.x);
     
 	for (int j = StableData::mapSize.y - mapGrow; j != StableData::mapSize.y; ++j){
-	    for (int i = 0; i != StableData::mapSize.x; ++i)
+	    for (int i = 0; i != StableData::mapSize.x; ++i){
 		if (i == hole)
 		    mapData[i][j] = BACKCOLOR;
 		else
 		    mapData[i][j] = GARBAGECOLOR;
+	    }
 	}
-	mapGrow = 0;
-	show->growBarShow(mapGrow);
     }
+    mapGrow = 0;
+    show->growBarShow(mapGrow);    
 }
 
 void Game::addMapGrow(int grow)
 {
-    switch (grow){
-    case 2: case 3:
-	mapGrow += grow - 1;
-	break;
-    case 4:
-	mapGrow += grow;
-	break;
+    if (backToBack){
+	if (tSpin){
+	    switch (grow){
+	    case 1:
+		grow = 2;
+		break;
+	    case 2:
+		grow = 4;
+		break;
+	    case 3:
+		grow = 6;
+		break;
+	    }
+	}
+	if (grow == 4){
+	    grow = 5;
+	}
+    }else{
+	if (tSpin){
+	    backToBack = true;
+	    switch (grow){
+	    case 1:
+		grow = 3;
+		break;
+	    case 2:
+		grow = 5;
+		break;
+	    case 3:
+		grow = 8;
+		break;
+	    }
+	}
+	if (grow == 4)
+	    backToBack = true;
+	else{
+	    backToBack = false;
+	    switch (grow){
+	    case 2:
+		grow = 1;
+		break;
+	    case 3:
+		grow = 2;
+		break;
+	    }
+	}
     }
-    show->growBarShow(mapGrow);    
+    attack->mapGrow = grow;
+    attack->show->growBarShow(grow);
 }
 
 bool Game::checkMapLineFull(int y)

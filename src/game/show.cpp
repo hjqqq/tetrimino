@@ -16,9 +16,8 @@ Show::Show(PlayerData *_playerData):
 				 StableData::minoPixSize.y * 4));
     halfBlockPixRect = Rect<int>(
 	Vector2<int>(0, 0),
-	Vector2<int>(
-	    halfMinoPixSize.x * 4,
-	    halfMinoPixSize.y * 4));
+	Vector2<int>(halfMinoPixSize.x * 4,
+		     halfMinoPixSize.y * 4));
     
     nextPixPos = toPixPos(Vector2<int>(7, 1));
     nextPixRect = blockPixRect;
@@ -39,7 +38,11 @@ Show::Show(PlayerData *_playerData):
 	growBarPixPos,
 	Vector2<int>(halfMinoPixSize.x,
 		     StableData::minoPixSize.y * StableData::mapSize.y));
-    growBarPixRectTemp = growBarPixRect.getSDL_Rect();        
+    growBarPixRectTemp = growBarPixRect.getSDL_Rect();
+
+    SDL_FillRect(ResourceData::display,
+		 &growBarPixRectTemp,
+		 SDL_Color2Uint32(minoColor[BACKCOLOR]));
 }
 
 void Show::blockShow(const Vector2<int> &pixPos,
@@ -191,7 +194,7 @@ void Show::growBarShow(int mapGrow)
 { 
     SDL_FillRect(ResourceData::display,
 		 &growBarPixRectTemp,
-		 SDL_Color2Uint32(black));
+		 SDL_Color2Uint32(minoColor[BACKCOLOR]));
 
     Rect<int> growFillPixRect(
 	0, 0,
