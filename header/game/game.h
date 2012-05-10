@@ -44,6 +44,7 @@ public:
     const Vector2<int> getLockPos();
     void fillMap();
     bool checkMapLineFull(int y);
+    void checkTSpin();
     void clearMap();
     void addMapGrow(int grow);
     void calGhostPosY();
@@ -73,6 +74,9 @@ private:
     
     int mapData[StableData::mapSizeX][StableData::mapSizeY];
     int mapGrow;
+    int series;
+    bool backToBack;
+    bool tSpin;
     
     enum DropStatus{NORMAL,
 		    DASLEFT, ARRLEFT, DASRIGHT, ARRRIGHT};

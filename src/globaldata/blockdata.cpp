@@ -1,4 +1,5 @@
 #include "blockdata.h"
+#include "stabledata.h"
 
 //----------------------------------------------------------------
 BlockData::AllBlockNum I = {
@@ -31,7 +32,7 @@ BlockData::AllBlockRect IRect = {
 };
 
 const BlockData blockDataI(4, I, IRect);
-const Vector2<int> blockStartPosI(3, -1);
+const Vector2<int> blockStartPosI(StableData::mapSize.x / 2 - 2, -1);
 
 //----------------------------------------------------------------
 BlockData::AllBlockNum J = {
@@ -157,7 +158,7 @@ const BlockData blockDataS(3, S, JLSTZRect);
 const BlockData blockDataT(3, T, JLSTZRect);
 const BlockData blockDataZ(3, Z, JLSTZRect);
 
-const Vector2<int> blockStartPosJLSTZ(2, -2);
+const Vector2<int> blockStartPosJLSTZ(StableData::mapSize.x / 2 - 3, -2);
 
 //----------------------------------------------------------------
 
@@ -191,7 +192,7 @@ BlockData::AllBlockRect ORect = {
 };
 
 const BlockData blockDataO(2, O, ORect);
-const Vector2<int> blockStartPosO(3, -2);
+const Vector2<int> blockStartPosO(StableData::mapSize.x / 2 - 2, -2);
 
 const BlockData blockDataArray[blockPackageSize] = {
     blockDataI,
