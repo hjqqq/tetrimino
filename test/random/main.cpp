@@ -6,20 +6,45 @@
 
 #include "randomqueue.h"
 
+void printRandomQueue(RandomQueue &randomQueue){
+    for (RandomQueue::iterator iter = randomQueue.begin();
+	 iter != randomQueue.end(); ++iter){
+	std::cout << *iter << " ";
+    }
+    std::cout << "\n";
+}
+
 int main()
 {
     std::srand(std::time(NULL));
-    int history[4] = {5, 3, 5, 3};
-    RandomQueue bagRandomQueue(new BagRandomizer());
-    RandomQueue historyRandomQueue(new HistoryRollRandomizer<4>(history));
 
-    std::ostream_iterator<int> outputIter(std::cout, " ");
-
-    for (int i = 0; i != 14; ++i){
-	std::copy(historyRandomQueue.begin(), historyRandomQueue.end(),
-		  outputIter);
-	historyRandomQueue.pop();
-	std::cout << "\n";
-    }
+    RandomQueueData randomQueueData(new BagRandomizer());
+    RandomQueue randomQueue0(&randomQueueData);
+    RandomQueue randomQueue1(&randomQueueData);
+    
+    randomQueueData.print();
+    printRandomQueue(randomQueue0);
+    printRandomQueue(randomQueue1);
+    
+    randomQueue0.pop();
+    randomQueue0.pop();
+    randomQueue0.pop();
+    randomQueue1.pop();
+    randomQueue1.pop();
+    
+    randomQueueData.print();    
+    printRandomQueue(randomQueue0);
+    printRandomQueue(randomQueue1);
+    
+    randomQueue1.pop();
+    randomQueue1.pop();
+    randomQueue1.pop();
+    
+    randomQueueData.print();    
+    printRandomQueue(randomQueue0);
+    printRandomQueue(randomQueue1);
+    
+    
+    std::cout << std::endl;
     return 0;
 }

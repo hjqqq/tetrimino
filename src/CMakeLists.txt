@@ -13,7 +13,7 @@ if(SDL_FOUND         AND
   aux_source_directory(${tetrimino_SOURCE_DIR}/src tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/utility tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/globaldata tetrimino_SRC)
-  aux_source_directory(${tetrimino_SOURCE_DIR}/src/menu tetrimino_SRC)
+#  aux_source_directory(${tetrimino_SOURCE_DIR}/src/menu tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/game tetrimino_SRC)
 
   include_directories(

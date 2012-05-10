@@ -1,8 +1,11 @@
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
 #include "tetrimino.h"
 #include "stabledata.h"
 #include "optiondata.h"
+#include "resourcedata.h"
 #include "clock.h"
 #include "menuholder.h"
 #include "gameholder.h"
@@ -26,22 +29,28 @@ Tetrimino::~Tetrimino(){
 
 void Tetrimino::loadResource()
 {
-    OptionData::display = SDL_SetVideoMode(
+    std::srand(std::time(NULL));
+    OptionData::playerSize = 2;
+    OptionData::ghostAlpha = 30;
+    initPlayerData1();
+    initPlayerData2();
+
+    ResourceData::display = SDL_SetVideoMode(
 	StableData::screenSize.x,
 	StableData::screenSize.y,
 	0,
 	SDL_SWSURFACE);
-    OptionData::background = image_load(
+    ResourceData::background = image_load(
 	StableData::backgroundFile.c_str());
-    OptionData::font = TTF_OpenFont(
+    ResourceData::font = TTF_OpenFont(
 	StableData::fontFile.c_str(), 30);
-    OptionData::clock = new Clock(StableData::fps);
+    ResourceData::clock = new Clock(StableData::fps);
 }
 
 void Tetrimino::releaseResource()
 {
-    TTF_CloseFont(OptionData::font);
-    SDL_FreeSurface(OptionData::background);
+    TTF_CloseFont(ResourceData::font);
+    SDL_FreeSurface(ResourceData::background);
 }
 
 void Tetrimino::mainloop()
@@ -62,7 +71,7 @@ void Tetrimino::mainloop()
 
 void Tetrimino::menuloop()
 {
-    MenuHolder menuHolder;
+    /*MenuHolder menuHolder;
     SDL_Event event;
     while (OptionData::menuHolderStatus != OptionData::QUITMENU){
 	while (SDL_PollEvent(&event)){
@@ -72,21 +81,20 @@ void Tetrimino::menuloop()
 	    }
 	    menuHolder.handleEvent(event);
 	}
-	SDL_BlitSurface(OptionData::background, 0,
-			OptionData::display, 0);
+	SDL_BlitSurface(ResourceData::background, 0,
+			ResourceData::display, 0);
 	menuHolder.update();
-	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
-	OptionData::clock->tick();
+	SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
+	ResourceData::clock->tick();
     }
-    
-    OptionData::tetriminoStatus = OptionData::QUIT;    
+    OptionData::tetriminoStatus = OptionData::QUIT;    */
 }
 
 void Tetrimino::gameloop()
 {
     GameHolder gameHolder;
     SDL_Event event;
-    while (OptionData::gameHolderStatus != OptionData::QUITGAME){
+    while (OptionData::gameStatus != OptionData::QUITGAME){
 	while (SDL_PollEvent(&event)){
 	    if (event.type == SDL_QUIT){
 		OptionData::tetriminoStatus = OptionData::QUIT;
@@ -94,12 +102,12 @@ void Tetrimino::gameloop()
 	    }
 	    gameHolder.handleEvent(event);
 	}
-	SDL_BlitSurface(OptionData::background, 0,
-			OptionData::display, 0);
 	gameHolder.update();
-	SDL_UpdateRect(OptionData::display, 0, 0, 0, 0);
-	OptionData::clock->tick();
+	SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
+	ResourceData::clock->tick();
     }
+    OptionData::gameStatus = OptionData::RUN;
+    OptionData::tetriminoStatus = OptionData::MENULOOP;
 }
 
 

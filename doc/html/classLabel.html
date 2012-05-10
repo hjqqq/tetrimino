@@ -92,7 +92,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">Label Class Reference</div>  </div>
 </div><!--header-->
@@ -103,7 +105,8 @@ Inheritance diagram for Label:</div>
  <div class="center">
   <img src="classLabel.png" usemap="#Label_map" alt=""/>
   <map id="Label_map" name="Label_map">
-<area href="classWidget.html" alt="Widget" shape="rect" coords="0,0,50,24"/>
+<area href="classWidget.html" alt="Widget" shape="rect" coords="0,0,81,24"/>
+<area href="classToggleLabel.html" alt="ToggleLabel" shape="rect" coords="0,112,81,136"/>
 </map>
  </div></div>
 
@@ -111,8 +114,8 @@ Inheritance diagram for Label:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3e8338715a1283be3290049d4baf055f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e8338715a1283be3290049d4baf055f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Label</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;_rect, <a class="el" href="classAction.html">Action</a> *_action, const std::string &amp;_text, const SDL_Color &amp;_color=black)</td></tr>
+<tr class="memitem:abca3cefec6e4f4bc18f975c61b900282"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abca3cefec6e4f4bc18f975c61b900282"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Label</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;_rect, const std::string &amp;_text, const SDL_Color &amp;_color=black)</td></tr>
 <tr class="memitem:a2018ee24282e5e2aa159d46a3d85c876"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2018ee24282e5e2aa159d46a3d85c876"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)</td></tr>
 <tr class="memitem:a736aab0e4b280f1a3c86e1566b5eb235"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a736aab0e4b280f1a3c86e1566b5eb235"></a>
@@ -123,6 +126,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setColor</b> (const S
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setText</b> (const std::string &amp;newText)</td></tr>
 <tr class="memitem:aa4787ff7739236ea84c6d5f7151d86b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4787ff7739236ea84c6d5f7151d86b4"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setRect</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;newRect)</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a432555e08b51fa1507c4e518c378533f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a432555e08b51fa1507c4e518c378533f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>constructLabelSurface</b> ()</td></tr>
+<tr class="memitem:a54aeb04b1b83169362afa11e264e7662"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54aeb04b1b83169362afa11e264e7662"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyLabelSurface</b> ()</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a42fe861748a96acc7071c1c9f4d7a81d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42fe861748a96acc7071c1c9f4d7a81d"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>text</b></td></tr>
+<tr class="memitem:a644f273f88e2ab6d25442f6871a5e571"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a644f273f88e2ab6d25442f6871a5e571"></a>
+SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><b>color</b></td></tr>
+<tr class="memitem:af7030d67121a30c052f3a119da6c6a87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7030d67121a30c052f3a119da6c6a87"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>srcrect</b></td></tr>
+<tr class="memitem:afa6bca3d54fda8078b68195d017d1bec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa6bca3d54fda8078b68195d017d1bec"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>dstrect</b></td></tr>
+<tr class="memitem:a827f99d60a801bd45d6a2979c864142e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a827f99d60a801bd45d6a2979c864142e"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>labelSurface</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/menu/<a class="el" href="label_8h_source.html">label.h</a></li>
@@ -132,7 +153,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setRect</b> (
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 6 2012 20:53:04 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

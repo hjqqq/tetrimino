@@ -26,7 +26,7 @@ private:
 template <int LENGTH = 4>
 class HistoryRollRandomizer : public Randomizer{
 public:
-    HistoryRollRandomizer(int *_history);
+    HistoryRollRandomizer(const int *_history);
     virtual int get();
 private:
     int history[LENGTH];
@@ -35,7 +35,7 @@ private:
 
 template <int LENGTH>
 HistoryRollRandomizer<LENGTH>::HistoryRollRandomizer(
-    int *_history):
+    const int *_history):
     oldest(history)
 {
     std::copy(_history, _history + LENGTH, history);

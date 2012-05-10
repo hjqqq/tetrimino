@@ -27,6 +27,10 @@ cstdlib
 /home/tom/study/SDL/TetriminoProject/tetrimino/test/random/randomqueue.h
 deque
 -
+vector
+-
+iostream
+-
 randomizer.h
 /home/tom/study/SDL/TetriminoProject/tetrimino/test/random/randomizer.h
 

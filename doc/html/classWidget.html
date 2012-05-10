@@ -93,6 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">Widget Class Reference</div>  </div>
@@ -104,8 +105,9 @@ Inheritance diagram for Widget:</div>
  <div class="center">
   <img src="classWidget.png" usemap="#Widget_map" alt=""/>
   <map id="Widget_map" name="Widget_map">
-<area href="classLabel.html" alt="Label" shape="rect" coords="0,56,50,80"/>
-<area href="classMenu.html" alt="Menu" shape="rect" coords="60,56,110,80"/>
+<area href="classLabel.html" alt="Label" shape="rect" coords="0,56,81,80"/>
+<area href="classMenu.html" alt="Menu" shape="rect" coords="91,56,172,80"/>
+<area href="classToggleLabel.html" alt="ToggleLabel" shape="rect" coords="0,112,81,136"/>
 </map>
  </div></div>
 
@@ -113,8 +115,8 @@ Inheritance diagram for Widget:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a838f1e757ae6eb48a7a536a20acd1416"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a838f1e757ae6eb48a7a536a20acd1416"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Widget</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;_rect, <a class="el" href="classAction.html">Action</a> *_action)</td></tr>
+<tr class="memitem:ae3502942abb6fb1ee33501894aa75dcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3502942abb6fb1ee33501894aa75dcb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Widget</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;_rect)</td></tr>
 <tr class="memitem:ad9ed3de206ab5c97b97925cf9e456c80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9ed3de206ab5c97b97925cf9e456c80"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)</td></tr>
 <tr class="memitem:a38aacc92bda1a1e91052873a4a955487"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38aacc92bda1a1e91052873a4a955487"></a>
@@ -123,6 +125,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()
 virtual const <a class="el" href="structRect.html">Rect</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getRect</b> () const </td></tr>
 <tr class="memitem:a7fc16f6f16c614544d65824cd9fcb530"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fc16f6f16c614544d65824cd9fcb530"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setRect</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;newRect)</td></tr>
+<tr class="memitem:af0cff5822036571901a4de8d602bfc71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0cff5822036571901a4de8d602bfc71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setAction</b> (<a class="el" href="classAction.html">Action</a> *)</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a578c43047fdf75d33d7d8921455fc4c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a578c43047fdf75d33d7d8921455fc4c7"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>act</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:abaaa1716379820b4b41366ef465bcd99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaaa1716379820b4b41366ef465bcd99"></a>
@@ -138,7 +146,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 6 2012 20:53:04 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>
