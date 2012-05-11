@@ -3,7 +3,7 @@
 
 OptionData::TetriminoStatus OptionData::tetriminoStatus = MENULOOP;
 OptionData::MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
-OptionData::GameStatus OptionData::gameStatus = RUN;
+OptionData::GameHolderStatus OptionData::gameHolderStatus = READY;
 
 int OptionData::areDelayTime = 200;
 int OptionData::lockDelayTime = 500;

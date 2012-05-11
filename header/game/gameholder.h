@@ -16,11 +16,17 @@ public:
     ~GameHolder();
     void handleEvent(const SDL_Event &event);
     void update();
-    void initGhostColor();
+
+    bool checkAllGameStatus(Game::GameStatus gameStatus);
+    void setAllGameStatus(Game::GameStatus gameStatus);
+    void setDefenceAttack();
+    void setRandomQueue();
     
+    void initGhostColor();
 private:
     RandomQueueData* allRandomQueueData[StableData::playerSizeMax];
-    Game* allGame[StableData::playerSizeMax];    
+    RandomQueue *allRandomQueue[StableData::playerSizeMax];
+    Game* allGame[StableData::playerSizeMax];
 };
 
 #endif

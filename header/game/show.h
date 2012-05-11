@@ -1,6 +1,8 @@
 #ifndef SHOW_H
 #define SHOW_H
 
+#include <string>
+
 #include "SDL.h"
 
 #include "randomqueue.h"
@@ -34,9 +36,11 @@ public:
 		   BlockShape shape,
 		   Direction direction);
     void growBarShow(int mapGrow);
-    inline Vector2<int> toPixPos(const Vector2<int> orig);
+    
+    void messageShow(std::string str);
     
 private:
+    inline Vector2<int> toPixPos(const Vector2<int> orig);
     PlayerData *playerData;
     Vector2<int> halfMinoPixSize;
     Rect<int> blockPixRect;
@@ -49,6 +53,7 @@ private:
     Vector2<int> smallNextPixPos;
     
     Vector2<int> mapPixPos;
+    Rect<int> mapPixRect;
     
     Vector2<int> holdPixPos;
     Rect<int> holdPixRect;
