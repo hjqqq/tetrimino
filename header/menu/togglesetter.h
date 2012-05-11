@@ -5,12 +5,16 @@
 
 class ToggleSetter : public Action{
  public:
-  ToggleSetter(bool &_sys);
-  
-  void operator()(const bool value);
+ ToggleSetter(bool &_sys) : sys(_sys) {}
+
+  inline void operator()(const bool &);
 
  private:
   bool &sys;
 };
 
+void ToggleSetter::operator()(const bool &value)
+{
+  sys = value;
+}
 #endif /* _TOGGLESETTER_H_ */

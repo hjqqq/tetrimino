@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 #include "utility.h"
 #include "optiondata.h"
 #include "playerdata.h"
@@ -14,12 +13,13 @@ KeySetLabel::KeySetLabel(
   default_key(_key)
 {
   freshShowText();
-  destroyLabelSurface();
   constructLabelSurface();
 }
 
 KeySetLabel::~KeySetLabel()
-{}
+{
+  destroyLabelSurface();
+}
 
 void KeySetLabel::handleEvent( const SDL_Event &event)
 {
@@ -44,6 +44,10 @@ void KeySetLabel::getUserInput()
 	  act();
 	  break;
 	}
+      else if( event.type == SDL_QUIT ) {
+	OptionData::menuHolderStatus = OptionData::QUITMENU;
+	break;
+      }
     }
 }
 
@@ -53,13 +57,13 @@ void KeySetLabel::update()
   destroyLabelSurface();
   constructLabelSurface();
   SDL_BlitSurface(labelSurface, &srcrect,
-		  OptionData::display, &dstrect);
+		  ResourceData::display, &dstrect);
 }
 
 void KeySetLabel::constructLabelSurface()
 {
-  labelSurface = TTF_RenderText_Solid(
-				      OptionData::font, show_text.c_str(), color);
+  labelSurface = TTF_RenderText_Blended(
+				      ResourceData::font, show_text.c_str(), color);
   Rect<int> blitRect(get_rect(labelSurface));
   blitRect.setCenter(rect.getCenter());
   blitRect.clipRect(rect);
@@ -68,9 +72,13 @@ void KeySetLabel::constructLabelSurface()
   dstrect = Rect<int>(blitRect.pos, Vector2<int>()).getSDL_Rect();
 }
 
+void KeySetLabel::destroyLabelSurface()
+{
+  SDL_FreeSurface(labelSurface);
+}
+
 void KeySetLabel::act()
 {
   if( action != NULL)
     (*action)((double)key);
-  std::cout << "playerdata: " << SDL_GetKeyName(playerData1.hardDrop) << std::endl;
 }

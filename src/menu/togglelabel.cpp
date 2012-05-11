@@ -6,24 +6,24 @@
 
 ToggleLabel::ToggleLabel(const Rect<int> &_rect,
 			 const std::string &_text,
-			 const SDL_Color &_color,
-			 bool _toggle):
+			 const bool &_toggle,
+			 const SDL_Color &_color ):
   Label(_rect,  _text, _color), toggle(_toggle)
 {
   freshToggleText();
-  destroyLabelSurface();
   constructLabelSurface();
 }
 
 ToggleLabel::~ToggleLabel()
-{}
+{
+  destroyLabelSurface();
+}
 
 void ToggleLabel::handleEvent(const SDL_Event &event)
 {
   if(event.type == SDL_KEYDOWN)
     switch (event.key.keysym.sym) {
     case SDLK_RETURN:
-      letsToggle();
       act();
       break;
     }
@@ -48,7 +48,7 @@ void ToggleLabel::letsToggle()
 
 void ToggleLabel::constructLabelSurface()
 {
-  labelSurface = TTF_RenderText_Solid(
+  labelSurface = TTF_RenderText_Blended(
 				      ResourceData::font, toggle_text.c_str(), color);
   Rect<int> blitRect(get_rect(labelSurface));
   blitRect.setCenter(rect.getCenter());
@@ -56,6 +56,11 @@ void ToggleLabel::constructLabelSurface()
     
   srcrect = Rect<int>(Vector2<int>(), blitRect.diagonal).getSDL_Rect();
   dstrect = Rect<int>(blitRect.pos, Vector2<int>()).getSDL_Rect();
+}
+
+void ToggleLabel::destroyLabelSurface()
+{
+  SDL_FreeSurface(labelSurface);
 }
 
 void ToggleLabel::freshToggleText()
@@ -68,6 +73,8 @@ void ToggleLabel::freshToggleText()
 
 void ToggleLabel::act()
 {
-  if(action != NULL)
+  if(action != NULL){
+    letsToggle();
     (*action)(toggle);
+  }
 }

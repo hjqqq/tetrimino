@@ -11,8 +11,10 @@ class NumberLabel : public Label{
   NumberLabel(const Rect<int> &_rect,
 	      const std::string &_text,
 	      const std::string &_unit,
+	      const double &_number,
+	      const double &_min_number,
+	      const double &_max_number,
 	      const double &_plus_factor,
-	      const double &_number = 0,
 	      const SDL_Color &_color = black);
   
   virtual ~NumberLabel();
@@ -24,12 +26,15 @@ class NumberLabel : public Label{
   double number;
   double default_number;
   const double PLUS_FACTOR;
+  const double MIN_NUMBER;
+  const double MAX_NUMBER;
   const std::string UNIT;
   std::string number_text;
   std::string show_text;
   bool input_state;
 
   void constructLabelSurface();
+  void destroyLabelSurface();
   void getUserInput(const SDL_Event&);
   void toggleInputState();
 

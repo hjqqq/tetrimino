@@ -23,7 +23,8 @@ namespace StableData{
     const int screenSizeY = 600;
     const Vector2<int> screenSize(screenSizeX, screenSizeY);
 
-    const Rect<int> menuRect(200, 300, 400, 200);
+    const Rect<int> menuRect(200, 100, 400, 400);
+    const Rect<int> labelRect(0, 0, 400, 50);
 
     const int minoPixSizeX = 20;
     const int minoPixSizeY = 20;

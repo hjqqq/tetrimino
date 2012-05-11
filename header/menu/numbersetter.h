@@ -8,15 +8,16 @@ class NumberSetter : public Action{
  public:
  NumberSetter(T &_sys) : sys(_sys) {}
   
-  void operator()(const double);
-
+  inline void operator()(const double &);
+  
  private:
   T &sys;
 };
 
 template <typename T>
-void NumberSetter<T>::operator()(const double value)
+void NumberSetter<T>::operator()(const double & value)
 {
   sys = (T)value;
 }
+
 #endif /* _NUMBERSETTER_H_ */

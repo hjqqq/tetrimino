@@ -5,8 +5,8 @@
 class Action{
 public:
     virtual void operator()();
-    virtual void operator()(const bool);
-    virtual void operator()(const double);
+    virtual void operator()(const bool &);
+    virtual void operator()(const double &);
 };
 
 #endif

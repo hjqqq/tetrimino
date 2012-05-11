@@ -2,15 +2,12 @@
 #include "widget.h"
 
 Widget::Widget(const Rect<int> &_rect):
-    rect(_rect)
-{
-  action = NULL;
-}
+  rect(_rect),action(NULL)
+{}
 
 Widget::~Widget()
 {
-  if(action != NULL)
-    delete action;
+  delete action;
 }
 
 void Widget::handleEvent(const SDL_Event &event)
@@ -21,10 +18,10 @@ void Widget::update()
 
 const Rect<int> Widget::getRect() const
 {
-    return rect;
+  return rect;
 }
 
 void Widget::setRect(const Rect<int> &newRect)
 {
-    rect = newRect;
+  rect = newRect;
 }

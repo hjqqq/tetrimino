@@ -15,14 +15,18 @@ class MenuHolder{
  private:
   void constructMainMenu();
   void constructOptionMenu();
-  void constructControlMenu();
-  void selectControlMenu(const SDL_Event &);
+  void constructPlayerMenu();
+  void constructKeySetMenu();
+  void selectPlayerMenu(const SDL_Event &);
 
   Menu * mainMenu;
   Menu * optionMenu;
 
-  std::vector<Menu*> controlMenuVector;
-  int currentMenuSelector;
+  std::vector<Menu*> playerMenuVector;
+  std::vector<Menu*>::iterator playerMenuIter;
+  
+  std::vector<Menu*> keySetMenuVector;
+  std::vector<Menu*>::iterator keySetMenuIter;
 };
 
 #endif

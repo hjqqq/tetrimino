@@ -26,6 +26,7 @@ class KeySetLabel : public Label{
   const SDLKey default_key;
   
   void constructLabelSurface();
+  void destroyLabelSurface();
   void act();
   void getUserInput();
   inline void freshShowText();

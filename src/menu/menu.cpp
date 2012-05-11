@@ -1,7 +1,7 @@
 #include <iostream>
 #include "SDL_draw.h"
 #include "menu.h"
-#include "optiondata.h"
+#include "resourcedata.h"
 #include "color.h"
 
 Menu::Menu(const Rect<int> &_rect):
@@ -68,8 +68,8 @@ void Menu::update()
 void Menu::updateSelect()
 {
     SDL_Rect dstrect = labelVector[select]->getRect().getSDL_Rect();
-    Uint32 color = SDL_MapRGB(OptionData::display->format, black.r, black.g, black.b);
-    Draw_Round(OptionData::display, dstrect.x, dstrect.y, dstrect.w, dstrect.h, 50, color);
+    Uint32 color = SDL_MapRGB(ResourceData::display->format, black.r, black.g, black.b);
+    Draw_Round(ResourceData::display, dstrect.x, dstrect.y, dstrect.w, dstrect.h, 50, color);
 }
 
 void Menu::setRect(const Rect<int> &newRect)

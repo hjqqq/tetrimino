@@ -1,15 +1,20 @@
 #include <string>
 #include "numberlabel.h"
+#include "resourcedata.h"
 
 NumberLabel::NumberLabel(const Rect<int> &_rect,
 			 const std::string &_text,
 			 const std::string &_unit,
-			 const double &_plus_factor,
 			 const double &_number,
+			 const double &_min_number,
+			 const double &_max_number,
+			 const double &_plus_factor,
 			 const SDL_Color &_color) :
   Label(_rect, _text, _color), number(_number), 
   default_number(_number), UNIT(_unit), 
-  PLUS_FACTOR(_plus_factor)
+  PLUS_FACTOR(_plus_factor),
+  MIN_NUMBER(_min_number),
+  MAX_NUMBER(_max_number)
 {
   SDL_EnableUNICODE(SDL_ENABLE);
   input_state = false;
@@ -17,12 +22,12 @@ NumberLabel::NumberLabel(const Rect<int> &_rect,
   syncToNumberText();
   freshShowText();
   
-  destroyLabelSurface();
   constructLabelSurface();
 }
 
 NumberLabel::~NumberLabel()
 {  
+  destroyLabelSurface();
   SDL_EnableUNICODE(SDL_DISABLE);
 }
 
@@ -39,14 +44,15 @@ void NumberLabel::handleEvent( const SDL_Event &event)
       case SDLK_r: 
 	reset(); 
 	break;
-      case SDLK_LEFT:
-	if( (number -= PLUS_FACTOR) < 0)
-	  number +=PLUS_FACTOR;
+      case SDLK_MINUS:
+	if( (number -= PLUS_FACTOR) <= MIN_NUMBER)
+	  number = MIN_NUMBER;;
 	syncToNumberText();
 	act();
 	break;
-      case SDLK_RIGHT:
-	number += PLUS_FACTOR;
+      case SDLK_EQUALS:
+	if( (number += PLUS_FACTOR) >= MAX_NUMBER)
+	  number = MAX_NUMBER;
 	syncToNumberText();
 	act();
 	break;
@@ -59,7 +65,7 @@ void NumberLabel::update()
   destroyLabelSurface();
   constructLabelSurface();
   SDL_BlitSurface(labelSurface, &srcrect,
-		  OptionData::display, &dstrect);
+		  ResourceData::display, &dstrect);
 }
 
 void NumberLabel::getUserInput(const SDL_Event &event)
@@ -81,8 +87,8 @@ void NumberLabel::getUserInput(const SDL_Event &event)
 
 void NumberLabel::constructLabelSurface()
 {
-  labelSurface = TTF_RenderText_Solid(
-				      OptionData::font, show_text.c_str(), color);
+  labelSurface = TTF_RenderText_Blended(
+				      ResourceData::font, show_text.c_str(), color);
   Rect<int> blitRect(get_rect(labelSurface));
   blitRect.setCenter(rect.getCenter());
   blitRect.clipRect(rect);
@@ -91,11 +97,17 @@ void NumberLabel::constructLabelSurface()
   dstrect = Rect<int>(blitRect.pos, Vector2<int>()).getSDL_Rect();
 }
 
+void NumberLabel::destroyLabelSurface()
+{
+  SDL_FreeSurface(labelSurface);
+}
 void NumberLabel::toggleInputState()
 {
   if (input_state == true) {
     input_state = false;
-    if (number_text.length() == 0) 
+    if ( (number_text.length() == 0) || 
+	 (atof(number_text.c_str()) < MIN_NUMBER ) ||
+	 (atof(number_text.c_str()) > MAX_NUMBER) )
       syncToNumberText();
     else
       syncToNumber();
