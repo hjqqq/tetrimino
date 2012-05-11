@@ -9,19 +9,19 @@
 #include "wallkickdata.h"
 #include "randomqueue.h"
 
-Game::Game(PlayerData *_playerData, RandomQueue *_randomQueue):
+Game::Game(PlayerData *_playerData):
     playerData(_playerData),
-    randomQueue(_randomQueue),
     show(new Show(_playerData))
 {
     initTimer();
     initCounter();
     initStatus();
+    gameStatus = PREPARE;
+    defence = attack = this;
 }
 
 Game::~Game()
 {
-    delete randomQueue;
     delete show;
     delete lockDelayTimer;
     delete areDelayTimer;
@@ -38,11 +38,17 @@ void Game::setAttack(Game *game)
     attack = game;
 }
 
+void Game::setRandomQueue(RandomQueue *randomQueue)
+{
+    this->randomQueue = randomQueue;
+}
+
 void Game::initTimer()
 {
     dasDelayTimer = new Timer(playerData->dasDelayTime);
     areDelayTimer = new Timer(OptionData::areDelayTime);
-    lockDelayTimer = new Timer(OptionData::lockDelayTime);    
+    lockDelayTimer = new Timer(OptionData::lockDelayTime);
+    gameoverDelayTimer = new Timer(2000);
 }
 
 void Game::initCounter()
@@ -73,14 +79,10 @@ void Game::initCounter()
 
 void Game::initStatus()
 {
-    defence = attack = this;
-    
-    gameStatus = START;
-
     for (int j = 0; j != StableData::mapSizeY; ++j)
 	for (int i = 0; i != StableData::mapSizeX; ++i)
 	    mapData[i][j] = BACKCOLOR;
-
+    
     mapGrow = 0;
     series = 0;
     backToBack = false;
@@ -98,6 +100,9 @@ void Game::initStatus()
 void Game::handleEvent(const SDL_Event &event)
 {
     switch (gameStatus){
+    case PREPARE:
+	prepareHandleEvent(event);
+	break;
     case START: case AREDELAY:
 	areDelayHandleEvent(event);
 	break;
@@ -110,6 +115,9 @@ void Game::handleEvent(const SDL_Event &event)
 void Game::update()
 {
     switch (gameStatus){
+    case PREPARE:
+	prepareUpdate();
+	break;
     case START:
 	startUpdate();
 	break;
@@ -119,28 +127,52 @@ void Game::update()
     case DROP:
 	dropUpdate();
 	break;
-    case LOSS:
-	lossUpdate();
-	break;
     case WIN:
 	winUpdate();
 	break;
     }
 }
 
+void Game::prepareHandleEvent(const SDL_Event &event)
+{
+    if (event.type == SDL_KEYDOWN){
+	SDLKey sym = event.key.keysym.sym;
+	if (sym == playerData->moveLeft ||
+	    sym == playerData->moveRight ||
+	    sym == playerData->rotateLeft ||
+	    sym == playerData->rotateRight ||
+	    sym == playerData->hardDrop ||
+	    sym == playerData->hold){
+	    
+	    initStatus();
+	    show->mapShow(mapData);
+	    show->messageShow("Ready !!!");
+	    gameStatus = READY;
+	}
+    }    
+}
+
+void Game::prepareUpdate()
+{
+    show->mapShow(mapData);
+    show->messageShow("Ready ???");
+}
+
 void Game::startUpdate()
 {
     areDelayTimer->reset();
+    
     clearMap();
     show->mapShow(mapData);
+    
     createBlock();
+    show->previewShow(randomQueue->begin(), randomQueue->begin() + 4);
     
-    show->previewShow(randomQueue->begin(), randomQueue->begin() + 4);        
     calGhostPosY();
-    
     show->ghostShow(getLockPos(),
 		    shape,
 		    direction);
+    
     gameStatus = AREDELAY;
 }
 
@@ -204,10 +236,13 @@ void Game::areDelayHandleEvent(const SDL_Event &event)
 		direction == 0? 3: direction - 1);
 	}
 	else if (sym == playerData->hardDrop){
-	    lockStatus = false;
 	    pos = getLockPos();
-	    fillMap();
-	    gameStatus = START;	    
+	    if (!checkBlock(pos, direction))
+		gameOver();
+	    else{
+		fillMap();
+		gameStatus = START;
+	    }
 	}
 	else if (sym == playerData->hold){
 	    if (holdStatus == PREPAREHOLD){
@@ -225,17 +260,27 @@ void Game::areDelayUpdate()
 		    shape,
 		    direction);
     if (areDelayTimer->checkTimeOut()){
-	if (normalDropCounter != NULL)
-	    normalDropCounter->reset();
 	if (!checkBlock(pos, direction)){
-	    defence->setAttack(attack);
-	    if (defence == attack)
-		defence->gameStatus = WIN;
-	    randomQueue->erase();	    
-	    gameStatus = LOSS;
-	} else
+	    gameOver();
+	} else{
+	    if (normalDropCounter != NULL)
+		normalDropCounter->reset();	    
 	    gameStatus = DROP;
+	}
     }
+}
+
+void Game::gameOver()
+{
+    defence->attack = attack;
+    attack->defence = defence;
+    if (defence == attack){
+	defence->gameStatus = WIN;
+	defence->show->messageShow("Win !!!");
+	defence->gameoverDelayTimer->reset();
+    }
+    gameStatus = GAMEOVER;
+    show->messageShow("Loss !!!");
 }
 
 void Game::dropHandleEvent(const SDL_Event &event)
@@ -536,17 +581,11 @@ void Game::fillMap()
 	(bool)(mapData[pos.x + 3][pos.y + 1] - BACKCOLOR) +
 	(bool)(mapData[pos.x + 1][pos.y + 3] - BACKCOLOR) +
 	(bool)(mapData[pos.x + 3][pos.y + 3] - BACKCOLOR)== 3){
-	std::cerr << "haha" << std::endl;
 	tSpin = true;
     } else{
 	backToBack = false;
 	tSpin = false;
     }    
-}
-
-void Game::checkTSpin()
-{
-
 }
 
 void Game::clearMap()
@@ -564,8 +603,9 @@ void Game::clearMap()
 	--origY;
     }
 
-    if (this != attack)
+    if (this != attack){
 	addMapGrow(destY + 1);
+    }
 
     while (destY >= 0){
 	for (int i = 0; i != StableData::mapSize.x; ++i)
@@ -632,18 +672,18 @@ void Game::addMapGrow(int grow)
 	    backToBack = true;
 	else{
 	    backToBack = false;
-	    switch (grow){
-	    case 2:
-		grow = 1;
-		break;
-	    case 3:
-		grow = 2;
-		break;
-	    }
+	    if (grow != 0)
+		--grow;
 	}
     }
-    attack->mapGrow = grow;
-    attack->show->growBarShow(grow);
+    if (mapGrow >= grow)
+	mapGrow -= grow;
+    else{
+	grow -= mapGrow;
+	mapGrow = 0;
+	attack->mapGrow += grow;
+	attack->show->growBarShow(attack->mapGrow);
+    }
 }
 
 bool Game::checkMapLineFull(int y)
@@ -678,13 +718,10 @@ void Game::calGhostPosY()
 	}
     }
 }
-void Game::lossUpdate()
-{
-
-    std::cerr << "loss\n";
-}
 
 void Game::winUpdate()
 {
-    std::cerr << "win\n";
+    if (gameoverDelayTimer->checkTimeOut()){
+	gameStatus = GAMEOVER;
+    }
 }

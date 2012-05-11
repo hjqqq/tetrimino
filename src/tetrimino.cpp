@@ -94,7 +94,7 @@ void Tetrimino::gameloop()
 {
     GameHolder gameHolder;
     SDL_Event event;
-    while (OptionData::gameStatus != OptionData::QUITGAME){
+    while (OptionData::gameHolderStatus != OptionData::QUITGAME){
 	while (SDL_PollEvent(&event)){
 	    if (event.type == SDL_QUIT){
 		OptionData::tetriminoStatus = OptionData::QUIT;
@@ -106,7 +106,7 @@ void Tetrimino::gameloop()
 	SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
 	ResourceData::clock->tick();
     }
-    OptionData::gameStatus = OptionData::RUN;
+    OptionData::gameHolderStatus = OptionData::READY;
     OptionData::tetriminoStatus = OptionData::MENULOOP;
 }
 

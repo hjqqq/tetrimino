@@ -22,8 +22,8 @@ namespace OptionData{
     enum MenuHolderStatus{MAINMENU, CONTROL1P, CONTROL2P, OPTIONMENU, QUITMENU};
     extern MenuHolderStatus menuHolderStatus;
 
-    enum GameStatus{RUN, QUITGAME};
-    extern GameStatus gameStatus;
+    enum GameHolderStatus{READY, RUN, PAUSE, QUITGAME};
+    extern GameHolderStatus gameHolderStatus;
 
     extern int areDelayTime;
     extern int lockDelayTime;
@@ -33,8 +33,9 @@ namespace OptionData{
     extern PlayerData playerData2;    
     extern PlayerData playerData3;
     extern PlayerData playerData4;
+    
     extern PlayerData* allPlayerData[StableData::playerSizeMax];
-
+    
     extern int ghostAlpha;
 };
 

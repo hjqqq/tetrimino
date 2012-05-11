@@ -11,13 +11,19 @@
 #include "randomqueue.h"
 #include "show.h"
 
+class GameHolder;
+
 class Game{
 public:
-    Game(PlayerData *_playerData, RandomQueue *randomQueue);
+    enum GameStatus{PREPARE, READY, START, AREDELAY,
+		    DROP, WIN, GAMEOVER, QUITGAME};
+    GameStatus gameStatus;    
+    Game(PlayerData *_playerData);
     ~Game();
 
     void setDefence(Game *game);
     void setAttack(Game *game);
+    void setRandomQueue(RandomQueue *randomQueue);
     
     void initTimer();
     void initCounter();
@@ -26,11 +32,17 @@ public:
     void handleEvent(const SDL_Event &event);
     void update();
 
+    void prepareHandleEvent(const SDL_Event &event);
+    void prepareUpdate();
+
+    void readyUpdate();
+
     void startUpdate();
     void createBlock();
 
     void areDelayHandleEvent(const SDL_Event &event);
     void areDelayUpdate();
+    void gameOver();
     
     void dropHandleEvent(const SDL_Event &event);
     void dropUpdate();
@@ -54,24 +66,25 @@ public:
 
 private:
     PlayerData *playerData;
-    RandomQueue *randomQueue;        
+    GameHolder *gameHolder;
+    RandomQueue *randomQueue;
+    
     Show *show;
     
-    Game *defence;
-    Game *attack;
+    Game *origDefence, *defence;
+    Game *origAttack, *attack;
     
     Timer *dasDelayTimer;
     Timer *areDelayTimer;
-    Timer *lockDelayTimer;    
+    Timer *lockDelayTimer;
+    Timer *gameoverDelayTimer;
 
     Counter *horizontalLeftCounter;
     Counter *horizontalRightCounter;
     Counter *normalDropCounter;
     Counter *softDropCounter;
 
-    enum GameStatus{START, AREDELAY, DROP, LOSS, WIN, QUITGAME};    
-    GameStatus gameStatus;
-    
+    bool ready;
     int mapData[StableData::mapSizeX][StableData::mapSizeY];
     int mapGrow;
     int series;

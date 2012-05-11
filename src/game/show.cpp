@@ -3,6 +3,7 @@
 
 #include "vector2.h"
 #include "color.h"
+#include "utility.h"
 #include "blockdata.h"
 #include "show.h"
 
@@ -27,6 +28,10 @@ Show::Show(PlayerData *_playerData):
     smallNextPixPos = toPixPos(Vector2<int>(1, 6));
     
     mapPixPos = toPixPos(Vector2<int>(4, 6));
+    mapPixRect = Rect<int>(
+	mapPixPos,
+	Vector2<int>(StableData::minoPixSize.x * StableData::mapSize.x,
+		     StableData::minoPixSize.y * StableData::mapSize.y));
     
     holdPixPos = toPixPos(Vector2<int>(StableData::mapSize.x + 2, 3));
     holdPixRect = halfBlockPixRect;
@@ -207,3 +212,16 @@ void Show::growBarShow(int mapGrow)
 		 &growFillPixRectTemp,
 		 SDL_Color2Uint32(minoColor[GARBAGECOLOR]));    
 }
+
+void Show::messageShow(std::string str)
+{
+    SDL_Surface *messageSurface = TTF_RenderText_Solid(
+	ResourceData::font, str.c_str(), white);
+    Rect<int> blitRect(get_rect(messageSurface));
+    blitRect.setCenter(mapPixRect.getCenter());
+    SDL_Rect blitRectTemp = blitRect.getSDL_Rect();
+    SDL_BlitSurface(messageSurface, NULL,
+		    ResourceData::display, &blitRectTemp);
+    SDL_FreeSurface(messageSurface);
+}
+
