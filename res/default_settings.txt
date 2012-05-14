@@ -1,0 +1,21 @@
+areDelayTime 200
+lockDelayTime 500
+playerSize 2
+ghostAlpha 30
+1pGhost 1
+1pHolder 1
+1pHorizontalSpeed 0.3
+1pNormalDropSpeed 0.05
+1pSoftDropSpeed 0.5
+1pRandomQueueDataIndex 0
+1pRandomizerType 1
+1pMoveLeft 260
+1pMoveRight 262
+1pRotateLeft 263
+1pRotateRight 265
+1pSoftDrop 261
+1pHardDrop 264
+1pHold 256
+1pPosX 20
+1pPosY 20
+

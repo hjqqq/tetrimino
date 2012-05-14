@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <vector>
+#include <string>
 
 #include "SDL.h"
 #include "label.h"
@@ -27,7 +28,9 @@ public:
 private:
     void handleKey(const SDLKey &sym);
     void updateSelect();
-    
+    SDL_Surface *menufg;
+    std::string image_file;
+
     std::vector<Widget*> labelVector;
     int select;
 };

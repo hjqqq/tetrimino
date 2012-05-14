@@ -15,7 +15,8 @@
    游戏中无法改变的常量
  */
 namespace StableData{
-    const std::string fontFile("res/MINYN___.ttf");
+  //    const std::string fontFile("res/MINYN___.ttf");
+    const std::string fontFile("res/comic.ttf");
     const std::string backgroundFile("res/back.jpg");
     const int fps = 60;
     

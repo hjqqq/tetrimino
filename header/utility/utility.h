@@ -8,6 +8,7 @@
 #include "resourcedata.h"
 #include "optiondata.h"
 
+SDL_Surface *image_load_alpha( const char *file);
 SDL_Surface *image_load(const char *file);
 inline const SDL_Rect get_rect(const SDL_Surface *surface);
 inline Uint32 SDL_Color2Uint32(const SDL_Color &color);

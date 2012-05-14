@@ -5,6 +5,7 @@
 #include "SDL_image.h"
 #include "SDL_ttf.h"
 #include "utility.h"
+#include "setting.h"
 
 /**
    @file tetrimino.h
@@ -19,6 +20,8 @@ public:
     Tetrimino();
     ~Tetrimino();
 private:
+    Setting menu_setting;
+
     void mainloop();
     void menuloop();
     void gameloop();

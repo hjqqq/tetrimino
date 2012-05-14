@@ -9,6 +9,8 @@
 #include "togglesetter.h"
 #include "numberlabel.h"
 #include "numbersetter.h"
+#include "startsetter.h"
+#include "quitsetter.h"
 #include "keysetlabel.h"
 using namespace std;
 
@@ -95,12 +97,11 @@ void MenuHolder::constructMainMenu()
     new ValueSetter<OptionData::MenuHolderStatus>(
 						  OptionData::menuHolderStatus,
 						  OptionData::OPTIONMENU);
-  ValueSetter<OptionData::MenuHolderStatus> *quitSetter = 
-    new ValueSetter<OptionData::MenuHolderStatus>(
-						  OptionData::menuHolderStatus,
-						  OptionData::QUITMENU);
+  QuitSetter *quitSetter = new QuitSetter;
+  StartSetter *startSetter = new StartSetter;
 
   // combine setters & labels
+  startLabel->setAction(startSetter);
   optionLabel->setAction(optionSetter);
   quitLabel->setAction(quitSetter);
 
@@ -115,32 +116,52 @@ void MenuHolder::constructMainMenu()
 void MenuHolder::constructOptionMenu()
 {
   /******************************* labels **********************************/
-  
+  NumberLabel *playerSizeLabel = new NumberLabel(
+						     StableData::labelRect, "Player Size", "P", 
+						     OptionData::playerSize, 1,4, 1);
+  NumberLabel *ghostAlphaLabel = new NumberLabel(
+						     StableData::labelRect, "Ghost Alpha", "%", 
+						     OptionData::ghostAlpha, 0 ,100, 5);
+  NumberLabel *areDelayTimeLabel = new NumberLabel(
+						     StableData::labelRect, "ARE delay time", "ms", 
+						     OptionData::areDelayTime, 0, 1000, 50);
+  NumberLabel *lockDelayTimeLabel = new NumberLabel(
+						     StableData::labelRect, "LOCK delay time", "ms", 
+						     OptionData::lockDelayTime, 0, 1000, 50);
   SimpleLabel *playerLabel = new SimpleLabel( Rect<int>(0, 0, 400, 50), "Player Setting");
-  
-  /****************************** setters *********************************/
+    /****************************** setters *********************************/
+  NumberSetter<int> * playerSizeSetter =
+    new NumberSetter<int>(OptionData::playerSize);
+  NumberSetter<int> * ghostAlphaSetter =
+    new NumberSetter<int>(OptionData::ghostAlpha);
+  NumberSetter<int> * areDelayTimeSetter =
+    new NumberSetter<int>(OptionData::areDelayTime);
+  NumberSetter<int> * lockDelayTimeSetter =
+    new NumberSetter<int>(OptionData::lockDelayTime);
   ValueSetter<OptionData::MenuHolderStatus> *playerSetter = 
     new ValueSetter<OptionData::MenuHolderStatus>(
 						  OptionData::menuHolderStatus,
 						  OptionData::PLAYERMENU);
-
   /*********************** combine setters & labels **************************/
+  playerSizeLabel->setAction(playerSizeSetter);
+  ghostAlphaLabel->setAction(ghostAlphaSetter);
+  areDelayTimeLabel->setAction(areDelayTimeSetter);
+  lockDelayTimeLabel->setAction(lockDelayTimeSetter);
   playerLabel->setAction(playerSetter);
-
-  /********************** construct menu & setup menu ***********************/
+    /********************** construct menu & setup menu ***********************/
   optionMenu = new Menu(StableData::menuRect);
+  optionMenu->addLabel(playerSizeLabel);
+  optionMenu->addLabel(ghostAlphaLabel);
+  optionMenu->addLabel(areDelayTimeLabel);
+  optionMenu->addLabel(lockDelayTimeLabel);
   optionMenu->addLabel(playerLabel);
 }
 
 void MenuHolder::constructPlayerMenu()
 {
   /******************************** labels ************************************/
-  SimpleLabel * player1pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "1p Keyboard Setting");
-  SimpleLabel * player2pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "2p Keyboard Setting");
-  SimpleLabel * player3pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "3p Keyboard Setting");
-  SimpleLabel * player4pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "4p Keyboard Setting");
-
   // 1p labels
+  SimpleLabel * player1pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "1p Keyboard Setting");
   ToggleLabel *toggleGhost1pLabel = new ToggleLabel(
 						    Rect<int>(0,0,400,50), "Ghost",OptionData::playerData1.ghost);
   ToggleLabel *toggleHolder1pLabel = new ToggleLabel(
@@ -158,6 +179,7 @@ void MenuHolder::constructPlayerMenu()
 						      StableData::labelRect, "SoftDrop Speed", "G",
 						      OptionData::playerData1.softDropSpeed,0.05, 20, 0.1);
   // 2p labels
+  SimpleLabel * player2pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "2p Keyboard Setting");
   ToggleLabel *toggleGhost2pLabel = new ToggleLabel(
 						    Rect<int>(0,0,400,50), "Ghost",OptionData::playerData2.ghost);
   ToggleLabel *toggleHolder2pLabel = new ToggleLabel(
@@ -175,7 +197,8 @@ void MenuHolder::constructPlayerMenu()
 						      StableData::labelRect, "SoftDrop Speed", "G",
 						      OptionData::playerData2.softDropSpeed,0.05, 20, 0.1);
   // 3p labels
-ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
+  SimpleLabel * player3pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "3p Keyboard Setting");
+  ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
 						    Rect<int>(0,0,400,50), "Ghost",OptionData::playerData3.ghost);
   ToggleLabel *toggleHolder3pLabel = new ToggleLabel(
 						     Rect<int>(0,0,400,50),"Holder", OptionData::playerData3.holder);
@@ -192,7 +215,8 @@ ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
 						      StableData::labelRect, "SoftDrop Speed", "G",
 						      OptionData::playerData3.softDropSpeed,0.05, 20, 0.1);
   // 4p labels
-ToggleLabel *toggleGhost4pLabel = new ToggleLabel(
+  SimpleLabel * player4pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "4p Keyboard Setting");
+  ToggleLabel *toggleGhost4pLabel = new ToggleLabel(
 						    Rect<int>(0,0,400,50), "Ghost",OptionData::playerData4.ghost);
   ToggleLabel *toggleHolder4pLabel = new ToggleLabel(
 						     Rect<int>(0,0,400,50),"Holder", OptionData::playerData4.holder);
