@@ -3,7 +3,7 @@
 import os, re
 
 searchDirs = ["header", "src"]
-filenameRegex = ".*\.(cpp|h)"
+filenameRegex = ".*\.(cpp|h)$"
 count = 0
 
 def countFile(filename):

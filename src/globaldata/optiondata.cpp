@@ -6,7 +6,7 @@ OptionData::MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
 OptionData::GameHolderStatus OptionData::gameHolderStatus = READY;
 
 int OptionData::areDelayTime = 200;
-int OptionData::lockDelayTime = 500;
+int OptionData::lockDelayTime = 800;
 
 int OptionData::playerSize;
 

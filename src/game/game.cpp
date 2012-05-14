@@ -237,8 +237,13 @@ void Game::areDelayHandleEvent(const SDL_Event &event)
 	}
 	else if (sym == playerData->hardDrop){
 	    pos = getLockPos();
-	    if (!checkBlock(pos, direction))
+	    if (!checkBlock(pos, direction)){
 		gameOver();
+		std::cerr << "harddrop "
+			  << pos << " "
+			  << shape << " "
+			  << direction << "\n";
+	    }
 	    else{
 		fillMap();
 		gameStatus = START;
@@ -262,6 +267,10 @@ void Game::areDelayUpdate()
     if (areDelayTimer->checkTimeOut()){
 	if (!checkBlock(pos, direction)){
 	    gameOver();
+	    std::cerr << "update "
+		      << pos << " "
+		      << shape << " "
+		      << direction << " " << "\n";
 	} else{
 	    if (normalDropCounter != NULL)
 		normalDropCounter->reset();	    
@@ -591,7 +600,8 @@ void Game::fillMap()
 void Game::clearMap()
 {
     int origY = StableData::mapSize.y - 1,
-	destY = origY;
+	destY = origY,
+	eliminate;
 
     while (origY >= 0){
 	if (!checkMapLineFull(origY)){
@@ -602,9 +612,9 @@ void Game::clearMap()
 	}
 	--origY;
     }
-
+    eliminate = destY + 1;
     if (this != attack){
-	addMapGrow(destY + 1);
+	addMapGrow(eliminate);
     }
 
     while (destY >= 0){
@@ -613,7 +623,7 @@ void Game::clearMap()
 	--destY;
     }
     
-    if (mapGrow != 0){
+    if (mapGrow != 0 && eliminate == 0 && holdStatus != HOLD){
 	for (int j = 0; j != StableData::mapSize.y - mapGrow; ++j){
 	    for (int i = 0; i != StableData::mapSize.x; ++i)
 		mapData[i][j] = mapData[i][j + mapGrow];
@@ -629,8 +639,8 @@ void Game::clearMap()
 		    mapData[i][j] = GARBAGECOLOR;
 	    }
 	}
+	mapGrow = 0;
     }
-    mapGrow = 0;
     show->growBarShow(mapGrow);    
 }
 

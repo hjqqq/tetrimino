@@ -71,8 +71,8 @@ private:
     
     Show *show;
     
-    Game *origDefence, *defence;
-    Game *origAttack, *attack;
+    Game *defence;
+    Game *attack;
     
     Timer *dasDelayTimer;
     Timer *areDelayTimer;

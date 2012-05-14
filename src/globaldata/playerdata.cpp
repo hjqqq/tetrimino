@@ -40,6 +40,21 @@ void initPlayerData2()
     OptionData::playerData2.showPixPos = Vector2<int>(420, 20);
     OptionData::playerData1.randomizerType =
 	PlayerData::HISTORY4ROLL;    
+
+    //JJJ
+    /*
+      OptionData::playerData2.moveLeft = SDLK_KP4;
+    OptionData::playerData2.moveRight = SDLK_KP6;
+    OptionData::playerData2.rotateLeft = SDLK_KP7;
+    OptionData::playerData2.rotateRight = SDLK_RIGHT;
+    OptionData::playerData2.softDrop = SDLK_KP5;
+    OptionData::playerData2.hardDrop = SDLK_KP8;
+    OptionData::playerData2.hold = SDLK_KP0;    
+    */
+
+    
+    //ZT
+
     
     OptionData::playerData2.moveLeft = SDLK_KP1;
     OptionData::playerData2.moveRight = SDLK_KP3;
@@ -47,5 +62,6 @@ void initPlayerData2()
     OptionData::playerData2.rotateRight = SDLK_RIGHT;
     OptionData::playerData2.softDrop = SDLK_KP5;
     OptionData::playerData2.hardDrop = SDLK_KP2;
-    OptionData::playerData2.hold = SDLK_UP;    
+    OptionData::playerData2.hold = SDLK_UP;
+    
 }
