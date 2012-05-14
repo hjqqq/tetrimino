@@ -14,8 +14,8 @@ public:
 	  const SDL_Color &_color = black);
     virtual ~Label();
 
-    virtual void handleEvent(const SDL_Event &event);
-    virtual void update();
+    virtual void handleEvent(const SDL_Event &event) = 0;
+    virtual void update() = 0;
     
     void setColor(const SDL_Color &newColor);
     void setText(const std::string &newText);
@@ -23,14 +23,13 @@ public:
     virtual void setRect(const Rect<int> &newRect);
     
  protected:
-    virtual void constructLabelSurface();
-    void destroyLabelSurface();
-    
     std::string text;
     SDL_Color color;
-    
     SDL_Rect srcrect, dstrect;
     SDL_Surface *labelSurface;
+    
+    virtual void constructLabelSurface() = 0;
+    virtual void destroyLabelSurface() = 0;
 };
 
 #endif

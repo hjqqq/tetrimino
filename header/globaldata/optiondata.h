@@ -19,7 +19,7 @@ namespace OptionData{
     enum TetriminoStatus{MENULOOP, GAMELOOP, QUIT};
     extern TetriminoStatus tetriminoStatus;
     
-    enum MenuHolderStatus{MAINMENU, CONTROL1P, CONTROL2P, OPTIONMENU, QUITMENU};
+    enum MenuHolderStatus{MAINMENU, OPTIONMENU, PLAYERMENU, KEYSETMENU, QUITMENU};
     extern MenuHolderStatus menuHolderStatus;
 
     enum GameHolderStatus{READY, RUN, PAUSE, QUITGAME};

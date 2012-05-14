@@ -15,7 +15,8 @@
    游戏中无法改变的常量
  */
 namespace StableData{
-    const std::string fontFile("res/MINYN___.ttf");
+  //    const std::string fontFile("res/MINYN___.ttf");
+    const std::string fontFile("res/comic.ttf");
     const std::string backgroundFile("res/back.jpg");
     const int fps = 60;
     
@@ -23,7 +24,8 @@ namespace StableData{
     const int screenSizeY = 600;
     const Vector2<int> screenSize(screenSizeX, screenSizeY);
 
-    const Rect<int> menuRect(200, 300, 400, 200);
+    const Rect<int> menuRect(200, 100, 400, 400);
+    const Rect<int> labelRect(0, 0, 400, 50);
 
     const int minoPixSizeX = 20;
     const int minoPixSizeY = 20;

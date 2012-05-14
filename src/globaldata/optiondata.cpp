@@ -1,7 +1,7 @@
 #include "blockdata.h"
 #include "optiondata.h"
 
-OptionData::TetriminoStatus OptionData::tetriminoStatus = GAMELOOP;
+OptionData::TetriminoStatus OptionData::tetriminoStatus = MENULOOP;
 OptionData::MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
 OptionData::GameHolderStatus OptionData::gameHolderStatus = READY;
 

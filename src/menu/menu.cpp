@@ -1,15 +1,20 @@
 #include <iostream>
-#include "SDL_draw.h"
+#include <string>
 #include "menu.h"
-#include "optiondata.h"
+#include "resourcedata.h"
 #include "color.h"
+#include "utility.h"
 
 Menu::Menu(const Rect<int> &_rect):
     Widget(_rect), select(0)
-{}
+{
+  image_file = "res/menufg.png";
+  menufg = image_load_alpha(image_file.c_str());
+}
 
 Menu::~Menu()
 {
+  SDL_FreeSurface(menufg);
     for (int i = 0; i != labelVector.size(); ++i){
 	delete labelVector[i];
     }
@@ -68,8 +73,7 @@ void Menu::update()
 void Menu::updateSelect()
 {
     SDL_Rect dstrect = labelVector[select]->getRect().getSDL_Rect();
-    Uint32 color = SDL_MapRGB(OptionData::display->format, black.r, black.g, black.b);
-    Draw_Round(OptionData::display, dstrect.x, dstrect.y, dstrect.w, dstrect.h, 50, color);
+    SDL_BlitSurface(menufg, &dstrect, ResourceData::display, &dstrect);
 }
 
 void Menu::setRect(const Rect<int> &newRect)
@@ -99,6 +103,4 @@ void Menu::setSelect(int index)
 {
     select = index;
 }
-
-
 

@@ -2,11 +2,13 @@
 #define UTILITY_H
 
 #include <cstdlib>
+#include <string>
 
 #include "SDL_image.h"
 #include "resourcedata.h"
 #include "optiondata.h"
 
+SDL_Surface *image_load_alpha( const char *file);
 SDL_Surface *image_load(const char *file);
 inline const SDL_Rect get_rect(const SDL_Surface *surface);
 inline Uint32 SDL_Color2Uint32(const SDL_Color &color);
@@ -31,5 +33,5 @@ inline int randInt(int begin, int end)
     return std::rand() % length + begin;
 }
 
-
+void doubleToString(double, std::string &);
 #endif 
