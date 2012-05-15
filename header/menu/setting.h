@@ -9,16 +9,17 @@ using namespace std;
 
 class Setting{
  public:
-  Setting(const string &_file);
+  Setting(const string &_file, const string &_default_file);
   ~Setting();
 
   void loadSetting();
   void saveSetting();
-  void loadDefaultSetting(const string &);
+  void loadDefaultSetting();
 
  private:
   fstream fs;
   string file;
+  string default_file;
   string key;
   double value;
   map<string,double> setting_map;

@@ -8,13 +8,13 @@
 Menu::Menu(const Rect<int> &_rect):
     Widget(_rect), select(0)
 {
-  image_file = "res/menufg.png";
-  menufg = image_load_alpha(image_file.c_str());
+    image_file = "res/menufg.png";
+    menufg = image_load_alpha(image_file.c_str());
 }
 
 Menu::~Menu()
 {
-  SDL_FreeSurface(menufg);
+    SDL_FreeSurface(menufg);
     for (int i = 0; i != labelVector.size(); ++i){
 	delete labelVector[i];
     }

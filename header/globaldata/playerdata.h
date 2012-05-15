@@ -13,9 +13,6 @@
 struct PlayerData{
     Uint32 dasDelayTime;
         
-    Uint32 areDelayTime;
-    Uint32 lockDelayTime;
-
     double horizontalSpeed;
     double normalDropSpeed;
     double softDropSpeed;
