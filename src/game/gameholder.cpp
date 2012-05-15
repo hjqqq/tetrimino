@@ -1,4 +1,5 @@
 #include "gameholder.h"
+#include "valuesetter.h"
 
 GameHolder::GameHolder()
 {
@@ -20,10 +21,29 @@ GameHolder::GameHolder()
     setRandomQueue();
     setAllGameStatus(Game::PREPARE);
     OptionData::gameHolderStatus = OptionData::READY;
+
+    quitLabelRect = Rect<int>(0, 0, 200, 50);
+    quitLabelBackSurface = SDL_CreateRGBSurface(
+	ResourceData::display->flags,
+	quitLabelRect.diagonal.x,
+	quitLabelRect.diagonal.y,
+	ResourceData::display->format->BitsPerPixel,
+	ResourceData::display->format->Rmask,
+	ResourceData::display->format->Gmask,
+	ResourceData::display->format->Bmask,
+	ResourceData::display->format->Amask);
+    
+    quitLabelRect.setCenter(StableData::screenSize / 2);
+    quitLabel = new QuitLabel(quitLabelRect, "Quit?");
+    quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
+			     OptionData::gameHolderStatus,
+			     OptionData::QUITGAME));
 }
 
 GameHolder::~GameHolder()
 {
+    SDL_FreeSurface(quitLabelBackSurface);
+    delete quitLabel;
     for (int i = 0; i != StableData::playerSizeMax; ++i){
 	delete allGame[i];
 	delete allRandomQueueData[i];
@@ -43,6 +63,9 @@ void GameHolder::handleEvent(const SDL_Event &event)
 	if (event.type == SDL_KEYDOWN){
 	    SDLKey sym = event.key.keysym.sym;
 	    if (sym == SDLK_ESCAPE){
+		SDL_Rect quitLabelRectTemp = quitLabelRect.getSDL_Rect();
+		SDL_BlitSurface(ResourceData::display, &quitLabelRectTemp,
+				quitLabelBackSurface, NULL);
 		OptionData::gameHolderStatus = OptionData::PAUSE;
 	    }
 	}
@@ -54,8 +77,21 @@ void GameHolder::handleEvent(const SDL_Event &event)
 	if (event.type == SDL_KEYDOWN){
 	    SDLKey sym = event.key.keysym.sym;
 	    if (sym == SDLK_ESCAPE){
+		SDL_Rect quitLabelBackRectTemp = quitLabelRect.getSDL_Rect();
+		SDL_BlitSurface(quitLabelBackSurface, NULL,
+				ResourceData::display, &quitLabelBackRectTemp);
 		OptionData::gameHolderStatus = OptionData::RUN;
+	    } else if (sym == SDLK_RETURN){
+		if (quitLabel->getToggle())
+		    OptionData::gameHolderStatus = OptionData::QUITGAME;
+		else{
+		    SDL_Rect quitLabelBackRectTemp = quitLabelRect.getSDL_Rect();
+		    SDL_BlitSurface(quitLabelBackSurface, NULL,
+				    ResourceData::display, &quitLabelBackRectTemp);
+		    OptionData::gameHolderStatus = OptionData::RUN;
+		}
 	    }
+	    quitLabel->handleEvent(event);
 	}
 	break;
     }
@@ -85,9 +121,12 @@ void GameHolder::update()
 	}	
 	break;
     case OptionData::PAUSE:
+	SDL_Rect quitLabelBackRectTemp = quitLabelRect.getSDL_Rect();
+	SDL_BlitSurface(quitLabelBackSurface, NULL,
+			ResourceData::display, &quitLabelBackRectTemp);
+	quitLabel->update();
 	break;
     }
-
 }
 
 bool GameHolder::checkAllGameStatus(Game::GameStatus gameStatus)

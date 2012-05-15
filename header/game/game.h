@@ -62,7 +62,7 @@ public:
     void calGhostPosY();
     
     void lossUpdate();
-    void winUpdate();    
+    void winUpdate();
 
 private:
     PlayerData *playerData;

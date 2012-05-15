@@ -1,2 +1,0 @@
-/home/tom/study/SDL/TetriminoProject/tetrimino/doc/CMakeFiles/doc.dir
-/home/tom/study/SDL/TetriminoProject/tetrimino/src/CMakeFiles/tetrimino.dir

@@ -206,6 +206,30 @@ game/gameholder.cpp.s:
 	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.s
 .PHONY : game/gameholder.cpp.s
 
+game/quitlabel.o: game/quitlabel.cpp.o
+.PHONY : game/quitlabel.o
+
+# target to build an object file
+game/quitlabel.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o
+.PHONY : game/quitlabel.cpp.o
+
+game/quitlabel.i: game/quitlabel.cpp.i
+.PHONY : game/quitlabel.i
+
+# target to preprocess a source file
+game/quitlabel.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.i
+.PHONY : game/quitlabel.cpp.i
+
+game/quitlabel.s: game/quitlabel.cpp.s
+.PHONY : game/quitlabel.s
+
+# target to generate assembly for a file
+game/quitlabel.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.s
+.PHONY : game/quitlabel.cpp.s
+
 game/show.o: game/show.cpp.o
 .PHONY : game/show.o
 
@@ -398,6 +422,246 @@ mainpage.cpp.s:
 	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/mainpage.cpp.s
 .PHONY : mainpage.cpp.s
 
+menu/action.o: menu/action.cpp.o
+.PHONY : menu/action.o
+
+# target to build an object file
+menu/action.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/action.cpp.o
+.PHONY : menu/action.cpp.o
+
+menu/action.i: menu/action.cpp.i
+.PHONY : menu/action.i
+
+# target to preprocess a source file
+menu/action.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/action.cpp.i
+.PHONY : menu/action.cpp.i
+
+menu/action.s: menu/action.cpp.s
+.PHONY : menu/action.s
+
+# target to generate assembly for a file
+menu/action.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/action.cpp.s
+.PHONY : menu/action.cpp.s
+
+menu/keysetlabel.o: menu/keysetlabel.cpp.o
+.PHONY : menu/keysetlabel.o
+
+# target to build an object file
+menu/keysetlabel.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o
+.PHONY : menu/keysetlabel.cpp.o
+
+menu/keysetlabel.i: menu/keysetlabel.cpp.i
+.PHONY : menu/keysetlabel.i
+
+# target to preprocess a source file
+menu/keysetlabel.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.i
+.PHONY : menu/keysetlabel.cpp.i
+
+menu/keysetlabel.s: menu/keysetlabel.cpp.s
+.PHONY : menu/keysetlabel.s
+
+# target to generate assembly for a file
+menu/keysetlabel.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.s
+.PHONY : menu/keysetlabel.cpp.s
+
+menu/label.o: menu/label.cpp.o
+.PHONY : menu/label.o
+
+# target to build an object file
+menu/label.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/label.cpp.o
+.PHONY : menu/label.cpp.o
+
+menu/label.i: menu/label.cpp.i
+.PHONY : menu/label.i
+
+# target to preprocess a source file
+menu/label.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/label.cpp.i
+.PHONY : menu/label.cpp.i
+
+menu/label.s: menu/label.cpp.s
+.PHONY : menu/label.s
+
+# target to generate assembly for a file
+menu/label.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/label.cpp.s
+.PHONY : menu/label.cpp.s
+
+menu/menu.o: menu/menu.cpp.o
+.PHONY : menu/menu.o
+
+# target to build an object file
+menu/menu.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o
+.PHONY : menu/menu.cpp.o
+
+menu/menu.i: menu/menu.cpp.i
+.PHONY : menu/menu.i
+
+# target to preprocess a source file
+menu/menu.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menu.cpp.i
+.PHONY : menu/menu.cpp.i
+
+menu/menu.s: menu/menu.cpp.s
+.PHONY : menu/menu.s
+
+# target to generate assembly for a file
+menu/menu.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menu.cpp.s
+.PHONY : menu/menu.cpp.s
+
+menu/menuholder.o: menu/menuholder.cpp.o
+.PHONY : menu/menuholder.o
+
+# target to build an object file
+menu/menuholder.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o
+.PHONY : menu/menuholder.cpp.o
+
+menu/menuholder.i: menu/menuholder.cpp.i
+.PHONY : menu/menuholder.i
+
+# target to preprocess a source file
+menu/menuholder.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.i
+.PHONY : menu/menuholder.cpp.i
+
+menu/menuholder.s: menu/menuholder.cpp.s
+.PHONY : menu/menuholder.s
+
+# target to generate assembly for a file
+menu/menuholder.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.s
+.PHONY : menu/menuholder.cpp.s
+
+menu/numberlabel.o: menu/numberlabel.cpp.o
+.PHONY : menu/numberlabel.o
+
+# target to build an object file
+menu/numberlabel.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o
+.PHONY : menu/numberlabel.cpp.o
+
+menu/numberlabel.i: menu/numberlabel.cpp.i
+.PHONY : menu/numberlabel.i
+
+# target to preprocess a source file
+menu/numberlabel.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.i
+.PHONY : menu/numberlabel.cpp.i
+
+menu/numberlabel.s: menu/numberlabel.cpp.s
+.PHONY : menu/numberlabel.s
+
+# target to generate assembly for a file
+menu/numberlabel.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.s
+.PHONY : menu/numberlabel.cpp.s
+
+menu/setting.o: menu/setting.cpp.o
+.PHONY : menu/setting.o
+
+# target to build an object file
+menu/setting.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o
+.PHONY : menu/setting.cpp.o
+
+menu/setting.i: menu/setting.cpp.i
+.PHONY : menu/setting.i
+
+# target to preprocess a source file
+menu/setting.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/setting.cpp.i
+.PHONY : menu/setting.cpp.i
+
+menu/setting.s: menu/setting.cpp.s
+.PHONY : menu/setting.s
+
+# target to generate assembly for a file
+menu/setting.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/setting.cpp.s
+.PHONY : menu/setting.cpp.s
+
+menu/simplelabel.o: menu/simplelabel.cpp.o
+.PHONY : menu/simplelabel.o
+
+# target to build an object file
+menu/simplelabel.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o
+.PHONY : menu/simplelabel.cpp.o
+
+menu/simplelabel.i: menu/simplelabel.cpp.i
+.PHONY : menu/simplelabel.i
+
+# target to preprocess a source file
+menu/simplelabel.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.i
+.PHONY : menu/simplelabel.cpp.i
+
+menu/simplelabel.s: menu/simplelabel.cpp.s
+.PHONY : menu/simplelabel.s
+
+# target to generate assembly for a file
+menu/simplelabel.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.s
+.PHONY : menu/simplelabel.cpp.s
+
+menu/togglelabel.o: menu/togglelabel.cpp.o
+.PHONY : menu/togglelabel.o
+
+# target to build an object file
+menu/togglelabel.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o
+.PHONY : menu/togglelabel.cpp.o
+
+menu/togglelabel.i: menu/togglelabel.cpp.i
+.PHONY : menu/togglelabel.i
+
+# target to preprocess a source file
+menu/togglelabel.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.i
+.PHONY : menu/togglelabel.cpp.i
+
+menu/togglelabel.s: menu/togglelabel.cpp.s
+.PHONY : menu/togglelabel.s
+
+# target to generate assembly for a file
+menu/togglelabel.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.s
+.PHONY : menu/togglelabel.cpp.s
+
+menu/widget.o: menu/widget.cpp.o
+.PHONY : menu/widget.o
+
+# target to build an object file
+menu/widget.cpp.o:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o
+.PHONY : menu/widget.cpp.o
+
+menu/widget.i: menu/widget.cpp.i
+.PHONY : menu/widget.i
+
+# target to preprocess a source file
+menu/widget.cpp.i:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/widget.cpp.i
+.PHONY : menu/widget.cpp.i
+
+menu/widget.s: menu/widget.cpp.s
+.PHONY : menu/widget.s
+
+# target to generate assembly for a file
+menu/widget.cpp.s:
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino && $(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/widget.cpp.s
+.PHONY : menu/widget.cpp.s
+
 tetrimino.o: tetrimino.cpp.o
 .PHONY : tetrimino.o
 
@@ -585,6 +849,9 @@ help:
 	@echo "... game/gameholder.o"
 	@echo "... game/gameholder.i"
 	@echo "... game/gameholder.s"
+	@echo "... game/quitlabel.o"
+	@echo "... game/quitlabel.i"
+	@echo "... game/quitlabel.s"
 	@echo "... game/show.o"
 	@echo "... game/show.i"
 	@echo "... game/show.s"
@@ -609,6 +876,36 @@ help:
 	@echo "... mainpage.o"
 	@echo "... mainpage.i"
 	@echo "... mainpage.s"
+	@echo "... menu/action.o"
+	@echo "... menu/action.i"
+	@echo "... menu/action.s"
+	@echo "... menu/keysetlabel.o"
+	@echo "... menu/keysetlabel.i"
+	@echo "... menu/keysetlabel.s"
+	@echo "... menu/label.o"
+	@echo "... menu/label.i"
+	@echo "... menu/label.s"
+	@echo "... menu/menu.o"
+	@echo "... menu/menu.i"
+	@echo "... menu/menu.s"
+	@echo "... menu/menuholder.o"
+	@echo "... menu/menuholder.i"
+	@echo "... menu/menuholder.s"
+	@echo "... menu/numberlabel.o"
+	@echo "... menu/numberlabel.i"
+	@echo "... menu/numberlabel.s"
+	@echo "... menu/setting.o"
+	@echo "... menu/setting.i"
+	@echo "... menu/setting.s"
+	@echo "... menu/simplelabel.o"
+	@echo "... menu/simplelabel.i"
+	@echo "... menu/simplelabel.s"
+	@echo "... menu/togglelabel.o"
+	@echo "... menu/togglelabel.i"
+	@echo "... menu/togglelabel.s"
+	@echo "... menu/widget.o"
+	@echo "... menu/widget.i"
+	@echo "... menu/widget.s"
 	@echo "... tetrimino.o"
 	@echo "... tetrimino.i"
 	@echo "... tetrimino.s"

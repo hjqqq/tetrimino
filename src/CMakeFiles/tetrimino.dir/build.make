@@ -371,9 +371,262 @@ src/CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o.provides: src/CMakeFile
 
 src/CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o
 
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o: src/menu/simplelabel.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_15)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/simplelabel.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/simplelabel.cpp > CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/simplelabel.cpp -o CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.o: src/menu/action.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_16)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/action.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/action.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/action.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/action.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/action.cpp > CMakeFiles/tetrimino.dir/menu/action.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/action.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/action.cpp -o CMakeFiles/tetrimino.dir/menu/action.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/action.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o: src/menu/numberlabel.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_17)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/numberlabel.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/numberlabel.cpp > CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/numberlabel.cpp -o CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o: src/menu/togglelabel.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_18)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/togglelabel.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/togglelabel.cpp > CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/togglelabel.cpp -o CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o: src/menu/keysetlabel.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_19)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/keysetlabel.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/keysetlabel.cpp > CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/keysetlabel.cpp -o CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o: src/menu/menuholder.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_20)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menuholder.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/menuholder.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menuholder.cpp > CMakeFiles/tetrimino.dir/menu/menuholder.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/menuholder.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menuholder.cpp -o CMakeFiles/tetrimino.dir/menu/menuholder.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o: src/menu/widget.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_21)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/widget.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/widget.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/widget.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/widget.cpp > CMakeFiles/tetrimino.dir/menu/widget.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/widget.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/widget.cpp -o CMakeFiles/tetrimino.dir/menu/widget.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o: src/menu/setting.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_22)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/setting.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/setting.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/setting.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/setting.cpp > CMakeFiles/tetrimino.dir/menu/setting.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/setting.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/setting.cpp -o CMakeFiles/tetrimino.dir/menu/setting.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o: src/menu/menu.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_23)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/menu.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menu.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/menu.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menu.cpp > CMakeFiles/tetrimino.dir/menu/menu.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/menu.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menu.cpp -o CMakeFiles/tetrimino.dir/menu/menu.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o
+
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.o: src/menu/label.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_24)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/menu/label.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/menu/label.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/label.cpp
+
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/menu/label.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/label.cpp > CMakeFiles/tetrimino.dir/menu/label.cpp.i
+
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/menu/label.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/label.cpp -o CMakeFiles/tetrimino.dir/menu/label.cpp.s
+
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.provides: src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/menu/label.cpp.o
+
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o: src/game/quitlabel.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_25)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/game/quitlabel.cpp
+
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tetrimino.dir/game/quitlabel.cpp.i"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tom/study/SDL/TetriminoProject/tetrimino/src/game/quitlabel.cpp > CMakeFiles/tetrimino.dir/game/quitlabel.cpp.i
+
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tetrimino.dir/game/quitlabel.cpp.s"
+	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tom/study/SDL/TetriminoProject/tetrimino/src/game/quitlabel.cpp -o CMakeFiles/tetrimino.dir/game/quitlabel.cpp.s
+
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.requires:
+.PHONY : src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.requires
+
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.provides: src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/tetrimino.dir/build.make src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.provides.build
+.PHONY : src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.provides
+
+src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.provides.build: src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o
+
 src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
 src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o: src/game/gameholder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o"
 	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/game/gameholder.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/game/gameholder.cpp
 
@@ -396,7 +649,7 @@ src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/tetrimino.dir/game/show.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
 src/CMakeFiles/tetrimino.dir/game/show.cpp.o: src/game/show.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_27)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/game/show.cpp.o"
 	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/game/show.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/game/show.cpp
 
@@ -419,7 +672,7 @@ src/CMakeFiles/tetrimino.dir/game/show.cpp.o.provides.build: src/CMakeFiles/tetr
 
 src/CMakeFiles/tetrimino.dir/game/game.cpp.o: src/CMakeFiles/tetrimino.dir/flags.make
 src/CMakeFiles/tetrimino.dir/game/game.cpp.o: src/game/game.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tom/study/SDL/TetriminoProject/tetrimino/CMakeFiles $(CMAKE_PROGRESS_28)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/tetrimino.dir/game/game.cpp.o"
 	cd /home/tom/study/SDL/TetriminoProject/tetrimino/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tetrimino.dir/game/game.cpp.o -c /home/tom/study/SDL/TetriminoProject/tetrimino/src/game/game.cpp
 
@@ -456,6 +709,17 @@ tetrimino_OBJECTS = \
 "CMakeFiles/tetrimino.dir/globaldata/playerdata.cpp.o" \
 "CMakeFiles/tetrimino.dir/globaldata/wallkickdata.cpp.o" \
 "CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/action.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/widget.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/setting.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/menu.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/label.cpp.o" \
+"CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o" \
 "CMakeFiles/tetrimino.dir/game/gameholder.cpp.o" \
 "CMakeFiles/tetrimino.dir/game/show.cpp.o" \
 "CMakeFiles/tetrimino.dir/game/game.cpp.o"
@@ -477,6 +741,17 @@ src/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/resourcedata.cpp.o
 src/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/playerdata.cpp.o
 src/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/wallkickdata.cpp.o
 src/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/action.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/menu/label.cpp.o
+src/tetrimino: src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o
 src/tetrimino: src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o
 src/tetrimino: src/CMakeFiles/tetrimino.dir/game/show.cpp.o
 src/tetrimino: src/CMakeFiles/tetrimino.dir/game/game.cpp.o
@@ -510,6 +785,17 @@ tetrimino_OBJECTS = \
 "CMakeFiles/tetrimino.dir/globaldata/playerdata.cpp.o" \
 "CMakeFiles/tetrimino.dir/globaldata/wallkickdata.cpp.o" \
 "CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/action.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/widget.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/setting.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/menu.cpp.o" \
+"CMakeFiles/tetrimino.dir/menu/label.cpp.o" \
+"CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o" \
 "CMakeFiles/tetrimino.dir/game/gameholder.cpp.o" \
 "CMakeFiles/tetrimino.dir/game/show.cpp.o" \
 "CMakeFiles/tetrimino.dir/game/game.cpp.o"
@@ -531,6 +817,17 @@ src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/globaldat
 src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/playerdata.cpp.o
 src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/wallkickdata.cpp.o
 src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/action.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/menu/label.cpp.o
+src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o
 src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o
 src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/game/show.cpp.o
 src/CMakeFiles/CMakeRelink.dir/tetrimino: src/CMakeFiles/tetrimino.dir/game/game.cpp.o
@@ -562,6 +859,17 @@ src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/globaldata/r
 src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/globaldata/playerdata.cpp.o.requires
 src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/globaldata/wallkickdata.cpp.o.requires
 src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/globaldata/optiondata.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/simplelabel.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/action.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/numberlabel.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/togglelabel.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/keysetlabel.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/menuholder.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/widget.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/setting.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/menu.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/menu/label.cpp.o.requires
+src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/game/quitlabel.cpp.o.requires
 src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/game/gameholder.cpp.o.requires
 src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/game/show.cpp.o.requires
 src/CMakeFiles/tetrimino.dir/requires: src/CMakeFiles/tetrimino.dir/game/game.cpp.o.requires

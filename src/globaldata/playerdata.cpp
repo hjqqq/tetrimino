@@ -54,8 +54,6 @@ void initPlayerData2()
 
     
     //ZT
-
-    
     OptionData::playerData2.moveLeft = SDLK_KP1;
     OptionData::playerData2.moveRight = SDLK_KP3;
     OptionData::playerData2.rotateLeft = SDLK_LEFT;
