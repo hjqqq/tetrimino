@@ -6,12 +6,14 @@
 #include "SDL_ttf.h"
 
 #include "clock.h"
+#include "sound.h"
 
 namespace ResourceData{
     extern SDL_Surface *display;
     extern SDL_Surface *background;
     extern TTF_Font *font;
     extern Clock *clock;
+    extern Sound *sound;
 };
 
 #endif

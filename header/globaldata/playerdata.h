@@ -12,7 +12,7 @@
 
 struct PlayerData{
     Uint32 dasDelayTime;
-        
+
     double horizontalSpeed;
     double normalDropSpeed;
     double softDropSpeed;

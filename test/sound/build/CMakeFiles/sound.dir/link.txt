@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/sound.dir/sound.cpp.o CMakeFiles/sound.dir/main.cpp.o  -o sound -rdynamic -Wl,-Bstatic -lSDLmain -Wl,-Bdynamic -lSDL -lpthread -lSDL_image -lSDL_ttf /usr/local/lib/libSDL_mixer.so -Wl,-rpath,/usr/local/lib 

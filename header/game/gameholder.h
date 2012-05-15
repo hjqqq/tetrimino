@@ -8,6 +8,7 @@
 #include "optiondata.h"
 #include "playerdata.h"
 #include "randomqueue.h"
+#include "quitlabel.h"
 #include "game.h"
 
 class GameHolder{
@@ -27,6 +28,9 @@ private:
     RandomQueueData* allRandomQueueData[StableData::playerSizeMax];
     RandomQueue *allRandomQueue[StableData::playerSizeMax];
     Game* allGame[StableData::playerSizeMax];
+    QuitLabel *quitLabel;
+    Rect<int> quitLabelRect;
+    SDL_Surface *quitLabelBackSurface;
 };
 
 #endif

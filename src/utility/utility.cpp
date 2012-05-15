@@ -23,3 +23,4 @@ void doubleToString(double number, std::string &str)
   ss << number;
   str = ss.str();
 }
+
