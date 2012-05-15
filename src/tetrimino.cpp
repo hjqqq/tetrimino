@@ -42,16 +42,20 @@ void Tetrimino::loadResource()
     ResourceData::font = TTF_OpenFont(
 	StableData::fontFile.c_str(), 30);
     ResourceData::clock = new Clock(StableData::fps);
+    ResourceData::sound = new Sound();
 }
 
 void Tetrimino::releaseResource()
 {
     TTF_CloseFont(ResourceData::font);
     SDL_FreeSurface(ResourceData::background);
+    delete ResourceData::sound;
 }
 
 void Tetrimino::mainloop()
 {
+    ResourceData::sound->setVolumeMusic(128);
+    ResourceData::sound->randomPlayMusic();
     while (true){
 	switch (OptionData::tetriminoStatus){
 	case OptionData::MENULOOP:

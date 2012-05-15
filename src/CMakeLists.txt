@@ -3,18 +3,19 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${tetrimino_SOURCE_DIR}/src)
 find_package(SDL)
 find_package(SDL_image)
 find_package(SDL_ttf)
-find_package(SDL_draw)
+find_package(SDL_mixer)
 
 if(SDL_FOUND         AND 
    SDLIMAGE_FOUND    AND 
    SDLTTF_FOUND      AND 
-   SDLDRAW_FOUND)
+   SDLMIXER_FOUND)
 
   aux_source_directory(${tetrimino_SOURCE_DIR}/src tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/utility tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/globaldata tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/menu tetrimino_SRC)
   aux_source_directory(${tetrimino_SOURCE_DIR}/src/game tetrimino_SRC)
+  aux_source_directory(${tetrimino_SOURCE_DIR}/src/sound tetrimino_SRC)
 
   include_directories(
     ${SDL_INCLUDE_DIR}
@@ -25,7 +26,8 @@ if(SDL_FOUND         AND
     ${tetrimino_SOURCE_DIR}/header/utility
     ${tetrimino_SOURCE_DIR}/header/globaldata
     ${tetrimino_SOURCE_DIR}/header/menu
-    ${tetrimino_SOURCE_DIR}/header/game)
+    ${tetrimino_SOURCE_DIR}/header/game
+    ${tetrimino_SOURCE_DIR}/header/sound)
 
   add_executable(tetrimino ${tetrimino_SRC})
 
@@ -33,7 +35,7 @@ if(SDL_FOUND         AND
     ${SDL_LIBRARY}
     ${SDLIMAGE_LIBRARY}
     ${SDLTTF_LIBRARY}
-    ${SDLDRAW_LIBRARY})
+    ${SDLMIXER_LIBRARY})
 
   install(TARGETS tetrimino
     DESTINATION bin)
@@ -41,4 +43,4 @@ if(SDL_FOUND         AND
 endif(SDL_FOUND         AND 
       SDLIMAGE_FOUND    AND 
       SDLTTF_FOUND      AND
-      SDLDRAW_FOUND)
+      SDLMIXER_FOUND)
