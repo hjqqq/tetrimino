@@ -29,10 +29,6 @@ Tetrimino::~Tetrimino(){
 
 void Tetrimino::loadResource()
 {
-<<<<<<< HEAD
-=======
-    menu_setting.loadSetting();
->>>>>>> origin/master
     std::srand(std::time(NULL));
     ResourceData::display = SDL_SetVideoMode(
 	StableData::screenSize.x,
@@ -44,29 +40,20 @@ void Tetrimino::loadResource()
     ResourceData::font = TTF_OpenFont(
 	StableData::fontFile.c_str(), 30);
     ResourceData::clock = new Clock(StableData::fps);
-<<<<<<< HEAD
-=======
     ResourceData::sound = new Sound();
->>>>>>> origin/master
 }
 
 void Tetrimino::releaseResource()
 {
     TTF_CloseFont(ResourceData::font);
     SDL_FreeSurface(ResourceData::background);
-<<<<<<< HEAD
-=======
     delete ResourceData::sound;
->>>>>>> origin/master
 }
 
 void Tetrimino::mainloop()
 {
-<<<<<<< HEAD
-=======
     ResourceData::sound->setVolumeMusic(128);
     ResourceData::sound->randomPlayMusic();
->>>>>>> origin/master
     while (true){
 	switch (OptionData::tetriminoStatus){
 	case OptionData::MENULOOP:
