@@ -2,19 +2,16 @@
 #include "playerdata.h"
 #include "utility.h"
 
-PlayerData playerData1;
-
-PlayerData playerData2;
-
 void initPlayerData1()
 {
-    OptionData::playerData1.dasDelayTime = 100;
+    OptionData::playerSize = 3;
+    OptionData::playerData1.dasDelayTime = 150;
 
     OptionData::playerData1.horizontalSpeed = 0.3;
     OptionData::playerData1.normalDropSpeed = 0.05;
     OptionData::playerData1.softDropSpeed = 0.5;
     
-    OptionData::playerData1.randomQueueDataIndex = 0;
+    OptionData::playerData1.randomQueueDataIndex = 1;
     OptionData::playerData1.showPixPos = Vector2<int>(20, 20);
     OptionData::playerData1.randomizerType =
 	PlayerData::HISTORY4ROLL;
@@ -30,36 +27,43 @@ void initPlayerData1()
 
 void initPlayerData2()
 {
-    OptionData::playerData2.dasDelayTime = 100;
+    OptionData::playerData2.dasDelayTime = 150;
 			  
     OptionData::playerData2.horizontalSpeed = 0.3;
     OptionData::playerData2.normalDropSpeed = 0.05;
     OptionData::playerData2.softDropSpeed = 0.5;
     
-    OptionData::playerData2.randomQueueDataIndex = 0;
+    OptionData::playerData2.randomQueueDataIndex = 1;
     OptionData::playerData2.showPixPos = Vector2<int>(420, 20);
-    OptionData::playerData1.randomizerType =
-	PlayerData::HISTORY4ROLL;    
-
+    
     //JJJ
-    /*
-      OptionData::playerData2.moveLeft = SDLK_KP4;
+    OptionData::playerData2.moveLeft = SDLK_KP4;
     OptionData::playerData2.moveRight = SDLK_KP6;
     OptionData::playerData2.rotateLeft = SDLK_KP7;
     OptionData::playerData2.rotateRight = SDLK_RIGHT;
     OptionData::playerData2.softDrop = SDLK_KP5;
     OptionData::playerData2.hardDrop = SDLK_KP8;
     OptionData::playerData2.hold = SDLK_KP0;    
-    */
+}
 
-    
+void initPlayerData3()
+{
+    OptionData::playerData3.dasDelayTime = 150;
+
+    OptionData::playerData3.horizontalSpeed = 0.3;
+    OptionData::playerData3.normalDropSpeed = 0.05;
+    OptionData::playerData3.softDropSpeed = 0.5;
+
+    OptionData::playerData3.randomQueueDataIndex = 1;
+    OptionData::playerData3.showPixPos = Vector2<int>(20, 20);
+
+
     //ZT
-    OptionData::playerData2.moveLeft = SDLK_KP1;
-    OptionData::playerData2.moveRight = SDLK_KP3;
-    OptionData::playerData2.rotateLeft = SDLK_LEFT;
-    OptionData::playerData2.rotateRight = SDLK_RIGHT;
-    OptionData::playerData2.softDrop = SDLK_KP5;
-    OptionData::playerData2.hardDrop = SDLK_KP2;
-    OptionData::playerData2.hold = SDLK_UP;
-    
+    OptionData::playerData3.moveLeft = SDLK_KP1;
+    OptionData::playerData3.moveRight = SDLK_KP3;
+    OptionData::playerData3.rotateLeft = SDLK_LEFT;
+    OptionData::playerData3.rotateRight = SDLK_RIGHT;
+    OptionData::playerData3.softDrop = SDLK_KP5;
+    OptionData::playerData3.hardDrop = SDLK_KP2;
+    OptionData::playerData3.hold = SDLK_UP;
 }

@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 #include "utility.h"
 #include "playerdata.h"
@@ -9,15 +10,15 @@
 #include "wallkickdata.h"
 #include "randomqueue.h"
 
-Game::Game(PlayerData *_playerData):
+Game::Game(PlayerData *_playerData, Game **_allGame):
     playerData(_playerData),
+    allGame(_allGame),
     show(new Show(_playerData))
 {
     initTimer();
     initCounter();
     initStatus();
     gameStatus = PREPARE;
-    defence = attack = this;
 }
 
 Game::~Game()
@@ -26,16 +27,6 @@ Game::~Game()
     delete lockDelayTimer;
     delete areDelayTimer;
     delete dasDelayTimer;
-}
-
-void Game::setDefence(Game *game)
-{
-    defence = game;
-}
-
-void Game::setAttack(Game *game)
-{
-    attack = game;
 }
 
 void Game::setRandomQueue(RandomQueue *randomQueue)
@@ -190,11 +181,13 @@ void Game::createBlock()
 		randomQueue->pop();
 		holdStatus = HOLDED;
 		holdEmpty = false;
-		show->holdShow(holdShape);		
+		show->holdShow(holdShape);
+		ResourceData::sound->playChunk(Sound::TURN);
 	    } else{
 		std::swap(shape, holdShape);
 		holdStatus = HOLDED;
 		show->holdShow(holdShape);
+		ResourceData::sound->playChunk(Sound::TURN);		
 	    }
 	    break;
 	case HOLDED:
@@ -239,10 +232,6 @@ void Game::areDelayHandleEvent(const SDL_Event &event)
 	    pos = getLockPos();
 	    if (!checkBlock(pos, direction)){
 		gameOver();
-		std::cerr << "harddrop "
-			  << pos << " "
-			  << shape << " "
-			  << direction << "\n";
 	    }
 	    else{
 		fillMap();
@@ -267,10 +256,6 @@ void Game::areDelayUpdate()
     if (areDelayTimer->checkTimeOut()){
 	if (!checkBlock(pos, direction)){
 	    gameOver();
-	    std::cerr << "update "
-		      << pos << " "
-		      << shape << " "
-		      << direction << " " << "\n";
 	} else{
 	    if (normalDropCounter != NULL)
 		normalDropCounter->reset();	    
@@ -281,15 +266,21 @@ void Game::areDelayUpdate()
 
 void Game::gameOver()
 {
-    defence->attack = attack;
-    attack->defence = defence;
-    if (defence == attack){
-	defence->gameStatus = WIN;
-	defence->show->messageShow("Win !!!");
-	defence->gameoverDelayTimer->reset();
-    }
     gameStatus = GAMEOVER;
     show->messageShow("Loss !!!");
+    
+    int count = 0, index;
+    for (int i = 0; i != OptionData::playerSize; ++i){
+	if (allGame[i]->gameStatus != GAMEOVER){
+	    ++count;
+	    index = i;
+	}
+    }
+    if (count == 1){
+	allGame[index]->gameStatus = WIN;
+	allGame[index]->show->messageShow("Win !!!");
+	allGame[index]->gameoverDelayTimer->reset();
+    }
 }
 
 void Game::dropHandleEvent(const SDL_Event &event)
@@ -325,6 +316,7 @@ void Game::dropHandleEvent(const SDL_Event &event)
 
 	else if (sym == playerData->moveRight){
 	    dropDistancePerFrame += Vector2<int>(1, 0);
+
 	    if (keyState[playerData->moveLeft])
 		dropStatus = ARRRIGHT;
 	    else {
@@ -335,23 +327,26 @@ void Game::dropHandleEvent(const SDL_Event &event)
 	
 	else if (sym == playerData->rotateLeft){
 	    int newDirection = (direction == 3? 0: direction + 1);
-	    if (SRSRotate(direction, (Direction)newDirection) &&
-		lockStatus){
-		lockDelayTimer->reset();
+	    if (SRSRotate(direction, (Direction)newDirection)){
+		ResourceData::sound->playChunk(Sound::TURN);
+		if (lockStatus)
+		    lockDelayTimer->reset();
 	    }
 	}
 	
 	else if (sym == playerData->rotateRight){
 	    int newDirection = (direction == 0? 3: direction - 1);
-	    if (SRSRotate(direction, (Direction)newDirection) &&
-		lockStatus){
-		lockDelayTimer->reset();
+	    if (SRSRotate(direction, (Direction)newDirection)){
+		ResourceData::sound->playChunk(Sound::TURN);	    		
+		if (lockStatus)
+		    lockDelayTimer->reset();
 	    }
 	}
 
 	else if (sym == playerData->hardDrop){
 	    lockStatus = false;
 	    pos = getLockPos();
+	    ResourceData::sound->playChunk(Sound::HARDDROP);	    
 	    fillMap();
 	    gameStatus = START;
 	}
@@ -403,9 +398,8 @@ void Game::dropUpdate()
 	break;
     }
 
-    Uint8 *keyState = SDL_GetKeyState(NULL);
-
     if (!lockStatus){
+	Uint8 *keyState = SDL_GetKeyState(NULL);	
 	if (keyState[playerData->softDrop]){
 	    if (softDropCounter == NULL)
 		dropDistancePerFrame += Vector2<int>(
@@ -449,7 +443,6 @@ void Game::dropUpdate()
 	fillMap();
 	gameStatus = START;
     }
-
 }
 
 bool Game::SRSRotate(Direction startDirection,
@@ -612,17 +605,23 @@ void Game::clearMap()
 	}
 	--origY;
     }
+    
     eliminate = destY + 1;
-    if (this != attack){
-	addMapGrow(eliminate);
-    }
-
+    
     while (destY >= 0){
 	for (int i = 0; i != StableData::mapSize.x; ++i)
 	    mapData[i][destY] = BACKCOLOR;
 	--destY;
     }
-    
+
+    if (eliminate > 0){
+	ResourceData::sound->playChunk(Sound::EXPLOSION);
+	++series;
+	addMapGrow(eliminate);
+    } else{
+	series = 0;
+    }
+
     if (mapGrow != 0 && eliminate == 0 && holdStatus != HOLD){
 	for (int j = 0; j != StableData::mapSize.y - mapGrow; ++j){
 	    for (int i = 0; i != StableData::mapSize.x; ++i)
@@ -686,12 +685,41 @@ void Game::addMapGrow(int grow)
 		--grow;
 	}
     }
+
+    switch (series){
+    case 0: case 1: case 2:
+	break;
+    case 3: case 4:
+	grow += 1;
+	break;
+    case 5: case 6:
+	grow += 2;
+	break;
+    case 7: case 8:
+	grow += 3;
+	break;
+    case 9: case 10:
+	grow += 4;
+	break;
+    default:
+	grow += 5;
+	break;
+    }
+
+    std::vector<Game*> remain;
+    for (int i = 0; i != OptionData::playerSize; ++i){
+	if (allGame[i]->gameStatus != GAMEOVER && allGame[i] != this)
+	    remain.push_back(allGame[i]);
+    }
+    Game *attack = remain[randInt(0, remain.size())];
+	
     if (mapGrow >= grow)
 	mapGrow -= grow;
     else{
 	grow -= mapGrow;
 	mapGrow = 0;
 	attack->mapGrow += grow;
+	ResourceData::sound->playChunk(Sound::WARN);
 	attack->show->growBarShow(attack->mapGrow);
     }
 }
@@ -734,5 +762,6 @@ void Game::winUpdate()
     if (gameoverDelayTimer->checkTimeOut()){
 	gameStatus = GAMEOVER;
     }
+    ResourceData::sound->playChunk(Sound::FINALLY);
 }
 

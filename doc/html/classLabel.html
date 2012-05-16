@@ -73,6 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,8 +106,12 @@ Inheritance diagram for Label:</div>
  <div class="center">
   <img src="classLabel.png" usemap="#Label_map" alt=""/>
   <map id="Label_map" name="Label_map">
-<area href="classWidget.html" alt="Widget" shape="rect" coords="0,0,81,24"/>
-<area href="classToggleLabel.html" alt="ToggleLabel" shape="rect" coords="0,112,81,136"/>
+<area href="classWidget.html" alt="Widget" shape="rect" coords="194,0,281,24"/>
+<area href="classKeySetLabel.html" alt="KeySetLabel" shape="rect" coords="0,112,87,136"/>
+<area href="classNumberLabel.html" alt="NumberLabel" shape="rect" coords="97,112,184,136"/>
+<area href="classQuitLabel.html" alt="QuitLabel" shape="rect" coords="194,112,281,136"/>
+<area href="classSimpleLabel.html" alt="SimpleLabel" shape="rect" coords="291,112,378,136"/>
+<area href="classToggleLabel.html" alt="ToggleLabel" shape="rect" coords="388,112,475,136"/>
 </map>
  </div></div>
 
@@ -116,10 +121,10 @@ Inheritance diagram for Label:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abca3cefec6e4f4bc18f975c61b900282"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abca3cefec6e4f4bc18f975c61b900282"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Label</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;_rect, const std::string &amp;_text, const SDL_Color &amp;_color=black)</td></tr>
-<tr class="memitem:a2018ee24282e5e2aa159d46a3d85c876"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2018ee24282e5e2aa159d46a3d85c876"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)</td></tr>
-<tr class="memitem:a736aab0e4b280f1a3c86e1566b5eb235"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a736aab0e4b280f1a3c86e1566b5eb235"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+<tr class="memitem:a4dc2244ea78951bc5a8fbf17ba706b25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dc2244ea78951bc5a8fbf17ba706b25"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)=0</td></tr>
+<tr class="memitem:ab0ed5c8e079eb6374ebeededc5305c33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0ed5c8e079eb6374ebeededc5305c33"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()=0</td></tr>
 <tr class="memitem:a29d84dbdaf03549e1dda8af29734826b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29d84dbdaf03549e1dda8af29734826b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setColor</b> (const SDL_Color &amp;newColor)</td></tr>
 <tr class="memitem:add3f5dfed876e0a4f16e8365a8d7f05b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add3f5dfed876e0a4f16e8365a8d7f05b"></a>
@@ -128,10 +133,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setText</b> (const st
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setRect</b> (const <a class="el" href="structRect.html">Rect</a>&lt; int &gt; &amp;newRect)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a432555e08b51fa1507c4e518c378533f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a432555e08b51fa1507c4e518c378533f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>constructLabelSurface</b> ()</td></tr>
-<tr class="memitem:a54aeb04b1b83169362afa11e264e7662"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54aeb04b1b83169362afa11e264e7662"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyLabelSurface</b> ()</td></tr>
+<tr class="memitem:af2f4723232d864d730788f8533a712b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2f4723232d864d730788f8533a712b0"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>constructLabelSurface</b> ()=0</td></tr>
+<tr class="memitem:abc6aa6da3ea597cca2f110a69dc6e5c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc6aa6da3ea597cca2f110a69dc6e5c7"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyLabelSurface</b> ()=0</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a42fe861748a96acc7071c1c9f4d7a81d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42fe861748a96acc7071c1c9f4d7a81d"></a>
@@ -153,7 +158,7 @@ SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>labelSurface
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 16 2012 14:27:05 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

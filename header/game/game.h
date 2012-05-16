@@ -18,11 +18,9 @@ public:
     enum GameStatus{PREPARE, READY, START, AREDELAY,
 		    DROP, WIN, GAMEOVER, QUITGAME};
     GameStatus gameStatus;    
-    Game(PlayerData *_playerData);
+    Game(PlayerData *_playerData, Game **_allGame);
     ~Game();
 
-    void setDefence(Game *game);
-    void setAttack(Game *game);
     void setRandomQueue(RandomQueue *randomQueue);
     
     void initTimer();
@@ -68,11 +66,9 @@ private:
     PlayerData *playerData;
     GameHolder *gameHolder;
     RandomQueue *randomQueue;
-    
+
+    Game **allGame;
     Show *show;
-    
-    Game *defence;
-    Game *attack;
     
     Timer *dasDelayTimer;
     Timer *areDelayTimer;

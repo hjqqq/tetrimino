@@ -5,6 +5,10 @@ OptionData::TetriminoStatus OptionData::tetriminoStatus = MENULOOP;
 OptionData::MenuHolderStatus OptionData::menuHolderStatus = MAINMENU;
 OptionData::GameHolderStatus OptionData::gameHolderStatus = READY;
 
+int OptionData::minoPixSizeX = 20;
+int OptionData::minoPixSizeY = 20;
+Vector2<int> OptionData::minoPixSize(minoPixSizeX, minoPixSizeY);
+
 int OptionData::areDelayTime = 200;
 int OptionData::lockDelayTime = 800;
 

@@ -73,6 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,32 +97,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 This is the complete list of members for <a class="el" href="classGameHolder.html">GameHolder</a>, including all inherited members.<table>
-  <tr bgcolor="#f0f0f0"><td><b>addEnemy</b>(GameHolder *gameHolder) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>areDelayHandleEvent</b>(const SDL_Event &amp;event) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>areDelayUpdate</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>calGhostPosY</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>checkBlock</b>(const Vector2&lt; int &gt; &amp;pos, BlockData::Direction direction) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>checkMapLineFull</b>(int y) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>clearMap</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>createBlock</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>dropHandleEvent</b>(const SDL_Event &amp;event) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>dropUpdate</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>fillMap</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>findPos</b>(const Vector2&lt; int &gt; &amp;startPos, const Vector2&lt; int &gt; &amp;finishPos, BlockData::Direction direction) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>GameHolder</b>(PlayerData *_playerData) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>gameoverUpdate</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>getLockPos</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>growEnemy</b>(int grow) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>checkAllGameStatus</b>(Game::GameStatus gameStatus) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>GameHolder</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>handleEvent</b>(const SDL_Event &amp;event) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>SRSRotate</b>(BlockData::Direction startDirection, BlockData::Direction finishDirection) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>startUpdate</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>initGhostColor</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>setAllGameStatus</b>(Game::GameStatus gameStatus) (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>setRandomQueue</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>update</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>~GameHolder</b>() (defined in <a class="el" href="classGameHolder.html">GameHolder</a>)</td><td><a class="el" href="classGameHolder.html">GameHolder</a></td><td></td></tr>
 </table></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 16 2012 14:27:05 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

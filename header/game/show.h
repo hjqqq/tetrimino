@@ -66,8 +66,8 @@ private:
 
 inline Vector2<int> Show::toPixPos(const Vector2<int> orig)
 {
-    return Vector2<int>(orig.x * StableData::minoPixSize.x,
-			orig.y * StableData::minoPixSize.y) +
+    return Vector2<int>(orig.x * OptionData::minoPixSize.x,
+			orig.y * OptionData::minoPixSize.y) +
 	playerData->showPixPos;
 }
 

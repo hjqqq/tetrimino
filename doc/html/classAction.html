@@ -73,6 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,8 +104,12 @@ Inheritance diagram for Action:</div>
  <div class="center">
   <img src="classAction.png" usemap="#Action_map" alt=""/>
   <map id="Action_map" name="Action_map">
-<area href="classToggleSetter.html" alt="ToggleSetter" shape="rect" coords="0,56,109,80"/>
-<area href="classValueSetter.html" alt="ValueSetter&lt; T &gt;" shape="rect" coords="119,56,228,80"/>
+<area href="classNumberSetter.html" alt="NumberSetter&lt; T &gt;" shape="rect" coords="0,56,120,80"/>
+<area href="classQuitSetter.html" alt="QuitSetter" shape="rect" coords="130,56,250,80"/>
+<area href="classQuitSetter.html" alt="QuitSetter" shape="rect" coords="260,56,380,80"/>
+<area href="classStartSetter.html" alt="StartSetter" shape="rect" coords="390,56,510,80"/>
+<area href="classToggleSetter.html" alt="ToggleSetter" shape="rect" coords="520,56,640,80"/>
+<area href="classValueSetter.html" alt="ValueSetter&lt; T &gt;" shape="rect" coords="650,56,770,80"/>
 </map>
  </div></div>
 
@@ -114,8 +119,10 @@ Inheritance diagram for Action:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aab9b44e44a9ff95d892c1bc7edb855d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab9b44e44a9ff95d892c1bc7edb855d3"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> ()</td></tr>
-<tr class="memitem:ae4ba7f61224ef3ade15d18d4cf16ccfd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4ba7f61224ef3ade15d18d4cf16ccfd"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const bool)</td></tr>
+<tr class="memitem:ad7a65d6e4f6fa2c8e4a7f65a37f1b19d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7a65d6e4f6fa2c8e4a7f65a37f1b19d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const bool &amp;)</td></tr>
+<tr class="memitem:ab013b8d9fa187167ae47fe5abbb1055c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab013b8d9fa187167ae47fe5abbb1055c"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const double &amp;)</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/menu/<a class="el" href="action_8h_source.html">action.h</a></li>
@@ -125,7 +132,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 16 2012 14:27:05 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

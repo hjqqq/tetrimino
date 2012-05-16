@@ -73,6 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">PlayerData Struct Reference</div>  </div>
@@ -100,20 +102,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="structPlayerData-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3b89267ddaea6f7a05f20b05d173f55a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>RandomizerType</b> { <b>BAG</b>, 
+<b>HISTORY4ROLL</b>
+ }</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a168185db9891156f02ea44914f450977"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a168185db9891156f02ea44914f450977"></a>
-<a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>informationPos</b></td></tr>
-<tr class="memitem:a096e2c90aaf3f8db8466c5308a3de087"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a096e2c90aaf3f8db8466c5308a3de087"></a>
-<a class="el" href="structRect.html">Rect</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapPixRect</b></td></tr>
-<tr class="memitem:ab030a50e89ca47fb764753b35551c2b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab030a50e89ca47fb764753b35551c2b0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>mapData</b> [StableData::mapSizeX][StableData::mapSizeY]</td></tr>
-<tr class="memitem:a38735663ceac5df31af5a66279ca0eee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38735663ceac5df31af5a66279ca0eee"></a>
-<a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>blockPos</b></td></tr>
-<tr class="memitem:a99d96bd35018f578faf6e6fcb673093a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99d96bd35018f578faf6e6fcb673093a"></a>
-BlockData::BlockShape&#160;</td><td class="memItemRight" valign="bottom"><b>currentBlockShape</b></td></tr>
-<tr class="memitem:a1139e2499bfb0d5e926b43f26859f081"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1139e2499bfb0d5e926b43f26859f081"></a>
-BlockData::Direction&#160;</td><td class="memItemRight" valign="bottom"><b>currentDirection</b></td></tr>
+<tr class="memitem:a7608f25f2d881e56514370af68ad8081"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7608f25f2d881e56514370af68ad8081"></a>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>dasDelayTime</b></td></tr>
+<tr class="memitem:a5729ca63dd97566e659c2cf69b6bd9e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5729ca63dd97566e659c2cf69b6bd9e8"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>horizontalSpeed</b></td></tr>
+<tr class="memitem:a04904f1282c81a64a0131cb94c078df0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04904f1282c81a64a0131cb94c078df0"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>normalDropSpeed</b></td></tr>
+<tr class="memitem:aa0d98a3665cb95b3f4aa1f7c8bf69810"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0d98a3665cb95b3f4aa1f7c8bf69810"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>softDropSpeed</b></td></tr>
+<tr class="memitem:a7ec9a1c5c09f60808eaa7fb727f7ffc4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ec9a1c5c09f60808eaa7fb727f7ffc4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>randomQueueDataIndex</b></td></tr>
+<tr class="memitem:a3c8dc30d98f28474f12036ad876bd914"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c8dc30d98f28474f12036ad876bd914"></a>
+RandomizerType&#160;</td><td class="memItemRight" valign="bottom"><b>randomizerType</b></td></tr>
+<tr class="memitem:a79230215c42f0a35b4a112255d4100f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79230215c42f0a35b4a112255d4100f6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ghost</b></td></tr>
+<tr class="memitem:a9b1138bf9558e249c92ab426ff047e30"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b1138bf9558e249c92ab426ff047e30"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>holder</b></td></tr>
+<tr class="memitem:ae12bf669cf20b27fd52daf84ea73832e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae12bf669cf20b27fd52daf84ea73832e"></a>
+<a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>showPixPos</b></td></tr>
 <tr class="memitem:a1b8901f7e4e1d459560319ed1ae4bf95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b8901f7e4e1d459560319ed1ae4bf95"></a>
 SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>moveLeft</b></td></tr>
 <tr class="memitem:ac4705e631bd6744d50a3ce496438a5fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4705e631bd6744d50a3ce496438a5fe"></a>
@@ -136,7 +149,7 @@ SDLKey&#160;</td><td class="memItemRight" valign="bottom"><b>hold</b></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 16 2012 14:27:05 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

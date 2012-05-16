@@ -14,10 +14,9 @@ GameHolder::GameHolder()
     }
 
     for (int i = 0; i != OptionData::playerSize; ++i){
-	allGame[i] = new Game(OptionData::allPlayerData[i]);
+	allGame[i] = new Game(OptionData::allPlayerData[i], allGame);
     }
     
-    setDefenceAttack();
     setRandomQueue();
     setAllGameStatus(Game::PREPARE);
     OptionData::gameHolderStatus = OptionData::READY;
@@ -38,6 +37,7 @@ GameHolder::GameHolder()
     quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
 			     OptionData::gameHolderStatus,
 			     OptionData::QUITGAME));
+    ResourceData::sound->randomPlayMusic();
 }
 
 GameHolder::~GameHolder()
@@ -111,7 +111,6 @@ void GameHolder::update()
 	break;
     case OptionData::RUN:
 	if (checkAllGameStatus(Game::GAMEOVER)){
-	    setDefenceAttack();
 	    setRandomQueue();
 	    setAllGameStatus(Game::PREPARE);
 	    OptionData::gameHolderStatus = OptionData::READY;
@@ -143,32 +142,17 @@ void GameHolder::setAllGameStatus(Game::GameStatus gameStatus)
 	allGame[i]->gameStatus = gameStatus;
 }
 
-void GameHolder::setDefenceAttack()
-{
-    allGame[0]->setDefence(allGame[OptionData::playerSize - 1]);
-    for (int i = 1; i != OptionData::playerSize; ++i){
-	allGame[i]->setDefence(allGame[i - 1]);
-    }
-    allGame[OptionData::playerSize - 1]->setAttack(allGame[0]);
-    for (int i = 0; i != OptionData::playerSize - 1; ++i){
-	allGame[i]->setAttack(allGame[i + 1]);
-    }    
-}
-
 void GameHolder::setRandomQueue()
 {
     for (int i = 0; i != StableData::playerSizeMax; ++i){
 	delete allRandomQueueData[i];
 	delete allRandomQueue[i];
-    }
-    
-    for (int i = 0; i != StableData::playerSizeMax; ++i){
 	allRandomQueueData[i] = NULL;
 	allRandomQueue[i] = NULL;
     }
     
     for (int i = 0; i != OptionData::playerSize; ++i){
-	RandomQueueData* &queue = allRandomQueueData[OptionData::allPlayerData[i]->randomQueueDataIndex];
+	RandomQueueData* &queue = allRandomQueueData[OptionData::allPlayerData[i]->randomQueueDataIndex - 1];
 	if (queue == NULL){
 	    switch (OptionData::allPlayerData[i]->randomizerType){
 	    case PlayerData::BAG:
