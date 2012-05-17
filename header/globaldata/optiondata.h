@@ -25,6 +25,10 @@ namespace OptionData{
     enum GameHolderStatus{READY, RUN, PAUSE, QUITGAME};
     extern GameHolderStatus gameHolderStatus;
 
+    extern int minoPixSizeX;
+    extern int minoPixSizeY;
+    extern Vector2<int> minoPixSize;
+
     extern int areDelayTime;
     extern int lockDelayTime;
     

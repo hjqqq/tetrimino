@@ -44,9 +44,9 @@ void Sound::playChunk(Chunk chunk)
     Mix_PlayChannel(-1, chunkList[chunk], 0);
 }
 
-void Sound::setVolumeChunk(int volume)
+int Sound::setVolumeChunk(int volume)
 {
-    Mix_Volume(-1, volume);
+    return Mix_Volume(-1, volume);
 }
 
 const std::string Sound::prefix("res/sound/music/");
@@ -79,18 +79,12 @@ void Sound::playMusic(int num, int loops)
 	printf("Mix_PlayMusic: %s\n", Mix_GetError());
 }
 
-void Sound::playMusic(const std::string &fileName)
+void Sound::playMusic(const std::string &fileName, int loops)
 {
     std::vector<std::string>::iterator result =
 	std::find(allMusicFile.begin(), allMusicFile.end(), fileName);
     if (result != allMusicFile.end())
-	playMusic(result - allMusicFile.begin());
-}
-
-void Sound::playMusic()
-{
-    int num = randInt(0, allMusic.size());
-    playMusic(num);
+	playMusic(result - allMusicFile.begin(), loops);
 }
 
 void next();
@@ -109,6 +103,8 @@ int Sound::setVolumeMusic(int volume)
 {
     return Mix_VolumeMusic(volume); 
 }
+
+
 
 using namespace ResourceData;
 

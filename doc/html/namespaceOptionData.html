@@ -78,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,73 +105,68 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memitem:a28c9f103d8b69aed1b31c85273423adc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>MenuHolderStatus</b> { <br/>
 &#160;&#160;<b>MAINMENU</b>, 
-<b>CONTROL1P</b>, 
-<b>CONTROL2P</b>, 
 <b>OPTIONMENU</b>, 
+<b>PLAYERMENU</b>, 
+<b>KEYSETMENU</b>, 
 <br/>
 &#160;&#160;<b>QUITMENU</b>
 <br/>
  }</td></tr>
-<tr class="memitem:a3357b79875f31effd20d0687c137e0d0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GameStatus</b> { <b>RUNNING</b>, 
+<tr class="memitem:a3f7df1f131c8ff5cce230d35aaa4f4dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GameHolderStatus</b> { <b>READY</b>, 
+<b>RUN</b>, 
+<b>PAUSE</b>, 
 <b>QUITGAME</b>
- }</td></tr>
-<tr class="memitem:a5fa60f47da6322200d2d6fbec20dcf67"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>RandomizerType</b> { <b>BAG</b>, 
-<b>HISTORY4ROLL</b>
  }</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac15be6e9185f917c42ddb00e36108611"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac15be6e9185f917c42ddb00e36108611"></a>
-SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> = NULL</td></tr>
-<tr class="memitem:aa044d4fa38df1451a58d670ee8b980fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa044d4fa38df1451a58d670ee8b980fc"></a>
-SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>background</b> = NULL</td></tr>
-<tr class="memitem:a0a9fc6cee9203476e8643ecfbed99535"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a9fc6cee9203476e8643ecfbed99535"></a>
-TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><b>font</b> = NULL</td></tr>
-<tr class="memitem:a8a992689c250c19ee9ba45016bed8e5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a992689c250c19ee9ba45016bed8e5f"></a>
-<a class="el" href="classClock.html">Clock</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>clock</b> = NULL</td></tr>
-<tr class="memitem:a5ca024602c9f82dc0a55949f92dbb54a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ca024602c9f82dc0a55949f92dbb54a"></a>
-TetriminoStatus&#160;</td><td class="memItemRight" valign="bottom"><b>tetriminoStatus</b> = GAMELOOP</td></tr>
-<tr class="memitem:a35806d35a1dddb13431f839262d301c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35806d35a1dddb13431f839262d301c9"></a>
+<tr class="memitem:a58267bfa936f2dfd0b97210dd12c7a76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58267bfa936f2dfd0b97210dd12c7a76"></a>
+TetriminoStatus&#160;</td><td class="memItemRight" valign="bottom"><b>tetriminoStatus</b> = MENULOOP</td></tr>
+<tr class="memitem:af53feed4b1e3341392c1085b924f941b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af53feed4b1e3341392c1085b924f941b"></a>
 MenuHolderStatus&#160;</td><td class="memItemRight" valign="bottom"><b>menuHolderStatus</b> = MAINMENU</td></tr>
-<tr class="memitem:a22e92a4c8dd5a3248bdb852cac11aaaa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22e92a4c8dd5a3248bdb852cac11aaaa"></a>
-GameStatus&#160;</td><td class="memItemRight" valign="bottom"><b>gameStatus</b> = RUNNING</td></tr>
-<tr class="memitem:a5b3aa85a0fa53e20ca9525146f0a783f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b3aa85a0fa53e20ca9525146f0a783f"></a>
-Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>dasDelayTime</b> = 100</td></tr>
-<tr class="memitem:a7a1aa9a24180e049811b59fad25b1e4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a1aa9a24180e049811b59fad25b1e4e"></a>
-Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>areDelayTime</b> = 200</td></tr>
-<tr class="memitem:af121dffe9d3dd7b2597f115071ee6049"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af121dffe9d3dd7b2597f115071ee6049"></a>
-Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>lockDelayTime</b> = 500</td></tr>
-<tr class="memitem:a47be8c6cd3940175bdc7d19f3c5d2984"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47be8c6cd3940175bdc7d19f3c5d2984"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>horizontalSpeed</b> = 0.5</td></tr>
-<tr class="memitem:aac52dc304620851fc29e2010c5dedfa4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac52dc304620851fc29e2010c5dedfa4"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>normalDropSpeed</b> = 0.05</td></tr>
-<tr class="memitem:aaf0e9a432315dd0fa4017b912e5ae081"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf0e9a432315dd0fa4017b912e5ae081"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>softDropSpeed</b> = 0.5</td></tr>
-<tr class="memitem:a9e58e843235b9cf058c3eb50a23d0d87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e58e843235b9cf058c3eb50a23d0d87"></a>
-RandomizerType&#160;</td><td class="memItemRight" valign="bottom"><b>randomizerType</b> = BAG</td></tr>
-<tr class="memitem:a997d0b15148dfb8c4f34cbebb60d0e59"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><b>history4Roll</b> [4]</td></tr>
-<tr class="memitem:a62f06568f161c1a297368bfef0120223"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62f06568f161c1a297368bfef0120223"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>haveghost</b> = true</td></tr>
-<tr class="memitem:ab5b28ad1ba5dfcbb687971d385d9455f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5b28ad1ba5dfcbb687971d385d9455f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>haveholder</b> = true</td></tr>
+<tr class="memitem:a25a67fd3e6400fcdebea39b1a12f1bde"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25a67fd3e6400fcdebea39b1a12f1bde"></a>
+GameHolderStatus&#160;</td><td class="memItemRight" valign="bottom"><b>gameHolderStatus</b> = READY</td></tr>
+<tr class="memitem:a171ed5698b005999b0cfacd49a8c206c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a171ed5698b005999b0cfacd49a8c206c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>minoPixSizeX</b> = 20</td></tr>
+<tr class="memitem:a815121a3a2c521473aee807071530d51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a815121a3a2c521473aee807071530d51"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>minoPixSizeY</b> = 20</td></tr>
+<tr class="memitem:a7175bb86b1924df965ccf56fbdf202e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7175bb86b1924df965ccf56fbdf202e1"></a>
+<a class="el" href="structVector2.html">Vector2</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>minoPixSize</b></td></tr>
+<tr class="memitem:a9be639863d3540467cecd20c56b1e799"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9be639863d3540467cecd20c56b1e799"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>areDelayTime</b> = 200</td></tr>
+<tr class="memitem:aa3edf6ab6e9a04ad358cd92922ee4c64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3edf6ab6e9a04ad358cd92922ee4c64"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>lockDelayTime</b> = 800</td></tr>
+<tr class="memitem:a225829660951adf45e5778fb66083930"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a225829660951adf45e5778fb66083930"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>playerSize</b></td></tr>
+<tr class="memitem:a1fdebb69a452a0d9dbd205a63f56d1e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fdebb69a452a0d9dbd205a63f56d1e3"></a>
+<a class="el" href="structPlayerData.html">PlayerData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playerData1</b></td></tr>
+<tr class="memitem:a497d72214b4fd14b2168733b24a78fe0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a497d72214b4fd14b2168733b24a78fe0"></a>
+<a class="el" href="structPlayerData.html">PlayerData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playerData2</b></td></tr>
+<tr class="memitem:abd01feba0f8d9023145f6e51925eae50"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd01feba0f8d9023145f6e51925eae50"></a>
+<a class="el" href="structPlayerData.html">PlayerData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playerData3</b></td></tr>
+<tr class="memitem:a5b4bf801ffb49d20e236853700b41194"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b4bf801ffb49d20e236853700b41194"></a>
+<a class="el" href="structPlayerData.html">PlayerData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playerData4</b></td></tr>
+<tr class="memitem:a355c2dbaf2c33b10ca2b54f0a68b6d17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPlayerData.html">PlayerData</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>allPlayerData</b> [StableData::playerSizeMax]</td></tr>
+<tr class="memitem:ae52e3b7211a222d1110db7e86f077a66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae52e3b7211a222d1110db7e86f077a66"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ghostAlpha</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>游戏中可以通过菜单选项改变的，游戏运行时才被赋值的变量。 </p>
 </div><hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="a997d0b15148dfb8c4f34cbebb60d0e59"></a>
+<a class="anchor" id="a355c2dbaf2c33b10ca2b54f0a68b6d17"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int OptionData::history4Roll</td>
+          <td class="memname"><a class="el" href="structPlayerData.html">PlayerData</a> * OptionData::allPlayerData</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 <b>Initial value:</b><div class="fragment"><pre class="fragment"> {
-    BlockData::ZSHAPE,
-    BlockData::SSHAPE,
-    BlockData::ZSHAPE,
-    BlockData::SSHAPE
+    &amp;OptionData::playerData1,
+    &amp;OptionData::playerData2,
+    &amp;OptionData::playerData3,
+    &amp;OptionData::playerData4
 }
 </pre></div>
 </div>
@@ -180,7 +175,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>haveholder</b> = true
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 8 2012 10:40:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 16 2012 14:27:06 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

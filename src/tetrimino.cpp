@@ -52,8 +52,6 @@ void Tetrimino::releaseResource()
 
 void Tetrimino::mainloop()
 {
-    ResourceData::sound->setVolumeMusic(128);
-    ResourceData::sound->randomPlayMusic();
     while (true){
 	switch (OptionData::tetriminoStatus){
 	case OptionData::MENULOOP:
@@ -91,6 +89,9 @@ void Tetrimino::menuloop()
 
 void Tetrimino::gameloop()
 {
+    initPlayerData1();
+    initPlayerData2();
+    initPlayerData3();
     GameHolder gameHolder;
     SDL_Event event;
     while (OptionData::gameHolderStatus != OptionData::QUITGAME){

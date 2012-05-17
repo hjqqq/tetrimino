@@ -38,5 +38,6 @@ struct PlayerData{
 
 void initPlayerData1();
 void initPlayerData2();
+void initPlayerData3();
 
 #endif

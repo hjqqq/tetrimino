@@ -27,10 +27,6 @@ namespace StableData{
     const Rect<int> menuRect(200, 100, 400, 400);
     const Rect<int> labelRect(0, 0, 400, 50);
 
-    const int minoPixSizeX = 20;
-    const int minoPixSizeY = 20;
-    const Vector2<int> minoPixSize(minoPixSizeX, minoPixSizeY);
-
     const int mapSizeX = 10;
     const int mapSizeY = 20;
     const Vector2<int> mapSize(mapSizeX, mapSizeY);
