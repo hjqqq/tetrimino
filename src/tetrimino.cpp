@@ -79,11 +79,11 @@ void Tetrimino::menuloop()
 		return ;
 	    }
 	    menuHolder.handleEvent(event);
+	    SDL_BlitSurface(ResourceData::background, 0,
+			    ResourceData::display, 0);
+	    menuHolder.update();
+	    SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
 	}
-	SDL_BlitSurface(ResourceData::background, 0,
-			ResourceData::display, 0);
-	menuHolder.update();
-	SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
 	ResourceData::clock->tick();
     }
     OptionData::menuHolderStatus = OptionData::MAINMENU;

@@ -18,6 +18,9 @@ using namespace std;
 MenuHolder::MenuHolder() : 
     menu_setting("res/user_settings.txt", "res/default_settings.txt")
 {
+    instructionLabel1 = new SimpleLabel(Rect<int>(0, 490, 600, 50), "r: reset, +: plus, -: minus");
+    instructionLabel2 = new SimpleLabel(Rect<int>(100, 520, 600, 50),"Up, Down, Enter: chose");
+    instructionLabel3 = new SimpleLabel(Rect<int>(200, 550, 600, 50), "Left, Right: change player");
     menu_setting.loadSetting();
     constructMainMenu();
     constructOptionMenu();
@@ -29,6 +32,9 @@ MenuHolder::MenuHolder() :
 
 MenuHolder::~MenuHolder()
 {
+    delete instructionLabel1;
+    delete instructionLabel2;
+    delete instructionLabel3;
     menu_setting.saveSetting();
     delete mainMenu;
     delete optionMenu;
@@ -108,7 +114,11 @@ void MenuHolder::update()
 	break;
     case OptionData::KEYSETMENU:
 	(*keySetMenuIter)->update();
+	break;
     }
+    instructionLabel1->update();
+    instructionLabel2->update();
+    instructionLabel3->update();
 }
 
 void MenuHolder::constructMainMenu()
