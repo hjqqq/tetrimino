@@ -39,9 +39,9 @@ MenuHolder::MenuHolder() :
 MenuHolder::~MenuHolder()
 {
     /*
-    delete instructionLabel1;
-    delete instructionLabel2;
-    delete instructionLabel3;
+      delete instructionLabel1;
+      delete instructionLabel2;
+      delete instructionLabel3;
     */
     menu_setting.saveSetting();
     delete mainMenu;
@@ -62,36 +62,37 @@ MenuHolder::~MenuHolder()
 
 void MenuHolder::handleEvent(const SDL_Event &event)
 {
-    if ( (event.type == SDL_KEYDOWN) &&
-	 (event.key.keysym.sym == SDLK_ESCAPE) &&
-	 (OptionData::menuHolderStatus != OptionData::MAINMENU) )
-    {
-	switch (OptionData::menuHolderStatus){
-	case OptionData::OPTIONMENU:
-	    optionMenu->resetSelect();
-	    break;
-	case OptionData::PLAYERMENU:
-	    playerMenuIter = playerMenuVector.begin();
-	    keySetMenuIter = keySetMenuVector.begin();
-	    for (std::vector<Menu*>::iterator iter = playerMenuVector.begin(); 
-		 iter != playerMenuVector.end(); 
-		 ++iter ) 
-	    {
-		(*iter)->resetSelect();
+    if ( (event.type == SDL_KEYDOWN) )
+	if( (event.key.keysym.sym == SDLK_ESCAPE) ||
+	    (event.key.keysym.sym == SDLK_BACKSPACE) )
+	{
+	    switch (OptionData::menuHolderStatus){
+	    case OptionData::OPTIONMENU:
+		optionMenu->resetSelect();
+		OptionData::menuHolderStatus = OptionData::MAINMENU;
+		break;
+	    case OptionData::PLAYERMENU:
+		playerMenuIter = playerMenuVector.begin();
+		keySetMenuIter = keySetMenuVector.begin();
+		for (std::vector<Menu*>::iterator iter = playerMenuVector.begin(); 
+		     iter != playerMenuVector.end(); 
+		     ++iter ) 
+		{
+		    (*iter)->resetSelect();
+		}
+		OptionData::menuHolderStatus = OptionData::OPTIONMENU;
+		break;
+	    case OptionData::KEYSETMENU:
+		for (std::vector<Menu*>::iterator iter = keySetMenuVector.begin(); 
+		     iter != keySetMenuVector.end(); 
+		     ++iter ) 
+		{
+		    (*iter)->resetSelect();
+		}
+		OptionData::menuHolderStatus = OptionData::PLAYERMENU;
+		break;
 	    }
-	    break;
-	case OptionData::KEYSETMENU:
-	    for (std::vector<Menu*>::iterator iter = keySetMenuVector.begin(); 
-		 iter != keySetMenuVector.end(); 
-		 ++iter ) 
-	    {
-		(*iter)->resetSelect();
-	    }
-	    break;
 	}
-	OptionData::menuHolderStatus = 
-	    (OptionData::MenuHolderStatus) (OptionData::menuHolderStatus - 1);
-    }
     switch (OptionData::menuHolderStatus){
     case OptionData::MAINMENU:
 	mainMenu->handleEvent(event);
@@ -100,11 +101,13 @@ void MenuHolder::handleEvent(const SDL_Event &event)
 	optionMenu->handleEvent(event);
 	break;
     case OptionData::PLAYERMENU:
-	selectPlayerMenu(event);
+	if( (*playerMenuIter)->getSelect() == 0 )
+	    selectPlayerMenu(event);
 	(*playerMenuIter)->handleEvent(event);
 	break;
     case OptionData::KEYSETMENU:
-	selectPlayerMenu(event);	
+	if( (*keySetMenuIter)->getSelect() == 0 )
+	    selectPlayerMenu(event);	
 	(*keySetMenuIter)->handleEvent(event);
     }
 }
@@ -126,9 +129,9 @@ void MenuHolder::update()
 	break;
     }
     /*
-    instructionLabel1->update();
-    instructionLabel2->update();
-    instructionLabel3->update();
+      instructionLabel1->update();
+      instructionLabel2->update();
+      instructionLabel3->update();
     */
 }
 
@@ -222,7 +225,7 @@ void MenuHolder::constructPlayerMenu()
 {
     /******************************** labels ************************************/
     // 1p labels
-    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p Keyboard Setting");
+    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 1 p");
     ToggleLabel *toggleGhost1pLabel = new ToggleLabel(
 	StableData::labelRect, "Ghost",OptionData::playerData1.ghost);
     ToggleLabel *toggleHolder1pLabel = new ToggleLabel(
@@ -246,7 +249,7 @@ void MenuHolder::constructPlayerMenu()
 	StableData::labelRect, "Randomizer Type", "B|H", 
 	OptionData::playerData1.randomizerType, 1, 2, 1);
     // 2p labels
-    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p Keyboard Setting");
+    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 2 p");
     ToggleLabel *toggleGhost2pLabel = new ToggleLabel(
 	StableData::labelRect, "Ghost",OptionData::playerData2.ghost);
     ToggleLabel *toggleHolder2pLabel = new ToggleLabel(
@@ -270,7 +273,7 @@ void MenuHolder::constructPlayerMenu()
 	StableData::labelRect, "Randomizer Type", "B|H", 
 	OptionData::playerData2.randomizerType, 1, 2, 1);
     // 3p labels
-    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p Keyboard Setting");
+    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 3 p");
     ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
 	StableData::labelRect, "Ghost",OptionData::playerData3.ghost);
     ToggleLabel *toggleHolder3pLabel = new ToggleLabel(
@@ -294,7 +297,7 @@ void MenuHolder::constructPlayerMenu()
 	StableData::labelRect, "Randomizer Type", "B|H", 
 	OptionData::playerData3.randomizerType, 1, 2, 1);    
     // 4p labels
-    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p Keyboard Setting");
+    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 4 p");
     ToggleLabel *toggleGhost4pLabel = new ToggleLabel(
 	StableData::labelRect, "Ghost",OptionData::playerData4.ghost);
     ToggleLabel *toggleHolder4pLabel = new ToggleLabel(
@@ -512,7 +515,7 @@ void MenuHolder::constructKeySetMenu()
 {
     /******************************* labels *************************************/
     // 1p labels
-    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p Keyboard Setting");
+    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p");
     KeySetLabel * moveLeft1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData1.moveLeft);
@@ -535,7 +538,7 @@ void MenuHolder::constructKeySetMenu()
 	StableData::labelRect, "Hold",
 	OptionData::playerData1.hold);
     // 2p labels
-    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p Keyboard Setting");
+    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p");
     KeySetLabel * moveLeft2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData2.moveLeft);
@@ -558,7 +561,7 @@ void MenuHolder::constructKeySetMenu()
 	StableData::labelRect, "Hold",
 	OptionData::playerData2.hold);
     // 3p labels
-    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p Keyboard Setting");
+    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p");
     KeySetLabel * moveLeft3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData3.moveLeft);
@@ -581,7 +584,7 @@ void MenuHolder::constructKeySetMenu()
 	StableData::labelRect, "Hold",
 	OptionData::playerData3.hold);
     // 4p labels
-    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p Keyboard Setting");
+    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p");
     KeySetLabel * moveLeft4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData4.moveLeft);
@@ -789,12 +792,16 @@ void MenuHolder::selectPlayerMenu(const SDL_Event & event)
 	{
 	case SDLK_RIGHT:
 	    if(playerMenuIter != (playerMenuVector.end() - 1) ){
+		(*playerMenuIter)->resetSelect();
+		(*keySetMenuIter)->resetSelect();
 		++playerMenuIter;
 		++keySetMenuIter;
 	    }
 	    break;
 	case SDLK_LEFT:
 	    if( playerMenuIter != playerMenuVector.begin()) {
+		(*playerMenuIter)->resetSelect();
+		(*keySetMenuIter)->resetSelect();
 		--playerMenuIter;
 		--keySetMenuIter;
 	    }

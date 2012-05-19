@@ -1,4 +1,5 @@
 #include <string>
+#include "color.h"
 #include "utility.h"
 #include "optiondata.h"
 #include "playerdata.h"
@@ -22,12 +23,15 @@ KeySetLabel::~KeySetLabel()
 }
 
 void KeySetLabel::handleEvent( const SDL_Event &event)
-{
-    if( event.type == SDL_KEYDOWN )
-	if( event.key.keysym.sym == SDLK_RETURN ){
-	    getUserInput();
-	}else if( event.key.keysym.sym == SDLK_r )
+{ 
+    if( event.type == SDL_KEYDOWN ){
+	if( event.key.keysym.sym == SDLK_RETURN )
+	    color = red;
+	else if( event.key.keysym.sym == SDLK_r )
 	    key = default_key;
+    }else if( event.key.keysym.sym == SDLK_RETURN ){
+	getUserInput();
+    }
     freshShowText();
     destroyLabelSurface();
     constructLabelSurface();
@@ -40,7 +44,7 @@ void KeySetLabel::getUserInput()
     {
 	SDL_WaitEvent(&event);
       
-	if( (event.type == SDL_KEYDOWN) &&
+	if( (event.type == SDL_KEYUP) &&
 	    (strcmp(SDL_GetKeyName(event.key.keysym.sym), "unknown key") != 0) )
 	{
 	    key = event.key.keysym.sym;
@@ -52,6 +56,7 @@ void KeySetLabel::getUserInput()
 	    break;
 	}
     }
+    color = black;
 }
 
 void KeySetLabel::update()

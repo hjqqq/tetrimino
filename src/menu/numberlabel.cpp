@@ -1,4 +1,5 @@
 #include <string>
+#include "color.h"
 #include "numberlabel.h"
 #include "resourcedata.h"
 
@@ -44,13 +45,13 @@ void NumberLabel::handleEvent( const SDL_Event &event)
 	    case SDLK_r: 
 		reset(); 
 		break;
-	    case SDLK_MINUS:
+	    case SDLK_LEFT:
 		if( (number -= PLUS_FACTOR) <= MIN_NUMBER)
 		    number = MIN_NUMBER;;
 		syncToNumberText();
 		act();
 		break;
-	    case SDLK_EQUALS:
+	    case SDLK_RIGHT:
 		if( (number += PLUS_FACTOR) >= MAX_NUMBER)
 		    number = MAX_NUMBER;
 		syncToNumberText();
@@ -106,6 +107,7 @@ void NumberLabel::toggleInputState()
 {
     if (input_state == true) {
 	input_state = false;
+	color = black;
 	if ( (number_text.length() == 0) || 
 	     (atof(number_text.c_str()) < MIN_NUMBER ) ||
 	     (atof(number_text.c_str()) > MAX_NUMBER) )
@@ -116,6 +118,7 @@ void NumberLabel::toggleInputState()
     }
     else{
 	input_state = true;
+	color = red;	
 	number_text = "";
     }
 }
