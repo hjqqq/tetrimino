@@ -1,0 +1,19 @@
+#+TITLE:     准标准俄罗斯方块
+#+AUTHOR:    六人行游戏小组
+#+EMAIL:     thisisafatboy@gmail.com
+#+DATE:      2012-05-19 六
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+
+* 需求分析
+
+* 概要设计
+
+* 详细设计
+
+** 定义界面
+   
+** 绘制视图
+
+* 软件测试

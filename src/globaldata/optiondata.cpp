@@ -26,10 +26,6 @@ PlayerData* OptionData::allPlayerData[StableData::playerSizeMax] = {
     &OptionData::playerData4
 };
 
-<<<<<<< HEAD
-int OptionData::ghostAlpha = 50;
-=======
 int OptionData::ghostAlpha;
 int OptionData::musicVolume;
 int OptionData::chunkVolume;
->>>>>>> origin/master

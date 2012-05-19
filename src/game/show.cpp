@@ -188,10 +188,9 @@ void Show::mapShow(int mapData[StableData::mapSizeX][StableData::mapSizeY])
 
 void Show::holdShow(BlockShape holdShape)
 {
-    if (playerData->hold){
+    if (playerData->holder){
 	SDL_BlitSurface(ResourceData::background, &holdPixRectTemp,
 			ResourceData::display, &holdPixRectTemp);	    
-    
 	blockShow(holdPixPos,
 		  Vector2<int>(0, 0),
 		  holdShape,
@@ -200,7 +199,6 @@ void Show::holdShow(BlockShape holdShape)
 		  minoColor);
     }
 }
-
 
 void Show::ghostShow(Vector2<int> pos,
 		     BlockShape shape,
