@@ -4,7 +4,6 @@
 
 void initPlayerData1()
 {
-    OptionData::playerSize = 3;
     OptionData::playerData1.dasDelayTime = 150;
 
     OptionData::playerData1.horizontalSpeed = 0.3;
@@ -37,13 +36,13 @@ void initPlayerData2()
     OptionData::playerData2.showPixPos = Vector2<int>(420, 20);
     
     //JJJ
-    OptionData::playerData2.moveLeft = SDLK_KP4;
-    OptionData::playerData2.moveRight = SDLK_KP6;
-    OptionData::playerData2.rotateLeft = SDLK_KP7;
-    OptionData::playerData2.rotateRight = SDLK_RIGHT;
-    OptionData::playerData2.softDrop = SDLK_KP5;
-    OptionData::playerData2.hardDrop = SDLK_KP8;
-    OptionData::playerData2.hold = SDLK_KP0;    
+    OptionData::playerData2.moveLeft = SDLK_j;
+    OptionData::playerData2.moveRight = SDLK_l;
+    OptionData::playerData2.rotateLeft = SDLK_u;
+    OptionData::playerData2.rotateRight = SDLK_o;
+    OptionData::playerData2.softDrop = SDLK_k;
+    OptionData::playerData2.hardDrop = SDLK_i;
+    OptionData::playerData2.hold = SDLK_SPACE;    
 }
 
 void initPlayerData3()

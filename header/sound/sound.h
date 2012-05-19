@@ -14,8 +14,9 @@
    @brief 管理效果音以及音乐
    
    本游戏在使用 Sound 类时只会新建一个 ResourceData::sound 全局对象，使用该全局
-   对象播放效果音 (chunk) 以及音乐 (music)
+   对象播放效果音 (chunk) 以及音乐 (music)   
  */
+
 class Sound{
 public:
     /**
@@ -25,8 +26,8 @@ public:
        
        - 背景音乐 （music） 放在 "res/sound/music/"
 
-         可以手动将背景音乐地放到这个文件夹中，要求 mp3，名字为英文。
-     */
+       可以手动将背景音乐地放到这个文件夹中，要求 mp3，名字为英文。
+    */
     Sound();
     ~Sound();
 

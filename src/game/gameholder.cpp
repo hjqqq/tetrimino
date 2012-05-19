@@ -4,11 +4,12 @@
 GameHolder::GameHolder()
 {
     initGhostColor();
+    initQuitLabel();    
     SDL_BlitSurface(ResourceData::background, 0,
 		    ResourceData::display, 0);
     
     for (int i = 0; i != StableData::playerSizeMax; ++i){
-	allGame[i] = NULL;	
+	allGame[i] = NULL;
 	allRandomQueueData[i] = NULL;
 	allRandomQueue[i] = NULL;
     }
@@ -19,30 +20,13 @@ GameHolder::GameHolder()
     
     setRandomQueue();
     setAllGameStatus(Game::PREPARE);
-    OptionData::gameHolderStatus = OptionData::READY;
-
-    quitLabelRect = Rect<int>(0, 0, 200, 50);
-    quitLabelBackSurface = SDL_CreateRGBSurface(
-	ResourceData::display->flags,
-	quitLabelRect.diagonal.x,
-	quitLabelRect.diagonal.y,
-	ResourceData::display->format->BitsPerPixel,
-	ResourceData::display->format->Rmask,
-	ResourceData::display->format->Gmask,
-	ResourceData::display->format->Bmask,
-	ResourceData::display->format->Amask);
     
-    quitLabelRect.setCenter(StableData::screenSize / 2);
-    quitLabel = new QuitLabel(quitLabelRect, "Quit?");
-    quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
-			     OptionData::gameHolderStatus,
-			     OptionData::QUITGAME));
+    OptionData::gameHolderStatus = OptionData::READY;
     ResourceData::sound->randomPlayMusic();
 }
 
 GameHolder::~GameHolder()
 {
-    SDL_FreeSurface(quitLabelBackSurface);
     delete quitLabel;
     for (int i = 0; i != StableData::playerSizeMax; ++i){
 	delete allGame[i];
@@ -142,6 +126,12 @@ void GameHolder::setAllGameStatus(Game::GameStatus gameStatus)
 	allGame[i]->gameStatus = gameStatus;
 }
 
+/**
+   这里使用了先设置空指针，再用 player 的编号（0， 1， 2， 3）找到对应
+   RandomQueue 的办法。
+
+   @see RandomQueueData
+ */
 void GameHolder::setRandomQueue()
 {
     for (int i = 0; i != StableData::playerSizeMax; ++i){
@@ -170,6 +160,10 @@ void GameHolder::setRandomQueue()
     }    
 }
 
+/**
+   初始化 minoGhostColor（全局变量 blockdata.h）, 采用与背景颜色直接计算RGB值的
+   方法，ghostColor = ghostColor * alpha + back * (1 - alpha);
+ */
 void GameHolder::initGhostColor()
 {
     double ghostAlpha = (double)OptionData::ghostAlpha / 100;
@@ -187,3 +181,27 @@ void GameHolder::initGhostColor()
     }
 }
 
+/**
+   注意这个地方不仅存储了要打印在 display 上的 surface，还需要存储当前的被
+   quitLabel 所覆盖的背景，不然由于玩家的方块的显示都是改变了才贴图的并且没有贴
+   背景，会导致 quitLabel 残留在中间。
+ */
+void GameHolder::initQuitLabel()
+{
+    quitLabelRect = Rect<int>(0, 0, 200, 50);
+    quitLabelBackSurface = SDL_CreateRGBSurface(
+	ResourceData::display->flags,
+	quitLabelRect.diagonal.x,
+	quitLabelRect.diagonal.y,
+	ResourceData::display->format->BitsPerPixel,
+	ResourceData::display->format->Rmask,
+	ResourceData::display->format->Gmask,
+	ResourceData::display->format->Bmask,
+	ResourceData::display->format->Amask);
+    
+    quitLabelRect.setCenter(StableData::screenSize / 2);
+    quitLabel = new QuitLabel(quitLabelRect, "Quit?");
+    quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
+			     OptionData::gameHolderStatus,
+			     OptionData::QUITGAME));    
+}
