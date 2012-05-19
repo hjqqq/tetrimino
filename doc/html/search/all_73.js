@@ -1,13 +1,22 @@
 var searchData=
 [
-  ['setting',['Setting',['../classSetting.html',1,'']]],
+  ['savesetting',['saveSetting',['../classSetting.html#a776e1a95900ff46c4dfdbba508015eae',1,'Setting']]],
+  ['selectnext',['selectNext',['../classMenu.html#ae9f3864ce240274a00a94f3a08cda683',1,'Menu']]],
+  ['selectprevious',['selectPrevious',['../classMenu.html#a5e5db747077658b6a2acafdc94bba25e',1,'Menu']]],
+  ['setaction',['setAction',['../classWidget.html#afe5942b5fd686565859cda31e8c41e6f',1,'Widget']]],
+  ['setrect',['setRect',['../classLabel.html#aa4787ff7739236ea84c6d5f7151d86b4',1,'Label::setRect()'],['../classMenu.html#ad51f1343ff084dedd1d10d7f3e05656a',1,'Menu::setRect()'],['../classWidget.html#a7fc16f6f16c614544d65824cd9fcb530',1,'Widget::setRect()']]],
+  ['setselect',['setSelect',['../classMenu.html#a9e09fb241968b53628c0594259958fd3',1,'Menu']]],
+  ['setting',['Setting',['../classSetting.html',1,'Setting'],['../classSetting.html#ae5c91fbd780c29cacbf225130a2bce53',1,'Setting::Setting()']]],
+  ['setting_2eh',['setting.h',['../setting_8h.html',1,'']]],
   ['setvolumechunk',['setVolumeChunk',['../classSound.html#a185ff19bfe195ce54f3eea1dac6b8ef7',1,'Sound']]],
   ['setvolumemusic',['setVolumeMusic',['../classSound.html#a668edbb79edf88da23ef1369018e0a6f',1,'Sound']]],
   ['show',['Show',['../classShow.html',1,'']]],
-  ['simplelabel',['SimpleLabel',['../classSimpleLabel.html',1,'']]],
+  ['simplelabel',['SimpleLabel',['../classSimpleLabel.html',1,'SimpleLabel'],['../classSimpleLabel.html#a0667dd8a01f51894826158699f24c930',1,'SimpleLabel::SimpleLabel()']]],
+  ['simplelabel_2eh',['simplelabel.h',['../simplelabel_8h.html',1,'']]],
   ['sound',['Sound',['../classSound.html',1,'Sound'],['../classSound.html#a539c205cdf06fe2c621fd77c37bcfac9',1,'Sound::Sound()']]],
   ['sound_2eh',['sound.h',['../sound_8h.html',1,'']]],
   ['stabledata',['StableData',['../namespaceStableData.html',1,'']]],
   ['stabledata_2eh',['stabledata.h',['../stabledata_8h.html',1,'']]],
-  ['startsetter',['StartSetter',['../classStartSetter.html',1,'']]]
+  ['startsetter',['StartSetter',['../classStartSetter.html',1,'']]],
+  ['startsetter_2eh',['startsetter.h',['../startsetter_8h.html',1,'']]]
 ];

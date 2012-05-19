@@ -1,4 +1,4 @@
-#ifndef _MENUBG_H_
+/*#ifndef _MENUBG_H_
 #define _MENUBG_H_
 
 #include <string>
@@ -20,3 +20,4 @@ class MenuBG {
 };
 
 #endif /* _MENUBG_H_ */
+*/

@@ -1,4 +1,4 @@
-#include <string>
+/*#include <string>
 #include "menubg.h"
 
 MenuBG::MenuBG( const int & _count,
@@ -19,3 +19,4 @@ void MenuBG::freshPos()
 {
   
 }
+*/

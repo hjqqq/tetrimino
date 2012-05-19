@@ -2,13 +2,27 @@
 #define _NUMBERSETTER_H_
 
 #include "action.h"
+/**
+   @file numbersetter.h
+ */
 
+/**
+   @brief 更改传入的数值
+
+   该模板只适应用于能够被强制转换为double的类型，如int等
+ */
 template <typename T>
 class NumberSetter : public Action{
  public:
+    /**
+       @param _sys 初始化传入的数值引用，关联需要修改的变量
+     */
  NumberSetter(T &_sys) : sys(_sys) {}
-  
-  inline void operator()(const double &);
+
+    /**
+       param value 用此数值为关联的变量赋值
+     */
+  inline void operator()(const double & value);
   
  private:
   T &sys;

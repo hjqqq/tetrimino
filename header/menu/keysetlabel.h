@@ -7,16 +7,36 @@
 #include "action.h"
 #include "color.h"
 
+/**
+   @file keysetlabel.h
+ */
+
+/**
+   @brief 获取按键并blit显示出来
+ */
 class KeySetLabel : public Label{
  public:
+    /**
+       @param _rect 初始化blit的位置
+       @param _text 初始化label的内容
+       @param _key 初始化保存的按键
+       @param _color 初始化blit到菜单的内容的颜色
+     */
   KeySetLabel( const Rect<int> &_rect,
 	       const std::string &_text,
 	       const SDLKey &_key,
 	       const SDL_Color &_color = black );
 
   virtual ~KeySetLabel();
-  
+
+    /**
+       @param event 根据传入的事件获取按键
+     */
   virtual void handleEvent(const SDL_Event &event);
+
+    /**
+       blit该label的内容和按键到屏幕上
+     */
   virtual void update();
 
  private:
@@ -28,6 +48,10 @@ class KeySetLabel : public Label{
   void constructLabelSurface();
   void destroyLabelSurface();
   void act();
+    
+    /**
+       获取按键
+     */
   void getUserInput();
   inline void freshShowText();
 };
