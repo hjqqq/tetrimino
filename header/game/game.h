@@ -11,24 +11,32 @@
 #include "randomqueue.h"
 #include "show.h"
 
-class GameHolder;
+/**
+   @file game.h
+ */
 
+/**
+   @brief 处理一个玩家的游戏逻辑。
+
+   内部同时含有其他玩家的 Game* 所以可以给其他玩家增行。同时处理各种 Delay。
+ */
 class Game{
 public:
     enum GameStatus{PREPARE, READY, START, AREDELAY,
 		    DROP, WIN, GAMEOVER, QUITGAME};
-    GameStatus gameStatus;    
+    GameStatus gameStatus;
     Game(PlayerData *_playerData, Game **_allGame);
     ~Game();
 
     void setRandomQueue(RandomQueue *randomQueue);
-    
-    void initTimer();
-    void initCounter();
-    void initStatus();
-    
+
     void handleEvent(const SDL_Event &event);
     void update();
+
+private:
+    void initTimer();
+    void initStatus();
+    void initCounter();
 
     void prepareHandleEvent(const SDL_Event &event);
     void prepareUpdate();
@@ -62,9 +70,7 @@ public:
     void lossUpdate();
     void winUpdate();
 
-private:
     PlayerData *playerData;
-    GameHolder *gameHolder;
     RandomQueue *randomQueue;
 
     Game **allGame;

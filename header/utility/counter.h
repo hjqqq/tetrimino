@@ -1,6 +1,17 @@
 #ifndef COUNTER_H
 #define COUNTER_H
 
+/**
+   @file counter.h
+ */
+
+/**
+   @brief 倒着计数的类
+
+   内部存着当前数到了哪一个数字。使用getRemain()可以判断是否数到了0。Clock 类中
+   可以使用本类实现游戏主循环中帧的计数。
+ */
+
 class Counter{
 public:
     inline Counter(Uint32 num);

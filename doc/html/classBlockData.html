@@ -100,6 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>存着所有与下落方块有关的数据。  
+ <a href="classBlockData.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="blockdata_8h_source.html">blockdata.h</a>&gt;</code></p>
+
 <p><a href="classBlockData-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-types"></a>
@@ -123,14 +128,17 @@ const BlockNum &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getNu
 <tr class="memitem:a8501265375cddcd689ac341de26e1f37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8501265375cddcd689ac341de26e1f37"></a>
 const <a class="el" href="structRect.html">BlockRect</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRect</b> (Direction direction) const </td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>存着所有与下落方块有关的数据。 </p>
+<p>包括方块的形状（int[4][4][4] 4个方向 加 4 * 4），方块的Rect（表示有方块存在 的区域）。定义全局数组（blockDataArray, blockStartPosArray），以方块形状为下 标可以取得方块的形状，Rect信息，以及初始位置信息。MinoColor定义了每一个方块 中的小方格的颜色。这个颜色就直接作为int存到了方块数据里面。 </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/globaldata/<a class="el" href="blockdata_8h_source.html">blockdata.h</a></li>
 </ul>
 </div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 16:49:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

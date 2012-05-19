@@ -100,6 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>控制游戏 fps 时间。  
+ <a href="classClock.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="clock_8h_source.html">clock.h</a>&gt;</code></p>
+
 <p><a href="classClock-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -108,8 +113,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Clock</b> (Uint32 framerate)</td></tr>
 <tr class="memitem:a116757f0e1575348549b1f2fc346d492"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a116757f0e1575348549b1f2fc346d492"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>tick</b> ()</td></tr>
-<tr class="memitem:aa43f491fd0625d9290618592c33edb15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa43f491fd0625d9290618592c33edb15"></a>
-<a class="el" href="classCounter.html">Counter</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>addCounter</b> (Uint32 num)</td></tr>
+<tr class="memitem:aa43f491fd0625d9290618592c33edb15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCounter.html">Counter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClock.html#aa43f491fd0625d9290618592c33edb15">addCounter</a> (Uint32 num)</td></tr>
 <tr class="memitem:ada901d8c1e47720f188a27c393534f8b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada901d8c1e47720f188a27c393534f8b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeCounter</b> (<a class="el" href="classCounter.html">Counter</a> *counter)</td></tr>
 <tr class="memitem:a04e022541de2dd95a15da045396de718"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04e022541de2dd95a15da045396de718"></a>
@@ -121,6 +125,34 @@ static Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>frame2Millis
 <tr class="memitem:a395ec7ba9b2a0b1b38d50ae8d8d5bd68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a395ec7ba9b2a0b1b38d50ae8d8d5bd68"></a>
 static Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>millisecond2Frame</b> (Uint32 millisecond)</td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>控制游戏 fps 时间。 </p>
+<p>通过游戏主循环中每一帧调用一次 tick() 函数可以自动延迟相应的时间。可以 addCounter。可以增加一个 counter。counter 在每一次 tick() 是会自动减1。通过 addCounter 返回的 counter 由 <a class="el" href="classClock.html" title="控制游戏 fps 时间。">Clock</a> 管理内存，也可以使用 removeCounter()，先 删掉。 </p>
+</div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aa43f491fd0625d9290618592c33edb15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCounter.html">Counter</a> * <a class="el" href="classClock.html#aa43f491fd0625d9290618592c33edb15">Clock::addCounter</a> </td>
+          <td>(</td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>计数器 (counter) 的计数次数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>新增计数器指针，由 <a class="el" href="classClock.html" title="控制游戏 fps 时间。">Clock</a> 类自己管理内存 </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/utility/<a class="el" href="clock_8h_source.html">clock.h</a></li>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/src/utility/clock.cpp</li>
@@ -129,7 +161,7 @@ static Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>millisecond2
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 16:49:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

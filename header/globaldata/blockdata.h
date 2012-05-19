@@ -6,9 +6,21 @@
 #include "color.h"
 #include "rect.h"
 
+/**
+   @file blockdata.h
+ */
+
 enum Direction{NORTH, WEST, SOUTH, EAST};
 enum BlockShape{ISHAPE, JSHAPE, LSHAPE, SSHAPE, TSHAPE, ZSHAPE, OSHAPE};
 
+/**
+   @brief 存着所有与下落方块有关的数据。
+
+   包括方块的形状（int[4][4][4] 4个方向 加 4 * 4），方块的Rect（表示有方块存在
+   的区域）。定义全局数组（blockDataArray, blockStartPosArray），以方块形状为下
+   标可以取得方块的形状，Rect信息，以及初始位置信息。MinoColor定义了每一个方块
+   中的小方格的颜色。这个颜色就直接作为int存到了方块数据里面。
+ */
 class BlockData{
 public:
     typedef int BlockNum[4][4];

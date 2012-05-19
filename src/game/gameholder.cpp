@@ -4,6 +4,7 @@
 GameHolder::GameHolder()
 {
     initGhostColor();
+    initQuitLabel();    
     SDL_BlitSurface(ResourceData::background, 0,
 		    ResourceData::display, 0);
     
@@ -26,7 +27,6 @@ GameHolder::GameHolder()
 
 GameHolder::~GameHolder()
 {
-    SDL_FreeSurface(quitLabelBackSurface);
     delete quitLabel;
     for (int i = 0; i != StableData::playerSizeMax; ++i){
 	delete allGame[i];
@@ -127,6 +127,9 @@ void GameHolder::setAllGameStatus(Game::GameStatus gameStatus)
 }
 
 /**
+   这里使用了先设置空指针，再用 player 的编号（0， 1， 2， 3）找到对应
+   RandomQueue 的办法。
+
    @see RandomQueueData
  */
 void GameHolder::setRandomQueue()
@@ -157,6 +160,10 @@ void GameHolder::setRandomQueue()
     }    
 }
 
+/**
+   初始化 minoGhostColor（全局变量 blockdata.h）, 采用与背景颜色直接计算RGB值的
+   方法，ghostColor = ghostColor * alpha + back * (1 - alpha);
+ */
 void GameHolder::initGhostColor()
 {
     double ghostAlpha = (double)OptionData::ghostAlpha / 100;

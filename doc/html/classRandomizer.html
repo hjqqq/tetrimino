@@ -98,6 +98,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Randomizer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>随机数产生器  
+ <a href="classRandomizer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="randomizer_8h_source.html">randomizer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Randomizer:</div>
 <div class="dyncontent">
@@ -116,14 +121,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5af6d3d4f1fe717a808e11119411faf2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5af6d3d4f1fe717a808e11119411faf2"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> ()=0</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>随机数产生器 </p>
+<p>使用 get() 函数返回一个表示形状的整数。范围 [0, blockPackageSize) (blockPackageSize = 7 <a class="el" href="blockdata_8h.html">blockdata.h</a>) 按照标准有两种随机数产生器。</p>
+<ul>
+<li>random bag，对应 BagRandomizer。random bag 一次生成 7 个随机数，保证7种方 块每一个出现一次。</li>
+</ul>
+<ul>
+<li>history4，对应 HistoryRollRandomizer。保证新出现的方块形状不跟前4个一样。 最开始的方块也有4个方块的历史，他们是StableData::history4Roll[4] = {5, 3, 5, 3}; 对应形状 ZSZS，也就是一开始不可以出现 Z 或 S。接下来的第二个方块不能 出现 Z 或 S 或 刚刚生成的方块。 </li>
+</ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/utility/<a class="el" href="randomizer_8h_source.html">randomizer.h</a></li>
 </ul>
 </div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 16:49:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

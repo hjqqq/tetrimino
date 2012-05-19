@@ -1,8 +1,10 @@
 var searchData=
 [
   ['randomizer',['Randomizer',['../classRandomizer.html',1,'']]],
+  ['randomizer_2eh',['randomizer.h',['../randomizer_8h.html',1,'']]],
   ['randomplaymusic',['randomPlayMusic',['../classSound.html#af5feaa231a9b30dae1a85377f50d8fd9',1,'Sound']]],
   ['randomqueue',['RandomQueue',['../classRandomQueue.html',1,'']]],
+  ['randomqueue_2eh',['randomqueue.h',['../randomqueue_8h.html',1,'']]],
   ['randomqueuedata',['RandomQueueData',['../classRandomQueueData.html',1,'']]],
   ['rect',['Rect',['../structRect.html',1,'Rect&lt; T &gt;'],['../classWidget.html#abaaa1716379820b4b41366ef465bcd99',1,'Widget::rect()']]],
   ['rect_2eh',['rect.h',['../rect_8h.html',1,'']]],

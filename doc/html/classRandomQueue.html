@@ -100,6 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>提供给 <a class="el" href="classGame.html" title="处理一个玩家的游戏逻辑。">Game</a> 类的 <a class="el" href="classRandomQueueData.html" title="提供方块中随机数的抽象。">RandomQueueData</a> 多指针队列的指针的抽象。  
+ <a href="classRandomQueue.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="randomqueue_8h_source.html">randomqueue.h</a>&gt;</code></p>
+
 <p><a href="classRandomQueue-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-types"></a>
@@ -119,7 +124,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>pop</b> ()</td></tr>
 <tr class="memitem:ae2f2d29ee0f2b6a82d4ad78f582f7f3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2f2d29ee0f2b6a82d4ad78f582f7f3b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> ()</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>提供给 <a class="el" href="classGame.html" title="处理一个玩家的游戏逻辑。">Game</a> 类的 <a class="el" href="classRandomQueueData.html" title="提供方块中随机数的抽象。">RandomQueueData</a> 多指针队列的指针的抽象。 </p>
+<p><a class="el" href="classRandomQueue.html" title="提供给 Game 类的 RandomQueueData 多指针队列的指针的抽象。">RandomQueue</a> 封装起 <a class="el" href="classRandomQueueData.html" title="提供方块中随机数的抽象。">RandomQueueData</a> 多指针队列中的指针并且使其看起来就像是一 个普通的队列。为 <a class="el" href="classGame.html" title="处理一个玩家的游戏逻辑。">Game</a> 类的编写带来方便。需要注意的是，新建 <a class="el" href="classRandomQueue.html" title="提供给 Game 类的 RandomQueueData 多指针队列的指针的抽象。">RandomQueue</a> 对象 需要在构造函数中告诉它是从那个 <a class="el" href="classRandomQueueData.html" title="提供方块中随机数的抽象。">RandomQueueData</a> 中新建的一个指针，新建的指针 只能指向 <a class="el" href="classRandomQueueData.html" title="提供方块中随机数的抽象。">RandomQueueData</a> 的头部。 </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/utility/<a class="el" href="randomqueue_8h_source.html">randomqueue.h</a></li>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/src/utility/randomqueue.cpp</li>
 </ul>
@@ -127,7 +135,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> ()</td></tr
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 16:49:43 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>
