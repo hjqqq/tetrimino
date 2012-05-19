@@ -23,10 +23,20 @@ Game::Game(PlayerData *_playerData, Game **_allGame):
 
 Game::~Game()
 {
-    delete show;
+    if (!horizontalLeftCounter)
+	ResourceData::clock->removeCounter(horizontalLeftCounter);
+    if (!horizontalRightCounter)
+	ResourceData::clock->removeCounter(horizontalRightCounter);
+    if (!normalDropCounter)
+	ResourceData::clock->removeCounter(normalDropCounter);
+    if (!softDropCounter)
+	ResourceData::clock->removeCounter(softDropCounter);
+
     delete lockDelayTimer;
     delete areDelayTimer;
     delete dasDelayTimer;
+
+    delete show;
 }
 
 void Game::setRandomQueue(RandomQueue *randomQueue)
@@ -182,12 +192,12 @@ void Game::createBlock()
 		holdStatus = HOLDED;
 		holdEmpty = false;
 		show->holdShow(holdShape);
-		ResourceData::sound->playChunk(Sound::TURN);
+		//ResourceData::sound->playChunk(Sound::TURN);
 	    } else{
 		std::swap(shape, holdShape);
 		holdStatus = HOLDED;
 		show->holdShow(holdShape);
-		ResourceData::sound->playChunk(Sound::TURN);		
+		//ResourceData::sound->playChunk(Sound::TURN);		
 	    }
 	    break;
 	case HOLDED:
@@ -328,7 +338,7 @@ void Game::dropHandleEvent(const SDL_Event &event)
 	else if (sym == playerData->rotateLeft){
 	    int newDirection = (direction == 3? 0: direction + 1);
 	    if (SRSRotate(direction, (Direction)newDirection)){
-		ResourceData::sound->playChunk(Sound::TURN);
+		//ResourceData::sound->playChunk(Sound::TURN);
 		if (lockStatus)
 		    lockDelayTimer->reset();
 	    }
@@ -337,7 +347,7 @@ void Game::dropHandleEvent(const SDL_Event &event)
 	else if (sym == playerData->rotateRight){
 	    int newDirection = (direction == 0? 3: direction - 1);
 	    if (SRSRotate(direction, (Direction)newDirection)){
-		ResourceData::sound->playChunk(Sound::TURN);	    		
+		//ResourceData::sound->playChunk(Sound::TURN);	    		
 		if (lockStatus)
 		    lockDelayTimer->reset();
 	    }
@@ -711,16 +721,17 @@ void Game::addMapGrow(int grow)
 	if (allGame[i]->gameStatus != GAMEOVER && allGame[i] != this)
 	    remain.push_back(allGame[i]);
     }
-    Game *attack = remain[randInt(0, remain.size())];
-	
-    if (mapGrow >= grow)
-	mapGrow -= grow;
-    else{
-	grow -= mapGrow;
-	mapGrow = 0;
-	attack->mapGrow += grow;
-	ResourceData::sound->playChunk(Sound::WARN);
-	attack->show->growBarShow(attack->mapGrow);
+    if (remain.size() != 0){
+	Game *attack = remain[randInt(0, remain.size())];
+	if (mapGrow >= grow)
+	    mapGrow -= grow;
+	else{
+	    grow -= mapGrow;
+	    mapGrow = 0;
+	    attack->mapGrow += grow;
+	    ResourceData::sound->playChunk(Sound::WARN);
+	    attack->show->growBarShow(attack->mapGrow);
+	}
     }
 }
 

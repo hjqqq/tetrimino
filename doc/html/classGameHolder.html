@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,6 +99,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>处理所有的玩家类（Game 类）。  
+ <a href="classGameHolder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="gameholder_8h_source.html">gameholder.h</a>&gt;</code></p>
+
 <p><a href="classGameHolder-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -107,16 +112,11 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)</td></tr>
 <tr class="memitem:ad0a3e03a78be01cef70ffa34bc4d26f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0a3e03a78be01cef70ffa34bc4d26f4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
-<tr class="memitem:ac0fb533751cb2562feb861ffa15c2704"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0fb533751cb2562feb861ffa15c2704"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkAllGameStatus</b> (Game::GameStatus gameStatus)</td></tr>
-<tr class="memitem:a0f1721f21f7aa4bf498b98ccac06975b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f1721f21f7aa4bf498b98ccac06975b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAllGameStatus</b> (Game::GameStatus gameStatus)</td></tr>
-<tr class="memitem:af3637e6e2999e534770410385d94313f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3637e6e2999e534770410385d94313f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRandomQueue</b> ()</td></tr>
-<tr class="memitem:a4d6af19e1c216c4586427ad6c7db20e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d6af19e1c216c4586427ad6c7db20e3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initGhostColor</b> ()</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>处理所有的玩家类（Game 类）。 </p>
+<p>负责管理随机数队列，判定游戏整体的状态，如什么时候大家都 Ready，什么时候有人 胜出，处理整体的暂停功能，初始化游戏资源（ghostColor）。 </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/game/<a class="el" href="gameholder_8h_source.html">gameholder.h</a></li>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/src/game/gameholder.cpp</li>
 </ul>
@@ -124,7 +124,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initGhostColor</b> ()
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 16 2012 14:27:05 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 10:24:12 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

@@ -8,7 +8,7 @@ GameHolder::GameHolder()
 		    ResourceData::display, 0);
     
     for (int i = 0; i != StableData::playerSizeMax; ++i){
-	allGame[i] = NULL;	
+	allGame[i] = NULL;
 	allRandomQueueData[i] = NULL;
 	allRandomQueue[i] = NULL;
     }
@@ -19,24 +19,8 @@ GameHolder::GameHolder()
     
     setRandomQueue();
     setAllGameStatus(Game::PREPARE);
-    OptionData::gameHolderStatus = OptionData::READY;
-
-    quitLabelRect = Rect<int>(0, 0, 200, 50);
-    quitLabelBackSurface = SDL_CreateRGBSurface(
-	ResourceData::display->flags,
-	quitLabelRect.diagonal.x,
-	quitLabelRect.diagonal.y,
-	ResourceData::display->format->BitsPerPixel,
-	ResourceData::display->format->Rmask,
-	ResourceData::display->format->Gmask,
-	ResourceData::display->format->Bmask,
-	ResourceData::display->format->Amask);
     
-    quitLabelRect.setCenter(StableData::screenSize / 2);
-    quitLabel = new QuitLabel(quitLabelRect, "Quit?");
-    quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
-			     OptionData::gameHolderStatus,
-			     OptionData::QUITGAME));
+    OptionData::gameHolderStatus = OptionData::READY;
     ResourceData::sound->randomPlayMusic();
 }
 
@@ -142,6 +126,9 @@ void GameHolder::setAllGameStatus(Game::GameStatus gameStatus)
 	allGame[i]->gameStatus = gameStatus;
 }
 
+/**
+   @see RandomQueueData
+ */
 void GameHolder::setRandomQueue()
 {
     for (int i = 0; i != StableData::playerSizeMax; ++i){
@@ -187,3 +174,27 @@ void GameHolder::initGhostColor()
     }
 }
 
+/**
+   注意这个地方不仅存储了要打印在 display 上的 surface，还需要存储当前的被
+   quitLabel 所覆盖的背景，不然由于玩家的方块的显示都是改变了才贴图的并且没有贴
+   背景，会导致 quitLabel 残留在中间。
+ */
+void GameHolder::initQuitLabel()
+{
+    quitLabelRect = Rect<int>(0, 0, 200, 50);
+    quitLabelBackSurface = SDL_CreateRGBSurface(
+	ResourceData::display->flags,
+	quitLabelRect.diagonal.x,
+	quitLabelRect.diagonal.y,
+	ResourceData::display->format->BitsPerPixel,
+	ResourceData::display->format->Rmask,
+	ResourceData::display->format->Gmask,
+	ResourceData::display->format->Bmask,
+	ResourceData::display->format->Amask);
+    
+    quitLabelRect.setCenter(StableData::screenSize / 2);
+    quitLabel = new QuitLabel(quitLabelRect, "Quit?");
+    quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
+			     OptionData::gameHolderStatus,
+			     OptionData::QUITGAME));    
+}

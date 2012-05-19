@@ -87,6 +87,10 @@ void Sound::playMusic(const std::string &fileName, int loops)
 	playMusic(result - allMusicFile.begin(), loops);
 }
 
+/**
+   为了 Mix_HookMusicFinished 而新建的用于回调函数，
+   与 randomPlayMusic 一起，实现放完一首歌再放一首歌。
+ */
 void next();
 
 void Sound::randomPlayMusic()
@@ -103,8 +107,6 @@ int Sound::setVolumeMusic(int volume)
 {
     return Mix_VolumeMusic(volume); 
 }
-
-
 
 using namespace ResourceData;
 

@@ -31,6 +31,12 @@ Counter* Clock::addCounter(Uint32 num)
     return counter;
 }
 
+void Clock::removeCounter(Counter *counter)
+{
+    delete counter;
+    counterList.remove(counter);
+}
+
 void Clock::clearCounter()
 {
     for (std::list<Counter*>::iterator iter = counterList.begin();

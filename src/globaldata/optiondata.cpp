@@ -26,4 +26,4 @@ PlayerData* OptionData::allPlayerData[StableData::playerSizeMax] = {
     &OptionData::playerData4
 };
 
-int OptionData::ghostAlpha;
+int OptionData::ghostAlpha = 50;
