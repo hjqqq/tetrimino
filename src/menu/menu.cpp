@@ -4,6 +4,7 @@
 #include "resourcedata.h"
 #include "color.h"
 #include "utility.h"
+#include "sound.h"
 
 Menu::Menu(const Rect<int> &_rect):
     Widget(_rect), select(0)
@@ -54,9 +55,11 @@ void Menu::handleKey(const SDLKey &sym)
 {
     switch (sym){
     case SDLK_UP:
+	ResourceData::sound->playChunk(Sound::CURSOR);
 	selectPrevious();
 	break;
     case SDLK_DOWN:
+	ResourceData::sound->playChunk(Sound::CURSOR);	
 	selectNext();
 	break;
     }
@@ -73,7 +76,8 @@ void Menu::update()
 void Menu::updateSelect()
 {
     SDL_Rect dstrect = labelVector[select]->getRect().getSDL_Rect();
-    SDL_BlitSurface(menufg, &dstrect, ResourceData::display, &dstrect);
+    SDL_Rect srcrect = {0, 0, dstrect.w, dstrect.h};
+    SDL_BlitSurface(menufg, &srcrect, ResourceData::display, &dstrect);
 }
 
 void Menu::setRect(const Rect<int> &newRect)

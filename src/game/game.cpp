@@ -170,6 +170,7 @@ void Game::startUpdate()
     show->previewShow(randomQueue->begin(), randomQueue->begin() + 4);
     
     calGhostPosY();
+
     show->ghostShow(getLockPos(),
 		    shape,
 		    direction);

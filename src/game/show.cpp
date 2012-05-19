@@ -188,15 +188,17 @@ void Show::mapShow(int mapData[StableData::mapSizeX][StableData::mapSizeY])
 
 void Show::holdShow(BlockShape holdShape)
 {
-    SDL_BlitSurface(ResourceData::background, &holdPixRectTemp,
-		    ResourceData::display, &holdPixRectTemp);	    
+    if (playerData->hold){
+	SDL_BlitSurface(ResourceData::background, &holdPixRectTemp,
+			ResourceData::display, &holdPixRectTemp);	    
     
-    blockShow(holdPixPos,
-	      Vector2<int>(0, 0),
-	      holdShape,
-	      NORTH,
-	      halfMinoPixSize,
-	      minoColor);    
+	blockShow(holdPixPos,
+		  Vector2<int>(0, 0),
+		  holdShape,
+		  NORTH,
+		  halfMinoPixSize,
+		  minoColor);
+    }
 }
 
 
@@ -204,12 +206,14 @@ void Show::ghostShow(Vector2<int> pos,
 		     BlockShape shape,
 		     Direction direction)
 {
-    blockShow(mapPixPos,
-	      pos,
-	      shape,
-	      direction,
-	      OptionData::minoPixSize,
-	      minoGhostColor);
+    if (playerData->ghost){
+	blockShow(mapPixPos,
+		  pos,
+		  shape,
+		  direction,
+		  OptionData::minoPixSize,
+		  minoGhostColor);
+    }
 }
 
 void Show::growBarShow(int mapGrow)

@@ -89,10 +89,6 @@ void Tetrimino::menuloop()
 
 void Tetrimino::gameloop()
 {
-    initPlayerData1();
-    initPlayerData2();
-    initPlayerData3();
-    OptionData::playerSize = 1;    
     GameHolder gameHolder;
     SDL_Event event;
     while (OptionData::gameHolderStatus != OptionData::QUITGAME){

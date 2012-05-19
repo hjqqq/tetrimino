@@ -39,11 +39,11 @@ private:
     Menu * mainMenu;
     Menu * optionMenu;
     Setting menu_setting;
-    
+/*    
     SimpleLabel * instructionLabel1;
     SimpleLabel * instructionLabel2;
     SimpleLabel * instructionLabel3;
-    
+*/ 
     std::vector<Menu*> playerMenuVector;
     std::vector<Menu*>::iterator playerMenuIter;
   
