@@ -39,10 +39,12 @@ namespace OptionData{
     extern PlayerData playerData4;
     
     extern PlayerData* allPlayerData[StableData::playerSizeMax];
-    
+
     extern int ghostAlpha;
     extern int musicVolume;
     extern int chunkVolume;
+
+    extern bool numberInputState;
 };
 
 #endif

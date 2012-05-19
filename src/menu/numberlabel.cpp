@@ -2,6 +2,7 @@
 #include "color.h"
 #include "numberlabel.h"
 #include "resourcedata.h"
+#include "optiondata.h"
 
 NumberLabel::NumberLabel(const Rect<int> &_rect,
 			 const std::string &_text,
@@ -107,6 +108,7 @@ void NumberLabel::toggleInputState()
 {
     if (input_state == true) {
 	input_state = false;
+	OptionData::numberInputState = false;
 	color = black;
 	if ( (number_text.length() == 0) || 
 	     (atof(number_text.c_str()) < MIN_NUMBER ) ||
@@ -118,7 +120,8 @@ void NumberLabel::toggleInputState()
     }
     else{
 	input_state = true;
-	color = red;	
+	color = red;
+	OptionData::numberInputState = true;;
 	number_text = "";
     }
 }
