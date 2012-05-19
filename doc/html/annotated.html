@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><table>
-  <tr><td class="indexkey"><a class="el" href="classAction.html">Action</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classAction.html">Action</a></td><td class="indexvalue">所有setter的基类，用来修改全局变量 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classBagRandomizer.html">BagRandomizer</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classBlockData.html">BlockData</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classClock.html">Clock</a></td><td class="indexvalue"></td></tr>
@@ -105,38 +105,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr><td class="indexkey"><a class="el" href="classGame.html">Game</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classGameHolder.html">GameHolder</a></td><td class="indexvalue">处理所有的玩家类（Game 类）。 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classHistoryRollRandomizer.html">HistoryRollRandomizer&lt; LENGTH &gt;</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classKeySetLabel.html">KeySetLabel</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classLabel.html">Label</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classMenu.html">Menu</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classMenuHolder.html">MenuHolder</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classNumberLabel.html">NumberLabel</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classNumberSetter.html">NumberSetter&lt; T &gt;</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classKeySetLabel.html">KeySetLabel</a></td><td class="indexvalue">获取按键并blit显示出来 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classLabel.html">Label</a></td><td class="indexvalue">Blit一个菜单项。 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classMenu.html">Menu</a></td><td class="indexvalue">保存多个Label，blit一页菜单 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classMenuHolder.html">MenuHolder</a></td><td class="indexvalue">管理菜单，更新游戏变量。 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classNumberLabel.html">NumberLabel</a></td><td class="indexvalue">获取一个double值并显示出来 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classNumberSetter.html">NumberSetter&lt; T &gt;</a></td><td class="indexvalue">更改传入的数值 </td></tr>
   <tr><td class="indexkey"><a class="el" href="structPlayerData.html">PlayerData</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classQuitLabel.html">QuitLabel</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classQuitSetter.html">QuitSetter</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classQuitSetter.html">QuitSetter</a></td><td class="indexvalue">更改游戏全局状态，退出游戏，只在菜单做特殊用处 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classRandomizer.html">Randomizer</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classRandomQueue.html">RandomQueue</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classRandomQueueData.html">RandomQueueData</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="structRect.html">Rect&lt; T &gt;</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classSetting.html">Setting</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classSetting.html">Setting</a></td><td class="indexvalue">从文件中读取或保存状态，初始化游戏全局变量 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classShow.html">Show</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classSimpleLabel.html">SimpleLabel</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classSimpleLabel.html">SimpleLabel</a></td><td class="indexvalue">简单的label，一般显示信息或切换菜单使用 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classSound.html">Sound</a></td><td class="indexvalue">管理效果音以及音乐 </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classStartSetter.html">StartSetter</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classStartSetter.html">StartSetter</a></td><td class="indexvalue">设置退出菜单，开始游戏的状态，只在菜单处作特别作用 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classTetrimino.html">Tetrimino</a></td><td class="indexvalue">俄罗斯方块游戏的入口。把一切联系起来。 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classTimer.html">Timer</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classToggleLabel.html">ToggleLabel</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classToggleSetter.html">ToggleSetter</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classToggleLabel.html">ToggleLabel</a></td><td class="indexvalue">该label保存两种状态，true&amp;false </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classToggleSetter.html">ToggleSetter</a></td><td class="indexvalue">更改传入bool对象的值 </td></tr>
   <tr><td class="indexkey"><a class="el" href="classValueSetter.html">ValueSetter&lt; T &gt;</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="structVector2.html">Vector2&lt; T &gt;</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classWallKickData.html">WallKickData</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classWidget.html">Widget</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classWidget.html">Widget</a></td><td class="indexvalue">所有label的基类 </td></tr>
 </table>
 </div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 10:24:12 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

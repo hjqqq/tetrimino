@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,17 +98,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Action Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>所有setter的基类，用来修改全局变量  
+ <a href="classAction.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="action_8h_source.html">action.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Action:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classAction.png" usemap="#Action_map" alt=""/>
   <map id="Action_map" name="Action_map">
-<area href="classNumberSetter.html" alt="NumberSetter&lt; T &gt;" shape="rect" coords="0,56,120,80"/>
-<area href="classQuitSetter.html" alt="QuitSetter" shape="rect" coords="130,56,250,80"/>
-<area href="classQuitSetter.html" alt="QuitSetter" shape="rect" coords="260,56,380,80"/>
-<area href="classStartSetter.html" alt="StartSetter" shape="rect" coords="390,56,510,80"/>
-<area href="classToggleSetter.html" alt="ToggleSetter" shape="rect" coords="520,56,640,80"/>
+<area href="classNumberSetter.html" title="更改传入的数值" alt="NumberSetter&lt; T &gt;" shape="rect" coords="0,56,120,80"/>
+<area href="classQuitSetter.html" title="更改游戏全局状态，退出游戏，只在菜单做特殊用处" alt="QuitSetter" shape="rect" coords="130,56,250,80"/>
+<area href="classQuitSetter.html" title="更改游戏全局状态，退出游戏，只在菜单做特殊用处" alt="QuitSetter" shape="rect" coords="260,56,380,80"/>
+<area href="classStartSetter.html" title="设置退出菜单，开始游戏的状态，只在菜单处作特别作用" alt="StartSetter" shape="rect" coords="390,56,510,80"/>
+<area href="classToggleSetter.html" title="更改传入bool对象的值" alt="ToggleSetter" shape="rect" coords="520,56,640,80"/>
 <area href="classValueSetter.html" alt="ValueSetter&lt; T &gt;" shape="rect" coords="650,56,770,80"/>
 </map>
  </div></div>
@@ -117,13 +122,85 @@ Inheritance diagram for Action:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aab9b44e44a9ff95d892c1bc7edb855d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab9b44e44a9ff95d892c1bc7edb855d3"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> ()</td></tr>
-<tr class="memitem:ad7a65d6e4f6fa2c8e4a7f65a37f1b19d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7a65d6e4f6fa2c8e4a7f65a37f1b19d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const bool &amp;)</td></tr>
-<tr class="memitem:ab013b8d9fa187167ae47fe5abbb1055c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab013b8d9fa187167ae47fe5abbb1055c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const double &amp;)</td></tr>
+<tr class="memitem:aab9b44e44a9ff95d892c1bc7edb855d3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAction.html#aab9b44e44a9ff95d892c1bc7edb855d3">operator()</a> ()</td></tr>
+<tr class="memitem:ad7a65d6e4f6fa2c8e4a7f65a37f1b19d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAction.html#ad7a65d6e4f6fa2c8e4a7f65a37f1b19d">operator()</a> (const bool &amp;)</td></tr>
+<tr class="memitem:ab013b8d9fa187167ae47fe5abbb1055c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAction.html#ab013b8d9fa187167ae47fe5abbb1055c">operator()</a> (const double &amp;)</td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>所有setter的基类，用来修改全局变量 </p>
+<p>每个Widget都有一个Action对象指针，告诉Widget应该执行的操作 </p>
+</div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aab9b44e44a9ff95d892c1bc7edb855d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Action::operator() </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>无参数的operator()，一般用来重载更改游戏状态(enum类型) </p>
+
+<p>Reimplemented in <a class="el" href="classQuitSetter.html#a902f6e2f5439160ba1e198f513ecce56">QuitSetter</a>, <a class="el" href="classStartSetter.html#a024a648fb8814ac1318f893768d1314b">StartSetter</a>, and <a class="el" href="classValueSetter.html#a4098661ba27f326e60849c719e115e65">ValueSetter&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad7a65d6e4f6fa2c8e4a7f65a37f1b19d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Action::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>一般用来更改bool型的全局变量</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bool</td><td>传入游戏的全局变量(bool)，传入的值会被改变 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classToggleSetter.html#a0be0a3f76be62a3e789c673b46b5f170">ToggleSetter</a>, and <a class="el" href="classQuitSetter.html#a343d91380f12e66492a1fb2ce9ac9a87">QuitSetter</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab013b8d9fa187167ae47fe5abbb1055c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Action::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>一般用来更改数值型的全局变量(double)</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">double</td><td>传入游戏的全局变量(double)，传入的值会被改变 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classNumberSetter.html#aff13b8aaf4b0e95f2aaf0a2a41c66c6b">NumberSetter&lt; T &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/menu/<a class="el" href="action_8h_source.html">action.h</a></li>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/action.cpp</li>
@@ -132,7 +209,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 10:24:12 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

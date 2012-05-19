@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,15 +99,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>管理菜单，更新游戏变量。  
+ <a href="classMenuHolder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="menuholder_8h_source.html">menuholder.h</a>&gt;</code></p>
+
 <p><a href="classMenuHolder-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaccd86413b341b2a478d901a430e9a07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaccd86413b341b2a478d901a430e9a07"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (const SDL_Event &amp;event)</td></tr>
-<tr class="memitem:ad3fe472660cf8585968693052c15e681"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad3fe472660cf8585968693052c15e681"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+<tr class="memitem:a72c15e0ab1ad63982628a4332ffe6994"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72c15e0ab1ad63982628a4332ffe6994"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuHolder.html#a72c15e0ab1ad63982628a4332ffe6994">MenuHolder</a> ()</td></tr>
+<tr class="memdesc:a72c15e0ab1ad63982628a4332ffe6994"><td class="mdescLeft">&#160;</td><td class="mdescRight">建立菜单，初始化游戏变量 <br/></td></tr>
+<tr class="memitem:aaccd86413b341b2a478d901a430e9a07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuHolder.html#aaccd86413b341b2a478d901a430e9a07">handleEvent</a> (const SDL_Event &amp;event)</td></tr>
+<tr class="memitem:ad3fe472660cf8585968693052c15e681"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuHolder.html#ad3fe472660cf8585968693052c15e681">update</a> ()</td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>管理菜单，更新游戏变量。 </p>
+<p>定义菜单，处理菜单事件，为内部的菜单添加项等 </p>
+</div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aaccd86413b341b2a478d901a430e9a07"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classMenuHolder.html#aaccd86413b341b2a478d901a430e9a07">MenuHolder::handleEvent</a> </td>
+          <td>(</td>
+          <td class="paramtype">const SDL_Event &amp;&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>处理事件</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>传入的事件 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad3fe472660cf8585968693052c15e681"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classMenuHolder.html#ad3fe472660cf8585968693052c15e681">MenuHolder::update</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>刷新display，blit菜单 </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/menu/<a class="el" href="menuholder_8h_source.html">menuholder.h</a></li>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/src/menu/menuholder.cpp</li>
@@ -116,7 +167,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 10:24:12 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

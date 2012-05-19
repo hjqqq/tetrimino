@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,7 +104,7 @@ Inheritance diagram for ValueSetter&lt; T &gt;:</div>
  <div class="center">
   <img src="classValueSetter.png" usemap="#ValueSetter&lt; T &gt;_map" alt=""/>
   <map id="ValueSetter&lt; T &gt;_map" name="ValueSetter&lt; T &gt;_map">
-<area href="classAction.html" alt="Action" shape="rect" coords="0,0,109,24"/>
+<area href="classAction.html" title="所有setter的基类，用来修改全局变量" alt="Action" shape="rect" coords="0,0,109,24"/>
 </map>
  </div></div>
 
@@ -114,14 +114,35 @@ Inheritance diagram for ValueSetter&lt; T &gt;:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a596b3e6e5bdb0b4068a381a9e5be4a6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a596b3e6e5bdb0b4068a381a9e5be4a6b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ValueSetter</b> (T &amp;_ref, const T &amp;_defaultValue=T())</td></tr>
-<tr class="memitem:a4098661ba27f326e60849c719e115e65"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4098661ba27f326e60849c719e115e65"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> ()</td></tr>
+<tr class="memitem:a4098661ba27f326e60849c719e115e65"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValueSetter.html#a4098661ba27f326e60849c719e115e65">operator()</a> ()</td></tr>
 <tr class="memitem:a1b6156ed11b368f550a1c23a7d49872b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b6156ed11b368f550a1c23a7d49872b"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const T &amp;value)</td></tr>
 </table>
 <h3>template&lt;typename T&gt;<br/>
  class ValueSetter&lt; T &gt;</h3>
 
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a4098661ba27f326e60849c719e115e65"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classValueSetter.html">ValueSetter</a>&lt; T &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>无参数的operator()，一般用来重载更改游戏状态(enum类型) </p>
+
+<p>Reimplemented from <a class="el" href="classAction.html#aab9b44e44a9ff95d892c1bc7edb855d3">Action</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/tom/study/SDL/TetriminoProject/tetrimino/header/menu/<a class="el" href="valuesetter_8h_source.html">valuesetter.h</a></li>
 </ul>
@@ -129,7 +150,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 19 2012 10:24:12 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 13:59:35 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

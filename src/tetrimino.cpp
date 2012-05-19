@@ -10,9 +10,8 @@
 #include "menuholder.h"
 #include "gameholder.h"
 #include "color.h"
-#include "setting.h"
 
-Tetrimino::Tetrimino() : menu_setting("res/user_settings.txt")
+Tetrimino::Tetrimino()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
@@ -30,7 +29,6 @@ Tetrimino::~Tetrimino(){
 
 void Tetrimino::loadResource()
 {
-    menu_setting.loadSetting();
     std::srand(std::time(NULL));
     ResourceData::display = SDL_SetVideoMode(
 	StableData::screenSize.x,
@@ -79,11 +77,11 @@ void Tetrimino::menuloop()
 		return ;
 	    }
 	    menuHolder.handleEvent(event);
+	    SDL_BlitSurface(ResourceData::background, 0,
+			    ResourceData::display, 0);
+	    menuHolder.update();
+	    SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
 	}
-	SDL_BlitSurface(ResourceData::background, 0,
-			ResourceData::display, 0);
-	menuHolder.update();
-	SDL_UpdateRect(ResourceData::display, 0, 0, 0, 0);
 	ResourceData::clock->tick();
     }
     OptionData::menuHolderStatus = OptionData::MAINMENU;
