@@ -27,3 +27,5 @@ PlayerData* OptionData::allPlayerData[StableData::playerSizeMax] = {
 };
 
 int OptionData::ghostAlpha;
+int OptionData::musicVolume;
+int OptionData::chunkVolume;

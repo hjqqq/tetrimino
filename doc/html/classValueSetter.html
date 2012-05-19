@@ -84,7 +84,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ValueSetter&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="ValueSetter" --><!-- doxytag: inherits="Action" --><div class="dynheader">
+<!-- doxytag: class="ValueSetter" --><!-- doxytag: inherits="Action" -->
+<p>设置传入全局变量的值  
+ <a href="classValueSetter.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="valuesetter_8h_source.html">valuesetter.h</a>&gt;</code></p>
+<div class="dynheader">
 Inheritance diagram for ValueSetter&lt; T &gt;:</div>
 <div class="dyncontent">
  <div class="center">
@@ -98,15 +103,53 @@ Inheritance diagram for ValueSetter&lt; T &gt;:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a596b3e6e5bdb0b4068a381a9e5be4a6b"></a><!-- doxytag: member="ValueSetter::ValueSetter" ref="a596b3e6e5bdb0b4068a381a9e5be4a6b" args="(T &amp;_ref, const T &amp;_defaultValue=T())" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>ValueSetter</b> (T &amp;_ref, const T &amp;_defaultValue=T())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValueSetter.html#a596b3e6e5bdb0b4068a381a9e5be4a6b">ValueSetter</a> (T &amp;_ref, const T &amp;_defaultValue=T())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValueSetter.html#a4098661ba27f326e60849c719e115e65">operator()</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b6156ed11b368f550a1c23a7d49872b"></a><!-- doxytag: member="ValueSetter::operator()" ref="a1b6156ed11b368f550a1c23a7d49872b" args="(const T &amp;value)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const T &amp;value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValueSetter.html#a1b6156ed11b368f550a1c23a7d49872b">operator()</a> (const T &amp;value)</td></tr>
 </table>
-<h3>template&lt;typename T&gt;<br/>
- class ValueSetter&lt; T &gt;</h3>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br/>
+class ValueSetter&lt; T &gt;</h3>
 
+<p>设置传入全局变量的值 </p>
+<p>初始化需要关联的全局变量和全局变量的默认值 </p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a596b3e6e5bdb0b4068a381a9e5be4a6b"></a><!-- doxytag: member="ValueSetter::ValueSetter" ref="a596b3e6e5bdb0b4068a381a9e5be4a6b" args="(T &amp;_ref, const T &amp;_defaultValue=T())" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classValueSetter.html">ValueSetter</a>&lt; T &gt;::<a class="el" href="classValueSetter.html">ValueSetter</a> </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>_ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>_defaultValue</em> = <code>T()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_ref</td><td>指定关联的全局变量 </td></tr>
+    <tr><td class="paramname">_defaultValue</td><td>指定该全局变量给定的默认值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a4098661ba27f326e60849c719e115e65"></a><!-- doxytag: member="ValueSetter::operator()" ref="a4098661ba27f326e60849c719e115e65" args="()" -->
 <div class="memitem">
@@ -123,9 +166,34 @@ template&lt;typename T &gt; </div>
       </table>
 </div>
 <div class="memdoc">
-<p>无参数的operator()，一般用来重载更改游戏状态(enum类型) </p>
+<p>设置全局变量为默认值 </p>
 
 <p>Reimplemented from <a class="el" href="classAction.html#aab9b44e44a9ff95d892c1bc7edb855d3">Action</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1b6156ed11b368f550a1c23a7d49872b"></a><!-- doxytag: member="ValueSetter::operator()" ref="a1b6156ed11b368f550a1c23a7d49872b" args="(const T &amp;value)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classValueSetter.html">ValueSetter</a>&lt; T &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>用此值为关联的全局变量赋值 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -150,7 +218,7 @@ template&lt;typename T &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 17 2012 23:57:04 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 19 2012 22:03:22 for tetrimino by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

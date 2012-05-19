@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include "color.h"
 #include "valuesetter.h"
 #include "menuholder.h"
 #include "stabledata.h"
@@ -12,15 +13,20 @@
 #include "startsetter.h"
 #include "quitsetter.h"
 #include "keysetlabel.h"
+#include "musicvolumesetter.h"
+#include "chunkvolumesetter.h"
 #include "setting.h"
 using namespace std;
 
 MenuHolder::MenuHolder() : 
     menu_setting("res/user_settings.txt", "res/default_settings.txt")
 {
-    instructionLabel1 = new SimpleLabel(Rect<int>(0, 490, 600, 50), "r: reset, +: plus, -: minus");
-    instructionLabel2 = new SimpleLabel(Rect<int>(100, 520, 600, 50),"Up, Down, Enter: chose");
-    instructionLabel3 = new SimpleLabel(Rect<int>(200, 550, 600, 50), "Left, Right: change player");
+    ResourceData::sound->playMusic("menu.mp3");
+    /*
+      instructionLabel1 = new SimpleLabel(Rect<int>(0, 490, 600, 50), "r: reset, +: plus, -: minus");
+      instructionLabel2 = new SimpleLabel(Rect<int>(100, 520, 600, 50),"Up, Down, Enter: chose");
+      instructionLabel3 = new SimpleLabel(Rect<int>(200, 550, 600, 50), "Left, Right: change player");
+    */
     menu_setting.loadSetting();
     constructMainMenu();
     constructOptionMenu();
@@ -32,9 +38,11 @@ MenuHolder::MenuHolder() :
 
 MenuHolder::~MenuHolder()
 {
+    /*
     delete instructionLabel1;
     delete instructionLabel2;
     delete instructionLabel3;
+    */
     menu_setting.saveSetting();
     delete mainMenu;
     delete optionMenu;
@@ -96,6 +104,7 @@ void MenuHolder::handleEvent(const SDL_Event &event)
 	(*playerMenuIter)->handleEvent(event);
 	break;
     case OptionData::KEYSETMENU:
+	selectPlayerMenu(event);	
 	(*keySetMenuIter)->handleEvent(event);
     }
 }
@@ -116,18 +125,19 @@ void MenuHolder::update()
 	(*keySetMenuIter)->update();
 	break;
     }
+    /*
     instructionLabel1->update();
     instructionLabel2->update();
     instructionLabel3->update();
+    */
 }
 
 void MenuHolder::constructMainMenu()
 {
     // labels
-    SimpleLabel *startLabel = new SimpleLabel( Rect<int>(0, 0, 400, 50), "START");
-    SimpleLabel *optionLabel = new SimpleLabel( Rect<int>(0, 0, 400, 50), "OPTION");
-    SimpleLabel *aboutLabel = new SimpleLabel( Rect<int>(0, 0, 400, 50), "ABOUT");
-    SimpleLabel *quitLabel = new SimpleLabel( Rect<int>(0, 0, 400, 50), "QUIT");
+    SimpleLabel *startLabel = new SimpleLabel( StableData::labelRect, "START");
+    SimpleLabel *optionLabel = new SimpleLabel( StableData::labelRect, "OPTION");
+    SimpleLabel *quitLabel = new SimpleLabel( StableData::labelRect, "QUIT");
 
     // setters
     ValueSetter <OptionData::MenuHolderStatus> *optionSetter= 
@@ -146,7 +156,6 @@ void MenuHolder::constructMainMenu()
     mainMenu = new Menu(StableData::menuRect);
     mainMenu->addLabel(startLabel);
     mainMenu->addLabel(optionLabel);
-    mainMenu->addLabel(aboutLabel);
     mainMenu->addLabel(quitLabel);
 }
 
@@ -159,13 +168,19 @@ void MenuHolder::constructOptionMenu()
     NumberLabel *ghostAlphaLabel = new NumberLabel(
 	StableData::labelRect, "Ghost Alpha", "%", 
 	OptionData::ghostAlpha, 0 ,100, 5);
+    NumberLabel *musicVolumeLabel = new NumberLabel(
+	StableData::labelRect, "Music Volume", "[0,128]", 
+	OptionData::musicVolume, 0,128, 10);
+    NumberLabel * chunkVolumeLabel= new NumberLabel(
+	StableData::labelRect, "Chunk Volume", "[0,128]", 
+	OptionData::chunkVolume, 0 ,128, 10);
     NumberLabel *areDelayTimeLabel = new NumberLabel(
 	StableData::labelRect, "ARE delay time", "ms", 
 	OptionData::areDelayTime, 0, 1000, 50);
     NumberLabel *lockDelayTimeLabel = new NumberLabel(
 	StableData::labelRect, "LOCK delay time", "ms", 
 	OptionData::lockDelayTime, 0, 1000, 50);
-    SimpleLabel *playerLabel = new SimpleLabel( Rect<int>(0, 0, 400, 50), "Player Setting");
+    SimpleLabel *playerLabel = new SimpleLabel( StableData::labelRect, "Player Setting");
     /****************************** setters *********************************/
     NumberSetter<int> * playerSizeSetter =
 	new NumberSetter<int>(OptionData::playerSize);
@@ -179,30 +194,39 @@ void MenuHolder::constructOptionMenu()
 	new ValueSetter<OptionData::MenuHolderStatus>(
 	    OptionData::menuHolderStatus,
 	    OptionData::PLAYERMENU);
+    MusicVolumeSetter * musicVolumeSetter =
+	new MusicVolumeSetter(OptionData::musicVolume);
+    ChunkVolumeSetter * chunkVolumeSetter =
+	new ChunkVolumeSetter(OptionData::chunkVolume);
     /*********************** combine setters & labels **************************/
     playerSizeLabel->setAction(playerSizeSetter);
     ghostAlphaLabel->setAction(ghostAlphaSetter);
     areDelayTimeLabel->setAction(areDelayTimeSetter);
     lockDelayTimeLabel->setAction(lockDelayTimeSetter);
     playerLabel->setAction(playerSetter);
+    musicVolumeLabel->setAction(musicVolumeSetter);
+    chunkVolumeLabel->setAction(chunkVolumeSetter);
     /********************** construct menu & setup menu ***********************/
     optionMenu = new Menu(StableData::menuRect);
+    optionMenu->addLabel(playerLabel);
     optionMenu->addLabel(playerSizeLabel);
     optionMenu->addLabel(ghostAlphaLabel);
     optionMenu->addLabel(areDelayTimeLabel);
     optionMenu->addLabel(lockDelayTimeLabel);
-    optionMenu->addLabel(playerLabel);
+    optionMenu->addLabel(musicVolumeLabel);
+    optionMenu->addLabel(chunkVolumeLabel);
+
 }
 
 void MenuHolder::constructPlayerMenu()
 {
     /******************************** labels ************************************/
     // 1p labels
-    SimpleLabel * player1pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "1p Keyboard Setting");
+    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p Keyboard Setting");
     ToggleLabel *toggleGhost1pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50), "Ghost",OptionData::playerData1.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData1.ghost);
     ToggleLabel *toggleHolder1pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50),"Holder", OptionData::playerData1.holder);
+	StableData::labelRect,"Holder", OptionData::playerData1.holder);
     NumberLabel *dasDelayTime1pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
 	OptionData::playerData1.dasDelayTime, 0, 1000, 50);
@@ -222,11 +246,11 @@ void MenuHolder::constructPlayerMenu()
 	StableData::labelRect, "Randomizer Type", "B|H", 
 	OptionData::playerData1.randomizerType, 1, 2, 1);
     // 2p labels
-    SimpleLabel * player2pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "2p Keyboard Setting");
+    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p Keyboard Setting");
     ToggleLabel *toggleGhost2pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50), "Ghost",OptionData::playerData2.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData2.ghost);
     ToggleLabel *toggleHolder2pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50),"Holder", OptionData::playerData2.holder);
+	StableData::labelRect,"Holder", OptionData::playerData2.holder);
     NumberLabel *dasDelayTime2pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
 	OptionData::playerData2.dasDelayTime, 0, 1000, 50);
@@ -246,11 +270,11 @@ void MenuHolder::constructPlayerMenu()
 	StableData::labelRect, "Randomizer Type", "B|H", 
 	OptionData::playerData2.randomizerType, 1, 2, 1);
     // 3p labels
-    SimpleLabel * player3pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "3p Keyboard Setting");
+    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p Keyboard Setting");
     ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50), "Ghost",OptionData::playerData3.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData3.ghost);
     ToggleLabel *toggleHolder3pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50),"Holder", OptionData::playerData3.holder);
+	StableData::labelRect,"Holder", OptionData::playerData3.holder);
     NumberLabel *dasDelayTime3pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
 	OptionData::playerData3.dasDelayTime, 0, 1000, 50);
@@ -270,11 +294,11 @@ void MenuHolder::constructPlayerMenu()
 	StableData::labelRect, "Randomizer Type", "B|H", 
 	OptionData::playerData3.randomizerType, 1, 2, 1);    
     // 4p labels
-    SimpleLabel * player4pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "4p Keyboard Setting");
+    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p Keyboard Setting");
     ToggleLabel *toggleGhost4pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50), "Ghost",OptionData::playerData4.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData4.ghost);
     ToggleLabel *toggleHolder4pLabel = new ToggleLabel(
-	Rect<int>(0,0,400,50),"Holder", OptionData::playerData4.holder);
+	StableData::labelRect,"Holder", OptionData::playerData4.holder);
     NumberLabel *dasDelayTime4pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
 	OptionData::playerData4.dasDelayTime, 0, 1000, 50);
@@ -488,7 +512,7 @@ void MenuHolder::constructKeySetMenu()
 {
     /******************************* labels *************************************/
     // 1p labels
-    SimpleLabel * player1pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "1p Keyboard Setting");
+    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p Keyboard Setting");
     KeySetLabel * moveLeft1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData1.moveLeft);
@@ -511,7 +535,7 @@ void MenuHolder::constructKeySetMenu()
 	StableData::labelRect, "Hold",
 	OptionData::playerData1.hold);
     // 2p labels
-    SimpleLabel * player2pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "2p Keyboard Setting");
+    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p Keyboard Setting");
     KeySetLabel * moveLeft2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData2.moveLeft);
@@ -534,7 +558,7 @@ void MenuHolder::constructKeySetMenu()
 	StableData::labelRect, "Hold",
 	OptionData::playerData2.hold);
     // 3p labels
-    SimpleLabel * player3pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "3p Keyboard Setting");
+    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p Keyboard Setting");
     KeySetLabel * moveLeft3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData3.moveLeft);
@@ -557,7 +581,7 @@ void MenuHolder::constructKeySetMenu()
 	StableData::labelRect, "Hold",
 	OptionData::playerData3.hold);
     // 4p labels
-    SimpleLabel * player4pLabel = new SimpleLabel( Rect<int>(0,0,400,50), "4p Keyboard Setting");
+    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p Keyboard Setting");
     KeySetLabel * moveLeft4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
 	OptionData::playerData4.moveLeft);
@@ -582,10 +606,11 @@ void MenuHolder::constructKeySetMenu()
   
     /********************************* setters ********************************/
     // 1p setters
-    ValueSetter <OptionData::MenuHolderStatus> *player1pSetter= 
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::PLAYERMENU);
+/*    ValueSetter <OptionData::MenuHolderStatus> *player1pSetter= 
+      new ValueSetter<OptionData::MenuHolderStatus>(
+      OptionData::menuHolderStatus,
+      OptionData::PLAYERMENU);
+*/
     NumberSetter<SDLKey> *moveLeft1pSetter = 
 	new NumberSetter<SDLKey>(OptionData::playerData1.moveLeft);
     NumberSetter<SDLKey> *moveRight1pSetter = 
@@ -602,10 +627,11 @@ void MenuHolder::constructKeySetMenu()
 	new NumberSetter<SDLKey>(OptionData::playerData1.hold);
   
     // 2p setters
-    ValueSetter <OptionData::MenuHolderStatus> *player2pSetter= 
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::PLAYERMENU);
+/*    ValueSetter <OptionData::MenuHolderStatus> *player2pSetter= 
+      new ValueSetter<OptionData::MenuHolderStatus>(
+      OptionData::menuHolderStatus,
+      OptionData::PLAYERMENU);
+*/
     NumberSetter<SDLKey> *moveLeft2pSetter = 
 	new NumberSetter<SDLKey>(OptionData::playerData2.moveLeft);
     NumberSetter<SDLKey> *moveRight2pSetter = 
@@ -622,10 +648,11 @@ void MenuHolder::constructKeySetMenu()
 	new NumberSetter<SDLKey>(OptionData::playerData2.hold);
 
     // 3p setters
-    ValueSetter <OptionData::MenuHolderStatus> *player3pSetter= 
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::PLAYERMENU);
+/*    ValueSetter <OptionData::MenuHolderStatus> *player3pSetter= 
+      new ValueSetter<OptionData::MenuHolderStatus>(
+      OptionData::menuHolderStatus,
+      OptionData::PLAYERMENU);
+*/
     NumberSetter<SDLKey> *moveLeft3pSetter = 
 	new NumberSetter<SDLKey>(OptionData::playerData3.moveLeft);
     NumberSetter<SDLKey> *moveRight3pSetter = 
@@ -642,10 +669,11 @@ void MenuHolder::constructKeySetMenu()
 	new NumberSetter<SDLKey>(OptionData::playerData3.hold);
   
     // 4p setters
-    ValueSetter <OptionData::MenuHolderStatus> *player4pSetter= 
-	new ValueSetter<OptionData::MenuHolderStatus>(
-	    OptionData::menuHolderStatus,
-	    OptionData::PLAYERMENU);
+/*    ValueSetter <OptionData::MenuHolderStatus> *player4pSetter= 
+      new ValueSetter<OptionData::MenuHolderStatus>(
+      OptionData::menuHolderStatus,
+      OptionData::PLAYERMENU);
+*/
     NumberSetter<SDLKey> *moveLeft4pSetter = 
 	new NumberSetter<SDLKey>(OptionData::playerData4.moveLeft);
     NumberSetter<SDLKey> *moveRight4pSetter = 
@@ -663,7 +691,7 @@ void MenuHolder::constructKeySetMenu()
   
     /***************************** combine labels & setters ****************************/
     // 1p combine
-    player1pLabel->setAction(player1pSetter);
+//    player1pLabel->setAction(player1pSetter);
     moveLeft1pLabel->setAction(moveLeft1pSetter);
     moveRight1pLabel->setAction(moveRight1pSetter);
     rotateLeft1pLabel->setAction(rotateLeft1pSetter);
@@ -673,7 +701,7 @@ void MenuHolder::constructKeySetMenu()
     hold1pLabel->setAction(hold1pSetter);
 
     // 2p combine
-    player2pLabel->setAction(player2pSetter);
+//    player2pLabel->setAction(player2pSetter);
     moveLeft2pLabel->setAction(moveLeft2pSetter);
     moveRight2pLabel->setAction(moveRight2pSetter);
     rotateLeft2pLabel->setAction(rotateLeft2pSetter);
@@ -683,7 +711,7 @@ void MenuHolder::constructKeySetMenu()
     hold2pLabel->setAction(hold2pSetter);
 
     // 3p combine
-    player3pLabel->setAction(player3pSetter);
+//    player3pLabel->setAction(player3pSetter);
     moveLeft3pLabel->setAction(moveLeft3pSetter);
     moveRight3pLabel->setAction(moveRight3pSetter);
     rotateLeft3pLabel->setAction(rotateLeft3pSetter);
@@ -693,7 +721,7 @@ void MenuHolder::constructKeySetMenu()
     hold3pLabel->setAction(hold3pSetter);
 
     // 4p combine
-    player4pLabel->setAction(player4pSetter);
+//    player4pLabel->setAction(player4pSetter);
     moveLeft4pLabel->setAction(moveLeft4pSetter);
     moveRight4pLabel->setAction(moveRight4pSetter);
     rotateLeft4pLabel->setAction(rotateLeft4pSetter);

@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include "setting.h"
 #include "optiondata.h"
+#include "resourcedata.h"
 #include "playerdata.h"
 
 using namespace std;
@@ -75,15 +76,6 @@ void Setting::loadDefaultSetting()
 
 void Setting::checkIn()
 {
-    int pos_x_1p = 0;
-    int pos_y_1p = 0;
-    int pos_x_2p = 0;
-    int pos_y_2p = 0;
-    int pos_x_3p = 0;
-    int pos_y_3p = 0;
-    int pos_x_4p = 0;
-    int pos_y_4p = 0;
-
     for(map<string,double>::iterator iter = setting_map.begin(); iter != setting_map.end(); ++iter)
     {
 	key = iter->first;
@@ -98,6 +90,14 @@ void Setting::checkIn()
 	    OptionData::playerSize = (int)value;
 	else if( key == "ghostAlpha" )
 	    OptionData::ghostAlpha = (int)value;
+	else if( key == "musicVolume" ) {
+	    OptionData::musicVolume = (int)value;
+	    ResourceData::sound->setVolumeMusic( (int)value );
+	}
+	else if( key == "chunkVolume" ){
+	    OptionData::chunkVolume = (int)value;
+	    ResourceData::sound->setVolumeChunk( (int)value );
+	}
       
 	// 1p settings
 	else if( key == "1pGhost" )
@@ -130,10 +130,6 @@ void Setting::checkIn()
 	    OptionData::playerData1.hardDrop = (SDLKey)value;
 	else if( key == "1pHold" )
 	    OptionData::playerData1.hold = (SDLKey)value;
-	else if( key == "1pPosX" )
-	    pos_x_1p = (int)value;
-	else if( key == "1pPosY" )
-	    pos_y_1p = (int)value;
       
 	// 2p settings
 	else if( key == "2pGhost" )
@@ -166,10 +162,6 @@ void Setting::checkIn()
 	    OptionData::playerData2.hardDrop = (SDLKey)value;
 	else if( key == "2pHold" )
 	    OptionData::playerData2.hold = (SDLKey)value;
-	else if( key == "2pPosX" )
-	    pos_x_2p = (int)value;
-	else if( key == "2pPosY" )
-	    pos_y_2p = (int)value;
 
 	// 3p settings
 	else if( key == "3pGhost" )
@@ -202,10 +194,6 @@ void Setting::checkIn()
 	    OptionData::playerData3.hardDrop = (SDLKey)value;
 	else if( key == "3pHold" )
 	    OptionData::playerData3.hold = (SDLKey)value;
-	else if( key == "3pPosX" )
-	    pos_x_3p = (int)value;
-	else if( key == "3pPosY" )
-	    pos_y_3p = (int)value;
 
 	// 4p settings
 	else if( key == "4pGhost" )
@@ -238,15 +226,7 @@ void Setting::checkIn()
 	    OptionData::playerData4.hardDrop = (SDLKey)value;
 	else if( key == "4pHold" )
 	    OptionData::playerData4.hold = (SDLKey)value;
-	else if( key == "4pPosX" )
-	    pos_x_4p = (int)value;
-	else if( key == "4pPosY" )
-	    pos_y_4p = (int)value;
     }
-    OptionData::playerData1.showPixPos = Vector2<int>(pos_x_1p, pos_y_1p);
-    OptionData::playerData2.showPixPos = Vector2<int>(pos_x_2p, pos_y_2p);
-    OptionData::playerData3.showPixPos = Vector2<int>(pos_x_3p, pos_y_3p);
-    OptionData::playerData4.showPixPos = Vector2<int>(pos_x_4p, pos_y_4p);
 }
 
 void Setting::checkOut()
@@ -256,7 +236,9 @@ void Setting::checkOut()
     setting_map["lockDelayTime"] = (double)OptionData::lockDelayTime;
     setting_map["playerSize"] = (double)OptionData::playerSize;
     setting_map["ghostAlpha"] = (double)OptionData::ghostAlpha;
-
+    setting_map["musicVolume"] = (double)OptionData::musicVolume;
+    setting_map["chunkVolume"] = (double)OptionData::chunkVolume;
+    
     // player1 settings
     setting_map["1pGhost"] = (double)OptionData::playerData1.ghost;
     setting_map["1pHolder"] = (double)OptionData::playerData1.holder;
@@ -273,8 +255,6 @@ void Setting::checkOut()
     setting_map["1pSoftDrop"] = (double)OptionData::playerData1.softDrop;
     setting_map["1pHardDrop"] = (double)OptionData::playerData1.hardDrop;
     setting_map["1pHold"] = (double)OptionData::playerData1.hold;
-    setting_map["1pPosX"] = (double)OptionData::playerData1.showPixPos.x;
-    setting_map["1pPosY"] = (double)OptionData::playerData1.showPixPos.y;
 
     // player2 settings
     setting_map["2pGhost"] = (double)OptionData::playerData2.ghost;
@@ -292,8 +272,6 @@ void Setting::checkOut()
     setting_map["2pSoftDrop"] = (double)OptionData::playerData2.softDrop;
     setting_map["2pHardDrop"] = (double)OptionData::playerData2.hardDrop;
     setting_map["2pHold"] = (double)OptionData::playerData2.hold;
-    setting_map["2pPosX"] = (double)OptionData::playerData2.showPixPos.x;
-    setting_map["2pPosY"] = (double)OptionData::playerData2.showPixPos.y;
 
     // player3 settings
     setting_map["3pGhost"] = (double)OptionData::playerData3.ghost;
@@ -311,8 +289,6 @@ void Setting::checkOut()
     setting_map["3pSoftDrop"] = (double)OptionData::playerData3.softDrop;
     setting_map["3pHardDrop"] = (double)OptionData::playerData3.hardDrop;
     setting_map["3pHold"] = (double)OptionData::playerData3.hold;
-    setting_map["3pPosX"] = (double)OptionData::playerData3.showPixPos.x;
-    setting_map["3pPosY"] = (double)OptionData::playerData3.showPixPos.y;
 
     // player4 settings
     setting_map["4pGhost"] = (double)OptionData::playerData4.ghost;
@@ -330,7 +306,4 @@ void Setting::checkOut()
     setting_map["4pSoftDrop"] = (double)OptionData::playerData4.softDrop;
     setting_map["4pHardDrop"] = (double)OptionData::playerData4.hardDrop;
     setting_map["4pHold"] = (double)OptionData::playerData4.hold;
-    setting_map["4pPosX"] = (double)OptionData::playerData4.showPixPos.x;
-    setting_map["4pPosY"] = (double)OptionData::playerData4.showPixPos.y;
-
 }
