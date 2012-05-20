@@ -34,7 +34,7 @@ void Setting::loadSetting()
 	fs.close();
 	checkIn();
     }
-    print();
+//    print();
 }
 
 void Setting::print()
@@ -57,7 +57,6 @@ void Setting::saveSetting()
 	fs << key << " " <<  value << endl;;
     }
     fs.close();
-  
 }
 
 void Setting::loadDefaultSetting()
@@ -71,7 +70,7 @@ void Setting::loadDefaultSetting()
     }
     fs.close();
     checkIn();
-    print();
+//    print();
 }
 
 void Setting::checkIn()

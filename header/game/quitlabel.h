@@ -21,7 +21,8 @@ public:
     QuitLabel(const Rect<int> &_rect,
 	      const std::string &_text,
 	      const SDL_Color &_color = black,
-      	      bool _toogle = false);
+      	      bool _toogle = false,
+	      const std::string &_help = "this is a game quit label");
     virtual ~QuitLabel();
 
     virtual void handleEvent(const SDL_Event &event);

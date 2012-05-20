@@ -18,13 +18,15 @@ class KeySetLabel : public Label{
  public:
     /**
        @param _rect 初始化blit的位置
-       @param _text 初始化label的内容
+       @param _text 初始化label的文本内容
        @param _key 初始化保存的按键
+       @param _help 初始化label的帮助信息
        @param _color 初始化blit到菜单的内容的颜色
      */
   KeySetLabel( const Rect<int> &_rect,
 	       const std::string &_text,
 	       const SDLKey &_key,
+	       const std::string &_help = "this is a keysetlabel",
 	       const SDL_Color &_color = black );
 
   virtual ~KeySetLabel();

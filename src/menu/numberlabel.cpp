@@ -1,6 +1,8 @@
 #include <string>
+#include "color.h"
 #include "numberlabel.h"
 #include "resourcedata.h"
+#include "optiondata.h"
 
 NumberLabel::NumberLabel(const Rect<int> &_rect,
 			 const std::string &_text,
@@ -9,8 +11,9 @@ NumberLabel::NumberLabel(const Rect<int> &_rect,
 			 const double &_min_number,
 			 const double &_max_number,
 			 const double &_plus_factor,
+			 const std::string  &_help,
 			 const SDL_Color &_color) :
-    Label(_rect, _text, _color), number(_number), 
+    Label(_rect, _text, _help, _color), number(_number), 
     default_number(_number), UNIT(_unit), 
     PLUS_FACTOR(_plus_factor),
     MIN_NUMBER(_min_number),
@@ -44,13 +47,13 @@ void NumberLabel::handleEvent( const SDL_Event &event)
 	    case SDLK_r: 
 		reset(); 
 		break;
-	    case SDLK_MINUS:
+	    case SDLK_LEFT:
 		if( (number -= PLUS_FACTOR) <= MIN_NUMBER)
 		    number = MIN_NUMBER;;
 		syncToNumberText();
 		act();
 		break;
-	    case SDLK_EQUALS:
+	    case SDLK_RIGHT:
 		if( (number += PLUS_FACTOR) >= MAX_NUMBER)
 		    number = MAX_NUMBER;
 		syncToNumberText();
@@ -106,6 +109,8 @@ void NumberLabel::toggleInputState()
 {
     if (input_state == true) {
 	input_state = false;
+	OptionData::numberInputState = false;
+	color = black;
 	if ( (number_text.length() == 0) || 
 	     (atof(number_text.c_str()) < MIN_NUMBER ) ||
 	     (atof(number_text.c_str()) > MAX_NUMBER) )
@@ -116,6 +121,8 @@ void NumberLabel::toggleInputState()
     }
     else{
 	input_state = true;
+	color = red;
+	OptionData::numberInputState = true;;
 	number_text = "";
     }
 }

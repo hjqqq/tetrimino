@@ -30,3 +30,7 @@ int OptionData::ghostAlpha;
 int OptionData::musicVolume;
 int OptionData::chunkVolume;
 
+
+bool OptionData::numberInputState = false;
+std::string OptionData::help = "";
+

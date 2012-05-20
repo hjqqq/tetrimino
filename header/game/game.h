@@ -23,7 +23,7 @@
 class Game{
 public:
     enum GameStatus{PREPARE, READY, START, AREDELAY,
-		    DROP, WIN, GAMEOVER, QUITGAME};
+		    DROP, WIN, GAMEOVER};
     GameStatus gameStatus;
     Game(PlayerData *_playerData, Game **_allGame);
     ~Game();

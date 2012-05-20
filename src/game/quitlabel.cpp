@@ -8,8 +8,9 @@
 QuitLabel::QuitLabel(const Rect<int> &_rect,
 		     const std::string &_text,
 		     const SDL_Color &_color,
-		     bool _toggle):
-    Label(_rect,  _text, _color), toggle(_toggle)
+		     bool _toggle,
+    		     const std::string &_help):
+    Label(_rect,  _text, _help,  _color), toggle(_toggle)
 {
     constructLabelSurface();
 }

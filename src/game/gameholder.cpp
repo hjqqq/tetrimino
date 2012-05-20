@@ -1,3 +1,4 @@
+#include "color.h"
 #include "gameholder.h"
 #include "valuesetter.h"
 
@@ -308,7 +309,7 @@ void GameHolder::initQuitLabel()
 	quitLabelRect.diagonal.x, quitLabelRect.diagonal.y);
     
     quitLabelRect.setCenter(StableData::screenSize / 2);
-    quitLabel = new QuitLabel(quitLabelRect, "Quit?");
+    quitLabel = new QuitLabel(quitLabelRect, "Quit?", white);
     quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
 			     OptionData::gameHolderStatus,
 			     OptionData::QUITGAME));    

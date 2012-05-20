@@ -7,8 +7,9 @@
 ToggleLabel::ToggleLabel(const Rect<int> &_rect,
 			 const std::string &_text,
 			 const bool &_toggle,
+			 const std::string &_help,
 			 const SDL_Color &_color ):
-    Label(_rect,  _text, _color), toggle(_toggle)
+    Label(_rect,  _text, _help, _color), toggle(_toggle)
 {
     freshToggleText();
     constructLabelSurface();
@@ -66,9 +67,9 @@ void ToggleLabel::destroyLabelSurface()
 void ToggleLabel::freshToggleText()
 {
     if( toggle == true )
-	toggle_text = text + " : on";
+	toggle_text = text + " : yes";
     else
-	toggle_text = text + " : off";
+	toggle_text = text + " : no";
 }
 
 void ToggleLabel::act()

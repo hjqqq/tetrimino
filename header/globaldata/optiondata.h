@@ -43,6 +43,10 @@ namespace OptionData{
     extern int ghostAlpha;
     extern int musicVolume;
     extern int chunkVolume;
+    
+    extern bool numberInputState;
+
+    extern std::string help;
 };
 
 #endif

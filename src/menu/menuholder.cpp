@@ -22,11 +22,6 @@ MenuHolder::MenuHolder() :
     menu_setting("res/user_settings.txt", "res/default_settings.txt")
 {
     ResourceData::sound->playMusic("menu.mp3");
-    /*
-      instructionLabel1 = new SimpleLabel(Rect<int>(0, 490, 600, 50), "r: reset, +: plus, -: minus");
-      instructionLabel2 = new SimpleLabel(Rect<int>(100, 520, 600, 50),"Up, Down, Enter: chose");
-      instructionLabel3 = new SimpleLabel(Rect<int>(200, 550, 600, 50), "Left, Right: change player");
-    */
     menu_setting.loadSetting();
     constructMainMenu();
     constructOptionMenu();
@@ -34,15 +29,13 @@ MenuHolder::MenuHolder() :
     constructKeySetMenu();
     playerMenuIter = playerMenuVector.begin();
     keySetMenuIter = keySetMenuVector.begin();
+    OptionData::help = "Start Game";
+    helpLabel = new SimpleLabel(Rect<int>(0,500,800,50), OptionData::help, "show help", lightsteelblue);
 }
 
 MenuHolder::~MenuHolder()
 {
-    /*
-    delete instructionLabel1;
-    delete instructionLabel2;
-    delete instructionLabel3;
-    */
+    delete helpLabel;
     menu_setting.saveSetting();
     delete mainMenu;
     delete optionMenu;
@@ -63,35 +56,37 @@ MenuHolder::~MenuHolder()
 void MenuHolder::handleEvent(const SDL_Event &event)
 {
     if ( (event.type == SDL_KEYDOWN) &&
-	 (event.key.keysym.sym == SDLK_ESCAPE) &&
-	 (OptionData::menuHolderStatus != OptionData::MAINMENU) )
-    {
-	switch (OptionData::menuHolderStatus){
-	case OptionData::OPTIONMENU:
-	    optionMenu->resetSelect();
-	    break;
-	case OptionData::PLAYERMENU:
-	    playerMenuIter = playerMenuVector.begin();
-	    keySetMenuIter = keySetMenuVector.begin();
-	    for (std::vector<Menu*>::iterator iter = playerMenuVector.begin(); 
-		 iter != playerMenuVector.end(); 
-		 ++iter ) 
-	    {
-		(*iter)->resetSelect();
+	 (OptionData::numberInputState == false) )
+	if( (event.key.keysym.sym == SDLK_ESCAPE) ||
+	    (event.key.keysym.sym == SDLK_BACKSPACE) )
+	{
+	    switch (OptionData::menuHolderStatus){
+	    case OptionData::OPTIONMENU:
+		optionMenu->resetSelect();
+		OptionData::menuHolderStatus = OptionData::MAINMENU;
+		break;
+	    case OptionData::PLAYERMENU:
+		playerMenuIter = playerMenuVector.begin();
+		keySetMenuIter = keySetMenuVector.begin();
+		for (std::vector<Menu*>::iterator iter = playerMenuVector.begin(); 
+		     iter != playerMenuVector.end(); 
+		     ++iter ) 
+		{
+		    (*iter)->resetSelect();
+		}
+		OptionData::menuHolderStatus = OptionData::OPTIONMENU;
+		break;
+	    case OptionData::KEYSETMENU:
+		for (std::vector<Menu*>::iterator iter = keySetMenuVector.begin(); 
+		     iter != keySetMenuVector.end(); 
+		     ++iter ) 
+		{
+		    (*iter)->resetSelect();
+		}
+		OptionData::menuHolderStatus = OptionData::PLAYERMENU;
+		break;
 	    }
-	    break;
-	case OptionData::KEYSETMENU:
-	    for (std::vector<Menu*>::iterator iter = keySetMenuVector.begin(); 
-		 iter != keySetMenuVector.end(); 
-		 ++iter ) 
-	    {
-		(*iter)->resetSelect();
-	    }
-	    break;
 	}
-	OptionData::menuHolderStatus = 
-	    (OptionData::MenuHolderStatus) (OptionData::menuHolderStatus - 1);
-    }
     switch (OptionData::menuHolderStatus){
     case OptionData::MAINMENU:
 	mainMenu->handleEvent(event);
@@ -100,13 +95,16 @@ void MenuHolder::handleEvent(const SDL_Event &event)
 	optionMenu->handleEvent(event);
 	break;
     case OptionData::PLAYERMENU:
-	selectPlayerMenu(event);
+	if( (*playerMenuIter)->getSelect() == 0 )
+	    selectPlayerMenu(event);
 	(*playerMenuIter)->handleEvent(event);
 	break;
     case OptionData::KEYSETMENU:
-	selectPlayerMenu(event);	
+	if( (*keySetMenuIter)->getSelect() == 0 )
+	    selectPlayerMenu(event);	
 	(*keySetMenuIter)->handleEvent(event);
     }
+    freshHelpLabel();
 }
 
 void MenuHolder::update()
@@ -125,19 +123,15 @@ void MenuHolder::update()
 	(*keySetMenuIter)->update();
 	break;
     }
-    /*
-    instructionLabel1->update();
-    instructionLabel2->update();
-    instructionLabel3->update();
-    */
+    helpLabel->update();
 }
 
 void MenuHolder::constructMainMenu()
 {
     // labels
-    SimpleLabel *startLabel = new SimpleLabel( StableData::labelRect, "START");
-    SimpleLabel *optionLabel = new SimpleLabel( StableData::labelRect, "OPTION");
-    SimpleLabel *quitLabel = new SimpleLabel( StableData::labelRect, "QUIT");
+    SimpleLabel *startLabel = new SimpleLabel( StableData::labelRect, "START", "Start Game");
+    SimpleLabel *optionLabel = new SimpleLabel( StableData::labelRect, "OPTION", "User Settings");
+    SimpleLabel *quitLabel = new SimpleLabel( StableData::labelRect, "QUIT", "Quit Program, Settings will be saved");
 
     // setters
     ValueSetter <OptionData::MenuHolderStatus> *optionSetter= 
@@ -162,25 +156,26 @@ void MenuHolder::constructMainMenu()
 void MenuHolder::constructOptionMenu()
 {
     /******************************* labels **********************************/
+    SimpleLabel *playerLabel = new SimpleLabel( StableData::labelRect, "Player Setting", "Change player's individual settings");
     NumberLabel *playerSizeLabel = new NumberLabel(
 	StableData::labelRect, "Player Size", "P", 
-	OptionData::playerSize, 1,4, 1);
+	OptionData::playerSize, 1,4, 1, "Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *ghostAlphaLabel = new NumberLabel(
 	StableData::labelRect, "Ghost Alpha", "%", 
-	OptionData::ghostAlpha, 0 ,100, 5);
+	OptionData::ghostAlpha, 0 ,100, 5,"Left:-5,Right:+5,r:reset,Enter:InputNumber");
     NumberLabel *musicVolumeLabel = new NumberLabel(
 	StableData::labelRect, "Music Volume", "[0,128]", 
-	OptionData::musicVolume, 0,128, 10);
+	OptionData::musicVolume, 0,128, 10,"Left:-10,Right:+10,r:reset,Enter:InputNumber");
     NumberLabel * chunkVolumeLabel= new NumberLabel(
 	StableData::labelRect, "Chunk Volume", "[0,128]", 
-	OptionData::chunkVolume, 0 ,128, 10);
+	OptionData::chunkVolume, 0 ,128, 10,"Left:-10,Right:+10,r:reset,Enter:InputNumber");
     NumberLabel *areDelayTimeLabel = new NumberLabel(
 	StableData::labelRect, "ARE delay time", "ms", 
-	OptionData::areDelayTime, 0, 1000, 50);
+	OptionData::areDelayTime, 0, 1000, 50,"Left:-50,Right:+50,r:reset,Enter:InputNumber");
     NumberLabel *lockDelayTimeLabel = new NumberLabel(
 	StableData::labelRect, "LOCK delay time", "ms", 
-	OptionData::lockDelayTime, 0, 1000, 50);
-    SimpleLabel *playerLabel = new SimpleLabel( StableData::labelRect, "Player Setting");
+	OptionData::lockDelayTime, 0, 1000, 50,"Left:-50,Right:+50,r:reset,Enter:InputNumber");
+
     /****************************** setters *********************************/
     NumberSetter<int> * playerSizeSetter =
 	new NumberSetter<int>(OptionData::playerSize);
@@ -222,101 +217,101 @@ void MenuHolder::constructPlayerMenu()
 {
     /******************************** labels ************************************/
     // 1p labels
-    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p Keyboard Setting");
+    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 1 p", "Enter : change 1p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost1pLabel = new ToggleLabel(
-	StableData::labelRect, "Ghost",OptionData::playerData1.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData1.ghost, "if 1p wants to use ghost?");
     ToggleLabel *toggleHolder1pLabel = new ToggleLabel(
-	StableData::labelRect,"Holder", OptionData::playerData1.holder);
+	StableData::labelRect,"Holder", OptionData::playerData1.holder, "if 1p's holder visible?");
     NumberLabel *dasDelayTime1pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
-	OptionData::playerData1.dasDelayTime, 0, 1000, 50);
+	OptionData::playerData1.dasDelayTime, 0, 1000, 50, "Left:-50,Right:+50,r:reset,Enter:InputNumber");
     NumberLabel *horizontalSpeed1pLabel = new NumberLabel(
 	StableData::labelRect, "Horizontal Speed", "G",
-	OptionData::playerData1.horizontalSpeed,0.05, 10, 0.1);
+	OptionData::playerData1.horizontalSpeed,0.05, 10, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *normalDropSpeed1pLabel = new NumberLabel(
 	StableData::labelRect, "NormalDrop Speed", "G",
-	OptionData::playerData1.normalDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData1.normalDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *softDropSpeed1pLabel = new NumberLabel(
 	StableData::labelRect, "SoftDrop Speed", "G",
-	OptionData::playerData1.softDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData1.softDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *randomQueueDataIndex1pLabel = new NumberLabel(
 	StableData::labelRect, "RandomQueue", "Q", 
-	OptionData::playerData1.randomQueueDataIndex, 1, 4, 1);
+	OptionData::playerData1.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType1pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData1.randomizerType, 1, 2, 1);
+	OptionData::playerData1.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     // 2p labels
-    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p Keyboard Setting");
+    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 2 p", "Enter : change 2p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost2pLabel = new ToggleLabel(
-	StableData::labelRect, "Ghost",OptionData::playerData2.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData2.ghost,"if 2p wants to use ghost?");
     ToggleLabel *toggleHolder2pLabel = new ToggleLabel(
-	StableData::labelRect,"Holder", OptionData::playerData2.holder);
+	StableData::labelRect,"Holder", OptionData::playerData2.holder,"if 2p's holder visible?");
     NumberLabel *dasDelayTime2pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
-	OptionData::playerData2.dasDelayTime, 0, 1000, 50);
+	OptionData::playerData2.dasDelayTime, 0, 1000, 50,"Left:-50,Right:+50,r:reset,Enter:InputNumber");
     NumberLabel *horizontalSpeed2pLabel = new NumberLabel(
 	StableData::labelRect, "Horizontal Speed", "G",
-	OptionData::playerData2.horizontalSpeed,0.05, 10, 0.1);
+	OptionData::playerData2.horizontalSpeed,0.05, 10, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *normalDropSpeed2pLabel = new NumberLabel(
 	StableData::labelRect, "NormalDrop Speed", "G",
-	OptionData::playerData2.normalDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData2.normalDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *softDropSpeed2pLabel = new NumberLabel(
 	StableData::labelRect, "SoftDrop Speed", "G",
-	OptionData::playerData2.softDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData2.softDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *randomQueueDataIndex2pLabel = new NumberLabel(
 	StableData::labelRect, "RandomQueue", "Q", 
-	OptionData::playerData2.randomQueueDataIndex, 1, 4, 1);
+	OptionData::playerData2.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType2pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData2.randomizerType, 1, 2, 1);
+	OptionData::playerData2.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     // 3p labels
-    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p Keyboard Setting");
+    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 3 p", "Enter : change 3p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
-	StableData::labelRect, "Ghost",OptionData::playerData3.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData3.ghost,"if 3p wants to use ghost?");
     ToggleLabel *toggleHolder3pLabel = new ToggleLabel(
-	StableData::labelRect,"Holder", OptionData::playerData3.holder);
+	StableData::labelRect,"Holder", OptionData::playerData3.holder,"if 3p's holder visible?");
     NumberLabel *dasDelayTime3pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
-	OptionData::playerData3.dasDelayTime, 0, 1000, 50);
+	OptionData::playerData3.dasDelayTime, 0, 1000, 50,"Left:-50,Right:+50,r:reset,Enter:InputNumber");
     NumberLabel *horizontalSpeed3pLabel = new NumberLabel(
 	StableData::labelRect, "Horizontal Speed", "G",
-	OptionData::playerData3.horizontalSpeed,0.05, 10, 0.1);
+	OptionData::playerData3.horizontalSpeed,0.05, 10, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *normalDropSpeed3pLabel = new NumberLabel(
 	StableData::labelRect, "NormalDrop Speed", "G",
-	OptionData::playerData3.normalDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData3.normalDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *softDropSpeed3pLabel = new NumberLabel(
 	StableData::labelRect, "SoftDrop Speed", "G",
-	OptionData::playerData3.softDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData3.softDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *randomQueueDataIndex3pLabel = new NumberLabel(
 	StableData::labelRect, "RandomQueue", "Q", 
-	OptionData::playerData3.randomQueueDataIndex, 1, 4, 1);
+	OptionData::playerData3.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType3pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData3.randomizerType, 1, 2, 1);    
+	OptionData::playerData3.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");    
     // 4p labels
-    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p Keyboard Setting");
+    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 4 p", "Enter : change 4p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost4pLabel = new ToggleLabel(
-	StableData::labelRect, "Ghost",OptionData::playerData4.ghost);
+	StableData::labelRect, "Ghost",OptionData::playerData4.ghost,"if 4p wants to use ghost?");
     ToggleLabel *toggleHolder4pLabel = new ToggleLabel(
-	StableData::labelRect,"Holder", OptionData::playerData4.holder);
+	StableData::labelRect,"Holder", OptionData::playerData4.holder,"if 4p's holder visible?");
     NumberLabel *dasDelayTime4pLabel = new NumberLabel(
 	StableData::labelRect, "DAS delay time", "ms", 
-	OptionData::playerData4.dasDelayTime, 0, 1000, 50);
+	OptionData::playerData4.dasDelayTime, 0, 1000, 50,"Left:-50,Right:+50,r:reset,Enter:InputNumber");
     NumberLabel *horizontalSpeed4pLabel = new NumberLabel(
 	StableData::labelRect, "Horizontal Speed", "G",
-	OptionData::playerData4.horizontalSpeed,0.05, 10, 0.1);
+	OptionData::playerData4.horizontalSpeed,0.05, 10, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *normalDropSpeed4pLabel = new NumberLabel(
 	StableData::labelRect, "NormalDrop Speed", "G",
-	OptionData::playerData4.normalDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData4.normalDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *softDropSpeed4pLabel = new NumberLabel(
 	StableData::labelRect, "SoftDrop Speed", "G",
-	OptionData::playerData4.softDropSpeed,0.05, 20, 0.1);
+	OptionData::playerData4.softDropSpeed,0.05, 20, 0.1,"Left:-0.1,Right:+0.1,r:reset,Enter:InputNumber");
     NumberLabel *randomQueueDataIndex4pLabel = new NumberLabel(
 	StableData::labelRect, "RandomQueue", "Q", 
-	OptionData::playerData4.randomQueueDataIndex, 1, 4, 1);
+	OptionData::playerData4.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType4pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData4.randomizerType, 1, 2, 1);
+	OptionData::playerData4.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     
     /********************************* setters *************************************/
     // 1p setters
@@ -512,97 +507,97 @@ void MenuHolder::constructKeySetMenu()
 {
     /******************************* labels *************************************/
     // 1p labels
-    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p Keyboard Setting");
+    SimpleLabel * player1pLabel = new SimpleLabel( StableData::labelRect, "1p", "Left or Right : change player, Esc or Backspace : return");
     KeySetLabel * moveLeft1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
-	OptionData::playerData1.moveLeft);
+	OptionData::playerData1.moveLeft, "Enter: Input 1p's MoveLeft key");
     KeySetLabel * moveRight1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Right",
-	OptionData::playerData1.moveRight);
+	OptionData::playerData1.moveRight,"Enter: Input 1p's MoveRight key");
     KeySetLabel * rotateLeft1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Left",
-	OptionData::playerData1.rotateLeft);
+	OptionData::playerData1.rotateLeft,"Enter: Input 1p's RotateLeft key");
     KeySetLabel * rotateRight1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Right",
-	OptionData::playerData1.rotateRight);
+	OptionData::playerData1.rotateRight,"Enter: Input 1p's RotateRight key");
     KeySetLabel * softDrop1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Soft Drop",
-	OptionData::playerData1.softDrop);
+	OptionData::playerData1.softDrop,"Enter: Input 1p's SoftDrop key");
     KeySetLabel * hardDrop1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hard Drop",
-	OptionData::playerData1.hardDrop);
+	OptionData::playerData1.hardDrop,"Enter: Input 1p's HardDrop key");
     KeySetLabel * hold1pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hold",
-	OptionData::playerData1.hold);
+	OptionData::playerData1.hold,"Enter: Input 1p's Hold key");
     // 2p labels
-    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p Keyboard Setting");
+    SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "2p","Left or Right : change player, Esc or Backspace : return");
     KeySetLabel * moveLeft2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
-	OptionData::playerData2.moveLeft);
+	OptionData::playerData2.moveLeft,"Enter: Input 2p's MoveLeft key");
     KeySetLabel * moveRight2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Right",
-	OptionData::playerData2.moveRight);
+	OptionData::playerData2.moveRight,"Enter: Input 2p's MoveRight key");
     KeySetLabel * rotateLeft2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Left",
-	OptionData::playerData2.rotateLeft);
+	OptionData::playerData2.rotateLeft,"Enter: Input 2p's RotateLeft key");
     KeySetLabel * rotateRight2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Right",
-	OptionData::playerData2.rotateRight);
+	OptionData::playerData2.rotateRight,"Enter: Input 2p's RotateRight key");
     KeySetLabel * softDrop2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Soft Drop",
-	OptionData::playerData2.softDrop);
+	OptionData::playerData2.softDrop,"Enter: Input 2p's SoftDrop key");
     KeySetLabel * hardDrop2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hard Drop",
-	OptionData::playerData2.hardDrop);
+	OptionData::playerData2.hardDrop,"Enter: Input 2p's HardDrop key");
     KeySetLabel * hold2pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hold",
-	OptionData::playerData2.hold);
+	OptionData::playerData2.hold,"Enter: Input 2p's Hold key");
     // 3p labels
-    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p Keyboard Setting");
+    SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "3p","Left or Right : change player, Esc or Backspace : return");
     KeySetLabel * moveLeft3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
-	OptionData::playerData3.moveLeft);
+	OptionData::playerData3.moveLeft,"Enter: Input 3p's MoveLeft key");
     KeySetLabel * moveRight3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Right",
-	OptionData::playerData3.moveRight);
+	OptionData::playerData3.moveRight,"Enter: Input 3p's MoveRight key");
     KeySetLabel * rotateLeft3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Left",
-	OptionData::playerData3.rotateLeft);
+	OptionData::playerData3.rotateLeft,"Enter: Input 3p's RotateLeft key");
     KeySetLabel * rotateRight3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Right",
-	OptionData::playerData3.rotateRight);
+	OptionData::playerData3.rotateRight,"Enter: Input 3p's RotateRight key");
     KeySetLabel * softDrop3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Soft Drop",
-	OptionData::playerData3.softDrop);
+	OptionData::playerData3.softDrop,"Enter: Input 3p's SoftDrop key");
     KeySetLabel * hardDrop3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hard Drop",
-	OptionData::playerData3.hardDrop);
+	OptionData::playerData3.hardDrop,"Enter: Input 3p's HardDrop key");
     KeySetLabel * hold3pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hold",
-	OptionData::playerData3.hold);
+	OptionData::playerData3.hold,"Enter: Input 3p's Hold key");
     // 4p labels
-    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p Keyboard Setting");
+    SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "4p","Left or Right : change player, Esc or Backspace : return");
     KeySetLabel * moveLeft4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Left",
-	OptionData::playerData4.moveLeft);
+	OptionData::playerData4.moveLeft,"Enter: Input 4p's MoveLeft key");
     KeySetLabel * moveRight4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Move Right",
-	OptionData::playerData4.moveRight);
+	OptionData::playerData4.moveRight,"Enter: Input 4p's MoveRight key");
     KeySetLabel * rotateLeft4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Left",
-	OptionData::playerData4.rotateLeft);
+	OptionData::playerData4.rotateLeft,"Enter: Input 4p's RotateLeft key");
     KeySetLabel * rotateRight4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Rotate Right",
-	OptionData::playerData4.rotateRight);
+	OptionData::playerData4.rotateRight,"Enter: Input 4p's RotateRight key");
     KeySetLabel * softDrop4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Soft Drop",
-	OptionData::playerData4.softDrop);
+	OptionData::playerData4.softDrop,"Enter: Input 4p's SoftDrop key");
     KeySetLabel * hardDrop4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hard Drop",
-	OptionData::playerData4.hardDrop);
+	OptionData::playerData4.hardDrop,"Enter: Input 4p's HardDrop key");
     KeySetLabel * hold4pLabel = new KeySetLabel( 
 	StableData::labelRect, "Hold",
-	OptionData::playerData4.hold);
+	OptionData::playerData4.hold,"Enter: Input 4p's Hold key");
   
     /********************************* setters ********************************/
     // 1p setters
@@ -789,15 +784,24 @@ void MenuHolder::selectPlayerMenu(const SDL_Event & event)
 	{
 	case SDLK_RIGHT:
 	    if(playerMenuIter != (playerMenuVector.end() - 1) ){
+		(*playerMenuIter)->resetSelect();
+		(*keySetMenuIter)->resetSelect();
 		++playerMenuIter;
 		++keySetMenuIter;
 	    }
 	    break;
 	case SDLK_LEFT:
 	    if( playerMenuIter != playerMenuVector.begin()) {
+		(*playerMenuIter)->resetSelect();
+		(*keySetMenuIter)->resetSelect();
 		--playerMenuIter;
 		--keySetMenuIter;
 	    }
 	    break;
 	}
+}
+
+void MenuHolder::freshHelpLabel()
+{
+    helpLabel->setText(OptionData::help);
 }

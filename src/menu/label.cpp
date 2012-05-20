@@ -8,9 +8,10 @@
 
 Label::Label(const Rect<int> &_rect,
 	     const std::string &_text,
+	     const std::string &_help,
 	     const SDL_Color &_color):
-    Widget(_rect),
-    text(_text), color(_color), labelSurface(NULL)
+    Widget(_rect),text(_text), help(_help),
+    color(_color), labelSurface(NULL)
 {}
 
 Label::~Label()
@@ -24,6 +25,18 @@ void Label::setColor(const SDL_Color &newColor)
 void Label::setText(const std::string &newText)
 {
     text = newText;
+    destroyLabelSurface();
+    constructLabelSurface();
+}
+
+void Label::setHelp(const std::string &newHelp)
+{
+    help = newHelp;
+}
+
+std::string Label::getHelp()
+{
+    return help;
 }
 
 void Label::setRect(const Rect<int> &newRect)

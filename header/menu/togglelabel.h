@@ -15,13 +15,15 @@ class ToggleLabel : public Label {
  public:
     /**
        @param _rect 初始化blit的位置
-       @param _text 初始化label的内容
+       @param _text 初始化label的文本内容
        @param _toggle 初始化状态
+       @param _help 初始化label的帮助信息
        @param _color 初始化blit改内容字体的颜色
      */
   ToggleLabel(const Rect<int> &_rect,
 	      const std::string &_text,
 	      const bool &_toogle = true,
+	      const std::string &_help = "this is a togglelabel",
 	      const SDL_Color &_color = black );
   virtual ~ToggleLabel();
 

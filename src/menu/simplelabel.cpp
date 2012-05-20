@@ -8,8 +8,9 @@
 
 SimpleLabel::SimpleLabel(const Rect<int> &_rect,
 			 const std::string &_text,
+			 const std::string &_help,
 			 const SDL_Color &_color):
-    Label(_rect, _text, _color)
+    Label(_rect, _text, _help, _color)
 {
     constructLabelSurface();
 }

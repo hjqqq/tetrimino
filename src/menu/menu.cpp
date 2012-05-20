@@ -43,12 +43,11 @@ void Menu::verticalLayout()
 
 void Menu::handleEvent(const SDL_Event &event)
 {
-    switch (event.type){
-    case SDL_KEYDOWN:
-	handleKey(event.key.keysym.sym);
-	break;
-    }
-    labelVector[select]->handleEvent(event);
+    if ( OptionData::numberInputState == false )
+	if ( event.type == SDL_KEYDOWN )
+	    handleKey(event.key.keysym.sym);
+    OptionData::help = labelVector[select]->getHelp();
+    labelVector[select]->handleEvent(event);    
 }
 
 void Menu::handleKey(const SDLKey &sym)
