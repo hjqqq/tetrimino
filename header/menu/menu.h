@@ -96,7 +96,7 @@ private:
     /**
        保存添加的label
      */
-    std::vector<Widget*> labelVector;
+    std::vector<Label*> labelVector;
 
     /**
        当前菜单选中的label的标号

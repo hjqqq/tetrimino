@@ -39,11 +39,9 @@ private:
     Menu * mainMenu;
     Menu * optionMenu;
     Setting menu_setting;
-/*    
-    SimpleLabel * instructionLabel1;
-    SimpleLabel * instructionLabel2;
-    SimpleLabel * instructionLabel3;
-*/ 
+
+    SimpleLabel * helpLabel;
+    
     std::vector<Menu*> playerMenuVector;
     std::vector<Menu*>::iterator playerMenuIter;
   
@@ -55,6 +53,7 @@ private:
     void constructPlayerMenu();
     void constructKeySetMenu();
     void selectPlayerMenu(const SDL_Event &);
+    void freshHelpLabel();
 };
 
 #endif

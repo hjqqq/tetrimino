@@ -17,12 +17,14 @@
 class SimpleLabel : public Label{
  public:
     /**
-       @param _rect 保存该label的位置
-       @param _text 保存该lable的内容
-       @param _color 保存blit字体的颜色
+       @param _rect 初始化该label的位置
+       @param _text 初始化该lable的文本内容
+       @param _help 初始化label的帮助信息
+       @param _color 初始化blit字体的颜色
      */
   SimpleLabel(const Rect<int> &_rect,
 	      const std::string &_text,
+	      const std::string &_help = "this is a simplelabel",
 	      const SDL_Color &_color = black);
   virtual ~SimpleLabel();
 

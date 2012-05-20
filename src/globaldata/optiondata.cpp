@@ -32,3 +32,4 @@ int OptionData::chunkVolume;
 
 bool OptionData::numberInputState = false;
 
+std::string OptionData::help = "";

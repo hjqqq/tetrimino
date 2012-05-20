@@ -16,12 +16,13 @@ class NumberLabel : public Label{
  public:
     /**
        @param _rect 初始化blit的位置
-       @param _text 初始化label的内容
+       @param _text 初始化label的文本内容
        @param _unit 初始化该label保存数值单位
        @param _number 初始化保存的数值
        @param _min_number 初始化保存数值的下限
        @param _max_number 初始化保存数值的上限
        @param _plus_factor 初始化每次增减数值的大小
+       @param _help 初始化label的帮助信息
        @param _color 初始化blit该label内容字体的颜色
      */
   NumberLabel(const Rect<int> &_rect,
@@ -31,6 +32,7 @@ class NumberLabel : public Label{
 	      const double &_min_number,
 	      const double &_max_number,
 	      const double &_plus_factor,
+	      const std::string &_help = "this is a numberlabel",
 	      const SDL_Color &_color = black);
   
   virtual ~NumberLabel();
