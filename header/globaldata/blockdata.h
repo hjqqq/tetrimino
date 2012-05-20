@@ -68,6 +68,10 @@ enum MinoColor{ICOLOR, JCOLOR, LCOLOR,
 extern const SDL_Color minoColor[9];
 extern SDL_Color minoGhostColor[9];
 
+extern SDL_Surface* minoSurface[9];
+extern SDL_Surface* minoGhostSurface[9];
+extern SDL_Surface* halfMinoSurface[9];
+
 BlockData::BlockData(int _size,
 		     const AllBlockNum &_allBlockNum,
 		     const AllBlockRect &_allBlockRect):

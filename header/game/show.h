@@ -16,7 +16,7 @@ public:
 		   BlockShape shape,
 		   Direction direction,
 		   const Vector2<int> &minoPixSize,
-		   const SDL_Color *minoColor);
+		   SDL_Surface **minoSurface);
     
     void previewShow(RandomQueue::iterator start,
 		     RandomQueue::iterator finish);

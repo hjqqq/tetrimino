@@ -32,6 +32,7 @@ Game::~Game()
     if (!softDropCounter)
 	ResourceData::clock->removeCounter(softDropCounter);
 
+    delete gameoverDelayTimer;
     delete lockDelayTimer;
     delete areDelayTimer;
     delete dasDelayTimer;

@@ -237,3 +237,7 @@ SDL_Color minoGhostColor[9] = {
     gray,
     black
 };
+
+SDL_Surface* minoSurface[9];
+SDL_Surface* minoGhostSurface[9];
+SDL_Surface* halfMinoSurface[9];

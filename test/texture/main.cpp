@@ -1,27 +1,9 @@
-#include <string>
-#include <sstream>
-#include "utility.h"
+#include "SDL.h"
+#include "SDL_image.h"
 
-SDL_Surface *image_load_alpha( const char *file)
+inline double lerp(double a, double b, double t)
 {
-    SDL_Surface *image_orig = IMG_Load(file);
-    SDL_Surface *image = SDL_DisplayFormatAlpha(image_orig);
-    SDL_FreeSurface(image_orig);
-    return image;
-}
-SDL_Surface *image_load(const char *file)
-{
-    SDL_Surface *image_orig = IMG_Load(file);
-    SDL_Surface *image = SDL_DisplayFormat(image_orig);
-    SDL_FreeSurface(image_orig);
-    return image;
-}
-
-void doubleToString(double number, std::string &str)
-{
-  std::ostringstream ss;
-  ss << number;
-  str = ss.str();
+    return a + (b - a) * t;
 }
 
 Uint32 getPixel(SDL_Surface *surface, int x, int y)
@@ -82,4 +64,55 @@ void putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
         *(Uint32 *)p = pixel;
         break;
     }
+}
+
+int main()
+{
+    const int displayX = 500, displayY = 300;
+    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_Surface *display = SDL_SetVideoMode(displayX, displayY, 0, SDL_SWSURFACE);
+
+    SDL_Surface *picture = IMG_Load("haha.jpg");
+
+    SDL_Surface *halfPicture =
+	SDL_CreateRGBSurface(
+	    display->flags,
+	    800,
+	    600,
+	    display->format->BitsPerPixel,
+	    display->format->Rmask,
+	    display->format->Gmask,
+	    display->format->Bmask,
+	    display->format->Amask);
+
+    SDL_LockSurface(picture);
+    SDL_LockSurface(halfPicture);
+    Uint32 pixel;
+    for (int j = 0; j != displayY; ++j){
+	for (int i = 0; i != displayX; ++i){
+	    pixel = getPixel(picture,
+			     lerp(0, i, (double)picture->w / displayX),
+			     lerp(0, j, (double)picture->h / displayY));
+	    putPixel(halfPicture, i, j, pixel);
+	}
+    }
+    SDL_UnlockSurface(picture);
+    SDL_UnlockSurface(halfPicture);
+
+    SDL_BlitSurface(halfPicture, NULL, display, NULL);
+    
+    SDL_Event event;
+    while (true){
+	while (SDL_PollEvent(&event)){
+	    switch (event.type){
+	    case SDL_QUIT:
+		SDL_FreeSurface(picture);
+		SDL_FreeSurface(halfPicture);
+		SDL_Quit();
+		return 0;
+	    }
+	}
+	SDL_UpdateRect(display, 0, 0, 0, 0);
+    }
+    return 0;
 }

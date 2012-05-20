@@ -10,23 +10,6 @@
 Show::Show(PlayerData *_playerData):
     playerData(_playerData)
 {
-    int pixSizeX = StableData::screenSizeX / OptionData::playerSize;
-    
-    int minoPixSizeX = pixSizeX / 18;
-
-    int minoPixSizeY = StableData::screenSizeY / 30;
-
-    OptionData::minoPixSizeX = OptionData::minoPixSizeY =
-	std::min(minoPixSizeX, minoPixSizeY);
-    OptionData::minoPixSize = Vector2<int>(
-	OptionData::minoPixSizeX,
-	OptionData::minoPixSizeY);
-
-    for (int i = 0; i != OptionData::playerSize; ++i){
-	OptionData::allPlayerData[i]->showPixPos =
-	    Vector2<int>(pixSizeX * i, 0);
-    }
-  
     halfMinoPixSize = OptionData::minoPixSize / 2;
     blockPixRect = Rect<int>(Vector2<int>(0, 0),
 			     Vector2<int>(
@@ -61,10 +44,6 @@ Show::Show(PlayerData *_playerData):
 	Vector2<int>(halfMinoPixSize.x,
 		     OptionData::minoPixSize.y * StableData::mapSize.y));
     growBarPixRectTemp = growBarPixRect.getSDL_Rect();
-
-    SDL_FillRect(ResourceData::display,
-		 &growBarPixRectTemp,
-		 SDL_Color2Uint32(minoColor[BACKCOLOR]));
 }
 
 void Show::blockShow(const Vector2<int> &pixPos,
@@ -72,7 +51,7 @@ void Show::blockShow(const Vector2<int> &pixPos,
 		     BlockShape shape,
 		     Direction direction,
 		     const Vector2<int> &minoPixSize,
-		     const SDL_Color *minoColor)
+		     SDL_Surface **minoSurface)
 {
     const BlockData &blockData = blockDataArray[shape];
     
@@ -103,9 +82,9 @@ void Show::blockShow(const Vector2<int> &pixPos,
 		drawRect = minoRect;
 		drawRect.move(i * minoPixSize.x, j * minoPixSize.y);
 		drawRectTemp = drawRect.getSDL_Rect();
-		SDL_FillRect(ResourceData::display,
-			     &drawRectTemp,
-			     SDL_Color2Uint32(minoColor[shape]));
+
+		SDL_BlitSurface(minoSurface[blockNum[origI][origJ]], NULL,
+				ResourceData::display, &drawRectTemp);
 	    }
 	}
     }
@@ -127,7 +106,7 @@ void Show::nextShow(BlockShape shape)
 	      shape,
 	      NORTH,
 	      OptionData::minoPixSize,
-	      minoColor);
+	      minoSurface);
 }
 
 void Show::smallNextShow(RandomQueue::iterator start,
@@ -149,7 +128,7 @@ void Show::smallNextShow(RandomQueue::iterator start,
 		  BlockShape(*iter),
 		  NORTH,
 		  halfMinoPixSize,
-		  minoColor);
+		  halfMinoSurface);
 	startPixPos.y += halfMinoPixSize.y * 6;
     }
 }
@@ -163,7 +142,7 @@ void Show::dropBlockShow(Vector2<int> pos,
 	      shape,
 	      direction,
 	      OptionData::minoPixSize,
-	      minoColor);
+	      minoSurface);
 }
 
 void Show::mapShow(int mapData[StableData::mapSizeX][StableData::mapSizeY])
@@ -179,9 +158,8 @@ void Show::mapShow(int mapData[StableData::mapSizeX][StableData::mapSizeY])
 	    drawRect.move(i * OptionData::minoPixSize.x,
 			  j * OptionData::minoPixSize.y);
 	    drawRectTemp = drawRect.getSDL_Rect();
-	    SDL_FillRect(ResourceData::display,
-			 &drawRectTemp,
-			 SDL_Color2Uint32(minoColor[mapData[i][j]]));
+	    SDL_BlitSurface(minoSurface[mapData[i][j]], NULL,
+			    ResourceData::display, &drawRectTemp);
 	}
     }
 }
@@ -196,7 +174,7 @@ void Show::holdShow(BlockShape holdShape)
 		  holdShape,
 		  NORTH,
 		  halfMinoPixSize,
-		  minoColor);
+		  halfMinoSurface);
     }
 }
 
@@ -210,7 +188,7 @@ void Show::ghostShow(Vector2<int> pos,
 		  shape,
 		  direction,
 		  OptionData::minoPixSize,
-		  minoGhostColor);
+		  minoGhostSurface);
     }
 }
 
@@ -229,7 +207,7 @@ void Show::growBarShow(int mapGrow)
     SDL_Rect growFillPixRectTemp(growFillPixRect.getSDL_Rect());
     SDL_FillRect(ResourceData::display,
 		 &growFillPixRectTemp,
-		 SDL_Color2Uint32(minoColor[GARBAGECOLOR]));    
+		 SDL_Color2Uint32(minoColor[GARBAGECOLOR]));
 }
 
 void Show::messageShow(std::string str)

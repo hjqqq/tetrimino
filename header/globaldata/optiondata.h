@@ -38,7 +38,7 @@ namespace OptionData{
     extern PlayerData playerData3;
     extern PlayerData playerData4;
     
-    extern PlayerData* allPlayerData[StableData::playerSizeMax];
+    extern PlayerData *allPlayerData[StableData::playerSizeMax];
     
     extern int ghostAlpha;
     extern int musicVolume;

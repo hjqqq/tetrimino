@@ -29,7 +29,10 @@ public:
     void update();
 private:
     void initGhostColor();
+    void initPixPos();
     void initQuitLabel();
+    void initMinoSurface();
+    void freeMinoSurface();
     bool checkAllGameStatus(Game::GameStatus gameStatus);
     void setAllGameStatus(Game::GameStatus gameStatus);
     void setRandomQueue();

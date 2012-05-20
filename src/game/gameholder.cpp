@@ -4,7 +4,10 @@
 GameHolder::GameHolder()
 {
     initGhostColor();
-    initQuitLabel();    
+    initPixPos();
+    initMinoSurface();
+    initQuitLabel();
+    
     SDL_BlitSurface(ResourceData::background, 0,
 		    ResourceData::display, 0);
     
@@ -27,7 +30,10 @@ GameHolder::GameHolder()
 
 GameHolder::~GameHolder()
 {
+    freeMinoSurface();
     delete quitLabel;
+    SDL_FreeSurface(quitLabelBackSurface);
+    
     for (int i = 0; i != StableData::playerSizeMax; ++i){
 	delete allGame[i];
 	delete allRandomQueueData[i];
@@ -162,22 +168,131 @@ void GameHolder::setRandomQueue()
 
 /**
    初始化 minoGhostColor（全局变量 blockdata.h）, 采用与背景颜色直接计算RGB值的
-   方法，ghostColor = ghostColor * alpha + back * (1 - alpha);
+   方法，ghostColor = color * alpha + back * (1 - alpha);
  */
 void GameHolder::initGhostColor()
 {
     double ghostAlpha = (double)OptionData::ghostAlpha / 100;
     
     for (int i = 0; i != sizeof(minoColor) / sizeof(*minoColor); ++i){
-	minoGhostColor[i].r =
-	    minoColor[i].r * ghostAlpha +
-	    minoColor[BACKCOLOR].r * (1 - ghostAlpha);
-	minoGhostColor[i].g =
-	    minoColor[i].g * ghostAlpha +
-	    minoColor[BACKCOLOR].g * (1 - ghostAlpha);
-	minoGhostColor[i].b =
-	    minoColor[i].b * ghostAlpha +
-	    minoColor[BACKCOLOR].b * (1 - ghostAlpha);
+	minoGhostColor[i] = alpha_translate(minoColor[i], minoColor[BACKCOLOR], ghostAlpha);
+    }
+}
+
+void GameHolder::initPixPos()
+{
+    int pixSizeX = StableData::screenSizeX / OptionData::playerSize;
+    int minoPixSizeX = pixSizeX / 18;
+    int minoPixSizeY = StableData::screenSizeY / 30;
+
+    OptionData::minoPixSizeX = OptionData::minoPixSizeY =
+	std::min(minoPixSizeX, minoPixSizeY);
+    OptionData::minoPixSize = Vector2<int>(
+	OptionData::minoPixSizeX,
+	OptionData::minoPixSizeY);
+
+    for (int i = 0; i != OptionData::playerSize; ++i){
+	OptionData::allPlayerData[i]->showPixPos =
+	    Vector2<int>(pixSizeX * i, 0);
+    }
+}
+
+void GameHolder::initMinoSurface()
+{
+    SDL_Surface *minoTextureSurface = image_load("res/minotexture.png");
+    SDL_Surface *backTextureSurface = image_load("res/backtexture.png");
+
+    SDL_LockSurface(minoTextureSurface);
+    SDL_LockSurface(backTextureSurface);
+    for (int k = 0; k <= BACKCOLOR; ++k){
+	minoSurface[k] = create_surface(
+	    OptionData::minoPixSizeX, OptionData::minoPixSizeY);
+	SDL_LockSurface(minoSurface[k]);
+	
+	minoGhostSurface[k] = create_surface(
+	    OptionData::minoPixSizeX, OptionData::minoPixSizeY);
+	SDL_LockSurface(minoGhostSurface[k]);
+	
+	halfMinoSurface[k] = create_surface(
+	    OptionData::minoPixSizeX / 2, OptionData::minoPixSizeY / 2);
+	SDL_LockSurface(halfMinoSurface[k]);		
+    }
+    
+    Uint32 pixel;
+    SDL_Color color;
+    for (int k = 0; k != BACKCOLOR; ++k){
+	for (int j = 0; j != OptionData::minoPixSizeY; ++j){
+	    for (int i = 0; i != OptionData::minoPixSizeX; ++i){
+		pixel = getPixel(
+		    minoTextureSurface,
+		    lerp(0, i, (double)minoTextureSurface->w /
+			 OptionData::minoPixSizeX),
+		    lerp(0, j, (double)minoTextureSurface->h /
+			 OptionData::minoPixSizeY));
+		color = Uint322SDL_Color(pixel);
+
+		putPixel(minoSurface[k], i, j,
+			 SDL_Color2Uint32(
+			     multiply_translate(minoColor[k], color)));
+		
+		putPixel(minoGhostSurface[k], i, j,
+			 SDL_Color2Uint32(
+			     multiply_translate(minoGhostColor[k], color)));
+	    }
+	}
+    }
+
+    for (int j = 0; j != OptionData::minoPixSizeY; ++j){
+	for (int i = 0; i != OptionData::minoPixSizeX; ++i){
+	    pixel = getPixel(
+		backTextureSurface,
+		lerp(0, i, (double)backTextureSurface->w /
+		     OptionData::minoPixSizeX),
+		lerp(0, j, (double)backTextureSurface->h /
+		     OptionData::minoPixSizeY));
+	    color = Uint322SDL_Color(pixel);
+
+	    putPixel(minoSurface[BACKCOLOR], i, j,
+		     SDL_Color2Uint32(
+			 screen_translate(minoColor[BACKCOLOR], color)));
+		
+	    putPixel(minoGhostSurface[BACKCOLOR], i, j,
+		     SDL_Color2Uint32(
+			 screen_translate(minoGhostColor[BACKCOLOR], color)));
+	}
+    }
+
+    for (int k = 0; k <= BACKCOLOR; ++k){
+	for (int j = 0; j != OptionData::minoPixSizeY / 2; ++j){
+	    for (int i = 0; i != OptionData::minoPixSizeX / 2; ++i){
+		pixel = getPixel(
+		    minoSurface[k],
+		    lerp(0, i, 2),
+		    lerp(0, j, 2));
+		
+		putPixel(halfMinoSurface[k], i, j, pixel);
+	    }
+	}
+    }
+
+    for (int k = 0; k <= BACKCOLOR; ++k){
+	SDL_UnlockSurface(minoSurface[k]);
+	SDL_UnlockSurface(minoGhostSurface[k]);
+	SDL_UnlockSurface(halfMinoSurface[k]);		
+    }
+    SDL_UnlockSurface(minoTextureSurface);    
+    SDL_UnlockSurface(backTextureSurface);
+    
+    SDL_FreeSurface(minoTextureSurface);    
+    SDL_FreeSurface(backTextureSurface);
+}
+
+void GameHolder::freeMinoSurface()
+{
+    for (int k = 0; k != 9; ++k){
+	SDL_FreeSurface(minoSurface[k]);
+	SDL_FreeSurface(minoGhostSurface[k]);
+	SDL_FreeSurface(halfMinoSurface[k]);	
     }
 }
 
@@ -189,15 +304,8 @@ void GameHolder::initGhostColor()
 void GameHolder::initQuitLabel()
 {
     quitLabelRect = Rect<int>(0, 0, 200, 50);
-    quitLabelBackSurface = SDL_CreateRGBSurface(
-	ResourceData::display->flags,
-	quitLabelRect.diagonal.x,
-	quitLabelRect.diagonal.y,
-	ResourceData::display->format->BitsPerPixel,
-	ResourceData::display->format->Rmask,
-	ResourceData::display->format->Gmask,
-	ResourceData::display->format->Bmask,
-	ResourceData::display->format->Amask);
+    quitLabelBackSurface = create_surface(
+	quitLabelRect.diagonal.x, quitLabelRect.diagonal.y);
     
     quitLabelRect.setCenter(StableData::screenSize / 2);
     quitLabel = new QuitLabel(quitLabelRect, "Quit?");

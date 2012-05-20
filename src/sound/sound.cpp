@@ -66,6 +66,7 @@ void Sound::loadMusic()
 	    index.push_back(current++);
 	}
     }
+    closedir(dir);
 }
 
 int Sound::getMusicSize()
