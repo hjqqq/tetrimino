@@ -43,6 +43,7 @@ private:
     QuitLabel *quitLabel;
     Rect<int> quitLabelRect;
     SDL_Surface *quitLabelBackSurface;
+    OptionData::GameHolderStatus pausePrevStatus;
 };
 
 #endif

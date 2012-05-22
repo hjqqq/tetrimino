@@ -239,7 +239,7 @@ void MenuHolder::constructPlayerMenu()
 	OptionData::playerData1.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType1pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData1.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
+	OptionData::playerData1.randomizerType, 0, 1, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     // 2p labels
     SimpleLabel * player2pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 2 p", "Enter : change 2p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost2pLabel = new ToggleLabel(
@@ -263,7 +263,7 @@ void MenuHolder::constructPlayerMenu()
 	OptionData::playerData2.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType2pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData2.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
+	OptionData::playerData2.randomizerType, 0, 1, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     // 3p labels
     SimpleLabel * player3pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 3 p", "Enter : change 3p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost3pLabel = new ToggleLabel(
@@ -287,7 +287,7 @@ void MenuHolder::constructPlayerMenu()
 	OptionData::playerData3.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType3pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData3.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");    
+	OptionData::playerData3.randomizerType, 0, 1, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");    
     // 4p labels
     SimpleLabel * player4pLabel = new SimpleLabel( StableData::labelRect, "Keyboard Setting 4 p", "Enter : change 4p's keys, Left or Right : change player");
     ToggleLabel *toggleGhost4pLabel = new ToggleLabel(
@@ -311,7 +311,7 @@ void MenuHolder::constructPlayerMenu()
 	OptionData::playerData4.randomQueueDataIndex, 1, 4, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     NumberLabel *randomizerType4pLabel = new NumberLabel(
 	StableData::labelRect, "Randomizer Type", "B|H", 
-	OptionData::playerData4.randomizerType, 1, 2, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
+	OptionData::playerData4.randomizerType, 0, 1, 1,"Left:-1,Right:+1,r:reset,Enter:InputNumber");
     
     /********************************* setters *************************************/
     // 1p setters

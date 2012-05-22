@@ -34,8 +34,8 @@ public:
     /**
        使用于 Sound::playChunk 来播放效果音
      */
-    enum Chunk{CURSOR, SELECT, MOVE, TURN,
-	       HARDDROP, EXPLOSION, WARN, FINALLY};
+    enum Chunk{CURSOR, SELECT,
+	       TURN, HARDDROP, CLEAR, GARBAGE, WIN, GAMEOVER, HOLD, HOLDFAIL};
     
     /**
        播放一段效果音，只播放一遍，可快速多次调用，使得效果音重叠。
@@ -97,7 +97,7 @@ public:
      */
     int setVolumeMusic(int volume = -1);
 private:
-    static const int CHUNKSIZE = 8; ///< 效果音的总大小，用于新建效果音的资源数组
+    static const int CHUNKSIZE = 10; ///< 效果音的总大小，用于新建效果音的资源数组
     void loadChunk();
     void loadMusic();
 

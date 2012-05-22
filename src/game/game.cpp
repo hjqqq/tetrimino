@@ -194,12 +194,12 @@ void Game::createBlock()
 		holdStatus = HOLDED;
 		holdEmpty = false;
 		show->holdShow(holdShape);
-		//ResourceData::sound->playChunk(Sound::TURN);
+		ResourceData::sound->playChunk(Sound::TURN);
 	    } else{
 		std::swap(shape, holdShape);
 		holdStatus = HOLDED;
 		show->holdShow(holdShape);
-		//ResourceData::sound->playChunk(Sound::TURN);		
+		ResourceData::sound->playChunk(Sound::TURN);		
 	    }
 	    break;
 	case HOLDED:
@@ -242,18 +242,21 @@ void Game::areDelayHandleEvent(const SDL_Event &event)
 	}
 	else if (sym == playerData->hardDrop){
 	    pos = getLockPos();
+	    ResourceData::sound->playChunk(Sound::HARDDROP);	    
 	    if (!checkBlock(pos, direction)){
 		gameOver();
-	    }
-	    else{
+	    } else{
 		fillMap();
 		gameStatus = START;
 	    }
 	}
 	else if (sym == playerData->hold){
 	    if (holdStatus == PREPAREHOLD){
+		ResourceData::sound->playChunk(Sound::HOLD);
 		holdStatus = HOLD;
 		gameStatus = START;
+	    } else{
+		ResourceData::sound->playChunk(Sound::HOLDFAIL);
 	    }
 	}
     }
@@ -278,20 +281,29 @@ void Game::areDelayUpdate()
 
 void Game::gameOver()
 {
-    gameStatus = GAMEOVER;
-    show->messageShow("Loss !!!");
-    
-    int count = 0, index;
-    for (int i = 0; i != OptionData::playerSize; ++i){
-	if (allGame[i]->gameStatus != GAMEOVER){
-	    ++count;
-	    index = i;
+    if (OptionData::playerSize == 1){
+	gameStatus = WIN;   	
+	show->messageShow("GameOver !!!");
+	ResourceData::sound->playChunk(Sound::GAMEOVER);
+	gameoverDelayTimer->reset();
+    } else{
+	gameStatus = GAMEOVER;
+	show->messageShow("Loss !!!");
+	int count = 0, index;
+	for (int i = 0; i != OptionData::playerSize; ++i){
+	    if (allGame[i]->gameStatus != GAMEOVER){
+		++count;
+		index = i;
+	    }
 	}
-    }
-    if (count == 1){
-	allGame[index]->gameStatus = WIN;
-	allGame[index]->show->messageShow("Win !!!");
-	allGame[index]->gameoverDelayTimer->reset();
+	if (count == 1){
+	    allGame[index]->gameStatus = WIN;
+	    allGame[index]->show->messageShow("Win !!!");
+	    ResourceData::sound->playChunk(Sound::WIN);
+	    allGame[index]->gameoverDelayTimer->reset();
+	} else{
+	    ResourceData::sound->playChunk(Sound::GAMEOVER);		    
+	}
     }
 }
 
@@ -328,7 +340,6 @@ void Game::dropHandleEvent(const SDL_Event &event)
 
 	else if (sym == playerData->moveRight){
 	    dropDistancePerFrame += Vector2<int>(1, 0);
-
 	    if (keyState[playerData->moveLeft])
 		dropStatus = ARRRIGHT;
 	    else {
@@ -340,7 +351,7 @@ void Game::dropHandleEvent(const SDL_Event &event)
 	else if (sym == playerData->rotateLeft){
 	    int newDirection = (direction == 3? 0: direction + 1);
 	    if (SRSRotate(direction, (Direction)newDirection)){
-		//ResourceData::sound->playChunk(Sound::TURN);
+		ResourceData::sound->playChunk(Sound::TURN);
 		if (lockStatus)
 		    lockDelayTimer->reset();
 	    }
@@ -349,7 +360,7 @@ void Game::dropHandleEvent(const SDL_Event &event)
 	else if (sym == playerData->rotateRight){
 	    int newDirection = (direction == 0? 3: direction - 1);
 	    if (SRSRotate(direction, (Direction)newDirection)){
-		//ResourceData::sound->playChunk(Sound::TURN);	    		
+		ResourceData::sound->playChunk(Sound::TURN);	    		
 		if (lockStatus)
 		    lockDelayTimer->reset();
 	    }
@@ -365,8 +376,11 @@ void Game::dropHandleEvent(const SDL_Event &event)
 
 	else if (sym == playerData->hold){
 	    if (holdStatus == PREPAREHOLD){
+		ResourceData::sound->playChunk(Sound::HOLD);
 		holdStatus = HOLD;
 		gameStatus = START;
+	    } else{
+		ResourceData::sound->playChunk(Sound::HOLDFAIL);
 	    }
 	}
     }    
@@ -627,7 +641,7 @@ void Game::clearMap()
     }
 
     if (eliminate > 0){
-	ResourceData::sound->playChunk(Sound::EXPLOSION);
+	ResourceData::sound->playChunk(Sound::CLEAR);
 	++series;
 	addMapGrow(eliminate);
     } else{
@@ -731,7 +745,7 @@ void Game::addMapGrow(int grow)
 	    grow -= mapGrow;
 	    mapGrow = 0;
 	    attack->mapGrow += grow;
-	    ResourceData::sound->playChunk(Sound::WARN);
+	    ResourceData::sound->playChunk(Sound::GARBAGE);
 	    attack->show->growBarShow(attack->mapGrow);
 	}
     }
@@ -775,6 +789,5 @@ void Game::winUpdate()
     if (gameoverDelayTimer->checkTimeOut()){
 	gameStatus = GAMEOVER;
     }
-    ResourceData::sound->playChunk(Sound::FINALLY);
 }
 

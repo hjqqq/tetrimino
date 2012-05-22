@@ -89,12 +89,16 @@ void Menu::selectPrevious()
 {
     if (select != 0)
 	--select;
+    else
+	select = labelVector.size() - 1;
 }
 
 void Menu::selectNext()
 {
     if (select < labelVector.size() - 1)
 	++select;
+    else
+	select = 0;
 }
 
 int Menu::getSelect() const

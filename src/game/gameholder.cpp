@@ -46,6 +46,16 @@ void GameHolder::handleEvent(const SDL_Event &event)
 {
     switch (OptionData::gameHolderStatus){
     case OptionData::READY:
+	if (event.type == SDL_KEYDOWN){
+	    SDLKey sym = event.key.keysym.sym;
+	    if (sym == SDLK_ESCAPE){
+		SDL_Rect quitLabelRectTemp = quitLabelRect.getSDL_Rect();
+		SDL_BlitSurface(ResourceData::display, &quitLabelRectTemp,
+				quitLabelBackSurface, NULL);
+		OptionData::gameHolderStatus = OptionData::PAUSE;
+		pausePrevStatus = OptionData::READY;
+	    }
+	}	
 	for (int i = 0; i != OptionData::playerSize; ++i){
 	    allGame[i]->handleEvent(event);
 	}
@@ -58,6 +68,7 @@ void GameHolder::handleEvent(const SDL_Event &event)
 		SDL_BlitSurface(ResourceData::display, &quitLabelRectTemp,
 				quitLabelBackSurface, NULL);
 		OptionData::gameHolderStatus = OptionData::PAUSE;
+		pausePrevStatus = OptionData::RUN;
 	    }
 	}
 	for (int i = 0; i != OptionData::playerSize; ++i){
@@ -71,7 +82,7 @@ void GameHolder::handleEvent(const SDL_Event &event)
 		SDL_Rect quitLabelBackRectTemp = quitLabelRect.getSDL_Rect();
 		SDL_BlitSurface(quitLabelBackSurface, NULL,
 				ResourceData::display, &quitLabelBackRectTemp);
-		OptionData::gameHolderStatus = OptionData::RUN;
+		OptionData::gameHolderStatus = pausePrevStatus;
 	    } else if (sym == SDLK_RETURN){
 		if (quitLabel->getToggle())
 		    OptionData::gameHolderStatus = OptionData::QUITGAME;
@@ -79,7 +90,7 @@ void GameHolder::handleEvent(const SDL_Event &event)
 		    SDL_Rect quitLabelBackRectTemp = quitLabelRect.getSDL_Rect();
 		    SDL_BlitSurface(quitLabelBackSurface, NULL,
 				    ResourceData::display, &quitLabelBackRectTemp);
-		    OptionData::gameHolderStatus = OptionData::RUN;
+		    OptionData::gameHolderStatus = pausePrevStatus;
 		}
 	    }
 	    quitLabel->handleEvent(event);
@@ -307,10 +318,6 @@ void GameHolder::initQuitLabel()
     quitLabelRect = Rect<int>(0, 0, 200, 50);
     quitLabelBackSurface = create_surface(
 	quitLabelRect.diagonal.x, quitLabelRect.diagonal.y);
-    
     quitLabelRect.setCenter(StableData::screenSize / 2);
     quitLabel = new QuitLabel(quitLabelRect, "Quit?", white);
-    quitLabel->setAction(new ValueSetter<OptionData::GameHolderStatus>(
-			     OptionData::gameHolderStatus,
-			     OptionData::QUITGAME));    
 }

@@ -31,12 +31,14 @@ void Sound::loadChunk()
 {
     chunkList[0] = Mix_LoadWAV("res/sound/chunk/cursor.wav");
     chunkList[1] = Mix_LoadWAV("res/sound/chunk/select.wav");
-    chunkList[2] = Mix_LoadWAV("res/sound/chunk/move.wav");
-    chunkList[3] = Mix_LoadWAV("res/sound/chunk/turn.wav");
-    chunkList[4] = Mix_LoadWAV("res/sound/chunk/harddrop.wav");
-    chunkList[5] = Mix_LoadWAV("res/sound/chunk/explosion.wav");
-    chunkList[6] = Mix_LoadWAV("res/sound/chunk/warn.wav");
-    chunkList[7] = Mix_LoadWAV("res/sound/chunk/finally.wav");    
+    chunkList[2] = Mix_LoadWAV("res/sound/chunk/turn.wav");
+    chunkList[3] = Mix_LoadWAV("res/sound/chunk/harddrop.wav");
+    chunkList[4] = Mix_LoadWAV("res/sound/chunk/clear.wav");
+    chunkList[5] = Mix_LoadWAV("res/sound/chunk/garbage.wav");
+    chunkList[6] = Mix_LoadWAV("res/sound/chunk/win.wav");
+    chunkList[7] = Mix_LoadWAV("res/sound/chunk/gameover.wav");
+    chunkList[8] = Mix_LoadWAV("res/sound/chunk/hold.wav");
+    chunkList[9] = Mix_LoadWAV("res/sound/chunk/holdfail.wav");    
 }
 
 void Sound::playChunk(Chunk chunk)
@@ -55,7 +57,7 @@ void Sound::loadMusic()
 {
     DIR *dir = opendir(prefix.c_str());
     dirent *dirp;
-    current = 0;
+    int currentIndex = 0;
     while (dirp = readdir(dir)){
 	std::string fileName = dirp->d_name;
 	if (fileName != ".." && fileName != "."){
@@ -63,7 +65,7 @@ void Sound::loadMusic()
 	    Mix_Music *music = Mix_LoadMUS(fullFileName.c_str());
 	    allMusic.push_back(music);
 	    allMusicFile.push_back(fileName);
-	    index.push_back(current++);
+	    index.push_back(currentIndex++);
 	}
     }
     closedir(dir);
@@ -96,10 +98,8 @@ void next();
 
 void Sound::randomPlayMusic()
 {
-    if (current == index.size()){
-	current = 0;
-	std::random_shuffle(index.begin(), index.end());
-    }
+    current = 0;
+    std::random_shuffle(index.begin(), index.end());
     playMusic(index[current], 1);
     Mix_HookMusicFinished(next);
 }
