@@ -7,7 +7,7 @@
 class WallKickData{
 public:
     typedef Vector2<int> WallKickNum[5];
-    typedef WallKickNum AllWallKickNum[4][4];
+    typedef WallKickNum *AllWallKickNum[4][4];
 
     inline WallKickData(const AllWallKickNum &_allWallKickNum);
     inline const WallKickNum& getNum(
@@ -25,7 +25,7 @@ const WallKickData::WallKickNum& WallKickData::getNum(
     Direction startDirection,
     Direction finishDirection) const
 {
-    return allWallKickNum[startDirection][finishDirection];
+    return *allWallKickNum[startDirection][finishDirection];
 }
     
 extern const WallKickData wallKickDataI;

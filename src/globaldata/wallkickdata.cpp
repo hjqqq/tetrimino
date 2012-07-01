@@ -73,14 +73,13 @@ WallKickData::WallKickNum IN2E = {
 };
 
 WallKickData::AllWallKickNum INum{
-    {NONE, IN2W, NONE, IN2E},
-    {IW2N, NONE, IW2S, NONE},
-    {NONE, IS2W, NONE, IS2E},
-    {IE2N, NONE, IE2S, NONE}
+    {&NONE, &IN2W, &NONE, &IN2E},
+    {&IW2N, &NONE, &IW2S, &NONE},
+    {&NONE, &IS2W, &NONE, &IS2E},
+    {&IE2N, &NONE, &IE2S, &NONE}
 };
 
 const WallKickData wallKickDataI(INum);
-
 
 WallKickData::WallKickNum LJSTZN2W = {
     Vector2<int>(0, 0),
@@ -147,10 +146,10 @@ WallKickData::WallKickNum LJSTZN2E = {
 };
 
 WallKickData::AllWallKickNum LJSTZNum{
-    {NONE    , LJSTZN2W, NONE    , LJSTZN2E},
-    {LJSTZW2N, NONE    , LJSTZW2S, NONE    },
-    {NONE    , LJSTZS2W, NONE    , LJSTZS2E},
-    {LJSTZE2N, NONE    , LJSTZE2S, NONE    }
+    {&NONE    , &LJSTZN2W, &NONE    , &LJSTZN2E},
+    {&LJSTZW2N, &NONE    , &LJSTZW2S, &NONE    },
+    {&NONE    , &LJSTZS2W, &NONE    , &LJSTZS2E},
+    {&LJSTZE2N, &NONE    , &LJSTZE2S, &NONE    }
 };
 
 const WallKickData wallKickDataL(LJSTZNum);
@@ -160,10 +159,10 @@ const WallKickData wallKickDataT(LJSTZNum);
 const WallKickData wallKickDataZ(LJSTZNum);
 
 WallKickData::AllWallKickNum ONum{
-    {NONE, NONE, NONE, NONE},
-    {NONE, NONE, NONE, NONE},
-    {NONE, NONE, NONE, NONE},
-    {NONE, NONE, NONE, NONE}
+    {&NONE, &NONE, &NONE, &NONE},
+    {&NONE, &NONE, &NONE, &NONE},
+    {&NONE, &NONE, &NONE, &NONE},
+    {&NONE, &NONE, &NONE, &NONE}
 };
 
 const WallKickData wallKickDataO(ONum);
