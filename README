@@ -1,3 +1,11 @@
 标准俄罗斯方块
 
 软件工程与游戏编程的大作业
+
+mkdir build
+cd build
+cmake ../
+make
+make doc (使用 doxygen 生成文档)
+make install (这一步只会把必须的资源文件复制到 build 目录并不会安装到系统目录)
+./bin/tetrimino 开始游戏
