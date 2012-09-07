@@ -2,6 +2,9 @@
 
 软件工程与游戏编程的大作业
 
+暂时只支持 linux 操作系统
+需要 SDL SDL_image SDL_ttf SDL_mixer
+
 mkdir build
 cd build
 cmake ../
